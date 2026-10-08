@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import type { Email, Page } from '@/payload-types'
+import type { Email } from '@/payload-types'
 
 import { EmailContentBlock } from './blocks/Content/Component'
 import EmailButtonBlock from './blocks/Button/Component'
@@ -16,6 +16,7 @@ export const RenderEmailBlocks: React.FC<{
   blocks: Email['blocks'],
   variables?: Record<string, string | number>
 }> = (props) => {
+
   const { blocks, variables = {} } = props
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
   const debug = false
