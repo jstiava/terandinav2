@@ -30,7 +30,7 @@ export const Users: CollectionConfig = {
       generateEmailSubject: () => 'Verify your email address',
 
       generateEmailHTML: ({ token, user }) => {
-        const url = `${process.env.NEXT_PUBLIC_SITE_URL}/verify?token=${token}`
+        const url = `https://terandinav2.vercel.app/verify?token=${token}`
 
         return `
           <h1>Verify your email</h1>
