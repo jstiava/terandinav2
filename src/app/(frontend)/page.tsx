@@ -47,6 +47,10 @@ const queryPageBySlug = cache(async () => {
     draft,
   });
 
+  if (!settings.frontPage) {
+    return null;
+  }
+
   const result = await payload.find({
     collection: 'pages',
     draft,
