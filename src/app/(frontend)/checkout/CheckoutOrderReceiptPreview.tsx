@@ -1,33 +1,49 @@
 'use client'
 
-import { formatPrice } from "@/collections/Products/formatPrice";
-import { CartProvider } from "@/components/Cart/CartProviderComponent"
-import { useContext } from "react";
+import { formatPrice } from '@/collections/Products/formatPrice'
+import { CartProvider } from '@/components/Cart/CartProviderComponent'
+import { useContext } from 'react'
 
 export default function CheckoutOrderReceiptPreview() {
+  const { ...CartContext } = useContext(CartProvider)
 
-    const { ...CartContext } = useContext(CartProvider);
+  return (
+    <div className="flex flex-col gap-4">
+      {/* Receipt rows */}
+      <div className="flex flex-col gap-3 text-sm">
+        <div className="flex items-center justify-between">
+          <span className="text-muted-foreground">Subtotal</span>
 
-    return (
-        <div className="flex flex-col gap-2 w-full">
-            <h3 {...{
-                className: 'text-xl font-canela'
-            }}>Receipt</h3>
-
-            <div className="flex flex-col gap-1 text-xs">
-                <div className="flex justify-between w-full items-center">
-                    <span>Subtotal</span>
-                    <span>{formatPrice(CartContext.checkoutDetails?.subtotal ?? 0, 'usd')}</span>
-                </div>
-                <div className="flex justify-between w-full items-center">
-                    <span>Tax added</span>
-                    <span>{formatPrice(CartContext.checkoutDetails?.tax ?? 0, 'usd')}</span>
-                </div>
-                <div className="flex justify-between w-full items-center">
-                    <span>Total</span>
-                    <span>{formatPrice(CartContext.checkoutDetails?.totalDue ?? 0, 'usd')}</span>
-                </div>
-            </div>
+          <span className="tabular-nums">{ formatPrice(CartContext.checkoutDetails?.subtotal ?? 0, 'usd')}</span>
         </div>
-    )
+
+        <div className="flex items-center justify-between">
+          <span className="text-muted-foreground">Shipping</span>
+
+          <span className="font-medium">Free</span>
+        </div>
+
+        <div className="flex items-center justify-between">
+          <span className="text-muted-foreground">Estimated tax</span>
+
+          <span className="tabular-nums">{ formatPrice(CartContext.checkoutDetails?.tax ?? 0, 'usd')}</span>
+        </div>
+      </div>
+
+      {/* Total */}
+      <div className="h-px w-full bg-border" />
+
+      <div className="flex items-baseline justify-between">
+        <span className="text-base font-medium">Total</span>
+
+        <span className="font-canela text-2xl tabular-nums">{ formatPrice(CartContext.checkoutDetails?.totalDue ?? 0, 'usd')}</span>
+      </div>
+
+      {/* Payment note */}
+      <p className="text-xs leading-5 text-muted-foreground">
+        Taxes are calculated based on your shipping address. You won&apos;t be charged until your
+        order is submitted.
+      </p>
+    </div>
+  )
 }

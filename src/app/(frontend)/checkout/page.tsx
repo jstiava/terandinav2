@@ -1,42 +1,34 @@
 import CheckoutCartInventory from "./CheckoutCartInventory";
 import CheckoutOrderReceiptPreview from "./CheckoutOrderReceiptPreview";
 import CheckoutProcessAccordion from "./CheckoutProcessAccordion";
+import CheckoutSummaryAside from "./CheckoutSummaryAside";
 
 
 export default async function CheckoutPage() {
 
   return (
-    <div className="flex flex-col items-center w-full h-fit pt-16">
+    <div className="flex min-h-screen w-full flex-col items-center">
+      {/* Page header */}
+      <header className="w-full max-w-[80rem] px-4 pt-16 pb-8 sm:px-6 lg:px-8">
+        <h1 className="font-canela text-3xl">
+          Checkout
+        </h1>
+      </header>
 
-      <h1 {...{
-        className: "text-2xl font-canela"
-      }}>Checkout</h1>
+      {/* Checkout */}
+      <main className="w-full max-w-[80rem] px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="grid w-full gap-8 md:grid-cols-[minmax(0,1fr)_minmax(20rem,30rem)]">
 
-      {/* Checkout content */}
-      <div className="flex flex-col md:flex-row w-full max-w-[80rem] justify-center h-fit">
+          {/* Checkout process */}
+          <section className="min-w-0">
+            <CheckoutProcessAccordion />
+          </section>
 
-        {/* Inventory */}
-        <div className="flex flex-col gap-4 w-full md:w-[55%] max-w-[30rem] p-4 py-8">
-          <CheckoutProcessAccordion />
+          {/* Order summary */}
+          <CheckoutSummaryAside />
+
         </div>
-
-        {/* Summary sidebar */}
-        <div className="flex flex-1 min-w-0 max-w-[30rem]">
-          <div className="flex flex-col gap-4 w-full p-8">
-
-            <h3 {...{
-              className: 'text-xl font-canela'
-            }}>My Cart</h3>
-            <CheckoutCartInventory />
-
-            <div className="w-full h-[1px] bg-border rounded-full" />
-
-            <CheckoutOrderReceiptPreview />
-
-          </div>
-        </div>
-      </div>
-
+      </main>
     </div>
   )
 }

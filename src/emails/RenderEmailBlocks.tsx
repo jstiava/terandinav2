@@ -3,12 +3,13 @@ import React, { Fragment } from 'react'
 import type { Email, Page } from '@/payload-types'
 
 import { EmailContentBlock } from './blocks/Content/Component'
-import { Variable } from '@/components/RichText'
 import EmailButtonBlock from './blocks/Button/Component'
+import EmailImageBlock from './blocks/Image/Component'
 
 export const blockComponents = {
   emailContent: EmailContentBlock,
-  emailButton: EmailButtonBlock
+  emailButton: EmailButtonBlock,
+  emailImage: EmailImageBlock
 }
 
 export const RenderEmailBlocks: React.FC<{

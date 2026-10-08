@@ -48,7 +48,7 @@ export default function SubscribeToNewsletterButton() {
                                     }}>Subscribe to our newsletter</h1>
                                     <span {...{
                                         className: "text-xs"
-                                    }}>We'll update you on new product offering, festivals we attend across the country, and special offerings. No more than 1 email per week.</span>
+                                    }}>We&apos;ll update you on new product offering, festivals we attend across the country, and special offerings. No more than 1 email per week.</span>
 
                                     <Field>
                                         <FieldLabel>Email address</FieldLabel>

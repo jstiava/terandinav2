@@ -77,7 +77,7 @@ export default function StripeLocationAndTaxField({ paymentIntent }: {
                             },
                         }}
                         onChange={(e) => {
-                            CartContext.changeLocation({
+                            CartContext.setLocation({
                                 ...e.value,
                                 complete: e.complete,
                             } as any);

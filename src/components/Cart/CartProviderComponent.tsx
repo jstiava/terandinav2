@@ -19,7 +19,7 @@ export type CheckoutDetailsType = {
     subtotal: number
 }
 
-export type StripeLocationDetails = { "name"?: string | null, "firstName"?: string | null, "lastName"?: string | null, "address": { "line1": string | null, "line2": string | null, "city": string | null, "country": string | null, "postal_code": string | null, "state": string | null }, "complete": boolean }
+export type StripeLocationDetails = { "emailAddress"?: string | null, "name"?: string | null, "firstName"?: string | null, "lastName"?: string | null, "address": { "line1": string | null, "line2": string | null, "city": string | null, "country": string | null, "postal_code": string | null, "state": string | null }, "complete": boolean }
 
 export const CartProvider = createContext<{
     cart: ProductType[] | null;
@@ -33,7 +33,6 @@ export const CartProvider = createContext<{
     //     id: string,
     //     size: string
     // } }) => void;
-    checkout: () => void;
     clear: () => void;
     close: () => void;
     open: () => void;
@@ -43,7 +42,7 @@ export const CartProvider = createContext<{
     setPickup: Dispatch<SetStateAction<'pickup' | 'delivery'>>,
 
     location: StripeLocationDetails | null,
-    changeLocation: (arg: StripeLocationDetails | null) => any,
+    setLocation: Dispatch<SetStateAction<StripeLocationDetails | null>>,
     checkoutDetails: CheckoutDetailsType | null,
     setCheckoutDetails: Dispatch<SetStateAction<CheckoutDetailsType | null>>,
     tokenizedCartWithPaymentReady: string | null,
@@ -115,10 +114,6 @@ export default function CartProviderComponent({ children }: {
         setIsOpen(true);
     }
 
-    const changeLocation = (newLocation: StripeLocationDetails | null) => {
-        setLocation(newLocation)
-    }
-
     if (!cart) {
         return (
             <div className="flex items-center justify-center w-screen h-screen">
@@ -129,7 +124,7 @@ export default function CartProviderComponent({ children }: {
 
     return (
         <CartProvider.Provider value={{
-            cart, clear, add, remove, get, close, isOpen, open, pickup, setPickup, location, changeLocation, checkoutDetails, setCheckoutDetails, tokenizedCartWithPaymentReady, setTokenizedCartWithPaymentReady
+            cart, clear, add, remove, get, close, isOpen, open, pickup, setPickup, location, setLocation, checkoutDetails, setCheckoutDetails, tokenizedCartWithPaymentReady, setTokenizedCartWithPaymentReady
         }}>
             {children}
         </CartProvider.Provider>

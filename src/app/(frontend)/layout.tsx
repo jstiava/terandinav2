@@ -6,7 +6,6 @@ import { Footer } from '@/Footer/Component'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { draftMode } from 'next/headers'
 
-import NextNProgress from "nextjs-progressbar";
 // @ts-ignore
 import './globals.css'
 import TopLoadingBar from '@/components/LoadingBar'
@@ -15,8 +14,6 @@ import localFont from 'next/font/local'
 import { Archivo } from 'next/font/google'
 import CartProviderComponent from '@/components/Cart/CartProviderComponent'
 import { Header } from '@/Header/Component'
-import Script from 'next/script'
-import StripeWindowWrapper from './checkout/StripeWindowWrapper'
 
 export const canela = localFont({
   src: [
