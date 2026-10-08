@@ -1,0 +1,3840 @@
+[
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "red/blue",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c88846e3ca2f38f53e0",
+        "id": "6ab976df72cb34343eca83fa"
+      }
+    ],
+    "name": "Desert Sky - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1Qsu1BBNjcHRVZ2axHhUGgme",
+        "active": true,
+        "id": "6ab976df72cb34343eca83fc"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 3,
+        "id": "6ab976df72cb34343eca83fb"
+      }
+    ],
+    "slug": "prod_RmSxj6B8gUBmR8",
+    "stripe_product_id": "prod_RmSxj6B8gUBmR8",
+    "terandina_v1_id": "67b4e735076a61c7c3201fba",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c88846e3ca2f38f53df",
+        "id": "6ab976df72cb34343eca83fd"
+      }
+    ],
+    "name": "Deep Ocean - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1QstvZBNjcHRVZ2abdbac7Xu",
+        "active": true,
+        "id": "6ab976df72cb34343eca83ff"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 2,
+        "id": "6ab976df72cb34343eca83fe"
+      }
+    ],
+    "slug": "prod_RmSreYd2QkRtnN",
+    "stripe_product_id": "prod_RmSreYd2QkRtnN",
+    "terandina_v1_id": "67b4e735076a61c7c3201fbb",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "green",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c87846e3ca2f38f53de",
+        "id": "6ab976df72cb34343eca8400"
+      }
+    ],
+    "name": "Olive Trail - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1Qsts3BNjcHRVZ2a9cJHVsSi",
+        "active": true,
+        "id": "6ab976df72cb34343eca8402"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 2,
+        "id": "6ab976df72cb34343eca8401"
+      }
+    ],
+    "slug": "prod_RmSn3db2wADEX8",
+    "stripe_product_id": "prod_RmSn3db2wADEX8",
+    "terandina_v1_id": "67b4e735076a61c7c3201fbc",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c86846e3ca2f38f53dd",
+        "id": "6ab976df72cb34343eca8403"
+      }
+    ],
+    "name": "River Stones - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1QstplBNjcHRVZ2aPrlF6LQA",
+        "active": true,
+        "id": "6ab976df72cb34343eca8405"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 2,
+        "id": "6ab976df72cb34343eca8404"
+      }
+    ],
+    "slug": "prod_RmSlAFJUz7LUqQ",
+    "stripe_product_id": "prod_RmSlAFJUz7LUqQ",
+    "terandina_v1_id": "67b4e735076a61c7c3201fbd",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c86846e3ca2f38f53dc",
+        "id": "6ab976df72cb34343eca8406"
+      },
+      {
+        "image": "6ab96c43846e3ca2f38f5388",
+        "id": "6ab976df72cb34343eca8407"
+      }
+    ],
+    "name": "Sky Blue - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1QstpBBNjcHRVZ2aW5vNj94W",
+        "active": true,
+        "id": "6ab976df72cb34343eca8409"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 3,
+        "id": "6ab976df72cb34343eca8408"
+      }
+    ],
+    "slug": "prod_RmSkpjLIPNAj7e",
+    "stripe_product_id": "prod_RmSkpjLIPNAj7e",
+    "terandina_v1_id": "67b4e735076a61c7c3201fbe",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "sea blue",
+    "description": "Our lightest ponchos provide versatility in both cool and warm weather. Made from a sustainable baby alpaca blend, they offer a soft, breathable texture and are ideal for everyday use – from summer evenings to outdoor adventures. These ponchos are thoughtfully crafted by Indigenous artisans from our own Quechua community in the Andes Mountain region. ",
+    "details": "-\t70% Baby Alpaca, 30% Acrylic Fibers\n-\t26oz Lightweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96cdd846e3ca2f38f5451",
+        "id": "6ab976df72cb34343eca840a"
+      },
+      {
+        "image": "6ab96cdc846e3ca2f38f5450",
+        "id": "6ab976df72cb34343eca840b"
+      },
+      {
+        "image": "6ab96c9a846e3ca2f38f53f5",
+        "id": "6ab976df72cb34343eca840c"
+      },
+      {
+        "image": "6ab96c99846e3ca2f38f53f4",
+        "id": "6ab976df72cb34343eca840d"
+      }
+    ],
+    "name": "Sea Shore - Lightweight Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 88,
+        "currency": "usd",
+        "stripe_price_id": "price_1QstliBNjcHRVZ2araoBqxrT",
+        "active": true,
+        "id": "6ab976df72cb34343eca840f"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 3,
+        "id": "6ab976df72cb34343eca840e"
+      }
+    ],
+    "slug": "prod_RmShgdMnIK1F50",
+    "stripe_product_id": "prod_RmShgdMnIK1F50",
+    "terandina_v1_id": "67b4e735076a61c7c3201fbf",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "brown/grey/black",
+    "description": "Made with warmth and functionality in mind, our heavyweight ponchos will wrap you in organic lamb’s wool, providing insulation in colder temperatures. These ponchos feature the Andean Cross, or Chakana: the most important symbol of the Inca empire, representing balance and harmony with the universe. ",
+    "details": "-\t100% Lamb’s Wool\n-\t35oz - 42oz Heavyweight\n-\tOne Size\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96cd7846e3ca2f38f5449",
+        "id": "6ab976df72cb34343eca8410"
+      },
+      {
+        "image": "6ab96cd7846e3ca2f38f5448",
+        "id": "6ab976df72cb34343eca8411"
+      },
+      {
+        "image": "6ab96c9c846e3ca2f38f53f7",
+        "id": "6ab976df72cb34343eca8412"
+      },
+      {
+        "image": "6ab96c9b846e3ca2f38f53f6",
+        "id": "6ab976df72cb34343eca8413"
+      }
+    ],
+    "name": "Stone Valley - Heavy Wool Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 130,
+        "currency": "usd",
+        "stripe_price_id": "price_1Qstl8BNjcHRVZ2aLDCobkRm",
+        "active": true,
+        "id": "6ab976df72cb34343eca8415"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 4,
+        "id": "6ab976df72cb34343eca8414"
+      }
+    ],
+    "slug": "prod_RmSgGXyNxz6zhR",
+    "stripe_product_id": "prod_RmSgGXyNxz6zhR",
+    "terandina_v1_id": "67b4e735076a61c7c3201fc0",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "hypoallergenic",
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "teal",
+    "description": "Made with warmth and functionality in mind, our heavyweight ponchos will wrap you in organic lamb’s wool, providing insulation in colder temperatures. These ponchos feature the Andean Cross, or Chakana: the most important symbol of the Inca empire, representing balance and harmony with the universe. ",
+    "details": "-\t100% Lamb’s Wool\n-\t35oz - 42oz Heavyweight\n-\tOne Size\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96cde846e3ca2f38f5453",
+        "id": "6ab976df72cb34343eca8416"
+      },
+      {
+        "image": "6ab96cdd846e3ca2f38f5452",
+        "id": "6ab976df72cb34343eca8417"
+      },
+      {
+        "image": "6ab96c96846e3ca2f38f53f0",
+        "id": "6ab976df72cb34343eca8418"
+      },
+      {
+        "image": "6ab96c95846e3ca2f38f53ef",
+        "id": "6ab976df72cb34343eca8419"
+      }
+    ],
+    "name": "Crystal Pond - Heavy Wool Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 130,
+        "currency": "usd",
+        "stripe_price_id": "price_1Qsth6BNjcHRVZ2axzyBhYQG",
+        "active": true,
+        "id": "6ab976df72cb34343eca841b"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 4,
+        "id": "6ab976df72cb34343eca841a"
+      }
+    ],
+    "slug": "prod_RmSc6T4lZvSt4M",
+    "stripe_product_id": "prod_RmSc6T4lZvSt4M",
+    "terandina_v1_id": "67b4e735076a61c7c3201fc1",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue/orange",
+    "description": "Made with warmth and functionality in mind, our heavyweight ponchos will wrap you in organic lamb’s wool, providing insulation in colder temperatures. These ponchos feature the Andean Cross, or Chakana: the most important symbol of the Inca empire, representing balance and harmony with the universe. ",
+    "details": "-\t100% Lamb’s Wool\n-\t35oz - 42oz Heavyweight\n-\tOne Size\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96cda846e3ca2f38f544d",
+        "id": "6ab976df72cb34343eca841c"
+      },
+      {
+        "image": "6ab96cd9846e3ca2f38f544c",
+        "id": "6ab976df72cb34343eca841d"
+      }
+    ],
+    "name": "River Canyon - Heavy Wool Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 130,
+        "currency": "usd",
+        "stripe_price_id": "price_1QstgfBNjcHRVZ2aXTYNhttg",
+        "active": true,
+        "id": "6ab976df72cb34343eca841f"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 3,
+        "id": "6ab976df72cb34343eca841e"
+      }
+    ],
+    "slug": "prod_RmSbh5LmqRRIzx",
+    "stripe_product_id": "prod_RmSbh5LmqRRIzx",
+    "terandina_v1_id": "67b4e735076a61c7c3201fc2",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "orange",
+    "description": "Made with warmth and functionality in mind, our heavyweight ponchos will wrap you in organic lamb’s wool, providing insulation in colder temperatures. These ponchos feature the Andean Cross, or Chakana: the most important symbol of the Inca empire, representing balance and harmony with the universe. ",
+    "details": "-\t100% Lamb’s Wool\n-\t35oz - 42oz Heavyweight\n-\tOne Size\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96cdb846e3ca2f38f544f",
+        "id": "6ab976df72cb34343eca8420"
+      },
+      {
+        "image": "6ab96cdb846e3ca2f38f544e",
+        "id": "6ab976df72cb34343eca8421"
+      }
+    ],
+    "name": "Canyon Sunset - Heavy Wool Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 130,
+        "currency": "usd",
+        "stripe_price_id": "price_1QqN25BNjcHRVZ2aT6ydCIKd",
+        "active": true,
+        "id": "6ab976df72cb34343eca8423"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 4,
+        "id": "6ab976df72cb34343eca8422"
+      }
+    ],
+    "slug": "prod_RjqjILaHxsysi1",
+    "stripe_product_id": "prod_RjqjILaHxsysi1",
+    "terandina_v1_id": "67b4e735076a61c7c3201fc3",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "black/grey",
+    "description": "Made with warmth and functionality in mind, our heavyweight ponchos will wrap you in organic lamb’s wool, providing insulation in colder temperatures. These ponchos feature the Andean Cross, or Chakana: the most important symbol of the Inca empire, representing balance and harmony with the universe. ",
+    "details": "-\t100% Lamb’s Wool\n-\t35oz - 42oz Heavyweight\n-\tOne Size\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements. \n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96cd9846e3ca2f38f544b",
+        "id": "6ab976df72cb34343eca8424"
+      },
+      {
+        "image": "6ab96cd8846e3ca2f38f544a",
+        "id": "6ab976df72cb34343eca8425"
+      },
+      {
+        "image": "6ab96c9e846e3ca2f38f53f9",
+        "id": "6ab976df72cb34343eca8426"
+      },
+      {
+        "image": "6ab96c9d846e3ca2f38f53f8",
+        "id": "6ab976df72cb34343eca8427"
+      }
+    ],
+    "name": "Sacred Smoke - Heavy Wool Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 130,
+        "currency": "usd",
+        "stripe_price_id": "price_1QpF6EBNjcHRVZ2a8dmBwt82",
+        "active": true,
+        "id": "6ab976df72cb34343eca8429"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 4,
+        "id": "6ab976df72cb34343eca8428"
+      }
+    ],
+    "slug": "prod_RigTRdFfzArr0Q",
+    "stripe_product_id": "prod_RigTRdFfzArr0Q",
+    "terandina_v1_id": "67b4e735076a61c7c3201fc4",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, this ring depicts the face of a bear with two turquoise stones. The bear is revered across many Native cultures, and is believed to represent strength, courage, and healing.",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cd6846e3ca2f38f5447",
+        "id": "6ab976df72cb34343eca842a"
+      },
+      {
+        "image": "6ab96cd6846e3ca2f38f5446",
+        "id": "6ab976df72cb34343eca842b"
+      },
+      {
+        "image": "6ab96c69846e3ca2f38f53b6",
+        "id": "6ab976df72cb34343eca842c"
+      },
+      {
+        "image": "6ab96c6a846e3ca2f38f53b7",
+        "id": "6ab976df72cb34343eca842d"
+      }
+    ],
+    "name": "Wild Bear Call Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 285,
+        "currency": "usd",
+        "stripe_price_id": "price_1QuhNVBNjcHRVZ2adcbcRgCV",
+        "active": true,
+        "id": "6ab976df72cb34343eca8434"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "8",
+        "count": 0,
+        "id": "6ab976df72cb34343eca842e"
+      },
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": 0,
+        "id": "6ab976df72cb34343eca842f"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": 0,
+        "id": "6ab976df72cb34343eca8430"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": 1,
+        "id": "6ab976df72cb34343eca8431"
+      },
+      {
+        "label": "custom",
+        "customLabel": "12",
+        "count": 1,
+        "id": "6ab976df72cb34343eca8432"
+      },
+      {
+        "label": "custom",
+        "customLabel": "13",
+        "count": 0,
+        "id": "6ab976df72cb34343eca8433"
+      }
+    ],
+    "slug": "prod_RoK13LvQlyLCUh",
+    "stripe_product_id": "prod_RoK13LvQlyLCUh",
+    "terandina_v1_id": "67b79fc27d245c6a414dc457",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Handmade by Zuni artisan Effie Calavaza, this ring depicts two twin snakes intertwining on top of a genuine turquoise stone. In Zuni culture, the snake is a representation of resurrection and rebirth, due to its ability to shed its skin. ",
+    "details": "-\tSolid Sterling Silver 925\n-\tAuthentic Zuni Made\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cd5846e3ca2f38f5445",
+        "id": "6ab976df72cb34343eca8435"
+      },
+      {
+        "image": "6ab96cd4846e3ca2f38f5444",
+        "id": "6ab976df72cb34343eca8436"
+      },
+      {
+        "image": "6ab96cd3846e3ca2f38f5443",
+        "id": "6ab976df72cb34343eca8437"
+      }
+    ],
+    "name": "Turquoise Double Snake Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 275,
+        "currency": "usd",
+        "stripe_price_id": "price_1QuihiBNjcHRVZ2a0NN1GpqZ",
+        "active": true,
+        "id": "6ab976df72cb34343eca843c"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "8",
+        "count": false,
+        "id": "6ab976df72cb34343eca8438"
+      },
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": false,
+        "id": "6ab976df72cb34343eca8439"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976df72cb34343eca843a"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": false,
+        "id": "6ab976df72cb34343eca843b"
+      }
+    ],
+    "slug": "prod_RoLOEw238F1qHW",
+    "stripe_product_id": "prod_RoLOEw238F1qHW",
+    "terandina_v1_id": "67b7b3bb0ba6d60f0c615923",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Crafted from solid sterling silver, this ring features a Native chief wearing a headdress adorned with turquoise and coral.",
+    "details": "-\tSolid Sterling Silver 925\n-\tNatural Coral\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cd3846e3ca2f38f5442",
+        "id": "6ab976df72cb34343eca843d"
+      },
+      {
+        "image": "6ab96cd2846e3ca2f38f5441",
+        "id": "6ab976df72cb34343eca843e"
+      },
+      {
+        "image": "6ab96c80846e3ca2f38f53d4",
+        "id": "6ab976df72cb34343eca843f"
+      }
+    ],
+    "name": "Turquoise Native Chief Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 300,
+        "currency": "usd",
+        "stripe_price_id": "price_1QuijkBNjcHRVZ2asmiYVsVV",
+        "active": true,
+        "id": "6ab976df72cb34343eca8444"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "8",
+        "count": false,
+        "id": "6ab976df72cb34343eca8440"
+      },
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": true,
+        "id": "6ab976df72cb34343eca8441"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976df72cb34343eca8442"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": true,
+        "id": "6ab976df72cb34343eca8443"
+      }
+    ],
+    "slug": "prod_RoLQTVOUOHO1Ra",
+    "stripe_product_id": "prod_RoLQTVOUOHO1Ra",
+    "terandina_v1_id": "67b7b4280ba6d60f0c615924",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Handmade by Navajo artisan Gabby Jurado, this ring showcases a growling bear with a turquoise stone for detail. In Navajo culture, the bear is seen as a spiritual guide and a symbol of strength and self-knowledge.  ",
+    "details": "-\tSolid Sterling Silver 925\n-\tAuthentic Navajo Made\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cd2846e3ca2f38f5440",
+        "id": "6ab976df72cb34343eca8445"
+      },
+      {
+        "image": "6ab96cd1846e3ca2f38f543f",
+        "id": "6ab976df72cb34343eca8446"
+      },
+      {
+        "image": "6ab96cd0846e3ca2f38f543e",
+        "id": "6ab976df72cb34343eca8447"
+      },
+      {
+        "image": "6ab96c68846e3ca2f38f53b5",
+        "id": "6ab976df72cb34343eca8448"
+      },
+      {
+        "image": "6ab96c67846e3ca2f38f53b4",
+        "id": "6ab976df72cb34343eca8449"
+      }
+    ],
+    "name": "Growling Bear Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 320,
+        "currency": "usd",
+        "stripe_price_id": "price_1QuirwBNjcHRVZ2aaLOA5xt2",
+        "active": true,
+        "id": "6ab976df72cb34343eca8450"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "8",
+        "count": false,
+        "id": "6ab976df72cb34343eca844a"
+      },
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": false,
+        "id": "6ab976df72cb34343eca844b"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976df72cb34343eca844c"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": false,
+        "id": "6ab976df72cb34343eca844d"
+      },
+      {
+        "label": "custom",
+        "customLabel": "12",
+        "count": false,
+        "id": "6ab976df72cb34343eca844e"
+      },
+      {
+        "label": "custom",
+        "customLabel": "13",
+        "count": false,
+        "id": "6ab976df72cb34343eca844f"
+      }
+    ],
+    "slug": "prod_RoLZuRNG0mX1yN",
+    "stripe_product_id": "prod_RoLZuRNG0mX1yN",
+    "terandina_v1_id": "67b7b62590744a05ca8ca08b",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "This ring is made from solid sterling silver and depicts a buffalo in the cosmos. In many Native tribes, the buffalo represents an abundance of life and a deep connection to the earth. ",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone\n-\tGenuine Onyx Stone",
+    "images": [
+      {
+        "image": "6ab96cd0846e3ca2f38f543d",
+        "id": "6ab976df72cb34343eca8451"
+      },
+      {
+        "image": "6ab96ccf846e3ca2f38f543c",
+        "id": "6ab976df72cb34343eca8452"
+      },
+      {
+        "image": "6ab96cce846e3ca2f38f543b",
+        "id": "6ab976df72cb34343eca8453"
+      },
+      {
+        "image": "6ab96c6c846e3ca2f38f53ba",
+        "id": "6ab976df72cb34343eca8454"
+      },
+      {
+        "image": "6ab96c6b846e3ca2f38f53b9",
+        "id": "6ab976df72cb34343eca8455"
+      }
+    ],
+    "name": "Cosmic Buffalo Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 165,
+        "currency": "usd",
+        "stripe_price_id": "price_1QuisXBNjcHRVZ2aGPyX14eA",
+        "active": true,
+        "id": "6ab976df72cb34343eca8459"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": false,
+        "id": "6ab976df72cb34343eca8456"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": false,
+        "id": "6ab976df72cb34343eca8457"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": true,
+        "id": "6ab976df72cb34343eca8458"
+      }
+    ],
+    "slug": "prod_RoLZFL8acj2J8a",
+    "stripe_product_id": "prod_RoLZFL8acj2J8a",
+    "terandina_v1_id": "67b7b64990744a05ca8ca08c",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, this ring depicts a peaceful wolf. Across Native cultures, the wolf is a symbol of power, representing strength, loyalty, and intelligence.  ",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone\n-\tNatural Coral",
+    "images": [
+      {
+        "image": "6ab96ccd846e3ca2f38f543a",
+        "id": "6ab976df72cb34343eca845a"
+      },
+      {
+        "image": "6ab96ccd846e3ca2f38f5439",
+        "id": "6ab976df72cb34343eca845b"
+      },
+      {
+        "image": "6ab96ccc846e3ca2f38f5438",
+        "id": "6ab976df72cb34343eca845c"
+      },
+      {
+        "image": "6ab96c6a846e3ca2f38f53b8",
+        "id": "6ab976df72cb34343eca845d"
+      },
+      {
+        "image": "6ab96c67846e3ca2f38f53b3",
+        "id": "6ab976df72cb34343eca845e"
+      },
+      {
+        "image": "6ab96c66846e3ca2f38f53b2",
+        "id": "6ab976df72cb34343eca845f"
+      }
+    ],
+    "name": "Tranquil Wolf Solid Sterling Silver Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 320,
+        "currency": "usd",
+        "stripe_price_id": "price_1QuitEBNjcHRVZ2aUxbD6ZEN",
+        "active": true,
+        "id": "6ab976df72cb34343eca8462"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976df72cb34343eca8460"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": false,
+        "id": "6ab976df72cb34343eca8461"
+      }
+    ],
+    "slug": "prod_RoLa61Q6oiHrgn",
+    "stripe_product_id": "prod_RoLa61Q6oiHrgn",
+    "terandina_v1_id": "67b7b67590744a05ca8ca08d",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, this ring showcases a beautiful inlaid collage of genuine turquoise stones.",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96ccc846e3ca2f38f5437",
+        "id": "6ab976df72cb34343eca8463"
+      },
+      {
+        "image": "6ab96ccb846e3ca2f38f5436",
+        "id": "6ab976df72cb34343eca8464"
+      },
+      {
+        "image": "6ab96cca846e3ca2f38f5435",
+        "id": "6ab976df72cb34343eca8465"
+      }
+    ],
+    "name": "Turquoise Inlay Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 270,
+        "currency": "usd",
+        "stripe_price_id": "price_1QuiuaBNjcHRVZ2a86Gfh6jC",
+        "active": true,
+        "id": "6ab976df72cb34343eca846a"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": 0,
+        "id": "6ab976df72cb34343eca8466"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": 1,
+        "id": "6ab976df72cb34343eca8467"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": 1,
+        "id": "6ab976df72cb34343eca8468"
+      },
+      {
+        "label": "custom",
+        "customLabel": "12",
+        "count": 0,
+        "id": "6ab976df72cb34343eca8469"
+      }
+    ],
+    "slug": "prod_RoLbKenBOFR98J",
+    "stripe_product_id": "prod_RoLbKenBOFR98J",
+    "terandina_v1_id": "67b7b6c990744a05ca8ca08e",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Crafted with genuine turquoise stones, this ring features a woven pattern inspired by traditional indigenous art.",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cc9846e3ca2f38f5434",
+        "id": "6ab976df72cb34343eca846b"
+      },
+      {
+        "image": "6ab96cc9846e3ca2f38f5433",
+        "id": "6ab976df72cb34343eca846c"
+      },
+      {
+        "image": "6ab96cc8846e3ca2f38f5432",
+        "id": "6ab976df72cb34343eca846d"
+      },
+      {
+        "image": "6ab96c7f846e3ca2f38f53d3",
+        "id": "6ab976df72cb34343eca846e"
+      }
+    ],
+    "name": "Woven Turquoise Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1QuivPBNjcHRVZ2aJPold8rC",
+        "active": true,
+        "id": "6ab976df72cb34343eca8472"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976df72cb34343eca846f"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": true,
+        "id": "6ab976df72cb34343eca8470"
+      },
+      {
+        "label": "custom",
+        "customLabel": "12",
+        "count": false,
+        "id": "6ab976df72cb34343eca8471"
+      }
+    ],
+    "slug": "prod_RoLcOBf9i7OIsg",
+    "stripe_product_id": "prod_RoLcOBf9i7OIsg",
+    "terandina_v1_id": "67b7b6fb90744a05ca8ca08f",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "black/red",
+    "description": "Our classic ponchos are made with a hypoallergenic alpaca blend for a soft feel and balanced warmth, making them perfect for any season. Whether you’re taking a stroll outside or lounging around the house, you will find yourself reaching for these ponchos. \n\nThey showcase intricate geometric patterns and vibrant colors that are carefully made by our fellow Indigenous Quechua artisans.",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\t30oz Midweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that products may have slight variations in color and pattern. ",
+    "images": [
+      {
+        "image": "6ab96cc7846e3ca2f38f5431",
+        "id": "6ab976df72cb34343eca8473"
+      },
+      {
+        "image": "6ab96cc6846e3ca2f38f5430",
+        "id": "6ab976df72cb34343eca8474"
+      }
+    ],
+    "name": "Night Sacred Cross - Classic Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 90,
+        "currency": "usd",
+        "stripe_price_id": "price_1QupS4BNjcHRVZ2a2LyQ9a7O",
+        "active": true,
+        "id": "6ab976df72cb34343eca8476"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 2,
+        "id": "6ab976df72cb34343eca8475"
+      }
+    ],
+    "slug": "prod_RoSM0Gu2IGRQti",
+    "stripe_product_id": "prod_RoSM0Gu2IGRQti",
+    "terandina_v1_id": "67b818fcc404df460d057621",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "red",
+    "description": "Our classic ponchos are made with a hypoallergenic alpaca blend for a soft feel and balanced warmth, making them perfect for any season. Whether you’re taking a stroll outside or lounging around the house, you will find yourself reaching for these ponchos. \n\nThey showcase intricate geometric patterns and vibrant colors that are carefully made by our fellow Indigenous Quechua artisans.",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\t30oz Midweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that products may have slight variations in color and pattern. ",
+    "images": [
+      {
+        "image": "6ab96cc5846e3ca2f38f542f",
+        "id": "6ab976df72cb34343eca8477"
+      },
+      {
+        "image": "6ab96cc5846e3ca2f38f542e",
+        "id": "6ab976df72cb34343eca8478"
+      },
+      {
+        "image": "6ab96c94846e3ca2f38f53ee",
+        "id": "6ab976df72cb34343eca8479"
+      }
+    ],
+    "name": "Crazy Horse - Classic Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 90,
+        "currency": "usd",
+        "stripe_price_id": "price_1QupSxBNjcHRVZ2aAIkWZ6uh",
+        "active": true,
+        "id": "6ab976df72cb34343eca847b"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 3,
+        "id": "6ab976df72cb34343eca847a"
+      }
+    ],
+    "slug": "prod_RoSN2VT0Wm9Ld4",
+    "stripe_product_id": "prod_RoSN2VT0Wm9Ld4",
+    "terandina_v1_id": "67b81933c404df460d057622",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "brown/red",
+    "description": "Our classic ponchos are made with a hypoallergenic alpaca blend for a soft feel and balanced warmth, making them perfect for any season. Whether you’re taking a stroll outside or lounging around the house, you will find yourself reaching for these ponchos. \n\nThey showcase intricate geometric patterns and vibrant colors that are carefully made by our fellow Indigenous Quechua artisans.",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\t30oz Midweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that products may have slight variations in color and pattern. ",
+    "images": [
+      {
+        "image": "6ab96cc4846e3ca2f38f542d",
+        "id": "6ab976df72cb34343eca847c"
+      },
+      {
+        "image": "6ab96cc3846e3ca2f38f542c",
+        "id": "6ab976df72cb34343eca847d"
+      }
+    ],
+    "name": "Cocoa Canyon - Classic Alpaca Open Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 90,
+        "currency": "usd",
+        "stripe_price_id": "price_1QupTYBNjcHRVZ2aYS9z9F8N",
+        "active": true,
+        "id": "6ab976df72cb34343eca847f"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 1,
+        "id": "6ab976df72cb34343eca847e"
+      }
+    ],
+    "slug": "prod_RoSOfwCFGZ3ILt",
+    "stripe_product_id": "prod_RoSOfwCFGZ3ILt",
+    "terandina_v1_id": "67b81958c404df460d057623",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "purple",
+    "description": "Amethyst is valued for its ability to quiet the mind and promote mental clarity during moments of stress or confusion. This natural healing tree can help ease mental exhaustion, reducing stress, anxiety, and headaches. Place the healing tree in any area of your choosing such as a living room, bedroom, or office to improve good energy flow. ",
+    "details": "-\tSmall: 5 in. tall\n-\tClarity, Spirituality, Calm\n-\tFebruary Birthstone\n-\tChakra: Crown\n-\tZodiac: Aquarius, Pisces\n\nPlease note that slight variations in color may occur. ",
+    "images": [
+      {
+        "image": "6ab96cc3846e3ca2f38f542b",
+        "id": "6ab976df72cb34343eca8480"
+      },
+      {
+        "image": "6ab96cc2846e3ca2f38f542a",
+        "id": "6ab976df72cb34343eca8481"
+      }
+    ],
+    "name": "Amethyst Natural Healing Tree",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 35,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvCG1BNjcHRVZ2alP5JkIUI",
+        "active": true,
+        "id": "6ab976df72cb34343eca8483"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "small",
+        "count": 2,
+        "id": "6ab976df72cb34343eca8482"
+      }
+    ],
+    "slug": "prod_RopvBBF8ycpwyF",
+    "stripe_product_id": "prod_RopvBBF8ycpwyF",
+    "terandina_v1_id": "67b96f6ef3c98d5710697101",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "red",
+    "description": null,
+    "images": [
+      {
+        "image": "6ab96cc1846e3ca2f38f5429",
+        "id": "6ab976df72cb34343eca8484"
+      },
+      {
+        "image": "6ab96cc0846e3ca2f38f5428",
+        "id": "6ab976df72cb34343eca8485"
+      }
+    ],
+    "name": "Multigem Natural Healing Tree",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 35,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvCxBBNjcHRVZ2aBMgLZPpa",
+        "active": true,
+        "id": "6ab976df72cb34343eca8487"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "small",
+        "count": true,
+        "id": "6ab976df72cb34343eca8486"
+      }
+    ],
+    "slug": "prod_RoqeNDohGO0rx8",
+    "stripe_product_id": "prod_RoqeNDohGO0rx8",
+    "terandina_v1_id": "67b979e798a4654b99cc9b2c",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "white",
+    "description": "Recognized as the “master healer”, clear quartz helps reach a deeper state of meditation where users can reflect internally. This tree can also be used for manifestations and learning one’s purpose. Place the healing tree in any area of your choosing such as a living room, bedroom, or office to improve good energy flow.",
+    "details": "-\tSmall: 5 in. tall\n-\tClarity, Reflection\n-\tApril Birthstone\n-\tChakra: Crown\n-\tZodiac: Aries, Leo\n\nPlease note that slight variations in color may occur. ",
+    "images": [
+      {
+        "image": "6ab96cc0846e3ca2f38f5427",
+        "id": "6ab976df72cb34343eca8488"
+      },
+      {
+        "image": "6ab96cbf846e3ca2f38f5426",
+        "id": "6ab976df72cb34343eca8489"
+      }
+    ],
+    "name": "Clear Quartz Natural Healing Tree",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 35,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvOn7BNjcHRVZ2a95zUvLo7",
+        "active": true,
+        "id": "6ab976df72cb34343eca848b"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "small",
+        "count": true,
+        "id": "6ab976df72cb34343eca848a"
+      }
+    ],
+    "slug": "prod_Rp2slQsvfyCIQ5",
+    "stripe_product_id": "prod_Rp2slQsvfyCIQ5",
+    "terandina_v1_id": "67ba2bd454f8cc0f05cec599",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "red",
+    "description": null,
+    "images": [
+      {
+        "image": "6ab96cbe846e3ca2f38f5425",
+        "id": "6ab976df72cb34343eca848c"
+      },
+      {
+        "image": "6ab96cbe846e3ca2f38f5424",
+        "id": "6ab976df72cb34343eca848d"
+      },
+      {
+        "image": "6ab96cbd846e3ca2f38f5423",
+        "id": "6ab976df72cb34343eca848e"
+      }
+    ],
+    "name": "Multigem Natural Healing Money Tree",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 18,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvOnmBNjcHRVZ2adtCJTMlP",
+        "active": true,
+        "id": "6ab976df72cb34343eca8490"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976df72cb34343eca848f"
+      }
+    ],
+    "slug": "prod_Rp2tp7rQMpFVKY",
+    "stripe_product_id": "prod_Rp2tp7rQMpFVKY",
+    "terandina_v1_id": "67ba2bd454f8cc0f05cec59a",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue",
+    "description": null,
+    "images": [
+      {
+        "image": "6ab96cbc846e3ca2f38f5422",
+        "id": "6ab976df72cb34343eca8491"
+      },
+      {
+        "image": "6ab96cbc846e3ca2f38f5421",
+        "id": "6ab976df72cb34343eca8492"
+      },
+      {
+        "image": "6ab96cbb846e3ca2f38f5420",
+        "id": "6ab976df72cb34343eca8493"
+      }
+    ],
+    "name": "Blue Egg Stone",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 60,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvTP6BNjcHRVZ2aVgbS1HRz",
+        "active": true,
+        "id": "6ab976df72cb34343eca8495"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976df72cb34343eca8494"
+      }
+    ],
+    "slug": "prod_Rp7ehSg4AwKVCE",
+    "stripe_product_id": "prod_Rp7ehSg4AwKVCE",
+    "terandina_v1_id": "67ba70effcdad1981b716a5a",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "brown",
+    "description": "Tiger eye is a healing crystal known for unlocking inner strength and willpower within the wielder. This stone can help users enhance their confidence and bring clarity to a chaotic mind. Place the stone in your hand during meditation and envision its energy flowing through to your entire body.  ",
+    "details": "-\t40g \n-\tCourage, Confidence, Strength\n-\tChakra: Solar Plexus, Root\n-\tZodiac: Leo, Capricorn\n\nPlease note that slight variations in color may occur. ",
+    "images": [
+      {
+        "image": "6ab96cba846e3ca2f38f541f",
+        "id": "6ab976df72cb34343eca8496"
+      },
+      {
+        "image": "6ab96cb9846e3ca2f38f541e",
+        "id": "6ab976df72cb34343eca8497"
+      }
+    ],
+    "name": "Tiger Eye Natural Healing Stone",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 15,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvU1LBNjcHRVZ2a79KH0xtM",
+        "active": true,
+        "id": "6ab976df72cb34343eca8499"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "40g",
+        "count": 5,
+        "id": "6ab976df72cb34343eca8498"
+      }
+    ],
+    "slug": "prod_Rp8H5hBiNYEicj",
+    "stripe_product_id": "prod_Rp8H5hBiNYEicj",
+    "terandina_v1_id": "67ba7a344ba52a2babf9bfd5",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "pink",
+    "description": "Rose quartz, widely recognized as the love stone, helps users with developing self-love and improving personal relationships. Use this healing stone to nurture emotional wounds, process grief, or deal with emotional hardships. Rose Quartz can also help foster open, trusting relationships with others. Place the stone in your hand during meditation and envision its energy flowing through to your entire body.  ",
+    "details": "-\t40g\n-\tSelf-love, Emotional Healing\n-\tChakra: Heart\n-\tZodiac: Tauras, Libra, Cancer\n\nPlease note that slight variations in color may occur. ",
+    "images": [
+      {
+        "image": "6ab96cb8846e3ca2f38f541d",
+        "id": "6ab976df72cb34343eca849a"
+      },
+      {
+        "image": "6ab96cb8846e3ca2f38f541c",
+        "id": "6ab976df72cb34343eca849b"
+      }
+    ],
+    "name": "Rose Quartz Natural Healing Stone",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 15,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvUU1BNjcHRVZ2a1mSg1mcn",
+        "active": true,
+        "id": "6ab976df72cb34343eca849d"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "40g",
+        "count": 5,
+        "id": "6ab976df72cb34343eca849c"
+      }
+    ],
+    "slug": "prod_Rp8lfPNSZZkbRU",
+    "stripe_product_id": "prod_Rp8lfPNSZZkbRU",
+    "terandina_v1_id": "67ba81f94f1526109889d624",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, this ring takes inspiration from traditional native art and geometric shapes. ",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone\n-\tGenuine Picture Jasper Stone",
+    "images": [
+      {
+        "image": "6ab96cb7846e3ca2f38f541b",
+        "id": "6ab976df72cb34343eca849e"
+      },
+      {
+        "image": "6ab96cb7846e3ca2f38f541a",
+        "id": "6ab976df72cb34343eca849f"
+      }
+    ],
+    "name": "Turquoise Steps Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 220,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvUYyBNjcHRVZ2a0xU5MFad",
+        "active": true,
+        "id": "6ab976df72cb34343eca84a3"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": true,
+        "id": "6ab976df72cb34343eca84a0"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976df72cb34343eca84a1"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": false,
+        "id": "6ab976df72cb34343eca84a2"
+      }
+    ],
+    "slug": "prod_Rp8qhmMT45IJpz",
+    "stripe_product_id": "prod_Rp8qhmMT45IJpz",
+    "terandina_v1_id": "67ba824d4f1526109889d625",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver and showcasing a genuine turquoise stone, this ring depicts the claw of a bear. In many Native cultures, the bear claw symbolizes strength and bravery, given to warriors to offer them protection and power. ",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cb6846e3ca2f38f5419",
+        "id": "6ab976df72cb34343eca84a4"
+      },
+      {
+        "image": "6ab96cb5846e3ca2f38f5418",
+        "id": "6ab976df72cb34343eca84a5"
+      }
+    ],
+    "name": "Bear Claw Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 120,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvUjVBNjcHRVZ2aWBtlNB15",
+        "active": true,
+        "id": "6ab976df72cb34343eca84a9"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": true,
+        "id": "6ab976df72cb34343eca84a6"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976df72cb34343eca84a7"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": true,
+        "id": "6ab976df72cb34343eca84a8"
+      }
+    ],
+    "slug": "prod_Rp91j8CNPJFt6K",
+    "stripe_product_id": "prod_Rp91j8CNPJFt6K",
+    "terandina_v1_id": "67ba84dabe4656144b1ad501",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "This ring showcases tiger eye and onyx gemstones inlaid on a solid sterling silver band. Tiger eye is recognized as the “stone of courage” and is believed to evoke confidence and clarity.",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Tiger Eye Stone\n-\tGenuine Onyx Stone",
+    "images": [
+      {
+        "image": "6ab96cb5846e3ca2f38f5417",
+        "id": "6ab976df72cb34343eca84aa"
+      },
+      {
+        "image": "6ab96cb4846e3ca2f38f5416",
+        "id": "6ab976df72cb34343eca84ab"
+      },
+      {
+        "image": "6ab96c81846e3ca2f38f53d5",
+        "id": "6ab976df72cb34343eca84ac"
+      }
+    ],
+    "name": "Tiger Eye Arrows Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 240,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvUklBNjcHRVZ2aG8HwoDqY",
+        "active": true,
+        "id": "6ab976df72cb34343eca84af"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": true,
+        "id": "6ab976df72cb34343eca84ad"
+      },
+      {
+        "label": "custom",
+        "customLabel": "12",
+        "count": true,
+        "id": "6ab976df72cb34343eca84ae"
+      }
+    ],
+    "slug": "prod_Rp927lj2o4HIiB",
+    "stripe_product_id": "prod_Rp927lj2o4HIiB",
+    "terandina_v1_id": "67ba85274f1526109889d626",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, this ring showcases two beautiful twin turquoise stones. The ring takes inspiration from traditional Native patterns. ",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cb3846e3ca2f38f5415",
+        "id": "6ab976df72cb34343eca84b0"
+      },
+      {
+        "image": "6ab96cb3846e3ca2f38f5414",
+        "id": "6ab976df72cb34343eca84b1"
+      },
+      {
+        "image": "6ab96c6e846e3ca2f38f53bc",
+        "id": "6ab976df72cb34343eca84b2"
+      },
+      {
+        "image": "6ab96c6d846e3ca2f38f53bb",
+        "id": "6ab976df72cb34343eca84b3"
+      }
+    ],
+    "name": "Double Turquoise Solid Sterling SIlver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 190,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvUmbBNjcHRVZ2a2giCem5s",
+        "active": true,
+        "id": "6ab976df72cb34343eca84b6"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976df72cb34343eca84b4"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": false,
+        "id": "6ab976df72cb34343eca84b5"
+      }
+    ],
+    "slug": "prod_Rp94kokYNvQpuz",
+    "stripe_product_id": "prod_Rp94kokYNvQpuz",
+    "terandina_v1_id": "67ba85994f1526109889d627",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, the stone shards ring is made up of 4 different genuine gemstones. These precious gemstones have been used for ages by many Indigenous tribes and are highly regarded.",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone\n-\tGenuine Jasper Stone\n-\tGenuine Wild Horse Stone",
+    "images": [
+      {
+        "image": "6ab96cb2846e3ca2f38f5413",
+        "id": "6ab976df72cb34343eca84b7"
+      },
+      {
+        "image": "6ab96cb1846e3ca2f38f5412",
+        "id": "6ab976df72cb34343eca84b8"
+      },
+      {
+        "image": "6ab96cb1846e3ca2f38f5411",
+        "id": "6ab976df72cb34343eca84b9"
+      },
+      {
+        "image": "6ab96c6f846e3ca2f38f53bd",
+        "id": "6ab976df72cb34343eca84ba"
+      }
+    ],
+    "name": "Stone Shards Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 265,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvUnLBNjcHRVZ2aJIj1H7Gm",
+        "active": true,
+        "id": "6ab976df72cb34343eca84bd"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": false,
+        "id": "6ab976df72cb34343eca84bb"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": true,
+        "id": "6ab976df72cb34343eca84bc"
+      }
+    ],
+    "slug": "prod_Rp95fXMxScH9Qt",
+    "stripe_product_id": "prod_Rp95fXMxScH9Qt",
+    "terandina_v1_id": "67ba85c87bc87570c51155e4",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Handmade by Navajo artisan Gabby Jurado, this ring depicts a twisting feather with two small stones for detail. Feathers have been a part of native culture for ages, being used in ceremonies and rituals. They symbolize honor, wisdom, and a connection to the spiritual realm.",
+    "details": "-\tSolid Sterling Silver 925\n-\tAuthentic Navajo Made\n-\tAdjustable\n-\tNatural Coral\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cb0846e3ca2f38f5410",
+        "id": "6ab976df72cb34343eca84be"
+      },
+      {
+        "image": "6ab96caf846e3ca2f38f540f",
+        "id": "6ab976df72cb34343eca84bf"
+      },
+      {
+        "image": "6ab96cae846e3ca2f38f540e",
+        "id": "6ab976df72cb34343eca84c0"
+      }
+    ],
+    "name": "Feather Adjustable Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 190,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvUo9BNjcHRVZ2a0KYOdQx7",
+        "active": true,
+        "id": "6ab976df72cb34343eca84c2"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Adjustable",
+        "count": 3,
+        "id": "6ab976df72cb34343eca84c1"
+      }
+    ],
+    "slug": "prod_Rp962vkMnhdKnZ",
+    "stripe_product_id": "prod_Rp962vkMnhdKnZ",
+    "terandina_v1_id": "67ba85f97bc87570c51155e5",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Handmade by Navajo artisan Gabby Jurado, this ring depicts a twisting feather with two small stones for detail. Feathers have been a part of native culture for ages, being used in ceremonies and rituals. They symbolize honor, wisdom, and a connection to the spiritual realm.",
+    "details": "-\tSolid Sterling Silver 925\n-\tAuthentic Navajo Made\n-\tAdjustable\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96cae846e3ca2f38f540d",
+        "id": "6ab976df72cb34343eca84c3"
+      },
+      {
+        "image": "6ab96cad846e3ca2f38f540c",
+        "id": "6ab976df72cb34343eca84c4"
+      },
+      {
+        "image": "6ab96cac846e3ca2f38f540b",
+        "id": "6ab976df72cb34343eca84c5"
+      },
+      {
+        "image": "6ab96c71846e3ca2f38f53bf",
+        "id": "6ab976df72cb34343eca84c6"
+      },
+      {
+        "image": "6ab96c70846e3ca2f38f53be",
+        "id": "6ab976df72cb34343eca84c7"
+      }
+    ],
+    "name": "Turquoise Feather Adjustable Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 190,
+        "currency": "usd",
+        "stripe_price_id": "price_1QvUozBNjcHRVZ2a8PEYH4Vr",
+        "active": true,
+        "id": "6ab976df72cb34343eca84c9"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Adjustable",
+        "count": 2,
+        "id": "6ab976df72cb34343eca84c8"
+      }
+    ],
+    "slug": "prod_Rp97LeYWyMg8RE",
+    "stripe_product_id": "prod_Rp97LeYWyMg8RE",
+    "terandina_v1_id": "67ba862e7bc87570c51155e6",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "purple",
+    "description": "Amethyst is valued for its ability to quiet the mind and promote mental clarity during moments of stress or confusion. This natural healing stone eases mental exhaustion, reducing stress, anxiety, and headaches. Place the stone in your hand during meditation and envision its energy flowing through to your entire body.  ",
+    "details": "-\t40g\n-\tClarity, Spirituality, Calm\n-\tChakra: Crown\n-\tZodiac: Aquarius, Pisces\n\nPlease note that slight variations in color may occur. ",
+    "images": [
+      {
+        "image": "6ab96cac846e3ca2f38f540a",
+        "id": "6ab976df72cb34343eca84ca"
+      },
+      {
+        "image": "6ab96cab846e3ca2f38f5409",
+        "id": "6ab976df72cb34343eca84cb"
+      }
+    ],
+    "name": "Amethyst Natural Healing Stone",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 15,
+        "currency": "usd",
+        "stripe_price_id": "price_1QwAzdBNjcHRVZ2anIj5RiYD",
+        "active": true,
+        "id": "6ab976df72cb34343eca84cd"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "40g",
+        "count": 5,
+        "id": "6ab976df72cb34343eca84cc"
+      }
+    ],
+    "slug": "prod_RpqhW4lSmvAMJu",
+    "stripe_product_id": "prod_RpqhW4lSmvAMJu",
+    "terandina_v1_id": "67bcff692369c59e65688415",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "white",
+    "description": "Recognized as the “master healer”, clear quartz helps reach a deeper state of meditation where users can reflect internally. The stone can also be used for manifestations and learning one’s purpose. Place the stone in your hand during meditation and envision its energy flowing through to your entire body.  ",
+    "details": "-\t40g\n-\tClarity, Reflection\n-\tChakra: Crown\n-\tZodiac: Aries, Leo\n\nPlease note that slight variations in color may occur. ",
+    "images": [
+      {
+        "image": "6ab96caa846e3ca2f38f5408",
+        "id": "6ab976df72cb34343eca84ce"
+      },
+      {
+        "image": "6ab96ca8846e3ca2f38f5407",
+        "id": "6ab976df72cb34343eca84cf"
+      }
+    ],
+    "name": "Clear Quartz Natural Healing Stone",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 15,
+        "currency": "usd",
+        "stripe_price_id": "price_1QwBi0BNjcHRVZ2apgs2Jzpw",
+        "active": true,
+        "id": "6ab976df72cb34343eca84d1"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "40g",
+        "count": 5,
+        "id": "6ab976df72cb34343eca84d0"
+      }
+    ],
+    "slug": "prod_RprQT1lfPQyvFg",
+    "stripe_product_id": "prod_RprQT1lfPQyvFg",
+    "terandina_v1_id": "67bd0a2901142e7cf70503ea",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Handmade by Navajo artisan Farlene Spencer, this bracelet cuff showcases bear claws with genuine turquoise stones. In many Native cultures, the bear claw symbolizes strength and bravery, given to warriors to offer them protection and power.",
+    "details": "-\tSolid Sterling Silver 925\n-\tAuthentic Navajo Made\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96ca8846e3ca2f38f5406",
+        "id": "6ab976df72cb34343eca84d2"
+      },
+      {
+        "image": "6ab96c93846e3ca2f38f53ed",
+        "id": "6ab976df72cb34343eca84d3"
+      },
+      {
+        "image": "6ab96c92846e3ca2f38f53ec",
+        "id": "6ab976df72cb34343eca84d4"
+      },
+      {
+        "image": "6ab96c72846e3ca2f38f53c0",
+        "id": "6ab976df72cb34343eca84d5"
+      }
+    ],
+    "name": "Turquoise Bear Claw Solid Sterling Silver 925 Cuff",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 450,
+        "currency": "usd",
+        "stripe_price_id": "price_1R35rLBNjcHRVZ2a2A1HTidZ",
+        "active": true,
+        "id": "6ab976df72cb34343eca84d7"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976df72cb34343eca84d6"
+      }
+    ],
+    "slug": "prod_RwzrAeeBf1pY20",
+    "stripe_product_id": "prod_RwzrAeeBf1pY20",
+    "terandina_v1_id": "67d62edbd28a4821fa4d2c4e",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "brown/blue",
+    "description": "Our classic ponchos are made with a hypoallergenic alpaca blend for a soft feel and balanced warmth, making them perfect for any season. Whether you’re taking a stroll outside or lounging around the house, you will find yourself reaching for these ponchos. \n\nThey showcase intricate geometric patterns and vibrant colors that are carefully made by our fellow Indigenous Quechua artisans.",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\t30oz Midweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that products may have slight variations in color and pattern. ",
+    "images": [
+      {
+        "image": "6ab96ca7846e3ca2f38f5405",
+        "id": "6ab976df72cb34343eca84d8"
+      },
+      {
+        "image": "6ab96ca6846e3ca2f38f5404",
+        "id": "6ab976df72cb34343eca84d9"
+      }
+    ],
+    "name": "Cocoa River - Classic Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 90,
+        "currency": "usd",
+        "stripe_price_id": "price_1R5zi1BNjcHRVZ2a5YCom7UP",
+        "active": true,
+        "id": "6ab976df72cb34343eca84db"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 3,
+        "id": "6ab976df72cb34343eca84da"
+      }
+    ],
+    "slug": "prod_RzzhW6LFe0jehK",
+    "stripe_product_id": "prod_RzzhW6LFe0jehK",
+    "terandina_v1_id": "67e0b3fa088c991fefdf426c",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "brown",
+    "description": "Our lightest ponchos provide versatility in both cool and warm weather. Made from a sustainable baby alpaca blend, they offer a soft, breathable texture and are ideal for everyday use – from summer evenings to outdoor adventures. These ponchos are thoughtfully crafted by Indigenous artisans from our own Quechua community in the Andes Mountain region.",
+    "details": "-\t70% Baby Alpaca, 30% Acrylic Fibers\n-\t26oz Lightweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96ca4846e3ca2f38f5401",
+        "id": "6ab976df72cb34343eca84dc"
+      },
+      {
+        "image": "6ab96ca3846e3ca2f38f5400",
+        "id": "6ab976df72cb34343eca84dd"
+      },
+      {
+        "image": "6ab96c99846e3ca2f38f53f3",
+        "id": "6ab976df72cb34343eca84de"
+      },
+      {
+        "image": "6ab96c98846e3ca2f38f53f2",
+        "id": "6ab976df72cb34343eca84df"
+      }
+    ],
+    "name": "Deer Sunset - Lightweight Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 88,
+        "currency": "usd",
+        "stripe_price_id": "price_1R60CXBNjcHRVZ2apxwQ4Uaa",
+        "active": true,
+        "id": "6ab976df72cb34343eca84e1"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 3,
+        "id": "6ab976df72cb34343eca84e0"
+      }
+    ],
+    "slug": "prod_S00CDtkLOyBTo4",
+    "stripe_product_id": "prod_S00CDtkLOyBTo4",
+    "terandina_v1_id": "67e0bb0dff30f48da811e816",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "mint",
+    "description": "Our lightest ponchos provide versatility in both cool and warm weather. Made from a sustainable baby alpaca blend, they offer a soft, breathable texture and are ideal for everyday use – from summer evenings to outdoor adventures. These ponchos are thoughtfully crafted by Indigenous artisans from our own Quechua community in the Andes Mountain region.",
+    "details": "-\t70% Baby Alpaca, 30% Acrylic Fibers\n-\t26oz Lightweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96ca2846e3ca2f38f53ff",
+        "id": "6ab976df72cb34343eca84e2"
+      },
+      {
+        "image": "6ab96ca1846e3ca2f38f53fe",
+        "id": "6ab976df72cb34343eca84e3"
+      }
+    ],
+    "name": "Pale Sage - Lightweight Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 88,
+        "currency": "usd",
+        "stripe_price_id": "price_1R60DABNjcHRVZ2a7ELZhvCD",
+        "active": true,
+        "id": "6ab976df72cb34343eca84e5"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 2,
+        "id": "6ab976df72cb34343eca84e4"
+      }
+    ],
+    "slug": "prod_S00DD0Sy5wHIQ8",
+    "stripe_product_id": "prod_S00DD0Sy5wHIQ8",
+    "terandina_v1_id": "67e0bb34ff30f48da811e817",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "grey",
+    "description": "Our classic ponchos are made with a hypoallergenic alpaca blend for a soft feel and balanced warmth, making them perfect for any season. Whether you’re taking a stroll outside or lounging around the house, you will find yourself reaching for these ponchos. \n\nThey showcase intricate geometric patterns and vibrant colors that are carefully made by our fellow Indigenous Quechua artisans.",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\t30oz Midweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that products may have slight variations in color and pattern. ",
+    "images": [
+      {
+        "image": "6ab96ca1846e3ca2f38f53fd",
+        "id": "6ab976df72cb34343eca84e6"
+      },
+      {
+        "image": "6ab96ca0846e3ca2f38f53fc",
+        "id": "6ab976df72cb34343eca84e7"
+      }
+    ],
+    "name": "Fog Sacred Cross - Classic Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 90,
+        "currency": "usd",
+        "stripe_price_id": "price_1R60DxBNjcHRVZ2amtG26bo1",
+        "active": true,
+        "id": "6ab976df72cb34343eca84e9"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 2,
+        "id": "6ab976df72cb34343eca84e8"
+      }
+    ],
+    "slug": "prod_S00EoMJSVfV6M8",
+    "stripe_product_id": "prod_S00EoMJSVfV6M8",
+    "terandina_v1_id": "67e0bb65ff30f48da811e818",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "red",
+    "description": "Our lightest ponchos provide versatility in both cool and warm weather. Made from a sustainable baby alpaca blend, they offer a soft, breathable texture and are ideal for everyday use – from summer evenings to outdoor adventures. These ponchos are thoughtfully crafted by Indigenous artisans from our own Quechua community in the Andes Mountain region.",
+    "details": "-\t70% Baby Alpaca, 30% Acrylic Fibers\n-\t26oz Lightweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c9f846e3ca2f38f53fb",
+        "id": "6ab976df72cb34343eca84ea"
+      },
+      {
+        "image": "6ab96c9f846e3ca2f38f53fa",
+        "id": "6ab976df72cb34343eca84eb"
+      },
+      {
+        "image": "6ab96c97846e3ca2f38f53f1",
+        "id": "6ab976df72cb34343eca84ec"
+      }
+    ],
+    "name": "Red Sky - Lightweight Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 88,
+        "currency": "usd",
+        "stripe_price_id": "price_1R60BZBNjcHRVZ2amZP0lF9s",
+        "active": true,
+        "id": "6ab976df72cb34343eca84ee"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 3,
+        "id": "6ab976df72cb34343eca84ed"
+      }
+    ],
+    "slug": "prod_S00BQuUaNDzAIM",
+    "stripe_product_id": "prod_S00BQuUaNDzAIM",
+    "terandina_v1_id": "67e0bc005e601e7428aaaf65",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, this cuff features genuine turquoise stones, as well as intricate feathers and spiral patterns along its borders, inspired by traditional Native art. ",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96c92846e3ca2f38f53eb",
+        "id": "6ab976df72cb34343eca84ef"
+      },
+      {
+        "image": "6ab96c7c846e3ca2f38f53cf",
+        "id": "6ab976df72cb34343eca84f0"
+      },
+      {
+        "image": "6ab96c7b846e3ca2f38f53ce",
+        "id": "6ab976df72cb34343eca84f1"
+      },
+      {
+        "image": "6ab96c7b846e3ca2f38f53cd",
+        "id": "6ab976df72cb34343eca84f2"
+      },
+      {
+        "image": "6ab96c7a846e3ca2f38f53cc",
+        "id": "6ab976df72cb34343eca84f3"
+      }
+    ],
+    "name": "Triple Turquoise Solid Sterling Silver 925 Cuff",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 450,
+        "currency": "usd",
+        "stripe_price_id": "price_1R78l1BNjcHRVZ2aRPoEROuu",
+        "active": true,
+        "id": "6ab976df72cb34343eca84f5"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976df72cb34343eca84f4"
+      }
+    ],
+    "slug": "prod_S1B7BMZVF6Snj6",
+    "stripe_product_id": "prod_S1B7BMZVF6Snj6",
+    "terandina_v1_id": "67e4de7f043b2ea152a2a957",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Crafted from solid sterling silver, this cuff features genuine turquoise and coral, carefully set using an inlay technique. Detailed Native designs adorn the border of the cuff. ",
+    "details": "-\tSolid Sterling Silver 925\n-\tNatural Coral\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96c91846e3ca2f38f53ea",
+        "id": "6ab976df72cb34343eca84f6"
+      },
+      {
+        "image": "6ab96c79846e3ca2f38f53cb",
+        "id": "6ab976df72cb34343eca84f7"
+      },
+      {
+        "image": "6ab96c79846e3ca2f38f53ca",
+        "id": "6ab976df72cb34343eca84f8"
+      }
+    ],
+    "name": "Coral Turquoise Solid Sterling Silver 925 Cuff",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 300,
+        "currency": "usd",
+        "stripe_price_id": "price_1R78lfBNjcHRVZ2aec1gWtlG",
+        "active": true,
+        "id": "6ab976df72cb34343eca84fa"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976df72cb34343eca84f9"
+      }
+    ],
+    "slug": "prod_S1B7XBZDsaQULI",
+    "stripe_product_id": "prod_S1B7XBZDsaQULI",
+    "terandina_v1_id": "67e4dea7043b2ea152a2a958",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, this cuff features raindrop-shaped turquoise stones, carefully set using an inlay technique.",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96c90846e3ca2f38f53e9",
+        "id": "6ab976df72cb34343eca84fb"
+      },
+      {
+        "image": "6ab96c7e846e3ca2f38f53d2",
+        "id": "6ab976df72cb34343eca84fc"
+      }
+    ],
+    "name": "Turquoise Raindrops Solid Sterling Silver 925 Cuff",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 300,
+        "currency": "usd",
+        "stripe_price_id": "price_1R78jCBNjcHRVZ2atqAjxpYE",
+        "active": true,
+        "id": "6ab976df72cb34343eca84fe"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976df72cb34343eca84fd"
+      }
+    ],
+    "slug": "prod_S1B5grOpYlnrxf",
+    "stripe_product_id": "prod_S1B5grOpYlnrxf",
+    "terandina_v1_id": "67e4df4a2fde5abd62c68601",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Crafted from solid sterling silver, this pendant features the head of a wolf. Within Native tradition, the wolf is a symbol of power, representing strength, loyalty, and intelligence.  ",
+    "details": "-\tSolid Sterling Silver 925\n-\t25.05 g\n-\tPendant Only",
+    "images": [
+      {
+        "image": "6ab96c8f846e3ca2f38f53e8",
+        "id": "6ab976df72cb34343eca84ff"
+      },
+      {
+        "image": "6ab96c77846e3ca2f38f53c8",
+        "id": "6ab976df72cb34343eca8500"
+      },
+      {
+        "image": "6ab96c77846e3ca2f38f53c7",
+        "id": "6ab976df72cb34343eca8501"
+      }
+    ],
+    "name": "Wolf Head Solid Sterling Silver 925 Pendant",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 400,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7J6FBNjcHRVZ2a1ql4qap6",
+        "active": true,
+        "id": "6ab976df72cb34343eca8503"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976df72cb34343eca8502"
+      }
+    ],
+    "slug": "prod_S1LnctgewUv1HN",
+    "stripe_product_id": "prod_S1LnctgewUv1HN",
+    "terandina_v1_id": "67e579cb8a3bbf6233639939",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Crafted from solid sterling silver, this pendant depicts a bear with intricately detailed native patterns. The bear is revered across many Native cultures, and is believed to represent strength, courage, and healing. ",
+    "details": "-\tSolid Sterling Silver 925\n-\t26.38 g\n-\tPendant Only ",
+    "images": [
+      {
+        "image": "6ab96c8f846e3ca2f38f53e7",
+        "id": "6ab976df72cb34343eca8504"
+      },
+      {
+        "image": "6ab96c76846e3ca2f38f53c6",
+        "id": "6ab976df72cb34343eca8505"
+      }
+    ],
+    "name": "Native Bear Solid Sterling Silver 925 Pendant",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 185,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7J6sBNjcHRVZ2a4Gc18ktN",
+        "active": true,
+        "id": "6ab976df72cb34343eca8507"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976df72cb34343eca8506"
+      }
+    ],
+    "slug": "prod_S1LoC3JlyBBNU4",
+    "stripe_product_id": "prod_S1LoC3JlyBBNU4",
+    "terandina_v1_id": "67e579f28a3bbf623363993a",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "This pendant showcases a double-sided bear design. One side features genuine tiger eye, black onyx, jasper, and opal. The other side highlights a striking blue opal. ",
+    "details": "-\tSolid Sterling Silver 925\n-\t7.45 g\n-\tGenuine Tiger Eye\n-\tBlack Onyx\n-\tGenuine Opal\n-\tGenuine Jasper\n-\tGenuine Blue Opal\n-\tPendant Only ",
+    "images": [
+      {
+        "image": "6ab96c8e846e3ca2f38f53e6",
+        "id": "6ab976df72cb34343eca8508"
+      },
+      {
+        "image": "6ab96c75846e3ca2f38f53c5",
+        "id": "6ab976df72cb34343eca8509"
+      },
+      {
+        "image": "6ab96c75846e3ca2f38f53c4",
+        "id": "6ab976df72cb34343eca850a"
+      },
+      {
+        "image": "6ab96c73846e3ca2f38f53c2",
+        "id": "6ab976df72cb34343eca850b"
+      },
+      {
+        "image": "6ab96c74846e3ca2f38f53c3",
+        "id": "6ab976e072cb34343eca850c"
+      },
+      {
+        "image": "6ab96c72846e3ca2f38f53c1",
+        "id": "6ab976e072cb34343eca850d"
+      }
+    ],
+    "name": "Reversible Bear Solid Sterling Silver 925 Pendant",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 450,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7J7TBNjcHRVZ2aZgMfaCUE",
+        "active": true,
+        "id": "6ab976e072cb34343eca850f"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976e072cb34343eca850e"
+      }
+    ],
+    "slug": "prod_S1LpVWo1ldzfxU",
+    "stripe_product_id": "prod_S1LpVWo1ldzfxU",
+    "terandina_v1_id": "67e57a178a3bbf623363993b",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Crafted from solid sterling silver, this cuff features genuine turquoise stones, carefully set using an inlay technique. Detailed Native designs adorn the border of the cuff. ",
+    "details": "-\tSolid Sterling Silver 925\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96c8d846e3ca2f38f53e5",
+        "id": "6ab976e072cb34343eca8510"
+      },
+      {
+        "image": "6ab96c7e846e3ca2f38f53d1",
+        "id": "6ab976e072cb34343eca8511"
+      },
+      {
+        "image": "6ab96c7d846e3ca2f38f53d0",
+        "id": "6ab976e072cb34343eca8512"
+      },
+      {
+        "image": "6ab96c78846e3ca2f38f53c9",
+        "id": "6ab976e072cb34343eca8513"
+      }
+    ],
+    "name": "Turquoise Trail Solid Sterling Silver 925 Cuff",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 525,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7J9ZBNjcHRVZ2aoRHQAhYP",
+        "active": true,
+        "id": "6ab976e072cb34343eca8515"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976e072cb34343eca8514"
+      }
+    ],
+    "slug": "prod_S1LrlPW9rNpkTo",
+    "stripe_product_id": "prod_S1LrlPW9rNpkTo",
+    "terandina_v1_id": "67e57a998a3bbf623363993c",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue/grey",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c8a846e3ca2f38f53e2",
+        "id": "6ab976e072cb34343eca8516"
+      },
+      {
+        "image": "6ab96c45846e3ca2f38f538a",
+        "id": "6ab976e072cb34343eca8517"
+      },
+      {
+        "image": "6ab96c46846e3ca2f38f538b",
+        "id": "6ab976e072cb34343eca8518"
+      }
+    ],
+    "name": "Sky Shadows - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7s2RBNjcHRVZ2auXhh4XvX",
+        "active": true,
+        "id": "6ab976e072cb34343eca851a"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 3,
+        "id": "6ab976e072cb34343eca8519"
+      }
+    ],
+    "slug": "prod_S1vu7PeN6mt7Fd",
+    "stripe_product_id": "prod_S1vu7PeN6mt7Fd",
+    "terandina_v1_id": "67e78747c3b190d4d00f81df",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Handmade by Navajo artisans Patricia and Edward Becenti, this ring showcases a beautiful collage of orange spiny oyster shell and turquoise.",
+    "details": "-\tSolid Sterling Silver 925\n-\tAuthentic Navajo Made\n-\tOrange Spiny Oyster Shell\n-\tGenuine Turquoise Stone",
+    "images": [
+      {
+        "image": "6ab96c85846e3ca2f38f53db",
+        "id": "6ab976e072cb34343eca851b"
+      },
+      {
+        "image": "6ab96c84846e3ca2f38f53da",
+        "id": "6ab976e072cb34343eca851c"
+      },
+      {
+        "image": "6ab96c84846e3ca2f38f53d9",
+        "id": "6ab976e072cb34343eca851d"
+      },
+      {
+        "image": "6ab96c83846e3ca2f38f53d8",
+        "id": "6ab976e072cb34343eca851e"
+      },
+      {
+        "image": "6ab96c82846e3ca2f38f53d7",
+        "id": "6ab976e072cb34343eca851f"
+      }
+    ],
+    "name": "Navajo Sunfire Solid Sterling Silver 925 Ring",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 345,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7s5zBNjcHRVZ2aoYE5YFx8",
+        "active": true,
+        "id": "6ab976e072cb34343eca8523"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "9",
+        "count": false,
+        "id": "6ab976e072cb34343eca8520"
+      },
+      {
+        "label": "custom",
+        "customLabel": "10",
+        "count": true,
+        "id": "6ab976e072cb34343eca8521"
+      },
+      {
+        "label": "custom",
+        "customLabel": "11",
+        "count": false,
+        "id": "6ab976e072cb34343eca8522"
+      }
+    ],
+    "slug": "prod_S1vxfuZ5NOp4wm",
+    "stripe_product_id": "prod_S1vxfuZ5NOp4wm",
+    "terandina_v1_id": "67e787a9c3b190d4d00f81e0",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "grey",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c8c846e3ca2f38f53e4",
+        "id": "6ab976e072cb34343eca8524"
+      }
+    ],
+    "name": "Grey Haze - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7s0GBNjcHRVZ2aYgwDrfjs",
+        "active": true,
+        "id": "6ab976e072cb34343eca8526"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 2,
+        "id": "6ab976e072cb34343eca8525"
+      }
+    ],
+    "slug": "prod_S1vsWbmGH4FyqU",
+    "stripe_product_id": "prod_S1vsWbmGH4FyqU",
+    "terandina_v1_id": "67e787fbc5293a35c517ee4a",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c8b846e3ca2f38f53e3",
+        "id": "6ab976e072cb34343eca8527"
+      },
+      {
+        "image": "6ab96c41846e3ca2f38f5387",
+        "id": "6ab976e072cb34343eca8528"
+      }
+    ],
+    "name": "Midnight Blue - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7s1UBNjcHRVZ2anRyV6eZq",
+        "active": true,
+        "id": "6ab976e072cb34343eca852a"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 3,
+        "id": "6ab976e072cb34343eca8529"
+      }
+    ],
+    "slug": "prod_S1vtpbwiPnhAXg",
+    "stripe_product_id": "prod_S1vtpbwiPnhAXg",
+    "terandina_v1_id": "67e787fcc5293a35c517ee4b",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "red",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c89846e3ca2f38f53e1",
+        "id": "6ab976e072cb34343eca852b"
+      }
+    ],
+    "name": "Red Sky - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7s0pBNjcHRVZ2a0Qhf0p1p",
+        "active": true,
+        "id": "6ab976e072cb34343eca852d"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 2,
+        "id": "6ab976e072cb34343eca852c"
+      }
+    ],
+    "slug": "prod_S1vsdhVgSWLY70",
+    "stripe_product_id": "prod_S1vsdhVgSWLY70",
+    "terandina_v1_id": "67e787fcc5293a35c517ee4c",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue",
+    "description": "Add a unique and cozy touch to any bed, sofa, or chair in your home with our luxurious alpaca blankets. Made in the Andes Mountains by members of our Indigenous Quechua community, these blankets offer durability, warmth, and exceptional softness - perfect for cool evenings, camping, or indoor lounging. \n\nHaving been used by ancient Andean civilizations, alpaca fibers are known for their warmth, breathability, and superior comfort. They remain lightweight and versatile, making them perfect for any season. ",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\tQueen Size\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nCheck our size guide for measurements.\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c81846e3ca2f38f53d6",
+        "id": "6ab976e072cb34343eca852e"
+      },
+      {
+        "image": "6ab96c44846e3ca2f38f5389",
+        "id": "6ab976e072cb34343eca852f"
+      }
+    ],
+    "name": "Coyote Blue - Alpaca Blanket",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 135,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7s1uBNjcHRVZ2abrodAwgV",
+        "active": true,
+        "id": "6ab976e072cb34343eca8531"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "Queen",
+        "count": 3,
+        "id": "6ab976e072cb34343eca8530"
+      }
+    ],
+    "slug": "prod_S1vtky1WoopgwJ",
+    "stripe_product_id": "prod_S1vtky1WoopgwJ",
+    "terandina_v1_id": "67e865f5919195baa4222c57",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "grey/blue",
+    "description": "Our classic ponchos are made with a hypoallergenic alpaca blend for a soft feel and balanced warmth, making them perfect for any season. Whether you’re taking a stroll outside or lounging around the house, you will find yourself reaching for these ponchos. \n\nThey showcase intricate geometric patterns and vibrant colors that are carefully made by our fellow Indigenous Quechua artisans.",
+    "details": "-\t80% Alpaca, 20% Acrylic Fibers\n-\t30oz Midweight\n-\tOne Size\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Lay Flat to Dry\n\nOur ponchos are one size and made to fit most. Check our size guide for measurements.\n\nPlease note that products may have slight variations in color and pattern. ",
+    "images": [
+      {
+        "image": "6ab96ca6846e3ca2f38f5403",
+        "id": "6ab976e072cb34343eca8532"
+      },
+      {
+        "image": "6ab96ca5846e3ca2f38f5402",
+        "id": "6ab976e072cb34343eca8533"
+      }
+    ],
+    "name": "River Stones - Classic Alpaca Poncho",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 90,
+        "currency": "usd",
+        "stripe_price_id": "price_1R5zunBNjcHRVZ2a9EIoK73J",
+        "active": true,
+        "id": "6ab976e072cb34343eca8535"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": 2,
+        "id": "6ab976e072cb34343eca8534"
+      }
+    ],
+    "slug": "prod_Rzzu5j74ZXN4t5",
+    "stripe_product_id": "prod_Rzzu5j74ZXN4t5",
+    "terandina_v1_id": "67e0b6c19ebb80d10667b621",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "grey",
+    "description": "Our cardigans will wrap you in luxurious baby alpaca that is soft to the touch, offering you comfort and breathability. These cardigans take inspiration from the Chakana, the most important symbol of the Inca empire. For generations, this symbol has represented balance and harmony with the universe.",
+    "details": "-\t50% Baby Alpaca, 50% Acrylic\n-\tRuns Small, Size Up\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Air Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c65846e3ca2f38f53b1",
+        "id": "6ab976e072cb34343eca8536"
+      },
+      {
+        "image": "6ab96c5e846e3ca2f38f53a7",
+        "id": "6ab976e072cb34343eca8537"
+      },
+      {
+        "image": "6ab96c5e846e3ca2f38f53a6",
+        "id": "6ab976e072cb34343eca8538"
+      }
+    ],
+    "name": "Heather Grey - Alpaca Cardigan",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 80,
+        "currency": "usd",
+        "stripe_price_id": "price_1R9YLyBNjcHRVZ2avhGXTBEU",
+        "active": true,
+        "id": "6ab976e072cb34343eca853b"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "large",
+        "count": 3,
+        "id": "6ab976e072cb34343eca8539"
+      },
+      {
+        "label": "extra-large",
+        "count": 3,
+        "id": "6ab976e072cb34343eca853a"
+      }
+    ],
+    "slug": "prod_S3fhPJUqMCYFBo",
+    "stripe_product_id": "prod_S3fhPJUqMCYFBo",
+    "terandina_v1_id": "67eda6135561f91a928fa539",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "tan",
+    "description": "Our cardigans will wrap you in luxurious baby alpaca that is soft to the touch, offering you comfort and breathability. These cardigans take inspiration from the Chakana, the most important symbol of the Inca empire. For generations, this symbol has represented balance and harmony with the universe.",
+    "details": "-\t50% Baby Alpaca, 50% Acrylic\n-\tRuns Small, Size Up\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Air Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c65846e3ca2f38f53b0",
+        "id": "6ab976e072cb34343eca853c"
+      },
+      {
+        "image": "6ab96c5d846e3ca2f38f53a5",
+        "id": "6ab976e072cb34343eca853d"
+      },
+      {
+        "image": "6ab96c5c846e3ca2f38f53a4",
+        "id": "6ab976e072cb34343eca853e"
+      }
+    ],
+    "name": "Camel Brown - Alpaca Cardigan",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 80,
+        "currency": "usd",
+        "stripe_price_id": "price_1R9YQdBNjcHRVZ2a6eFRAjI1",
+        "active": true,
+        "id": "6ab976e072cb34343eca8541"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "large",
+        "count": 3,
+        "id": "6ab976e072cb34343eca853f"
+      },
+      {
+        "label": "extra-large",
+        "count": 3,
+        "id": "6ab976e072cb34343eca8540"
+      }
+    ],
+    "slug": "prod_S3fmnUQ4cnX0Ae",
+    "stripe_product_id": "prod_S3fmnUQ4cnX0Ae",
+    "terandina_v1_id": "67effae99b315f6e16c1e2d1",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "green",
+    "description": "Our cardigans will wrap you in luxurious baby alpaca that is soft to the touch, offering you comfort and breathability. These cardigans take inspiration from the Chakana, the most important symbol of the Inca empire. For generations, this symbol has represented balance and harmony with the universe.",
+    "details": "-\t50% Baby Alpaca, 50% Acrylic\n-\tRuns Small, Size Up\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Air Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c64846e3ca2f38f53af",
+        "id": "6ab976e072cb34343eca8542"
+      },
+      {
+        "image": "6ab96c5c846e3ca2f38f53a3",
+        "id": "6ab976e072cb34343eca8543"
+      },
+      {
+        "image": "6ab96c5b846e3ca2f38f53a2",
+        "id": "6ab976e072cb34343eca8544"
+      }
+    ],
+    "name": "Pine Forest - Alpaca Cardigan",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 80,
+        "currency": "usd",
+        "stripe_price_id": "price_1R9YPyBNjcHRVZ2aK2nZm3Df",
+        "active": true,
+        "id": "6ab976e072cb34343eca8547"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "large",
+        "count": 2,
+        "id": "6ab976e072cb34343eca8545"
+      },
+      {
+        "label": "extra-large",
+        "count": 1,
+        "id": "6ab976e072cb34343eca8546"
+      }
+    ],
+    "slug": "prod_S3flNRL0P6P0EY",
+    "stripe_product_id": "prod_S3flNRL0P6P0EY",
+    "terandina_v1_id": "67effaed9b315f6e16c1e2d2",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue",
+    "description": "Our cardigans will wrap you in luxurious baby alpaca that is soft to the touch, offering you comfort and breathability. These cardigans take inspiration from the Chakana, the most important symbol of the Inca empire. For generations, this symbol has represented balance and harmony with the universe.",
+    "details": "-\t50% Baby Alpaca, 50% Acrylic\n-\tRuns Small, Size Up\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Air Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c63846e3ca2f38f53ae",
+        "id": "6ab976e072cb34343eca8548"
+      },
+      {
+        "image": "6ab96c59846e3ca2f38f53a0",
+        "id": "6ab976e072cb34343eca8549"
+      },
+      {
+        "image": "6ab96c59846e3ca2f38f539f",
+        "id": "6ab976e072cb34343eca854a"
+      }
+    ],
+    "name": "Denim Blue - Alpaca Cardigan",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 80,
+        "currency": "usd",
+        "stripe_price_id": "price_1R9YOuBNjcHRVZ2agbwd416r",
+        "active": true,
+        "id": "6ab976e072cb34343eca854d"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "large",
+        "count": 3,
+        "id": "6ab976e072cb34343eca854b"
+      },
+      {
+        "label": "extra-large",
+        "count": 3,
+        "id": "6ab976e072cb34343eca854c"
+      }
+    ],
+    "slug": "prod_S3fkBOmHbDwLeG",
+    "stripe_product_id": "prod_S3fkBOmHbDwLeG",
+    "terandina_v1_id": "67effaf19b315f6e16c1e2d3",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "silver",
+    "description": "Made from solid sterling silver, this ring depicts the Kokopelli, popular in several Native tribes such as the Hopi and Zuni. The iconic figure is often portrayed as a humpbacked flute player, symbolizing fertility and abundance. ",
+    "details": "-\tSolid Sterling Silver 925\n-\t20.8 g\n-\tGenuine Turquoise Stone\n-\tPendant Only",
+    "images": [
+      {
+        "image": "6ab96c63846e3ca2f38f53ad",
+        "id": "6ab976e072cb34343eca854e"
+      },
+      {
+        "image": "6ab96c62846e3ca2f38f53ac",
+        "id": "6ab976e072cb34343eca854f"
+      },
+      {
+        "image": "6ab96c61846e3ca2f38f53ab",
+        "id": "6ab976e072cb34343eca8550"
+      },
+      {
+        "image": "6ab96c61846e3ca2f38f53aa",
+        "id": "6ab976e072cb34343eca8551"
+      },
+      {
+        "image": "6ab96c60846e3ca2f38f53a9",
+        "id": "6ab976e072cb34343eca8552"
+      }
+    ],
+    "name": "Kokopelli Solid Sterling Silver 925 Pendant",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 725,
+        "currency": "usd",
+        "stripe_price_id": "price_1R7J4yBNjcHRVZ2acAnf2EMo",
+        "active": true,
+        "id": "6ab976e072cb34343eca8554"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "One-Size",
+        "count": true,
+        "id": "6ab976e072cb34343eca8553"
+      }
+    ],
+    "slug": "prod_S1LmjwnNekUrZ1",
+    "stripe_product_id": "prod_S1LmjwnNekUrZ1",
+    "terandina_v1_id": "67effaf59b315f6e16c1e2d4",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "black/red",
+    "description": "Our cardigans will wrap you in luxurious baby alpaca that is soft to the touch, offering you comfort and breathability. These cardigans take inspiration from the Chakana, the most important symbol of the Inca empire. For generations, this symbol has represented balance and harmony with the universe.",
+    "details": "-\t50% Baby Alpaca, 50% Acrylic\n-\tRuns Small, Size Up\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Air Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c5a846e3ca2f38f53a1",
+        "id": "6ab976e072cb34343eca8555"
+      },
+      {
+        "image": "6ab96c58846e3ca2f38f539e",
+        "id": "6ab976e072cb34343eca8556"
+      },
+      {
+        "image": "6ab96c57846e3ca2f38f539d",
+        "id": "6ab976e072cb34343eca8557"
+      },
+      {
+        "image": "6ab96c48846e3ca2f38f538c",
+        "id": "6ab976e072cb34343eca8558"
+      },
+      {
+        "image": "6ab96c48846e3ca2f38f538d",
+        "id": "6ab976e072cb34343eca8559"
+      },
+      {
+        "image": "6ab96c4a846e3ca2f38f538e",
+        "id": "6ab976e072cb34343eca855a"
+      }
+    ],
+    "name": "Black Flame - Alpaca Cardigan",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 80,
+        "currency": "usd",
+        "stripe_price_id": "price_1RAIEpBNjcHRVZ2a8Ca4OOFK",
+        "active": true,
+        "id": "6ab976e072cb34343eca855d"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "large",
+        "count": 3,
+        "id": "6ab976e072cb34343eca855b"
+      },
+      {
+        "label": "extra-large",
+        "count": 3,
+        "id": "6ab976e072cb34343eca855c"
+      }
+    ],
+    "slug": "prod_S4R7Ib5t8BlSXy",
+    "stripe_product_id": "prod_S4R7Ib5t8BlSXy",
+    "terandina_v1_id": "67f0561a2dc2e6ac316d21ec",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "hypoallergenic",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "red",
+    "description": "Our cardigans will wrap you in luxurious baby alpaca that is soft to the touch, offering you comfort and breathability. These cardigans take inspiration from the Chakana, the most important symbol of the Inca empire. For generations, this symbol has represented balance and harmony with the universe.",
+    "details": "-\t50% Baby Alpaca, 50% Acrylic\n-\tRuns Small, Size Up\n-\tUnisex\n-\tMade with Hypoallergenic Alpaca\n-\tMachine Wash Cold, Air Dry\n\nPlease note that slight variations in color and pattern may occur. ",
+    "images": [
+      {
+        "image": "6ab96c5f846e3ca2f38f53a8",
+        "id": "6ab976e072cb34343eca855e"
+      },
+      {
+        "image": "6ab96c56846e3ca2f38f539c",
+        "id": "6ab976e072cb34343eca855f"
+      },
+      {
+        "image": "6ab96c55846e3ca2f38f539b",
+        "id": "6ab976e072cb34343eca8560"
+      }
+    ],
+    "name": "Wine Red - Alpaca Cardigan",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 80,
+        "currency": "usd",
+        "stripe_price_id": "price_1RAIFxBNjcHRVZ2ajwAjBo4x",
+        "active": true,
+        "id": "6ab976e072cb34343eca8563"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "large",
+        "count": 2,
+        "id": "6ab976e072cb34343eca8561"
+      },
+      {
+        "label": "extra-large",
+        "count": 1,
+        "id": "6ab976e072cb34343eca8562"
+      }
+    ],
+    "slug": "prod_S4R8pqhZWSTiGZ",
+    "stripe_product_id": "prod_S4R8pqhZWSTiGZ",
+    "terandina_v1_id": "67f05823d20e7168eba71b84",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "navy blue",
+    "description": "Whether worn on a cool summer night or layered for warmth in the winter, these hoodies will keep you comfortable in timeless Native patterns from the Andes. Our hoodies are made by our fellow Indigenous Quechua artisans from the Andes Mountains of Ecuador. Each hoodie is created using hand-woven textiles crafted on traditional looms, preserving techniques passed down through generations. ",
+    "details": "-\t60% Cotton, 40% Polyester\n-\tRuns Small, Size Up\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Low Tumble Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c54846e3ca2f38f539a",
+        "id": "6ab976e072cb34343eca8564"
+      },
+      {
+        "image": "6ab96c53846e3ca2f38f5398",
+        "id": "6ab976e072cb34343eca8565"
+      }
+    ],
+    "name": "Deep Navy - Woven Hoodie",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 65,
+        "currency": "usd",
+        "stripe_price_id": "price_1RAIzDBNjcHRVZ2aLFFoNUEE",
+        "active": true,
+        "id": "6ab976e072cb34343eca8569"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "medium",
+        "count": 1,
+        "id": "6ab976e072cb34343eca8566"
+      },
+      {
+        "label": "large",
+        "count": 2,
+        "id": "6ab976e072cb34343eca8567"
+      },
+      {
+        "label": "extra-large",
+        "count": 1,
+        "id": "6ab976e072cb34343eca8568"
+      }
+    ],
+    "slug": "prod_S4RsHlyNiVNsrz",
+    "stripe_product_id": "prod_S4RsHlyNiVNsrz",
+    "terandina_v1_id": "67f062338e3c998832ce51bc",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "black",
+    "description": "Whether worn on a cool summer night or layered for warmth in the winter, these hoodies will keep you comfortable in timeless Native patterns from the Andes. Our hoodies are made by our fellow Indigenous Quechua artisans from the Andes Mountains of Ecuador. Each hoodie is created using hand-woven textiles crafted on traditional looms, preserving techniques passed down through generations. ",
+    "details": "-\t60% Cotton, 40% Polyester\n-\tRuns Small, Size Up\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Low Tumble Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c53846e3ca2f38f5399",
+        "id": "6ab976e072cb34343eca856a"
+      },
+      {
+        "image": "6ab96c52846e3ca2f38f5397",
+        "id": "6ab976e072cb34343eca856b"
+      }
+    ],
+    "name": "Night Stars - Woven Hoodie",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 65,
+        "currency": "usd",
+        "stripe_price_id": "price_1RAIzjBNjcHRVZ2ayoLhNnKZ",
+        "active": true,
+        "id": "6ab976e072cb34343eca856f"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "medium",
+        "count": 1,
+        "id": "6ab976e072cb34343eca856c"
+      },
+      {
+        "label": "large",
+        "count": 2,
+        "id": "6ab976e072cb34343eca856d"
+      },
+      {
+        "label": "extra-large",
+        "count": 1,
+        "id": "6ab976e072cb34343eca856e"
+      }
+    ],
+    "slug": "prod_S4RtwqoDGOlzvO",
+    "stripe_product_id": "prod_S4RtwqoDGOlzvO",
+    "terandina_v1_id": "67f062358e3c998832ce51bd",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "black/red",
+    "description": "Whether worn on a cool summer night or layered for warmth in the winter, these hoodies will keep you comfortable in timeless Native patterns from the Andes. Our hoodies are made by our fellow Indigenous Quechua artisans from the Andes Mountains of Ecuador. Each hoodie is created using hand-woven textiles crafted on traditional looms, preserving techniques passed down through generations. ",
+    "details": "-\t60% Cotton, 40% Polyester\n-\tRuns Small, Size Up\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Low Tumble Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c51846e3ca2f38f5396",
+        "id": "6ab976e072cb34343eca8570"
+      },
+      {
+        "image": "6ab96c50846e3ca2f38f5395",
+        "id": "6ab976e072cb34343eca8571"
+      }
+    ],
+    "name": "Black Mesa - Woven Hoodie",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 65,
+        "currency": "usd",
+        "stripe_price_id": "price_1RAPaFBNjcHRVZ2aHsF8LHEh",
+        "active": true,
+        "id": "6ab976e072cb34343eca8575"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "medium",
+        "count": 0,
+        "id": "6ab976e072cb34343eca8572"
+      },
+      {
+        "label": "large",
+        "count": 1,
+        "id": "6ab976e072cb34343eca8573"
+      },
+      {
+        "label": "extra-large",
+        "count": 1,
+        "id": "6ab976e072cb34343eca8574"
+      }
+    ],
+    "slug": "prod_S4YhmEjG4zjRNh",
+    "stripe_product_id": "prod_S4YhmEjG4zjRNh",
+    "terandina_v1_id": "67f0c45427216540abede204",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns",
+      "indigenous_artisans"
+    ],
+    "active": true,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "orange",
+    "description": null,
+    "details": "-\t60% Cotton, 40% Polyester\n-\tRuns Small, Size Up\n-\tUnisex\n-\tDrawstring Hood\n-\tMachine Wash Cold, Low Tumble Dry\n\nPlease note that slight variations in color and pattern may occur.",
+    "images": [
+      {
+        "image": "6ab96c4f846e3ca2f38f5394",
+        "id": "6ab976e072cb34343eca8576"
+      },
+      {
+        "image": "6ab96c4b846e3ca2f38f5390",
+        "id": "6ab976e072cb34343eca8577"
+      }
+    ],
+    "name": "Burnt Sienna - Woven Hoodie",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 65,
+        "currency": "usd",
+        "stripe_price_id": "price_1RAPZjBNjcHRVZ2aJU0WEgpd",
+        "active": true,
+        "id": "6ab976e072cb34343eca857b"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "medium",
+        "count": false,
+        "id": "6ab976e072cb34343eca8578"
+      },
+      {
+        "label": "large",
+        "count": true,
+        "id": "6ab976e072cb34343eca8579"
+      },
+      {
+        "label": "extra-large",
+        "count": false,
+        "id": "6ab976e072cb34343eca857a"
+      }
+    ],
+    "slug": "prod_S4YhCL3QNPv3Fp",
+    "stripe_product_id": "prod_S4YhCL3QNPv3Fp",
+    "terandina_v1_id": "67f1a7d68e836c1a2918f4d9",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "orange",
+    "description": "Carnelian is a healing stone believed to enhance self-esteem and creativity within oneself. By increasing self-esteem, carnelian also helps users increase their motivation towards action. Place the stone in your hand during meditation and envision its energy flowing through to your entire body.",
+    "details": "-\t40g\n-\tWarmth, Bravery, Creativity\n-\tChakra: Sacral\n-\tZodiac: Aries, Leo, Virgo\n\nPlease note that slight variations in color may occur. ",
+    "images": [
+      {
+        "image": "6ab96c4e846e3ca2f38f5393",
+        "id": "6ab976e072cb34343eca857c"
+      },
+      {
+        "image": "6ab96c4d846e3ca2f38f5392",
+        "id": "6ab976e072cb34343eca857d"
+      }
+    ],
+    "name": "Carnelian Natural Healing Stone",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 15,
+        "currency": "usd",
+        "stripe_price_id": "price_1RAf3OBNjcHRVZ2aJvyFviWa",
+        "active": true,
+        "id": "6ab976e072cb34343eca857f"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "40g",
+        "count": 5,
+        "id": "6ab976e072cb34343eca857e"
+      }
+    ],
+    "slug": "prod_S4oggoV6ofeP1Q",
+    "stripe_product_id": "prod_S4oggoV6ofeP1Q",
+    "terandina_v1_id": "67f1ac869ada5870c2bd5859",
+    "_status": "published",
+    "__v": 0
+  },
+  {
+    "icons": [
+      "ships_from_us",
+      "returns"
+    ],
+    "active": false,
+    "blocks": [],
+    "categories": [],
+    "color_for_google_shopping": "blue",
+    "description": "Amazonite is often called the Stone of Truth and Courage, tied to its reputation for promoting self-awareness and honesty. It’s said to help users speak their minds and stand by their values without fear of judgment. Place the stone in your hand during meditation and envision its energy flowing through to your entire body.",
+    "details": "-\t40g\n-\tCourage, Hope, Truth\n-\tChakra: Throat, Heart\n-\tZodiac: Virgo, Aquarius\n\nPlease note that slight variations in color may occur. ",
+    "images": [
+      {
+        "image": "6ab96c4c846e3ca2f38f5391",
+        "id": "6ab976e072cb34343eca8580"
+      },
+      {
+        "image": "6ab96c4a846e3ca2f38f538f",
+        "id": "6ab976e072cb34343eca8581"
+      }
+    ],
+    "name": "Amazonite Natural Healing Stone",
+    "notes_on_size": "",
+    "prices": [
+      {
+        "amount": 15,
+        "currency": "usd",
+        "stripe_price_id": "price_1RAfPHBNjcHRVZ2ad6iQ6rXH",
+        "active": true,
+        "id": "6ab976e072cb34343eca8583"
+      }
+    ],
+    "sizes": [
+      {
+        "label": "custom",
+        "customLabel": "40g",
+        "count": 5,
+        "id": "6ab976e072cb34343eca8582"
+      }
+    ],
+    "slug": "prod_S4p3hKD2uGUPl6",
+    "stripe_product_id": "prod_S4p3hKD2uGUPl6",
+    "terandina_v1_id": "67f1b1f4829b0e36870921cc",
+    "_status": "published",
+    "__v": 0
+  }
+]

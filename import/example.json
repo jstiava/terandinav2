@@ -1,0 +1,147 @@
+{
+    "createdAt": "2026-09-26T18:27:34.204Z",
+    "updatedAt": "2026-09-26T23:32:08.643Z",
+    "icons": [
+        "returns",
+        "ships_from_us",
+        "hypoallergenic",
+        "indigenous_artisans"
+    ],
+    "_status": "published",
+    "active": true,
+    "blocks": [
+        {
+            "blockType": "content",
+            "richText": {
+                "root": {
+                    "children": [
+                        {
+                            "children": [
+                                {
+                                    "detail": 0,
+                                    "format": 0,
+                                    "mode": "normal",
+                                    "style": "",
+                                    "text": "dsjfiosdj gpdsjgpodsjgop",
+                                    "type": "text",
+                                    "version": 1
+                                }
+                            ],
+                            "direction": null,
+                            "format": "",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                        }
+                    ],
+                    "direction": null,
+                    "format": "",
+                    "indent": 0,
+                    "type": "root",
+                    "version": 1
+                }
+            },
+            "id": "6ab80ebb11f27bcd086cee6f",
+            "blockName": "My block name"
+        }
+    ],
+    "categories": [
+        {
+            "createdAt": "2026-09-26T22:31:21.790Z",
+            "updatedAt": "2026-09-26T22:31:21.790Z",
+            "title": "Ponchos",
+            "generateSlug": false,
+            "slug": "ponchos",
+            "id": "6ab847b97d44f2d113e8c492"
+        },
+        {
+            "createdAt": "2026-09-26T22:31:38.745Z",
+            "updatedAt": "2026-09-26T22:31:38.745Z",
+            "title": "Outerwear",
+            "generateSlug": false,
+            "slug": "outerwear",
+            "id": "6ab847ca7d44f2d113e8c4a9"
+        }
+    ],
+    "color_for_google_shopping": "red",
+    "description": "This is a description for the test product.",
+    "details": "This is details for the test product.",
+    "images": [
+        {
+            "image": {
+                "createdAt": "2026-09-26T19:23:02.401Z",
+                "updatedAt": "2026-09-26T19:23:02.401Z",
+                "alt": "Test image",
+                "_key": "zzMJdtYlsE1V4PQfgaOGT0CKxn2LQVktEAfI7YHdZPJBgmyr",
+                "filename": "pngwing.com.png",
+                "mimeType": "image/png",
+                "filesize": 303367,
+                "width": 800,
+                "height": 600,
+                "sizes": {
+                    "small": {
+                        "_key": "zzMJdtYlsE1V48oHWMMOGT0CKxn2LQVktEAfI7YHdZPJBgmy",
+                        "width": 70,
+                        "height": 53,
+                        "mimeType": "image/png",
+                        "filesize": 5887,
+                        "filename": "pngwing.com-70x53.png",
+                        "url": "/api/media/file/pngwing.com-70x53.png"
+                    },
+                    "medium": {
+                        "_key": "zzMJdtYlsE1V90XjcH8JtSFRG6irQEzMPUpuVxfd1bsc4O8D",
+                        "width": 500,
+                        "height": 375,
+                        "mimeType": "image/png",
+                        "filesize": 134711,
+                        "filename": "pngwing.com-500x375.png",
+                        "url": "/api/media/file/pngwing.com-500x375.png"
+                    },
+                    "og": {
+                        "width": null,
+                        "height": null,
+                        "mimeType": null,
+                        "filesize": null,
+                        "filename": null,
+                        "url": null
+                    }
+                },
+                "id": "6ab81b9695502312ca4edfe4",
+                "url": "/api/media/file/pngwing.com.png",
+                "thumbnailURL": "/api/media/file/pngwing.com-70x53.png"
+            },
+            "id": "6ab847dcf47b8811139703be"
+        }
+    ],
+    "name": "Test product",
+    "notes_on_size": "Items run small.",
+    "prices": [
+        {
+            "id": "6ab8174b11f27bcd086cee77",
+            "amount": 79.99,
+            "currency": "USD",
+            "active": true
+        }
+    ],
+    "sizes": [
+        {
+            "label": "small",
+            "count": 5,
+            "id": "6ab853b7c2df113bd832d49e"
+        },
+        {
+            "label": "medium",
+            "count": 3,
+            "id": "6ab855d6c2df113bd832d4a0"
+        },
+        {
+            "label": "large",
+            "count": 1,
+            "id": "6ab855e5c2df113bd832d4a2"
+        }
+    ],
+    "slug": "test_product",
+    "id": "6ab80e9695502312ca4edc1f"
+}

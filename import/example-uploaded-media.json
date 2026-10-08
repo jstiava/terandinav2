@@ -1,0 +1,38 @@
+{
+  _id: ObjectId('6ab81b9695502312ca4edfe4'),
+  createdAt: ISODate('2026-09-26T19: 23: 02.401Z'),
+  updatedAt: ISODate('2026-09-26T19: 23: 02.401Z'),
+  alt: 'Test image',
+  _key: 'zzMJdtYlsE1V4PQfgaOGT0CKxn2LQVktEAfI7YHdZPJBgmyr',
+  filename: 'pngwing.com.png',
+  mimeType: 'image/png',
+  filesize: NumberInt('303367'),
+  width: NumberInt('800'),
+  height: NumberInt('600'),
+  sizes: {
+    small: {
+      _key: 'zzMJdtYlsE1V48oHWMMOGT0CKxn2LQVktEAfI7YHdZPJBgmy',
+      width: NumberInt('70'),
+      height: NumberInt('53'),
+      mimeType: 'image/png',
+      filesize: NumberInt('5887'),
+      filename: 'pngwing.com-70x53.png'
+        },
+    medium: {
+      _key: 'zzMJdtYlsE1V90XjcH8JtSFRG6irQEzMPUpuVxfd1bsc4O8D',
+      width: NumberInt('500'),
+      height: NumberInt('375'),
+      mimeType: 'image/png',
+      filesize: NumberInt('134711'),
+      filename: 'pngwing.com-500x375.png'
+        },
+    og: {
+      width: null,
+      height: null,
+      mimeType: null,
+      filesize: null,
+      filename: null
+        }
+    },
+  __v: NumberInt('0')
+}

@@ -1,62 +1,69 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
+import configPromise from '@payload-config'
+import {
+  getPayload,
+  RequiredDataFromCollection,
+} from 'payload'
+import { draftMode } from 'next/headers'
+import { Page } from '@/payload-types'
+import React, { cache } from 'react'
+import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { LivePreviewListener } from '@/components/LivePreviewListener'
 
-import config from '@/payload.config'
-import './styles.css'
 
-export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+export default async function HomePage(props: any) {
+
+  const { isEnabled: draft } = await draftMode()
+  const page: RequiredDataFromCollection<Page> | null = await queryPageBySlug({
+    slug: 'home',
+  });
+
 
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user || !('email' in user) ? (
-          <h1>Welcome to your new project.</h1>
-        ) : (
-          <h1>Welcome back, {user.email}</h1>
-        )}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="flex items-center justify-start flex-col gap-0 h-fit">
+      <div className="flex flex-col w-full">
+        {page?.blocks && <RenderBlocks blocks={page.blocks} />}
+        {/* <div className='flex aspect-square w-full max-h-[30rem] bg-[#009487]'></div> */}
       </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
+      {draft && <LivePreviewListener />}
     </div>
   )
+}
+
+
+const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+  const { isEnabled: draft } = await draftMode()
+
+  const payload = await getPayload({ config: configPromise });
+
+  const settings = await payload.findGlobal({
+    slug: 'settings',
+    depth: 1,
+    draft,
+  });
+
+  const result = await payload.find({
+    collection: 'pages',
+    draft,
+    limit: 1,
+    depth: 2,
+    pagination: false,
+    overrideAccess: draft,
+    where: {
+      slug: {
+        equals: (settings.frontPage as Page).slug,
+      },
+    },
+  })
+
+  const page = result.docs?.[0] || null;
+  return page
+})
+
+
+export async function generateMetadata() {
+
+  return {
+    title: "Terandina LLC"
+  }
 }

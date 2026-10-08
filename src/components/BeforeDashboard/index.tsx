@@ -1,0 +1,18 @@
+import { Banner } from '@payloadcms/ui/elements/Banner'
+import React from 'react'
+import './index.scss'
+
+const baseClass = 'before-dashboard'
+
+const BeforeDashboard: React.FC = () => {
+  return (
+    <div className={baseClass}>
+      <Banner className={`${baseClass}__banner`} type="success">
+        <h4>Welcome to your dashboard!</h4>
+      </Banner>
+      Contact Jeremy Stiava for support and change requests, 773-414-5328
+    </div>
+  )
+}
+
+export default BeforeDashboard

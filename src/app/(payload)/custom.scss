@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/archivo-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela Web';
+  src: url('/fonts/canelaweb-thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela Web';
+  src: url('/fonts/canelaweb-medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela Web';
+  src: url('/fonts/canelaweb-black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-body: 'Archivo', sans-serif;
+  --font-heading: 'Canela Web', serif;
+}
+
+html,
+body,
+* {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}

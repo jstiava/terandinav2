@@ -67,22 +67,42 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    users: User;
+    pages: Page;
+    emails: Email;
     media: Media;
-    folders: Folder;
-    tags: Tag;
+    categories: Category;
+    products: Product;
+    orders: Order;
+    parcels: Parcel;
+    users: User;
     'payload-kv': PayloadKv;
+    'payload-folders': FolderInterface;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    categories: {
+      products: 'products';
+    };
+    parcels: {
+      products: 'products';
+    };
+    'payload-folders': {
+      documentsAndFolders: 'payload-folders' | 'media';
+    };
+  };
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    emails: EmailsSelect<false> | EmailsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    folders: FoldersSelect<false> | FoldersSelect<true>;
-    tags: TagsSelect<false> | TagsSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
+    orders: OrdersSelect<false> | OrdersSelect<true>;
+    parcels: ParcelsSelect<false> | ParcelsSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
+    'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -90,14 +110,20 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  fallbackLocale: ('false' | 'none' | 'null') | false | null | 'en' | 'en'[];
-  globals: {};
-  globalsSelect: {};
-  locale: 'en';
-  widgets: {
-    collections: CollectionsWidget;
+  globals: {
+    header: Header;
+    footer: Footer;
+    settings: Setting;
   };
-  user: User;
+  globalsSelect: {
+    header: HeaderSelect<false> | HeaderSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+    settings: SettingsSelect<false> | SettingsSelect<true>;
+  };
+  locale: null;
+  user: User & {
+    collection: 'users';
+  };
   jobs: {
     tasks: unknown;
     workflows: unknown;
@@ -121,26 +147,24 @@ export interface UserAuthOperations {
     password: string;
   };
 }
-export interface User {
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
   id: string;
+  title?: string | null;
+  description?: string | null;
+  /**
+   * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+   */
+  image?: (string | null) | Media;
+  publishedAt?: string | null;
+  slug: string;
+  blocks?: (CarouselBlock | ContentBlock | RowBlock | CatalogBlock)[] | null;
   updatedAt: string;
   createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
-  collection: 'users';
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -148,9 +172,24 @@ export interface User {
  */
 export interface Media {
   id: string;
-  alt: string;
-  _h_folders?: (string | null) | Folder;
-  _h_tags?: (string | Tag)[] | null;
+  alt?: string | null;
+  caption?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  _key?: string | null;
+  folder?: (string | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -162,33 +201,509 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    small?: {
+      _key?: string | null;
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    medium?: {
+      _key?: string | null;
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    og?: {
+      _key?: string | null;
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "folders".
+ * via the `definition` "payload-folders".
  */
-export interface Folder {
+export interface FolderInterface {
   id: string;
-  _h_folders?: (string | null) | Folder;
   name: string;
+  folder?: (string | null) | FolderInterface;
+  documentsAndFolders?: {
+    docs?: (
+      | {
+          relationTo?: 'payload-folders';
+          value: string | FolderInterface;
+        }
+      | {
+          relationTo?: 'media';
+          value: string | Media;
+        }
+    )[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  folderType?: 'media'[] | null;
   updatedAt: string;
   createdAt: string;
-  _h_slugPath?: string | null;
-  _h_titlePath?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags".
+ * via the `definition` "CarouselBlock".
  */
-export interface Tag {
+export interface CarouselBlock {
+  slides?:
+    | {
+        image: string | Media;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        /**
+         * Tailwind classes for the carousel item.
+         */
+        className?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentBlock".
+ */
+export interface ContentBlock {
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  className?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RowBlock".
+ */
+export interface RowBlock {
+  slides?:
+    | {
+        image: string | Media;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        /**
+         * Tailwind classes for the carousel item.
+         */
+        className?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'row';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CatalogBlock".
+ */
+export interface CatalogBlock {
+  limit?: number | null;
+  filters?:
+    | {
+        field: 'categories' | 'active' | 'icons' | 'sizes' | 'prices';
+        operator: 'is' | 'is_not';
+        value__categories?: (string | Category)[] | null;
+        value__active?: ('true' | 'false') | null;
+        value__icons?: ('ships_from_us' | 'returns' | 'hypoallergenic' | 'indigenous_artisans')[] | null;
+        value__sizes?:
+          | ('extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'extra-extra-large' | 'custom')
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  className?: string | null;
+  classNamePerProduct?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'catalog';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
   id: string;
-  _h_tags?: (string | null) | Tag;
-  name: string;
+  /**
+   * Required to display the page preview
+   */
+  slug: string;
+  pageActive?: boolean | null;
+  title: string;
+  /**
+   * Variants are show immidiately beside the product each individual product page.
+   */
+  type?: ('category' | 'variant' | 'group') | null;
+  images?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  description: string;
+  products?: {
+    docs?: (string | Product)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  blocks?: (ContentBlock | RowBlock | CarouselBlock | CatalogBlock)[] | null;
   updatedAt: string;
   createdAt: string;
-  _h_slugPath?: string | null;
-  _h_titlePath?: string | null;
+  _status?: ('draft' | 'published') | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: string;
+  /**
+   * Required to display the page preview
+   */
+  slug: string;
+  active?: boolean | null;
+  name: string;
+  images?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  description: string;
+  details?: string | null;
+  categories?: (string | Category)[] | null;
+  /**
+   * Select up to 4 icons to display on the product.
+   */
+  icons?: ('ships_from_us' | 'returns' | 'hypoallergenic' | 'indigenous_artisans')[] | null;
+  blocks?: (ContentBlock | CarouselBlock | CatalogBlock)[] | null;
+  sizes?:
+    | {
+        label?: ('extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'extra-extra-large' | 'custom') | null;
+        customLabel?: string | null;
+        count?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Two-way integration w/ Stripe or Square
+   */
+  prices?:
+    | {
+        id?: string | null;
+        amount: number;
+        currency: string;
+        stripe_price_id?: string | null;
+        square_variant_id?: string | null;
+        active?: boolean | null;
+      }[]
+    | null;
+  notes_on_size?: string | null;
+  parcel?: (string | null) | Parcel;
+  /**
+   * ID assigned to this product by the Stripe.
+   */
+  stripe_product_id?: string | null;
+  /**
+   * ID assigned to this product by the Square.
+   */
+  square_catalog_item_id?: string | null;
+  /**
+   * ID assigned in the first iteration of the Terandina website.
+   */
+  terandina_v1_id?: string | null;
+  /**
+   * General color for google shopping search optimization.
+   */
+  color_for_google_shopping?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "parcels".
+ */
+export interface Parcel {
+  id: string;
+  name?: string | null;
+  length?: number | null;
+  width?: number | null;
+  height?: number | null;
+  weight?: number | null;
+  products?: {
+    docs?: (string | Product)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "emails".
+ */
+export interface Email {
+  id: string;
+  title?: string | null;
+  description?: string | null;
+  /**
+   * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+   */
+  image?: (string | null) | Media;
+  publishedAt?: string | null;
+  slug: string;
+  action?: {
+    type?: ('byAction' | 'daily' | 'weekly' | 'biweekly' | 'monthly') | null;
+    trigger?:
+      | (
+          | 'iam:invite_user_by_email'
+          | 'iam:new_user_confirmed'
+          | 'user:with_successful_purchase_complete'
+          | 'user:with_subscribe_to_newsletter'
+          | 'editor:new_announcement_made'
+        )
+      | null;
+    startTime?: string | null;
+    dow?: ('sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat')[] | null;
+  };
+  access: 'admin' | 'authenticated';
+  subject?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  recipients?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  blocks?: (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[] | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmailContentBlock".
+ */
+export interface EmailContentBlock {
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'emailContent';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmailButtonBlock".
+ */
+export interface EmailButtonBlock {
+  label?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  url?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  theme?: ('cta' | 'ghost' | 'outline') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'emailButton';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmailImageBlock".
+ */
+export interface EmailImageBlock {
+  image: string | Media;
+  props?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'emailImage';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders".
+ */
+export interface Order {
+  id: string;
+  name: string;
+  delivery_type: 'pickup' | 'delivery';
+  delivery_address_details?: string | null;
+  status: 'incomplete' | 'paid' | 'en-route' | 'received' | 'triggered_return' | 'refunded';
+  cart?:
+    | {
+        product?: (string | null) | Product;
+        size?: string | null;
+        quantity?: number | null;
+        price?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  history?:
+    | {
+        type?: ('action_required' | 'progress_made' | 'default') | null;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: string;
+  name?: string | null;
+  role: 'admin' | 'editor' | 'viewer' | 'contributor';
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  _verified?: boolean | null;
+  _verificationToken?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
 export interface PayloadKv {
   id: string;
   key: string;
@@ -210,20 +725,40 @@ export interface PayloadLockedDocument {
   id: string;
   document?:
     | ({
-        relationTo: 'users';
-        value: string | User;
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'emails';
+        value: string | Email;
       } | null)
     | ({
         relationTo: 'media';
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'folders';
-        value: string | Folder;
+        relationTo: 'categories';
+        value: string | Category;
       } | null)
     | ({
-        relationTo: 'tags';
-        value: string | Tag;
+        relationTo: 'products';
+        value: string | Product;
+      } | null)
+    | ({
+        relationTo: 'orders';
+        value: string | Order;
+      } | null)
+    | ({
+        relationTo: 'parcels';
+        value: string | Parcel;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null)
+    | ({
+        relationTo: 'payload-folders';
+        value: string | FolderInterface;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -269,9 +804,341 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  image?: T;
+  publishedAt?: T;
+  slug?: T;
+  blocks?:
+    | T
+    | {
+        carousel?: T | CarouselBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
+        row?: T | RowBlockSelect<T>;
+        catalog?: T | CatalogBlockSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock_select".
+ */
+export interface CarouselBlockSelect<T extends boolean = true> {
+  slides?:
+    | T
+    | {
+        image?: T;
+        richText?: T;
+        className?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentBlock_select".
+ */
+export interface ContentBlockSelect<T extends boolean = true> {
+  richText?: T;
+  className?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RowBlock_select".
+ */
+export interface RowBlockSelect<T extends boolean = true> {
+  slides?:
+    | T
+    | {
+        image?: T;
+        richText?: T;
+        className?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CatalogBlock_select".
+ */
+export interface CatalogBlockSelect<T extends boolean = true> {
+  limit?: T;
+  filters?:
+    | T
+    | {
+        field?: T;
+        operator?: T;
+        value__categories?: T;
+        value__active?: T;
+        value__icons?: T;
+        value__sizes?: T;
+        id?: T;
+      };
+  className?: T;
+  classNamePerProduct?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "emails_select".
+ */
+export interface EmailsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  image?: T;
+  publishedAt?: T;
+  slug?: T;
+  action?:
+    | T
+    | {
+        type?: T;
+        trigger?: T;
+        startTime?: T;
+        dow?: T;
+      };
+  access?: T;
+  subject?: T;
+  recipients?: T;
+  blocks?:
+    | T
+    | {
+        emailContent?: T | EmailContentBlockSelect<T>;
+        emailButton?: T | EmailButtonBlockSelect<T>;
+        emailImage?: T | EmailImageBlockSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmailContentBlock_select".
+ */
+export interface EmailContentBlockSelect<T extends boolean = true> {
+  richText?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmailButtonBlock_select".
+ */
+export interface EmailButtonBlockSelect<T extends boolean = true> {
+  label?: T;
+  url?: T;
+  theme?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EmailImageBlock_select".
+ */
+export interface EmailImageBlockSelect<T extends boolean = true> {
+  image?: T;
+  props?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  caption?: T;
+  _key?: T;
+  folder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        small?:
+          | T
+          | {
+              _key?: T;
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        medium?:
+          | T
+          | {
+              _key?: T;
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        og?:
+          | T
+          | {
+              _key?: T;
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  slug?: T;
+  pageActive?: T;
+  title?: T;
+  type?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  description?: T;
+  products?: T;
+  blocks?:
+    | T
+    | {
+        content?: T | ContentBlockSelect<T>;
+        row?: T | RowBlockSelect<T>;
+        carousel?: T | CarouselBlockSelect<T>;
+        catalog?: T | CatalogBlockSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  slug?: T;
+  active?: T;
+  name?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  description?: T;
+  details?: T;
+  categories?: T;
+  icons?: T;
+  blocks?:
+    | T
+    | {
+        content?: T | ContentBlockSelect<T>;
+        carousel?: T | CarouselBlockSelect<T>;
+        catalog?: T | CatalogBlockSelect<T>;
+      };
+  sizes?:
+    | T
+    | {
+        label?: T;
+        customLabel?: T;
+        count?: T;
+        id?: T;
+      };
+  prices?:
+    | T
+    | {
+        id?: T;
+        amount?: T;
+        currency?: T;
+        stripe_price_id?: T;
+        square_variant_id?: T;
+        active?: T;
+      };
+  notes_on_size?: T;
+  parcel?: T;
+  stripe_product_id?: T;
+  square_catalog_item_id?: T;
+  terandina_v1_id?: T;
+  color_for_google_shopping?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders_select".
+ */
+export interface OrdersSelect<T extends boolean = true> {
+  name?: T;
+  delivery_type?: T;
+  delivery_address_details?: T;
+  status?: T;
+  cart?:
+    | T
+    | {
+        product?: T;
+        size?: T;
+        quantity?: T;
+        price?: T;
+        id?: T;
+      };
+  history?:
+    | T
+    | {
+        type?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "parcels_select".
+ */
+export interface ParcelsSelect<T extends boolean = true> {
+  name?: T;
+  length?: T;
+  width?: T;
+  height?: T;
+  weight?: T;
+  products?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -279,6 +1146,8 @@ export interface UsersSelect<T extends boolean = true> {
   resetPasswordExpiration?: T;
   salt?: T;
   hash?: T;
+  _verified?: T;
+  _verificationToken?: T;
   loginAttempts?: T;
   lockUntil?: T;
   sessions?:
@@ -291,51 +1160,23 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
+ * via the `definition` "payload-kv_select".
  */
-export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
-  _h_folders?: T;
-  _h_tags?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "folders_select".
- */
-export interface FoldersSelect<T extends boolean = true> {
-  _h_folders?: T;
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _h_slugPath?: T;
-  _h_titlePath?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags_select".
- */
-export interface TagsSelect<T extends boolean = true> {
-  _h_tags?: T;
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _h_slugPath?: T;
-  _h_titlePath?: T;
-}
 export interface PayloadKvSelect<T extends boolean = true> {
   key?: T;
   data?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-folders_select".
+ */
+export interface PayloadFoldersSelect<T extends boolean = true> {
+  name?: T;
+  folder?: T;
+  documentsAndFolders?: T;
+  folderType?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -371,13 +1212,278 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "collections_widget".
+ * via the `definition` "header".
  */
-export interface CollectionsWidget {
-  data?: {
-    [k: string]: unknown;
+export interface Header {
+  id: string;
+  navItems?:
+    | {
+        menuItem: {
+          /**
+           * Standard: Internal links open in same tab, external to a new tab.
+           */
+          type?: ('reference' | 'custom' | 'label') | null;
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
+          /**
+           * Advanced field
+           */
+          query?: string | null;
+          label: string;
+          url?: string | null;
+          photo?: (string | null) | Media;
+          description?: string | null;
+          /**
+           * Tailwind classes. Block is meant to create negative gap between related items.
+           */
+          className?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  navItems?:
+    | {
+        menuItem: {
+          /**
+           * Standard: Internal links open in same tab, external to a new tab.
+           */
+          type?: ('reference' | 'custom' | 'label') | null;
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
+          /**
+           * Advanced field
+           */
+          query?: string | null;
+          label: string;
+          url?: string | null;
+          photo?: (string | null) | Media;
+          description?: string | null;
+          /**
+           * Tailwind classes. Block is meant to create negative gap between related items.
+           */
+          className?: string | null;
+        };
+        children?:
+          | {
+              menuItem: {
+                /**
+                 * Standard: Internal links open in same tab, external to a new tab.
+                 */
+                type?: ('reference' | 'custom' | 'label') | null;
+                reference?: {
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null;
+                /**
+                 * Advanced field
+                 */
+                query?: string | null;
+                label: string;
+                url?: string | null;
+                photo?: (string | null) | Media;
+                description?: string | null;
+                /**
+                 * Tailwind classes. Block is meant to create negative gap between related items.
+                 */
+                className?: string | null;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  socials?:
+    | {
+        site: 'instagram' | 'linkedin' | 'youtube' | 'twitter' | 'facebook';
+        handle: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings".
+ */
+export interface Setting {
+  id: string;
+  frontPage: string | Page;
+  socialAccounts?: {
+    /**
+     * HTTPS Link to your account
+     */
+    instagram?: string | null;
+    /**
+     * HTTPS Link to your account
+     */
+    linkedin?: string | null;
+    /**
+     * HTTPS Link to your account
+     */
+    youtube?: string | null;
+    /**
+     * HTTPS Link to your account
+     */
+    twitter?: string | null;
+    /**
+     * HTTPS Link to your account
+     */
+    facebook?: string | null;
   };
-  width: 'full';
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  navItems?:
+    | T
+    | {
+        menuItem?:
+          | T
+          | {
+              type?: T;
+              reference?: T;
+              query?: T;
+              label?: T;
+              url?: T;
+              photo?: T;
+              description?: T;
+              className?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  navItems?:
+    | T
+    | {
+        menuItem?:
+          | T
+          | {
+              type?: T;
+              reference?: T;
+              query?: T;
+              label?: T;
+              url?: T;
+              photo?: T;
+              description?: T;
+              className?: T;
+            };
+        children?:
+          | T
+          | {
+              menuItem?:
+                | T
+                | {
+                    type?: T;
+                    reference?: T;
+                    query?: T;
+                    label?: T;
+                    url?: T;
+                    photo?: T;
+                    description?: T;
+                    className?: T;
+                  };
+              id?: T;
+            };
+        id?: T;
+      };
+  socials?:
+    | T
+    | {
+        site?: T;
+        handle?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+  frontPage?: T;
+  socialAccounts?:
+    | T
+    | {
+        instagram?: T;
+        linkedin?: T;
+        youtube?: T;
+        twitter?: T;
+        facebook?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaBlock".
+ */
+export interface MediaBlock {
+  media: string | Media;
+  alignment: 'float-left' | 'float-right' | 'mx-auto block' | 'w-full';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ButtonBlock".
+ */
+export interface ButtonBlock {
+  menuItem: {
+    /**
+     * Standard: Internal links open in same tab, external to a new tab.
+     */
+    type?: ('reference' | 'custom' | 'label') | null;
+    reference?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    /**
+     * Advanced field
+     */
+    query?: string | null;
+    label: string;
+    url?: string | null;
+    photo?: (string | null) | Media;
+    description?: string | null;
+    /**
+     * Tailwind classes. Block is meant to create negative gap between related items.
+     */
+    className?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'buttonBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
