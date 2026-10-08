@@ -14,9 +14,14 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 export default async function HomePage(props: any) {
 
   const { isEnabled: draft } = await draftMode()
-  const page: RequiredDataFromCollection<Page> | null = await queryPageBySlug({
-    slug: 'home',
-  });
+  const page: RequiredDataFromCollection<Page> | null = await queryPageBySlug();
+
+  if (!page) {
+
+    return (
+      <span>No home page found.</span>
+    )
+  }
 
 
   return (
@@ -31,7 +36,7 @@ export default async function HomePage(props: any) {
 }
 
 
-const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryPageBySlug = cache(async () => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise });

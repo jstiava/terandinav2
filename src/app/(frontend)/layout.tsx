@@ -30,7 +30,6 @@ export const archivo = Archivo({
 })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isEnabled } = await draftMode()
 
   return (
     <html className={`${canela.variable} ${archivo.variable}`} lang="en" suppressHydrationWarning>
