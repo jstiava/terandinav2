@@ -12,7 +12,6 @@ import { useRouter } from 'next/navigation'
 import { createPaymentIntent, patchPaymentIntentWithTaxes } from './StripePaymentIntentService'
 import { Field, FieldContent, FieldDescription, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import * as Drawer from '@/components/ui/drawer'
 
 const NATIVE_SUN_MERRILLVILLE_ADDRESS = {
   line1: '1978 Southlake Mall',
