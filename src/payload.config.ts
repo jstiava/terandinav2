@@ -47,7 +47,6 @@ const collections = [
 
 const globals = [Header, Footer, Settings]
 
-
 const sesClient = new SESv2Client({
   region: process.env.AWS_SES_REGION ?? 'us-east-1',
   credentials: {
@@ -56,18 +55,17 @@ const sesClient = new SESv2Client({
   },
 })
 
-
 export default buildConfig({
   admin: {
     meta: {
-      title: "Terandina - Admin",
+      title: 'Terandina - Admin',
       icons: [
         {
           rel: 'icon',
-          type: "image/png",
-          url: '/favicon.png'
-        }
-      ]
+          type: 'image/png',
+          url: '/favicon.png',
+        },
+      ],
     },
     autoRefresh: true,
     components: {
@@ -110,6 +108,12 @@ export default buildConfig({
   editor: defaultLexical,
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || '',
+    connectOptions: {
+      maxPoolSize: 5,
+      minPoolSize: 0,
+      maxIdleTimeMS: 10000,
+      serverSelectionTimeoutMS: 10000,
+    },
   }),
   collections,
   cors: [getServerSideURL()].filter(Boolean),
