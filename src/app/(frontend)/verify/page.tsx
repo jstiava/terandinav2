@@ -23,7 +23,7 @@ export default function VerifyPage() {
     async function verify() {
       try {
         const response = await fetch(
-          `/api/users/verify/${encodeURIComponent(token)}`,
+          `/api/users/verify/${encodeURIComponent(token!)}`,
           { method: 'POST' },
         )
 
