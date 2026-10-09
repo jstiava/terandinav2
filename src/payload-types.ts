@@ -74,6 +74,7 @@ export interface Config {
     products: Product;
     orders: Order;
     parcels: Parcel;
+    crm: Crm;
     users: User;
     'payload-kv': PayloadKv;
     'payload-folders': FolderInterface;
@@ -100,6 +101,7 @@ export interface Config {
     products: ProductsSelect<false> | ProductsSelect<true>;
     orders: OrdersSelect<false> | OrdersSelect<true>;
     parcels: ParcelsSelect<false> | ParcelsSelect<true>;
+    crm: CrmSelect<false> | CrmSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
@@ -555,6 +557,7 @@ export interface Email {
     };
     [k: string]: unknown;
   } | null;
+  template?: ('order_receipt' | 'custom') | null;
   blocks?: (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[] | null;
   updatedAt: string;
   createdAt: string;
@@ -674,6 +677,20 @@ export interface Order {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "crm".
+ */
+export interface Crm {
+  id: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  fullName?: string | null;
+  emailAddress?: string | null;
+  phoneNumber?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -751,6 +768,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'parcels';
         value: string | Parcel;
+      } | null)
+    | ({
+        relationTo: 'crm';
+        value: string | Crm;
       } | null)
     | ({
         relationTo: 'users';
@@ -909,6 +930,7 @@ export interface EmailsSelect<T extends boolean = true> {
   access?: T;
   subject?: T;
   recipients?: T;
+  template?: T;
   blocks?:
     | T
     | {
@@ -1129,6 +1151,19 @@ export interface ParcelsSelect<T extends boolean = true> {
   height?: T;
   weight?: T;
   products?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "crm_select".
+ */
+export interface CrmSelect<T extends boolean = true> {
+  firstName?: T;
+  lastName?: T;
+  fullName?: T;
+  emailAddress?: T;
+  phoneNumber?: T;
   updatedAt?: T;
   createdAt?: T;
 }

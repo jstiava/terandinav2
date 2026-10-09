@@ -2,23 +2,19 @@
 
 import { LivePreviewListener } from "@/components/LivePreviewListener"
 import { draftMode } from "next/headers"
-import { getPayload, RequiredDataFromCollectionSlug } from "payload"
+import { getPayload } from "payload"
 import configPromise from '@payload-config'
-import { cache } from "react"
-import { ObjectId } from "mongodb"
+import { cache } from "react" 
 import { formatPrice } from "@/collections/Products/formatPrice"
-import { Button } from "@/components/ui/button"
 import * as Accordion from "@/components/ui/accordion"
-import { PlusIcon, StarIcon } from "lucide-react"
-import { ReviewBlock } from "@/collections/Products/ReviewBlock"
+import { PlusIcon } from "lucide-react" 
 import { Metadata } from "next"
 import ProductSizeSelector from "./ProductSizeSelector"
 import ProductProviderComponent from "./ProductProviderComponent"
 import AddToCartButton from "./AddToCartButton"
 import MobileProductImageCarousel from "./MobileProductImageCarousel"
 import { cn } from "@/utilities/cn"
-import Mongo from "@/utilities/mongo"
-import CatalogBlock from "@/blocks/Catalog/Component"
+import Mongo from "@/utilities/mongo" 
 import ProductCard from "../../products/ProductCard"
 import PickupDeliveryOptions from "./PickupDeliveryOptions"
 
@@ -86,7 +82,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
             product
         }}>
             <div className="flex flex-col w-full items-center h-fit">
-                <div className="relative flex flex-col md:flex-row items-start w-full max-w-[80rem] h-fit">
+                <div className="relative flex flex-col md:flex-row items-start w-full max-w-[120rem] h-fit">
 
 
                     {/* Images on mobile */}
@@ -120,7 +116,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                     </div>
 
                     {/* Content */}
-                    <div className="self-start flex w-full md:w-[45%] max-w-[30rem] pt-2 md:pt-14 ">
+                    <div className="self-start flex w-full md:w-[45%] max-w-[40rem] pt-2 md:pt-14 ">
 
                         <div className="sticky top-0 flex flex-col gap-8 w-full max-w-[80rem] h-fit ">
 

@@ -1,43 +1,27 @@
 {
-  "npm.packageManager": "pnpm",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
+  /* --- Disable GitHub Copilot Completely --- */
+  "github.copilot.enable": {
+    "*": false
   },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features",
-    "editor.formatOnSave": true
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "editor.formatOnSaveMode": "file",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "[javascript][typescript][typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
-  },
-  "[css]": {
-    "editor.defaultFormatter": "vscode.css-language-features"
-  }
+  "github.copilot.editor.enableAutoCompletions": false,
+
+  /* --- Disable Copilot / AI Code Actions & In-line Hovers --- */
+  "editor.codeActionWidget.includeNearbyQuickFixes": false,
+  "inlineChat.holdForSpeech": false,
+
+  /* --- Disable Editor Ghost Text / Inline Suggestions --- */
+  "editor.inlineSuggest.enabled": false,
+
+  /* --- Disable Ghost Code "Fix with Copilot" Hints on Diagnostics --- */
+  "editor.experimental.asyncColorization": true,
+  /* Disable Copilot Chat Inline Code Actions (Fix / Explain) */
+  "github.copilot.chat.editor.enableCodeActions": false,
+  "github.copilot.chat.welcomeMessage": "never",
+
+  /* Disable Inline Code Lenses / Prompts above functions */
+  "editor.codeLens": false,
+  /* --- My custom --- */
+  "js/ts.preferences.autoImportFileExcludePatterns": ["**/node_modules/@base-ui/react/**"],
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
+  "hsnips.hsnipsPath": "${workspaceFolder}/.hsnips"
 }

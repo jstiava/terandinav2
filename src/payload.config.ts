@@ -3,7 +3,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
-import { buildConfig, PayloadRequest, getPayload } from 'payload'
+import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 import nodemailer from 'nodemailer'
 
@@ -17,7 +17,6 @@ import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-import configPromise from '@payload-config'
 import { Emails } from './collections/Emails/config'
 import { Settings } from './collections/Settings'
 
@@ -28,6 +27,7 @@ import { Categories } from './collections/Categories/config'
 import { Media } from './collections/Media/config'
 import { Orders } from './collections/Orders/config'
 import { Parcels } from './collections/Parcels/config'
+import { CRM } from '@/collections/CRM/config'
 
 const collections = [
   Pages,
@@ -37,11 +37,7 @@ const collections = [
   Products,
   Orders,
   Parcels,
-
-  // Charges,
-  // CRM,
-  // EditorHistory,
-  // Reviews
+  CRM,
   Users,
 ]
 

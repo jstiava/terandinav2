@@ -1,8 +1,8 @@
 import type { CollectionConfig } from 'payload'
-import configPromise from '@payload-config'
+import { authenticated, isAdmin } from '../../access/authenticated' 
+import VerifyEmail from '@/collections/Users/VerifyEmail';
 
-import { authenticated, isAdmin } from '../../access/authenticated'
-import { getPayload } from 'payload'
+
 
 export const Users: CollectionConfig = {
   labels: {
@@ -20,42 +20,13 @@ export const Users: CollectionConfig = {
   admin: {
     defaultColumns: ['name', 'email', 'role', 'createdAt'],
     useAsTitle: 'name',
-    components: {
-      listMenuItems: ['@/components/Auth/SendInvite/Component#default'],
-    },
     group: 'Settings'
   },
   auth: {
     verify: {
       generateEmailSubject: () => 'Verify your email address',
-
-      generateEmailHTML: ({ token, user }) => {
-        const url = `https://terandinav2.vercel.app/verify?token=${token}`
-
-        return `
-          <h1>Verify your email</h1>
-
-          <p>Hi ${user.email},</p>
-
-          <p>
-            Thanks for creating an account.
-            Click the button below to verify your email address.
-          </p>
-
-          <p>
-            <a href="${url}">
-              Verify my email
-            </a>
-          </p>
-
-          <p>
-            If you did not create this account, you can ignore this email.
-          </p>
-        `
-      },
+      generateEmailHTML: VerifyEmail,
     },
-
-    tokenExpiration: 7200,
     maxLoginAttempts: 10,
   },
   fields: [

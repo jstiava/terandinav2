@@ -86,9 +86,3 @@ export default function PayNowButton({ cardRef }: { cardRef: RefObject<any> }) {
     </Button>
   )
 }
-
-/**
- * [Error] [{field: "verificationDetails.billingContact", message: "verificationDetails.billingContact is required and must be a(n) object.", type: "VALIDATION_ERROR"}, {field: "verificationDetails.intent", message: "verificationDetails.intent is required and must be a(n) string.", type: "VALIDATION_ERROR"}, {field: "verificationDetails.customerInitiated", message: "verificationDetails.customerInitiated is required and must be a(n) boolean.", type: "VALIDATION_ERROR"}, {field: "verificationDetails.sellerKeyedIn", message: "verificationDetails.sellerKeyedIn is required and must be a(n) boolean.", type: "VALIDATION_ERROR"}] (4)
-	error (intercept-console-error.js:57)
-	(anonymous function) (PayNowButton.tsx:54)
- */

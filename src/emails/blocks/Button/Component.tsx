@@ -1,7 +1,7 @@
 'use server'
 import { richTextToPlainText } from '@/components/Auth/SendInvite/actions'
 import { EmailButtonBlock as EmailButtonBlockProps } from '@/payload-types'
-import { Button, Row, Section } from '@react-email/components'
+import { Button, Row } from '@react-email/components'
 
 export default async function EmailButtonBlock(props: EmailButtonBlockProps) {
   try {

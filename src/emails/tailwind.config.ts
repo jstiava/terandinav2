@@ -73,10 +73,11 @@ const config: TailwindConfig = {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
-        canela: ['var(--font-canela)', 'serif'],
-        archivo: ['var(--font-archivo)'],
+        mono: ['Archivo'],
+        sans: ['Archivo', 'Arial', 'sans-serif'],
+        serif: ['Canela', 'Georgia', 'serif'],
+        canela: ['Canela', 'Georgia', 'serif'],
+        archivo: ['Archivo', 'Arial', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

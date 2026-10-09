@@ -68,6 +68,7 @@ export async function sendTestEmail({ email_id }: {
         )
 
         const emailHtml = await render(Component)
+        
 
         const theSubject = await richTextToPlainText(theEmail.subject?.root, variables)
 

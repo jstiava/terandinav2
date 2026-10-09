@@ -21,7 +21,6 @@ import { FolderTableCell as FolderTableCell_ab83ff7e88da8d3530831f296ec4756a } f
 import { FolderField as FolderField_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 import { default as default_2979d1dbb3757fd81d66d87687864f9f } from '@/collections/Products/ProductImagesCell'
 import { default as default_7d5bbd8350f54c60286c004a91066295 } from '@/collections/Products/CustomProductView'
-import { default as default_6af1c534cdc8506b62ee333bbc77c473 } from '@/components/Auth/SendInvite/Component'
 import { FolderTypeField as FolderTypeField_3817bf644402e67bfe6577f60ef982de } from '@payloadcms/ui'
 import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
 import { default as default_d3e265f969641a4ccf3d5a195904e268 } from '@/graphics/Logo'
@@ -54,7 +53,6 @@ export const importMap = {
   "@payloadcms/ui/rsc#FolderField": FolderField_ab83ff7e88da8d3530831f296ec4756a,
   "@/collections/Products/ProductImagesCell#default": default_2979d1dbb3757fd81d66d87687864f9f,
   "@/collections/Products/CustomProductView#default": default_7d5bbd8350f54c60286c004a91066295,
-  "@/components/Auth/SendInvite/Component#default": default_6af1c534cdc8506b62ee333bbc77c473,
   "@payloadcms/ui#FolderTypeField": FolderTypeField_3817bf644402e67bfe6577f60ef982de,
   "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,
   "@/graphics/Logo#default": default_d3e265f969641a4ccf3d5a195904e268,

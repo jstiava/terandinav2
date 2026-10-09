@@ -1,5 +1,4 @@
-import CheckoutCartInventory from "./CheckoutCartInventory";
-import CheckoutOrderReceiptPreview from "./CheckoutOrderReceiptPreview";
+'use server'
 import CheckoutProcessAccordion from "./CheckoutProcessAccordion";
 import CheckoutSummaryAside from "./CheckoutSummaryAside";
 
