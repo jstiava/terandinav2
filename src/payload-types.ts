@@ -697,6 +697,7 @@ export interface User {
   id: string;
   name?: string | null;
   role: 'admin' | 'editor' | 'viewer' | 'contributor';
+  password?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -715,7 +716,6 @@ export interface User {
         expiresAt: string;
       }[]
     | null;
-  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1174,6 +1174,7 @@ export interface CrmSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
   role?: T;
+  password?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

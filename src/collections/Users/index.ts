@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
-import { authenticated, isAdmin } from '../../access/authenticated' 
+import { authenticated, isAdmin } from '../../access/authenticated'
 import VerifyEmail from '@/collections/Users/VerifyEmail';
+import ResetPasswordEmail from '@/collections/Users/ResetPasswordEmail';
 
 
 
@@ -27,6 +28,10 @@ export const Users: CollectionConfig = {
       generateEmailSubject: () => 'Verify your email address',
       generateEmailHTML: VerifyEmail,
     },
+    forgotPassword: {
+      generateEmailSubject: () => 'Reset your password',
+      generateEmailHTML: ResetPasswordEmail
+    },
     maxLoginAttempts: 10,
   },
   fields: [
@@ -45,6 +50,14 @@ export const Users: CollectionConfig = {
         { label: 'Viewer', value: 'viewer' },
         { label: 'Contributor', value: 'contributor' },
       ],
+    },
+    {
+      name: 'password',
+      type: 'text',
+      hidden: true,
+      access: {
+        update: () => false,
+      },
     },
   ],
   timestamps: true,

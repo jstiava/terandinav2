@@ -80,16 +80,15 @@ export default function VerifyPage() {
               You&apos;re all set
             </h1>
             <p className="font-archivo text-sm leading-6 text-muted-foreground">
-              Your email has been verified successfully. Thanks for confirming
-              your address.
+              Your email has been verified successfully. Your account is active.
             </p>
           </div>
 
           <Link
-            href="/"
+            href="/admin"
             className="mt-2 inline-flex min-h-11 items-center justify-center rounded-full bg-foreground px-7 py-3 font-archivo text-sm font-medium text-background transition-opacity hover:opacity-80"
           >
-            Continue shopping
+            Click to login
           </Link>
         </div>
       </main>
