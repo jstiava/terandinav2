@@ -5,7 +5,7 @@ import { Db, MongoClient, ServerApiVersion } from 'mongodb';
 // const uri = "mongodb+srv://terandina_official:W1I4LC=ruw8!3pevaS0!@terandinacore.rf6bv.mongodb.net/?retryWrites=true&w=majority&appName=TerandinaCore";
 
 // const uri = "mongodb://127.0.0.1/"
-const uri = String(process.env.PRODUCTION_DATABASE_URL);
+const uri = String(process.env.DATABASE_URL);
 
 class Mongo {
   private static instance: Mongo | null;
@@ -17,11 +17,11 @@ class Mongo {
       readPreference: 'primary',
       serverApi: {
         version: ServerApiVersion.v1,
-        strict: process.env.NODE_ENV == 'production',
+        strict: process.env.NODE_ENV == 'production' ? true : undefined,
         deprecationErrors: true,
       },
-      ssl: process.env.NODE_ENV != 'production',
-      tls: process.env.NODE_ENV != 'production',
+      ssl: process.env.NODE_ENV == 'production' ? true : undefined,
+      tls: process.env.NODE_ENV == 'production' ? true : undefined,
       connectTimeoutMS: 10000,
       serverSelectionTimeoutMS: 15000,
     });
@@ -36,6 +36,7 @@ class Mongo {
         Mongo.instance = new Mongo();
         await Mongo.instance.connect();
       } catch (err) {
+        console.log(err)
         Mongo.instance = null;
         throw Error('Cannot connect to Mongo');
       }
