@@ -17,12 +17,13 @@ class Mongo {
       readPreference: 'primary',
       serverApi: {
         version: ServerApiVersion.v1,
-        // strict: true,
+        strict: process.env.NODE_ENV == 'production',
         deprecationErrors: true,
       },
-      ssl: false,
-      tls: false,
-      connectTimeoutMS: 50000,
+      ssl: process.env.NODE_ENV != 'production',
+      tls: process.env.NODE_ENV != 'production',
+      connectTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 15000,
     });
 
     (global as any)._mongoClientPromise = this.client;
