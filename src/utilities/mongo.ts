@@ -17,11 +17,8 @@ class Mongo {
       readPreference: 'primary',
       serverApi: {
         version: ServerApiVersion.v1,
-        strict: process.env.NODE_ENV == 'production' ? true : undefined,
         deprecationErrors: true,
       },
-      ssl: process.env.NODE_ENV == 'production' ? true : undefined,
-      tls: process.env.NODE_ENV == 'production' ? true : undefined,
       connectTimeoutMS: 10000,
       serverSelectionTimeoutMS: 15000,
     });
