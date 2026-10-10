@@ -29,8 +29,11 @@ export const archivo = Archivo({
   display: 'swap',
 })
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html className={`${canela.variable} ${archivo.variable}`} lang="en" suppressHydrationWarning>
       <head>
@@ -40,12 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <CartProviderComponent>
-          <>
-            <TopLoadingBar />
-            <Header />
-            {children}
-            <Footer />
-          </>
+          <>{children}</>
         </CartProviderComponent>
       </body>
     </html>

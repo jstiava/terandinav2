@@ -31,7 +31,7 @@ export function MobileNavigationMenu({
             <SheetTrigger asChild>
                 <Button
                     variant="ghost"
-                    className="aspect-square"
+                    className="aspect-square w-11 h-fit"
                 >
                     <MenuIcon />
                     <span className="sr-only">

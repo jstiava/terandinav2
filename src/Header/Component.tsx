@@ -63,7 +63,7 @@ export async function Header() {
             <div className="flex w-fit px-2">
               <Button {...{
                 variant: "ghost",
-                className: "aspect-square"
+                className: "aspect-square w-11 h-fit"
               }}>
                 <SearchIcon />
               </Button>
@@ -199,7 +199,7 @@ export async function Header() {
             <div className="flex w-fit px-2">
               <Button {...{
                 variant: "ghost",
-                className: "aspect-square"
+                className: "aspect-square w-11 h-fit"
               }}>
                 <SearchIcon />
               </Button>

@@ -18,6 +18,8 @@ import {
   Text,
   Font,
 } from '@react-email/components'
+import { PROD_WEBSITE_URI } from '@/emails/templates/VerificationEmail'
+import config from '@/emails/tailwind.config'
 // import tailwindConfig from '../tailwind.config'
 
 export default async function EmailRoot({
@@ -32,49 +34,36 @@ export default async function EmailRoot({
       <Html style={{
         boxSizing: 'content-box'
       }}>
-        {/*<Tailwind config={tailwindConfig as any}>*/}
-        {!isTest && (
-          <Head>
-            {/*<Font
-            fontFamily="Roboto"
-            fallbackFontFamily="Verdana"
-            webFont={{
-              url: 'https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2',
-              format: 'woff2',
+        <Head>
+          <Font
+            {...{
+              fontFamily: 'Canela',
+              fallbackFontFamily: 'Georgia',
+              webFont: {
+                url: `${PROD_WEBSITE_URI}/fonts/canelaweb-medium.ttf`,
+                format: 'truetype',
+              },
+              fontWeight: 500,
             }}
-            fontWeight={400}
-            fontStyle="normal"
-          />*/}
-          </Head>
-        )}
-        <Body
-          style={{
-            fontFamily: 'Helvetica',
-            backgroundColor: 'white',
-            margin: 0,
-          }}
-        >
-          <Container
-            style={{
-              width: '100%',
-              maxWidth: '700px',
-              margin: '1.5rem auto',
-              backgroundColor: '#ffffff',
+          />
+          <Font
+            {...{
+              fontFamily: 'Archivo',
+              fallbackFontFamily: 'Arial',
+              webFont: {
+                url: `${PROD_WEBSITE_URI}/fonts/archivo-regular.ttf`,
+                format: 'truetype',
+              },
+              fontWeight: 500,
             }}
-          >
-            <Container
-              style={{
-                width: 'calc(100% - 2rem)',
-                maxWidth: '640px',
-                margin: '0 auto',
-                backgroundColor: 'white',
-              }}
-            >
-              {children}
-            </Container>
-          </Container>
-        </Body>
-        {/*</Tailwind>*/}
+          />
+        </Head>
+        <Tailwind config={config}>
+
+          <Body className="bg-[#f6f9fc] py-2.5 font-sans" >
+            {children}
+          </Body>
+        </Tailwind>
       </Html>
     </>
   )

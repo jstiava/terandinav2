@@ -12,6 +12,12 @@ export type ProductType = {
 };
 
 export type CheckoutDetailsType = {
+    pickup: 'pickup' | 'delivery',
+    isSendMeMarketingEmails: boolean | null,
+    isShippingSameAsBillingAddress: boolean | null,
+    emailAddress: string | null,
+    billingAddress: StripeLocationDetails | null,
+    deliveryTo: StripeLocationDetails | null,
     paymentIntentId?: string,
     clientSecret?: string,
     totalDue: number,
@@ -37,16 +43,10 @@ export const CartProvider = createContext<{
     close: () => void;
     open: () => void;
     isOpen: boolean;
+    
+    checkoutDetails: Partial<CheckoutDetailsType> | null,
+    setCheckoutDetails: Dispatch<SetStateAction<Partial<CheckoutDetailsType> | null>>,
 
-    pickup: 'pickup' | 'delivery',
-    setPickup: Dispatch<SetStateAction<'pickup' | 'delivery'>>,
-
-    location: StripeLocationDetails | null,
-    setLocation: Dispatch<SetStateAction<StripeLocationDetails | null>>,
-    checkoutDetails: CheckoutDetailsType | null,
-    setCheckoutDetails: Dispatch<SetStateAction<CheckoutDetailsType | null>>,
-    tokenizedCartWithPaymentReady: string | null,
-    setTokenizedCartWithPaymentReady: Dispatch<SetStateAction<string | null>>,
     // @ts-ignore
 }>(null);
 
@@ -58,10 +58,7 @@ export default function CartProviderComponent({ children }: {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [cart, setCart] = useState<ProductType[] | null>(null);
-    const [pickup, setPickup] = useState<'pickup' | 'delivery'>('delivery');
-    const [location, setLocation] = useState<StripeLocationDetails | null>(null);
-    const [checkoutDetails, setCheckoutDetails] = useState<CheckoutDetailsType | null>(null);
-    const [tokenizedCartWithPaymentReady, setTokenizedCartWithPaymentReady] = useState<string | null>(null);
+    const [checkoutDetails, setCheckoutDetails] = useState<Partial<CheckoutDetailsType> | null>(null); 
 
 
     useLocalStorageCartEffect({
@@ -124,7 +121,7 @@ export default function CartProviderComponent({ children }: {
 
     return (
         <CartProvider.Provider value={{
-            cart, clear, add, remove, get, close, isOpen, open, pickup, setPickup, location, setLocation, checkoutDetails, setCheckoutDetails, tokenizedCartWithPaymentReady, setTokenizedCartWithPaymentReady
+            cart, clear, add, remove, get, close, isOpen, open, checkoutDetails, setCheckoutDetails
         }}>
             {children}
         </CartProvider.Provider>

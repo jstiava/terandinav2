@@ -1,18 +1,19 @@
 'use client'
 
 import { CartProvider } from '@/components/Cart/CartProviderComponent';
-import { Field } from '@/components/ui/field';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Field, FieldContent, FieldLabel } from '@/components/ui/field';
 import { cn } from '@/utilities/cn';
-import { ErrorIcon, FieldLabel } from '@payloadcms/ui';
 import { AddressElement, Elements } from '@stripe/react-stripe-js';
-import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
+import { loadStripe, StripeAddressElementChangeEvent, StripeElementsOptions } from '@stripe/stripe-js';
 import { useContext, useEffect, useState } from 'react';
 
 const STRIPE_PUBLISHABLE_KEY = "pk_test_51RbubdPf2y8hwgTueP49rSJA5wOI4dDCmG3sytOH7Tc8TcmLvnOkRcu3Kr3VxsOYw7VNvAHl8thXiiJgJR9ZPhdU00o6yQdbXK"
 const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 
-export default function StripeLocationAndTaxField({ paymentIntent }: {
-    paymentIntent: any
+export default function StripeLocationAndTaxField({ paymentIntent, onChange  }: {
+    paymentIntent: any,
+    onChange: ((event: StripeAddressElementChangeEvent) => any) | undefined
 }) {
 
     const { ...CartContext } = useContext(CartProvider);
@@ -52,12 +53,8 @@ export default function StripeLocationAndTaxField({ paymentIntent }: {
 
     return (
         <div className="flex flex-col gap-4 w-full">
-            <span {...{
-                className: 'text-xs'
-            }}>Location required to determine sales tax.</span>
             <div className={cn(
                 "flex flex-col w-full rounded-md border border-border p-4 gap-4",
-
             )}>
                 <Elements {...{
                     stripe: stripePromise,
@@ -76,12 +73,7 @@ export default function StripeLocationAndTaxField({ paymentIntent }: {
 
                             },
                         }}
-                        onChange={(e) => {
-                            CartContext.setLocation({
-                                ...e.value,
-                                complete: e.complete,
-                            } as any);
-                        }}
+                        onChange={onChange}
                     />
                 </Elements>
             </div>

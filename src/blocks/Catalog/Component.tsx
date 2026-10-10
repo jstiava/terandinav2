@@ -1,6 +1,6 @@
 'use server'
 
-import ProductCard from '@/app/(frontend)/products/ProductCard';
+import ProductCard from '@/app/(session)/(frontend)/products/ProductCard';
 import { CatalogBlock as CatalogBlockProps } from '@/payload-types'
 import configPromise from '@payload-config'
 import {

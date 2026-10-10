@@ -39,7 +39,7 @@ export default function CartDrawer() {
             <Drawer.DrawerTrigger asChild>
                 <Button {...{
                     variant: "ghost",
-                    className: `aspect-square`
+                    className: `aspect-square w-11 h-fit`
 
                 }}>
                     <ShoppingBasketIcon {...{

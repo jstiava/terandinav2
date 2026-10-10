@@ -4,14 +4,15 @@ import CheckoutCartInventory from './CheckoutCartInventory'
 import SquarePaymentBox from './SquarePaymentBox'
 import StripeLocationAndTaxField from './StripeLocationAndTaxField'
 import * as Accordion from '@/components/ui/accordion'
-import { CircleCheck, PlusIcon } from 'lucide-react'
+import { CircleCheck, MinusIcon, PlusIcon } from 'lucide-react'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { CartProvider } from '@/components/Cart/CartProviderComponent'
-import PickupDeliveryOptions from '../product/[slug]/PickupDeliveryOptions'
+import PickupDeliveryOptions from '../../(frontend)/product/[slug]/PickupDeliveryOptions'
 import { useRouter } from 'next/navigation'
 import { createPaymentIntent, patchPaymentIntentWithTaxes } from './StripePaymentIntentService'
 import { Field, FieldContent, FieldDescription, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
+import { Checkbox } from '@/components/ui/checkbox'
 
 const NATIVE_SUN_MERRILLVILLE_ADDRESS = {
   line1: '1978 Southlake Mall',
@@ -39,8 +40,6 @@ export default function CheckoutProcessAccordion() {
     'stable' | 'loading' | 'done'
   >('stable')
 
-  const [isPayNowDialogOpen, setIsPayNowDialogOpen] = useState()
-
   const handleConfirmPickupMethod = async (e: any) => {
     setConfirmLocationProcessState('loading')
 
@@ -50,7 +49,7 @@ export default function CheckoutProcessAccordion() {
       return
     }
 
-    if (CartContext.pickup == 'delivery' && !CartContext.location) {
+    if (CartContext.checkoutDetails?.pickup == 'delivery' && !CartContext.checkoutDetails) {
       alert('No address on the delivery')
       setConfirmLocationProcessState('stable')
       return
@@ -65,13 +64,13 @@ export default function CheckoutProcessAccordion() {
     patchPaymentIntentWithTaxes({
       items: CartContext.cart,
       customer_details:
-        CartContext.pickup == 'pickup'
+        CartContext.checkoutDetails.pickup == 'pickup'
           ? {
-              name: 'Native Sun LLC',
-              address: NATIVE_SUN_MERRILLVILLE_ADDRESS,
-              complete: true,
-            }
-          : CartContext.location!,
+            name: 'Native Sun LLC',
+            address: NATIVE_SUN_MERRILLVILLE_ADDRESS,
+            complete: true,
+          }
+          : CartContext.checkoutDetails.deliveryTo!,
       paymentIntentId: CartContext.checkoutDetails?.paymentIntentId,
     })
       .then((data) => {
@@ -146,15 +145,16 @@ export default function CheckoutProcessAccordion() {
           >
             <FieldLabel>Email address</FieldLabel>
             <FieldDescription>
-              Required to send you order confirmation and package tracking information. Not used for
-              marketing or newsletter.
+              Required to complete transaction, send an order confirmation email, and package tracking information only.
             </FieldDescription>
-            <FieldContent>
+            <FieldContent {...{
+              className: "flex flex-col gap-4"
+            }}>
               <Input
                 {...{
                   type: 'email',
                   onChange: (e) => {
-                    CartContext.setLocation((prev) => {
+                    CartContext.setCheckoutDetails((prev) => {
                       if (!prev) {
                         return null
                       }
@@ -167,6 +167,21 @@ export default function CheckoutProcessAccordion() {
                   },
                 }}
               />
+              <Field {...{
+                orientation: "horizontal",
+              }}>
+                <Checkbox {...{
+                  id: "send-marketing-emails",
+                  checked: CartContext.checkoutDetails?.isSendMeMarketingEmails ?? false,
+                  onCheckedChange: (checked) => CartContext.setCheckoutDetails(prev => ({
+                    ...(prev ?? {}),
+                    isSendMeMarketingEmails: checked == true
+                  }))
+                }} />
+                <FieldLabel htmlFor="send-marketing-emails">
+                  Send me marketing emails too. <span className='opacity-50'>(You can unsubscribe at any time)</span>
+                </FieldLabel>
+              </Field>
             </FieldContent>
           </Field>
           {/* <span className="debug">{JSON.stringify(CartContext.location)}</span> */}
@@ -175,8 +190,7 @@ export default function CheckoutProcessAccordion() {
               onClick: (e) => {
                 setValue((prev) => prev + 1)
               },
-              disabled: !CartContext || !CartContext.location || !CartContext.location.emailAddress,
-              // disabled: !CartContext || (CartContext.pickup == 'delivery' && (!CartContext.location || !CartContext.location.complete))
+              disabled: !CartContext || !CartContext.checkoutDetails || !CartContext.checkoutDetails.emailAddress,
             }}
           >
             Continue
@@ -188,32 +202,104 @@ export default function CheckoutProcessAccordion() {
       name: 'Pickup or Delivery information',
       slug: 'pickup_delivery_details',
       content: (
-        <div className="flex flex-col w-full p-2 gap-4 ">
-          <PickupDeliveryOptions />
+        <div className="flex flex-col w-full p-2 gap-8 ">
           {!CartContext.checkoutDetails && <span>No payment intent.</span>}
-          <div className={CartContext.pickup == 'delivery' ? 'block pb-10' : 'hidden'}>
+          <div className='block py-5'>
             {CartContext.checkoutDetails && (
-              <StripeLocationAndTaxField
-                {...{
-                  paymentIntent: CartContext.checkoutDetails,
-                }}
-              />
+              <div className="flex flex-col gap-4">
+                <h3 {...{
+                  className: 'font-bold'
+                }}>Billing address</h3>
+                <span {...{
+                  className: 'text-xs'
+                }}>Required to complete payment. For delivery, your address determines sales tax. For pickup orders, Indiana sales tax is applied.</span>
+                <StripeLocationAndTaxField
+                  {...{
+                    paymentIntent: CartContext.checkoutDetails,
+                    onChange: (e) => {
+                      CartContext.setCheckoutDetails((prev) => {
+                        return {
+                          ...(prev ?? {}),
+                          billingAddress: {
+                            ...e.value,
+                            complete: e.complete,
+                          },
+                          deliveryTo: {
+                            ...e.value,
+                            complete: e.complete,
+                          },
+                          isShippingSameAsBillingAddress: true
+                        }
+                      });
+                    }
+                  }}
+                />
+              </div>
             )}
           </div>
+          <PickupDeliveryOptions />
+          {CartContext.checkoutDetails?.pickup == 'delivery' && (
+            <div className="flex flex-col gap-4">
+              <h3 {...{
+                    className: 'font-bold'
+                  }}>Delivery address</h3>
+              <Field orientation="horizontal">
+                <Checkbox {...{
+                  id: "same-as-billing",
+                  checked: CartContext.checkoutDetails.isShippingSameAsBillingAddress ?? false,
+                  onCheckedChange: (value) => {
+                    CartContext.setCheckoutDetails(prev => ({
+                      ...(prev ?? {}),
+                      isShippingSameAsBillingAddress: value == true,
+                      deliveryTo: value == true ? prev?.billingAddress : null
+                    }))
+                  }
+                }} />
+                <FieldLabel htmlFor="same-as-billing">
+                  Shipping address is the same as billing address
+                </FieldLabel>
+              </Field>
+              {!CartContext.checkoutDetails.isShippingSameAsBillingAddress && (
+                <div className="flex flex-col gap-4">
+                  
+                  <span {...{
+                    className: 'text-xs'
+                  }}>For delivery, your address determines sales tax. For pickup orders, Indiana sales tax is applied.</span>
+                  <StripeLocationAndTaxField
+                    {...{
+                      paymentIntent: CartContext.checkoutDetails,
+                      onChange: (e) => {
+                        CartContext.setCheckoutDetails((prev) => {
+                          return {
+                            ...(prev ?? {}),
+                            deliveryTo: {
+                              ...e.value,
+                              complete: e.complete,
+                            }
+                          }
+                        });
+                      }
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          )}
           {/* <span className="debug">{JSON.stringify(CartContext.location)}</span> */}
           <Button
             {...{
               onClick: handleConfirmPickupMethod,
               disabled:
                 !CartContext ||
-                (CartContext.pickup == 'delivery' &&
-                  (!CartContext.location || !CartContext.location.complete)),
+                !CartContext.checkoutDetails?.pickup ||
+                (!CartContext.checkoutDetails?.billingAddress || !CartContext.checkoutDetails.billingAddress.complete) ||
+                (CartContext.checkoutDetails.pickup == 'delivery' && !CartContext.checkoutDetails.isShippingSameAsBillingAddress && (!CartContext.checkoutDetails.deliveryTo || !CartContext.checkoutDetails.deliveryTo.complete)),
             }}
           >
             {confirmLocationProcessState == 'stable' && (
               <>
                 Confirm{' '}
-                {CartContext.pickup == 'pickup' ? 'pickup at Merrillville' : 'delivery address'}
+                {CartContext.checkoutDetails?.pickup == 'pickup' ? 'pickup at Merrillville' : 'delivery address'}
               </>
             )}
             {confirmLocationProcessState == 'loading' && (
@@ -281,7 +367,7 @@ export default function CheckoutProcessAccordion() {
                 disabled: value < index,
               }}
             >
-              <div className="sticky top-14 flex w-full! bg-white border-b ">
+              <div className="sticky top-14 flex w-full! bg-white ">
                 <Accordion.AccordionTrigger
                   {...{
                     className: ' flex w-full! p-4',
@@ -298,7 +384,9 @@ export default function CheckoutProcessAccordion() {
                     {value > index ? (
                       <CircleCheck className="size-4 fill-[#009487] text-white" />
                     ) : (
-                      <PlusIcon className="size-4" />
+                      <>
+                        {value == index ? <MinusIcon className="size-4" /> : <PlusIcon className="size-4" />}
+                      </>
                     )}
                   </div>
                 </Accordion.AccordionTrigger>

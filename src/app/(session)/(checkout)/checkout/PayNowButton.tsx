@@ -22,25 +22,25 @@ export default function PayNowButton({ cardRef }: { cardRef: RefObject<any> }) {
       throw new Error('Total amount due is undefined or zero.')
     }
 
-    const billingContact = {
-      givenName: CartContext.location?.firstName,
-      familyName: CartContext.location?.lastName,
+    const squareBillingContact = {
+      givenName: CartContext.checkoutDetails.billingAddress?.firstName,
+      familyName: CartContext.checkoutDetails.billingAddress?.lastName,
       // phone: CartContext.phone_number,
       addressLines: [
-        CartContext.location?.address.line1,
-        CartContext.location?.address.line2,
+        CartContext.checkoutDetails.billingAddress?.address.line1,
+        CartContext.checkoutDetails.billingAddress?.address.line2,
       ].filter(Boolean),
-      city: CartContext.location?.address.city,
-      state: CartContext.location?.address.state,
-      postalCode: CartContext.location?.address.postal_code,
-      countryCode: CartContext.location?.address.country,
-      email: CartContext.location?.emailAddress,
+      city: CartContext.checkoutDetails.billingAddress?.address.city,
+      state: CartContext.checkoutDetails.billingAddress?.address.state,
+      postalCode: CartContext.checkoutDetails.billingAddress?.address.postal_code,
+      countryCode: CartContext.checkoutDetails.billingAddress?.address.country,
+      email: CartContext.checkoutDetails.billingAddress?.emailAddress,
     }
 
     const paymentReadyPayload = {
       amount: (CartContext.checkoutDetails?.totalDue / 100).toFixed(2),
       currencyCode: 'USD',
-      billingContact,
+      billingContact: squareBillingContact,
       intent: 'CHARGE',
       customerInitiated: true,
       sellerKeyedIn: false,
@@ -55,14 +55,11 @@ export default function PayNowButton({ cardRef }: { cardRef: RefObject<any> }) {
       return
     }
 
-    const token = tokenResult.token
-
-    CartContext.setTokenizedCartWithPaymentReady(token)
-
     const payment = await processSquarePayment({
       amountInCents: Number(paymentReadyPayload.amount) * 100,
       idempotencyKey: crypto.randomUUID(),
       sourceId: tokenResult.token,
+      billingContact: squareBillingContact
     })
 
     console.log({

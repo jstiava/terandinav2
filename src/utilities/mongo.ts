@@ -4,8 +4,8 @@ import { Db, MongoClient, ServerApiVersion } from 'mongodb';
 // const uri = String(process.env.MONGODB_URI);
 // const uri = "mongodb+srv://terandina_official:W1I4LC=ruw8!3pevaS0!@terandinacore.rf6bv.mongodb.net/?retryWrites=true&w=majority&appName=TerandinaCore";
 
-const uri = "mongodb://127.0.0.1/"
-// const uri = String(process.env.LOCAL_MONGODB_URI);
+// const uri = "mongodb://127.0.0.1/"
+const uri = String(process.env.PRODUCTION_DATABASE_URL);
 
 class Mongo {
   private static instance: Mongo | null;
