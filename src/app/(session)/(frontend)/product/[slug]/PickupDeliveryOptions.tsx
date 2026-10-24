@@ -17,7 +17,6 @@ export default function PickupDeliveryOptions() {
                 className: 'font-bold'
             }}>Delivery or pickup</h3>
             <div className="flex flex-wrap gap-2">
-
                 <Button {...{
                     variant: "outline",
                     className: cn("flex-col items-start justify-start p-1!  h-20 w-[45%] max-w-[10rem] text-xs gap-1 ",

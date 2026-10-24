@@ -31,6 +31,7 @@ const CHECKOUT_PROCESS_PROGRESSION = [
 ]
 
 export default function CheckoutProcessAccordion() {
+  
   const idempotencyKey = useRef(crypto.randomUUID())
   const { ...CartContext } = useContext(CartProvider)
   const router = useRouter()
@@ -39,6 +40,18 @@ export default function CheckoutProcessAccordion() {
   const [confirmLocationProcessState, setConfirmLocationProcessState] = useState<
     'stable' | 'loading' | 'done'
   >('stable')
+
+  useEffect(() => {
+    createPaymentIntent({
+      items: CartContext.cart!,
+      idempotencyKey: idempotencyKey.current,
+    })
+      .then((data) => CartContext.setCheckoutDetails(data))
+      .catch((err) => {
+        console.log(err)
+      })
+
+  }, [])
 
   const handleConfirmPickupMethod = async (e: any) => {
     setConfirmLocationProcessState('loading')
@@ -241,8 +254,8 @@ export default function CheckoutProcessAccordion() {
           {CartContext.checkoutDetails?.pickup == 'delivery' && (
             <div className="flex flex-col gap-4">
               <h3 {...{
-                    className: 'font-bold'
-                  }}>Delivery address</h3>
+                className: 'font-bold'
+              }}>Delivery address</h3>
               <Field orientation="horizontal">
                 <Checkbox {...{
                   id: "same-as-billing",
@@ -261,7 +274,7 @@ export default function CheckoutProcessAccordion() {
               </Field>
               {!CartContext.checkoutDetails.isShippingSameAsBillingAddress && (
                 <div className="flex flex-col gap-4">
-                  
+
                   <span {...{
                     className: 'text-xs'
                   }}>For delivery, your address determines sales tax. For pickup orders, Indiana sales tax is applied.</span>
@@ -329,16 +342,7 @@ export default function CheckoutProcessAccordion() {
     },
   ]
 
-  useEffect(() => {
-    createPaymentIntent({
-      items: CartContext.cart!,
-      idempotencyKey: idempotencyKey.current,
-    })
-      .then((data) => CartContext.setCheckoutDetails(data))
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+
 
   return (
     <div className="flex flex-col gap-4 w-full py-4">

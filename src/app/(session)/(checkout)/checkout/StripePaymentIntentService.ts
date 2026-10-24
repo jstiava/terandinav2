@@ -14,7 +14,7 @@ export async function createPaymentIntent(props: { items: ProductType[]; idempot
   })
 
   // TODO - SHIPPING FEE
-  const SHIPPING_FEE = 0
+  const SHIPPING_FEE = 0;
 
   const subtotal = calculateOrderAmount(props.items)
   const totalDue = subtotal

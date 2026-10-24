@@ -43,7 +43,7 @@ export const CartProvider = createContext<{
     close: () => void;
     open: () => void;
     isOpen: boolean;
-    
+
     checkoutDetails: Partial<CheckoutDetailsType> | null,
     setCheckoutDetails: Dispatch<SetStateAction<Partial<CheckoutDetailsType> | null>>,
 
@@ -58,12 +58,16 @@ export default function CartProviderComponent({ children }: {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [cart, setCart] = useState<ProductType[] | null>(null);
-    const [checkoutDetails, setCheckoutDetails] = useState<Partial<CheckoutDetailsType> | null>(null); 
+    const [checkoutDetails, setCheckoutDetails] = useState<Partial<CheckoutDetailsType> | null>(null);
 
 
     useLocalStorageCartEffect({
         cart, setCart
     });
+
+    useLocalStorageCheckoutDetailsEffect({
+        checkoutDetails, setCheckoutDetails
+    })
 
     const clear = () => {
         setCart([]);
@@ -129,12 +133,43 @@ export default function CartProviderComponent({ children }: {
 }
 
 
-const useLocalStorageCartEffect = ({ cart, setCart }: {
-    cart: ProductType[] | null,
-    setCart: Dispatch<SetStateAction<ProductType[] | null>>
+const useLocalStorageCheckoutDetailsEffect = ({ checkoutDetails, setCheckoutDetails }: {
+    checkoutDetails: Partial<CheckoutDetailsType> | null,
+    setCheckoutDetails: Dispatch<SetStateAction<Partial<CheckoutDetailsType> | null>>,
 }) => {
 
     useEffect(() => {
+        if (!checkoutDetails) {
+            const savedValue = localStorage.getItem("checkoutDetails");
+            if (savedValue) {
+                setCheckoutDetails(JSON.parse(savedValue));
+            }
+            else {
+                setCheckoutDetails({})
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!checkoutDetails) {
+            return;
+        }
+ 
+        localStorage.setItem("checkoutDetails", JSON.stringify(checkoutDetails))
+
+    }, [checkoutDetails])
+}
+
+
+
+const useLocalStorageCartEffect = ({ cart, setCart }: {
+    cart: ProductType[] | null,
+    setCart: Dispatch<SetStateAction<ProductType[] | null>>,
+}) => {
+
+    useEffect(() => {
+
+
         if (!cart) {
             const savedCart = localStorage.getItem("cart");
             if (savedCart) {

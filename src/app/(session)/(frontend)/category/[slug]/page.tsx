@@ -4,6 +4,7 @@ import { cache } from "react"
 import configPromise from '@payload-config'
 import { LivePreviewListener } from "@/components/LivePreviewListener"
 import { RenderBlocks } from "@/blocks/RenderBlocks"
+import CategoryNotFound from "@/app/(session)/(frontend)/category/[slug]/CategoryNotFound"
 
 type Args = {
     params: Promise<{
@@ -23,12 +24,12 @@ export default async function CategoryPage({ params: paramsPromise }: Args) {
     })
 
     if (!category) {
-        return null;
+        return <CategoryNotFound />;
     }
 
     return (
         <div className="flex flex-col w-full items-center h-fit pt-14">
-            <div className="relative flex items-start w-full max-w-[80rem]">
+            <div className="relative flex items-start w-full max-w-[140rem]">
                 <div className="flex flex-col w-full">
                     {category?.blocks && <RenderBlocks blocks={category.blocks} />}
                 </div>

@@ -1,11 +1,12 @@
-'use server'
+
+
 import React from 'react'
 import {
   Img,
   Section,
 } from '@react-email/components'
 
-export default async function Letterhead({
+export default function Letterhead({
   isTest = false,
   src,
   imageProps = {}
@@ -14,6 +15,8 @@ export default async function Letterhead({
   src?: string,
   imageProps?: any
 }) {
+
+  console.log('2a. Letterhead');
 
   return (
     <>

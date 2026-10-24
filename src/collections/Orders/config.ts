@@ -1,13 +1,5 @@
 import type { CollectionConfig } from 'payload'
-
 import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { generateSlug } from '@/utilities/generateSlug'
-import { Carousel } from '@/blocks/Carousel/config'
-import { Content } from '@/blocks/Content/config'
-import { generatePreviewPath } from '@/utilities/generatePreviewPath'
-import { Catalog } from '@/blocks/Catalog/config'
 
 
 export const Orders: CollectionConfig = {
@@ -53,8 +45,8 @@ export const Orders: CollectionConfig = {
                             required: true
                         },
                         {
-                            name: 'delivery_address_details',
-                            type: 'textarea',
+                            name: 'delivery_to',
+                            type: 'json',
                         },
                         {
                             name: 'status',
@@ -115,7 +107,10 @@ export const Orders: CollectionConfig = {
                                     options: [
                                         { label: "Action required", value: "action_required" },
                                         { label: "Progress made", value: "progress_made" },
-                                        { label: "Default", value: "default" }
+                                        { label: "Edit", value: "edit" },
+                                        { label: "Default", value: "default" },
+                                        { label: "Square", value: "square"},
+                                        { label: "Shippo", value: "shippo"}
                                     ]
                                 },
                                 {

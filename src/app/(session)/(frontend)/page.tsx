@@ -10,7 +10,6 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 
-
 export default async function HomePage(props: any) {
 
   const { isEnabled: draft } = await draftMode()
@@ -73,6 +72,10 @@ const queryPageBySlug = cache(async () => {
 export async function generateMetadata() {
 
   return {
-    title: "Terandina LLC"
+    title: "Home",
+    icons: {
+      icon: '/favicon.ico',
+      apple: '/apple-touch-icon.png',
+    },
   }
 }

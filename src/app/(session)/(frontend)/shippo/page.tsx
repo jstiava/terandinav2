@@ -5,7 +5,7 @@ import { Check, Truck } from "lucide-react";
 import Image from "next/image";
 
 
-export default async function ShippoTest() {
+export default async function ShippoTestPage() {
 
   const shipment = await generateShippoShipment({
     addressFrom: {

@@ -164,6 +164,22 @@ export interface Page {
   publishedAt?: string | null;
   slug: string;
   blocks?: (CarouselBlock | ContentBlock | RowBlock | CatalogBlock)[] | null;
+  /**
+   * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. Open Tailwind cheatsheet: https://nerdcave.com/tailwind-cheat-sheet.
+   */
+  className?: string | null;
+  /**
+   * The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block.
+   */
+  compiledStyles?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -283,9 +299,21 @@ export interface CarouselBlock {
           [k: string]: unknown;
         } | null;
         /**
-         * Tailwind classes for the carousel item.
+         * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).
          */
         className?: string | null;
+        /**
+         * The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block.
+         */
+        compiledStyles?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -313,7 +341,22 @@ export interface ContentBlock {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. Open Tailwind cheatsheet: https://nerdcave.com/tailwind-cheat-sheet.
+   */
   className?: string | null;
+  /**
+   * The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block.
+   */
+  compiledStyles?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
@@ -342,9 +385,21 @@ export interface RowBlock {
           [k: string]: unknown;
         } | null;
         /**
-         * Tailwind classes for the carousel item.
+         * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).
          */
         className?: string | null;
+        /**
+         * The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block.
+         */
+        compiledStyles?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -371,7 +426,25 @@ export interface CatalogBlock {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).
+   */
   className?: string | null;
+  /**
+   * The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block.
+   */
+  compiledStyles?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).
+   */
   classNamePerProduct?: string | null;
   id?: string | null;
   blockName?: string | null;
@@ -451,6 +524,13 @@ export interface Product {
     | {
         id?: string | null;
         amount: number;
+        /**
+         * Not required
+         */
+        saleAmount?: number | null;
+        /**
+         * Default 'usd'
+         */
         currency: string;
         stripe_price_id?: string | null;
         square_variant_id?: string | null;
@@ -518,8 +598,10 @@ export interface Email {
       | (
           | 'iam:invite_user_by_email'
           | 'iam:new_user_confirmed'
+          | 'iam:user_log_in'
           | 'user:with_successful_purchase_complete'
           | 'user:with_subscribe_to_newsletter'
+          | 'fulfillment:with_purchase_of_shipping_label'
           | 'editor:new_announcement_made'
         )
       | null;
@@ -557,7 +639,7 @@ export interface Email {
     };
     [k: string]: unknown;
   } | null;
-  template?: ('order_receipt' | 'custom') | null;
+  template?: ('order_fufillment_receipt' | 'custom') | null;
   blocks?: (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[] | null;
   updatedAt: string;
   createdAt: string;
@@ -654,7 +736,15 @@ export interface Order {
   id: string;
   name: string;
   delivery_type: 'pickup' | 'delivery';
-  delivery_address_details?: string | null;
+  delivery_to?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   status: 'incomplete' | 'paid' | 'en-route' | 'received' | 'triggered_return' | 'refunded';
   cart?:
     | {
@@ -667,7 +757,7 @@ export interface Order {
     | null;
   history?:
     | {
-        type?: ('action_required' | 'progress_made' | 'default') | null;
+        type?: ('action_required' | 'progress_made' | 'edit' | 'default' | 'square' | 'shippo') | null;
         description: string;
         id?: string | null;
       }[]
@@ -686,6 +776,7 @@ export interface Crm {
   fullName?: string | null;
   emailAddress?: string | null;
   phoneNumber?: string | null;
+  isTest: boolean;
   updatedAt: string;
   createdAt: string;
 }
@@ -841,6 +932,8 @@ export interface PagesSelect<T extends boolean = true> {
         row?: T | RowBlockSelect<T>;
         catalog?: T | CatalogBlockSelect<T>;
       };
+  className?: T;
+  compiledStyles?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -856,6 +949,7 @@ export interface CarouselBlockSelect<T extends boolean = true> {
         image?: T;
         richText?: T;
         className?: T;
+        compiledStyles?: T;
         id?: T;
       };
   id?: T;
@@ -868,6 +962,7 @@ export interface CarouselBlockSelect<T extends boolean = true> {
 export interface ContentBlockSelect<T extends boolean = true> {
   richText?: T;
   className?: T;
+  compiledStyles?: T;
   id?: T;
   blockName?: T;
 }
@@ -882,6 +977,7 @@ export interface RowBlockSelect<T extends boolean = true> {
         image?: T;
         richText?: T;
         className?: T;
+        compiledStyles?: T;
         id?: T;
       };
   id?: T;
@@ -905,6 +1001,7 @@ export interface CatalogBlockSelect<T extends boolean = true> {
         id?: T;
       };
   className?: T;
+  compiledStyles?: T;
   classNamePerProduct?: T;
   id?: T;
   blockName?: T;
@@ -1097,6 +1194,7 @@ export interface ProductsSelect<T extends boolean = true> {
     | {
         id?: T;
         amount?: T;
+        saleAmount?: T;
         currency?: T;
         stripe_price_id?: T;
         square_variant_id?: T;
@@ -1119,7 +1217,7 @@ export interface ProductsSelect<T extends boolean = true> {
 export interface OrdersSelect<T extends boolean = true> {
   name?: T;
   delivery_type?: T;
-  delivery_address_details?: T;
+  delivery_to?: T;
   status?: T;
   cart?:
     | T
@@ -1164,6 +1262,7 @@ export interface CrmSelect<T extends boolean = true> {
   fullName?: T;
   emailAddress?: T;
   phoneNumber?: T;
+  isTest?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1359,6 +1458,13 @@ export interface Footer {
 export interface Setting {
   id: string;
   frontPage: string | Page;
+  variables?:
+    | {
+        key?: string | null;
+        value?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   socialAccounts?: {
     /**
      * HTTPS Link to your account
@@ -1466,6 +1572,13 @@ export interface FooterSelect<T extends boolean = true> {
  */
 export interface SettingsSelect<T extends boolean = true> {
   frontPage?: T;
+  variables?:
+    | T
+    | {
+        key?: T;
+        value?: T;
+        id?: T;
+      };
   socialAccounts?:
     | T
     | {
@@ -1485,7 +1598,37 @@ export interface SettingsSelect<T extends boolean = true> {
  */
 export interface MediaBlock {
   media: string | Media;
-  alignment: 'float-left' | 'float-right' | 'mx-auto block' | 'w-full';
+  /**
+   * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. Open Tailwind cheatsheet: https://nerdcave.com/tailwind-cheat-sheet.
+   */
+  className?: string | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block.
+   */
+  compiledStyles?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';

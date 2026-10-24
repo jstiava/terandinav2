@@ -190,7 +190,10 @@ export const Products: CollectionConfig = {
                             label: "Sizes and inventory",
                             type: "array",
                             admin: {
-
+                                initCollapsed: true,
+                                components: {
+                                    RowLabel: '@/collections/Products/RowLabels#SizeRowLabel',
+                                },
                             },
                             fields: [
                                 {
@@ -250,6 +253,10 @@ export const Products: CollectionConfig = {
                             name: 'prices',
                             label: "Prices (USD)",
                             admin: {
+                                initCollapsed: true,
+                                 components: {
+                                    RowLabel: '@/collections/Products/RowLabels#PriceRowLabel',
+                                },
                                 description: "Two-way integration w/ Stripe or Square"
                             },
                             type: 'array',
@@ -263,17 +270,27 @@ export const Products: CollectionConfig = {
                                 },
                                 {
                                     name: 'amount',
+                                    label: "Amount (e.g. 135.00)",
                                     type: 'number',
                                     required: true,
                                 },
                                 {
+                                    name: 'saleAmount',
+                                    label: "Sale Amount (e.g. 135.00)",
+                                    admin: {
+                                        description: "Not required"
+                                    },
+                                    type: 'number',
+                                    required: false,
+                                },
+                                {
                                     name: 'currency',
+                                    admin: {
+                                        description: "Default 'usd'",
+                                    },
                                     type: 'text',
                                     required: true,
                                     defaultValue: 'usd',
-                                    admin: {
-                                        hidden: true
-                                    }
                                 },
                                 {
                                     name: 'stripe_price_id',

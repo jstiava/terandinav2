@@ -14,7 +14,7 @@ export const blockComponents = {
 
 export const RenderEmailBlocks: React.FC<{
   blocks: Email['blocks'],
-  variables?: Record<string, string | number>
+  variables?: Record<string, any>
 }> = (props) => {
 
   const { blocks, variables = {} } = props
@@ -43,7 +43,13 @@ export const RenderEmailBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
-              return <Block key={`${index}_${block.blockName}`} {...(block as any)} variables={variables} />
+              return <Block
+              // @ts-ignore
+                key={`${index}_${block.blockName ?? "no_id"}`}
+                {...{
+                  variables,
+                  ...block,
+                }} />
             }
           }
           return null

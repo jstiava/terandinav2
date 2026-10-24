@@ -20,7 +20,7 @@ export default function ProductProviderComponent({ children, product }: {
     product: Product
 }) {
 
-    const [size, setSize] = useState<Size | null>(product.sizes && product.sizes.length > 0 ? product.sizes[0] : null);
+    const [size, setSize] = useState<Size | null>(product.sizes && product.sizes.length > 0 ? product.sizes.find(x => (x.count ?? 0) > 0) ?? null : null);
     const [quantity, setQuantity] = useState(1);
 
     const changeSize = (newSize: Size) => {

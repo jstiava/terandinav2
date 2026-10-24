@@ -3,9 +3,6 @@
 import { $isNodeSelection } from 'lexical'
 
 import type { RelationshipFeatureProps } from '../server/index.js'
-
-// import { slashMenuBasicGroupWithItems } from '../../shared/slashMenu/basicGroup.js'
-// import { toolbarAddDropdownGroupWithItems } from '../../shared/toolbar/addDropdownGroup.js'
 import { INSERT_RELATIONSHIP_WITH_DRAWER_COMMAND } from './drawer/commands.js'
 import { $isRelationshipNode, RelationshipNode } from './nodes/RelationshipNode.js'
 import { HashtagTriggerPlugin, RelationshipPlugin } from './plugins/index.js'

@@ -39,18 +39,21 @@ const CommandInputWithStyles = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
-  <CommandPrimitive.Input
+ <div className="flex w-full h-fit">
+   <CommandPrimitive.Input
     ref={ref}
     style={{
       display: 'flex',
-      height: "11px",
+      height: "24px !important",
       width: "100%",
       borderRadius: '0.5rem',
       background: 'none',
-      padding: '0.5rem'
+      padding: '2px',
+      fontSize: "1rem"
     }}
     {...props}
   />
+ </div>
 ))
 
 CommandInputWithStyles.displayName = CommandPrimitive.Input.displayName

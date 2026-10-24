@@ -12,7 +12,11 @@ import { Textarea } from '@/components/ui/textarea'
 
 export default function SubscribeToNewsletterButton() {
 
-    const isMd = useMediaQuery("(min-width: 768px)")
+    const isMd = useMediaQuery("(min-width: 768px)");
+
+    const handleSubscrbe = (e : any) => {
+        // handleSub
+    }
 
     return (
         <div className={cn(
@@ -60,7 +64,7 @@ export default function SubscribeToNewsletterButton() {
                                             rows: 4
                                         }} /></FieldContent>
                                     </Field>
-                                    <Button>Subscribe</Button>
+                                    <Button onClick={handleSubscrbe}>Subscribe</Button>
                                 </div>
                             </div>
                         </Drawer.DrawerContent>

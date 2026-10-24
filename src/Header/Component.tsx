@@ -9,6 +9,7 @@ import { MobileNavigationMenu } from './MobileNavigationMenu';
 import { cn } from '@/utilities/cn';
 import { StickyHeader } from './StickyHeader';
 import TopLoadingBar from '@/components/LoadingBar';
+import SearchDrawer from '@/Header/SearchDrawer';
 
 
 const MOBILE_MENU_ITEM_PROPS = {
@@ -43,7 +44,7 @@ export async function Header() {
     <div className="flex w-full h-fit z-[5]">
       <StickyHeader>
 
-        <div className="flex justify-between items-center max-w-[120rem] w-full">
+        <div className="flex justify-between items-center max-w-[130rem] w-full">
 
 
           <a {...{
@@ -61,12 +62,7 @@ export async function Header() {
           {/* Mobile nav bar */}
           <div className="flex sm:hidden w-fit px-0">
             <div className="flex w-fit px-2">
-              <Button {...{
-                variant: "ghost",
-                className: "aspect-square w-11 h-fit"
-              }}>
-                <SearchIcon />
-              </Button>
+              <SearchDrawer />
               <MobileNavigationMenu>
                 <nav className="flex flex-col p-6 pt-14">
                   {headerData.navItems?.map(item => {
@@ -197,12 +193,7 @@ export async function Header() {
             })}
 
             <div className="flex w-fit px-2">
-              <Button {...{
-                variant: "ghost",
-                className: "aspect-square w-11 h-fit"
-              }}>
-                <SearchIcon />
-              </Button>
+              <SearchDrawer />
               <CartDrawer />
             </div>
           </div>

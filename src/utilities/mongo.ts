@@ -21,6 +21,9 @@ class Mongo {
       },
       connectTimeoutMS: 10000,
       serverSelectionTimeoutMS: 15000,
+      maxPoolSize: 10,
+      minPoolSize: 0,
+      maxIdleTimeMS: 60000,
     });
 
     (global as any)._mongoClientPromise = this.client;

@@ -25,18 +25,21 @@ export default function ProductSizeSelector() {
             {product.sizes?.map(size => {
 
                 const isSelectedSize = selectedSize?.id == size.id;
+                const isOutOfStock = !size.count || size.count <= 0;
 
                 return (
                     <Button
                         key={size.id}
                         {...{
                             variant: "custom",
-                            className: cn("relative flex flex-1 h-8 min-w-0 ",
-                                isSelectedSize ? 'border bg-primary/25 hover:bg-primary/50 border-black' : 'border hover:bg-primary/25 border-primary/25'
+                            className: cn("relative flex w-[calc(33%-0.34rem)] h-8 min-w-0 ",
+                                isSelectedSize ? 'border bg-primary/25 hover:bg-primary/50 border-black' : 'border hover:bg-primary/25 border-primary/25',
+                                isOutOfStock && 'bg-border'
                             ),
                             onClick: e => {
                                 changeSize(size);
-                            }
+                            },
+                            disabled: isOutOfStock
                         }}
                     >
                         {isSelectedSize && (
@@ -55,7 +58,7 @@ export default function ProductSizeSelector() {
                         <div className="flex w-full h-full items-center justify-center">
                             <span {...{
                                 className: 'text-xs'
-                            }}>{size.label == 'custom' ? size.customLabel : size.label ? SIZE_PRESET_LABELS[size.label] : 'custom'}</span>
+                            }}>{size.label == 'custom' ? size.customLabel : size.label ? SIZE_PRESET_LABELS[size.label] : 'custom'} {`(${size.count ?? 0} in stock)`}</span>
                         </div>
                     </Button>
                 )

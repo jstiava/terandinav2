@@ -77,7 +77,7 @@ const config: TailwindConfig = {
         sans: ['Archivo', 'Arial', 'sans-serif'],
         serif: ['Canela', 'Georgia', 'serif'],
         canela: ['Canela', 'Georgia', 'serif'],
-        archivo: ['Archivo', 'Arial', 'sans-serif'],
+        archivo: ['var(--font-archivo)', 'Arial', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

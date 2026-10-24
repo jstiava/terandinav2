@@ -9,6 +9,7 @@ import React, { cache } from 'react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import ProductCard from './ProductCard'
+import { PayloadRedirects } from '@/components/PayloadRedirects'
 
 
 
@@ -19,9 +20,19 @@ export default async function ProductsPage(props: any) {
 
     const products = await getAllProducts();
 
+    if (page) {
+
+        return (
+            <div id="content" className="flex flex-col w-full gap-0">
+                {draft && <LivePreviewListener />}
+                {page.blocks && <RenderBlocks blocks={page.blocks} />}
+            </div>
+        )
+    }
+
     return (
         <div className="flex items-center justify-start flex-col gap-0 h-fit">
-            <div className="flex flex-col items-center w-full max-w-[80rem] py-10 gap-4">
+            <div className="flex flex-col items-center w-full max-w-[140rem] py-10 gap-4">
 
                 <h1 {...{
                     className: "font-canela text-4xl py-6"
@@ -43,9 +54,6 @@ export default async function ProductsPage(props: any) {
                     })}
 
                 </div>
-
-
-                {page?.blocks && <RenderBlocks blocks={page.blocks} />}
             </div>
             {draft && <LivePreviewListener />}
         </div>

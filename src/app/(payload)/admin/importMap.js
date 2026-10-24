@@ -10,8 +10,8 @@ import { ParagraphFeatureClient as ParagraphFeatureClient_e70f5e05f09f93e00b997e
 import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
-import { BlocksFeatureClient as BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { LinkFeatureClient as LinkFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
+import { BlocksFeatureClient as BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { default as default_de57da0b4cfd9d20389b404c8b599064 } from '@/components/QuickAddPage'
 import { default as default_59490db9e66c19f9cf4bf7e683f0602b } from '@/components/MakeFrontPageButton'
 import { RelationshipFeatureClient as RelationshipFeatureClient_2a7d3a8cf79b5142a4e00d4f4e16007f } from '@/features/relationship-feature/client'
@@ -20,12 +20,14 @@ import { default as default_7f4f6af851e0ebfcda834ac8fbe7e42e } from '@/collectio
 import { FolderTableCell as FolderTableCell_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 import { FolderField as FolderField_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 import { default as default_2979d1dbb3757fd81d66d87687864f9f } from '@/collections/Products/ProductImagesCell'
+import { SizeRowLabel as SizeRowLabel_2f4136c38f0a6f09b24f4fe025cf543b } from '@/collections/Products/RowLabels'
+import { PriceRowLabel as PriceRowLabel_2f4136c38f0a6f09b24f4fe025cf543b } from '@/collections/Products/RowLabels'
 import { default as default_7d5bbd8350f54c60286c004a91066295 } from '@/collections/Products/CustomProductView'
 import { FolderTypeField as FolderTypeField_3817bf644402e67bfe6577f60ef982de } from '@payloadcms/ui'
 import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
 import { default as default_d3e265f969641a4ccf3d5a195904e268 } from '@/graphics/Logo'
 import { default as default_8a7ab0eb7ab5c511aba12e68480bfe5e } from '@/components/BeforeLogin'
-import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
+import { default as default_035a063f0e4325a280e3cc815d2ec5d7 } from '@/components/AfterDashboard'
 import { default as default_aa936f6d4bfcfa210342637718f4c629 } from '@/components/AfterNavLinks'
 import { UploadthingClientUploadHandler as UploadthingClientUploadHandler_749dcaa11bb61b873d113cb6c609bc10 } from '@payloadcms/storage-uploadthing/client'
 
@@ -42,8 +44,8 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#UnderlineFeatureClient": UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
-  "@payloadcms/richtext-lexical/client#BlocksFeatureClient": BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#LinkFeatureClient": LinkFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
+  "@payloadcms/richtext-lexical/client#BlocksFeatureClient": BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/components/QuickAddPage#default": default_de57da0b4cfd9d20389b404c8b599064,
   "@/components/MakeFrontPageButton#default": default_59490db9e66c19f9cf4bf7e683f0602b,
   "@/features/relationship-feature/client#RelationshipFeatureClient": RelationshipFeatureClient_2a7d3a8cf79b5142a4e00d4f4e16007f,
@@ -52,12 +54,14 @@ export const importMap = {
   "@payloadcms/ui/rsc#FolderTableCell": FolderTableCell_ab83ff7e88da8d3530831f296ec4756a,
   "@payloadcms/ui/rsc#FolderField": FolderField_ab83ff7e88da8d3530831f296ec4756a,
   "@/collections/Products/ProductImagesCell#default": default_2979d1dbb3757fd81d66d87687864f9f,
+  "@/collections/Products/RowLabels#SizeRowLabel": SizeRowLabel_2f4136c38f0a6f09b24f4fe025cf543b,
+  "@/collections/Products/RowLabels#PriceRowLabel": PriceRowLabel_2f4136c38f0a6f09b24f4fe025cf543b,
   "@/collections/Products/CustomProductView#default": default_7d5bbd8350f54c60286c004a91066295,
   "@payloadcms/ui#FolderTypeField": FolderTypeField_3817bf644402e67bfe6577f60ef982de,
   "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,
   "@/graphics/Logo#default": default_d3e265f969641a4ccf3d5a195904e268,
   "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e,
-  "@/components/BeforeDashboard#default": default_1a7510af427896d367a49dbf838d2de6,
+  "@/components/AfterDashboard#default": default_035a063f0e4325a280e3cc815d2ec5d7,
   "@/components/AfterNavLinks#default": default_aa936f6d4bfcfa210342637718f4c629,
   "@payloadcms/storage-uploadthing/client#UploadthingClientUploadHandler": UploadthingClientUploadHandler_749dcaa11bb61b873d113cb6c609bc10
 }

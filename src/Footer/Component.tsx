@@ -1,36 +1,20 @@
 import { getCachedGlobal } from '@/utilities/getGlobals'
-import Link from 'next/link'
 import React from 'react'
 
 import type { Footer } from '@/payload-types'
 
-import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
-import { CMSLink } from '@/components/Link'
-import { Logo } from '@/components/Logo/Logo'
 import { Button } from '@/components/ui/button'
-import { Field, FieldContent, FieldDescription, FieldLabel } from '@/components/ui/field'
-import { Input } from '@/components/ui/input'
 import { Accordion, AccordionContent, AccordionTrigger } from '@/components/ui/accordion'
-import { AccordionHeader, AccordionItem } from '@radix-ui/react-accordion'
-import { MinusIcon, PlusIcon } from 'lucide-react'
+import { AccordionItem } from '@radix-ui/react-accordion'
+import { PlusIcon } from 'lucide-react'
 import { cn } from '@/utilities/cn'
-import * as Drawer from '@/components/ui/drawer'
-import SubscribeToNewsletterButton from './SubcribeToNewsletterButton'
+import SubscribeToNewsletterButton from './SubscribeToNewsletterButton'
 
-
-const FOOTER_SEED = [
-  {
-    label: "Help"
-  },
-  {
-    label: "Cookie Policy & Terms"
-  }
-]
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
 
   return (
-    <footer className="flex flex-col items-center w-full h-fit ">
+    <footer className="flex flex-col items-center w-full h-fit py-8 md:py-12 ">
 
 
 
@@ -74,7 +58,7 @@ export async function Footer() {
                                 }}
                               >
                                 <a {...{
-                                  href: childItem.menuItem.reference ? (childItem.menuItem.reference?.value as any).slug : childItem.menuItem.url,
+                                  href: childItem.menuItem.type == 'reference' ? (childItem.menuItem.reference?.value as any).slug : childItem.menuItem.url,
                                   className: 'flex justify-start! w-full text-start! text-black'
                                 }}>{childItem.menuItem.label}</a>
                               </Button>
@@ -117,7 +101,7 @@ export async function Footer() {
                               }}
                             >
                               <a {...{
-                                href: childItem.menuItem.reference ? (childItem.menuItem.reference?.value as any).slug : childItem.menuItem.url,
+                                href: childItem.menuItem.type == 'reference' ? (childItem.menuItem.reference?.value as any).slug : childItem.menuItem.url,
                                 className: 'flex justify-start! w-full text-start!'
                               }}>{childItem.menuItem.label}</a>
                             </Button>

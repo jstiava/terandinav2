@@ -1,5 +1,6 @@
 import tailwindcssAnimate from 'tailwindcss-animate'
 import typography from '@tailwindcss/typography'
+import lineClamp from '@tailwindcss/line-clamp'
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -10,53 +11,80 @@ const config = {
     './src/**/*.{ts,tsx}',
   ],
   darkMode: 'class',
-  plugins: [tailwindcssAnimate, typography],
+  plugins: [tailwindcssAnimate, typography, lineClamp, ({ addVariant }) => {
+    for (let i = 1; i <= 6; i++) {
+      addVariant(`h${i}`, `& h${i}`)
+    }
+  },],
   prefix: '',
   safelist: [
     {
-      pattern: /w-full/,
+      pattern: /^flex$/,
+      variants: ['sm', 'md', 'lg', 'xl'],
+    },
+    {
+      pattern: /^flex-row$/,
+      variants: ['sm', 'md', 'lg', 'xl'],
+    },
+    {
+      pattern: /^flex-col$/,
+      variants: ['sm', 'md', 'lg', 'xl'],
+    },
+    {
+      pattern: /^w-fit$/,
+      variants: ['sm', 'md', 'lg', 'xl'],
+    },
+    {
+      pattern: /^w-full$/,
       variants: ["sm", "md", "lg", "xl"],
     },
     {
-      pattern: /grid-cols-(1|2|3|4)/,
-      variants: ["sm", "md", "lg", "xl", "2xl"],
+      pattern: /^items-center$/,
+      variants: ['sm', 'md', 'lg', 'xl'],
     },
     {
-      pattern: /^(p|pt|pb|pl|pr)-(0|1|2|3|4|5|6)$/,
-      variants: ["sm", "md", "lg", "xl", "2xl"],
+      pattern: /^text-center$/,
+      variants: ['sm', 'md', 'lg', 'xl'],
     },
-    {
-      pattern: /^gap-(0|1|2|3|4|5|6)$/,
-      variants: ["sm", "md", "lg", "xl", "2xl"],
-    },
+    // {
+    //   pattern: /grid-cols-(1|2|3|4)/,
+    //   variants: ["sm", "md", "lg", "xl", "2xl"],
+    // },
+    // {
+    //   pattern: /^(p|pt|pb|pl|pr)-(0|1|2|3|4|5|6)$/,
+    //   variants: ["sm", "md", "lg", "xl", "2xl"],
+    // },
+    // {
+    //   pattern: /^gap-(0|1|2|3|4|5|6)$/,
+    //   variants: ["sm", "md", "lg", "xl", "2xl"],
+    // },
 
-    "flex",
-    "grid",
-    "flex-wrap",
+    // "grid",
+    // "flex-wrap",
 
-    "capitalize",
-    "normal-case",
-    "uppercase",
+    // "capitalize",
+    // "normal-case",
+    // "uppercase",
 
-    "bg-[--terandina-teal]/0",
-    "bg-[--terandina-teal]/25",
-    "bg-[--terandina-teal]/50",
-    "bg-[--terandina-teal]/75",
-    "bg-[--terandina-teal]",
+    // "bg-[--terandina-teal]/0",
+    // "bg-[--terandina-teal]/25",
+    // "bg-[--terandina-teal]/50",
+    // "bg-[--terandina-teal]/75",
+    // "bg-[--terandina-teal]",
 
-    "bg-[--terandina-gold]/0",
-    "bg-[--terandina-gold]/25",
-    "bg-[--terandina-gold]/50",
-    "bg-[--terandina-gold]/75",
-    "bg-[--terandina-gold]",
+    // "bg-[--terandina-gold]/0",
+    // "bg-[--terandina-gold]/25",
+    // "bg-[--terandina-gold]/50",
+    // "bg-[--terandina-gold]/75",
+    // "bg-[--terandina-gold]",
 
-    "bg-[--terandina-clay]/0",
-    "bg-[--terandina-clay]/25",
-    "bg-[--terandina-clay]/50",
-    "bg-[--terandina-clay]/75",
-    "bg-[--terandina-clay]",
+    // "bg-[--terandina-clay]/0",
+    // "bg-[--terandina-clay]/25",
+    // "bg-[--terandina-clay]/50",
+    // "bg-[--terandina-clay]/75",
+    // "bg-[--terandina-clay]",
 
-    "backdrop-blur-md"
+    // "backdrop-blur-md"
   ],
   theme: {
     container: {

@@ -1,24 +1,15 @@
 'use server'
-import React, { cache, ReactNode } from 'react'
+
+import React, { ReactNode } from 'react'
 import {
   Body,
-  Column,
-  Container,
   Head,
-  Heading,
-  Hr,
   Html,
-  Img,
-  Link,
-  Preview,
-  Row,
-  Section,
-  Tailwind,
-  Button,
-  Text,
   Font,
+  Tailwind,
 } from '@react-email/components'
 import { PROD_WEBSITE_URI } from '@/emails/templates/VerificationEmail'
+import { draftMode } from 'next/headers'
 import config from '@/emails/tailwind.config'
 // import tailwindConfig from '../tailwind.config'
 
@@ -29,6 +20,9 @@ export default async function EmailRoot({
   children: ReactNode
   isTest?: boolean
 }) {
+
+  console.log('2. Entering EmailRoot');
+
   return (
     <>
       <Html style={{
@@ -59,7 +53,6 @@ export default async function EmailRoot({
           />
         </Head>
         <Tailwind config={config}>
-
           <Body className="bg-[#f6f9fc] py-2.5 font-sans" >
             {children}
           </Body>

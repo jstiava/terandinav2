@@ -59,7 +59,8 @@ export default function PayNowButton({ cardRef }: { cardRef: RefObject<any> }) {
       amountInCents: Number(paymentReadyPayload.amount) * 100,
       idempotencyKey: crypto.randomUUID(),
       sourceId: tokenResult.token,
-      billingContact: squareBillingContact
+      cart: CartContext.cart,
+      checkoutDetails: CartContext.checkoutDetails
     })
 
     console.log({

@@ -17,17 +17,17 @@ import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-import { Emails } from './collections/Emails/config'
-import { Settings } from './collections/Settings'
+import { Emails, sesClient } from './collections/Emails/config'
 
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
-import { SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2'
+import { SendEmailCommand } from '@aws-sdk/client-sesv2'
 import { Products } from './collections/Products/config'
 import { Categories } from './collections/Categories/config'
 import { Media } from './collections/Media/config'
 import { Orders } from './collections/Orders/config'
 import { Parcels } from './collections/Parcels/config'
 import { CRM } from '@/collections/CRM/config'
+import { Settings } from '@/collections/Settings/config'
 
 const collections = [
   Pages,
@@ -43,14 +43,6 @@ const collections = [
 
 const globals = [Header, Footer, Settings]
 
-const sesClient = new SESv2Client({
-  region: process.env.AWS_SES_REGION ?? 'us-east-1',
-  credentials: {
-    accessKeyId: process.env.AWS_SES_ACCESS_KEY!,
-    secretAccessKey: process.env.AWS_SES_SECRET_KEY!,
-  },
-})
-
 export default buildConfig({
   admin: {
     meta: {
@@ -65,8 +57,8 @@ export default buildConfig({
     },
     autoRefresh: true,
     components: {
-      beforeNavLinks: ['@/components/AfterNavLinks'],
-      beforeDashboard: ['@/components/BeforeDashboard'],
+      beforeNavLinks: ['@/components/AfterNavLinks'], 
+      afterDashboard: ['@/components/AfterDashboard'],
       graphics: {
         Logo: '@/components/BeforeLogin',
         Icon: '@/graphics/Logo',

@@ -15,8 +15,53 @@ import { EmailButton } from '@/emails/blocks/Button/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { EmailImage } from '@/emails/blocks/Image/config'
 import { ACTION_TRIGGERS_WITH_VARIABLES } from '@/collections/Emails/triggers'
+import { SendEmailCommand, SESv2Client } from '@aws-sdk/client-sesv2'
+import nodemailer from 'nodemailer' 
+import OrderFulfillmentRequest from '@/emails/templates/OrderFulfillmentRequest'
+import OrderFulfillmentRequestPreview from '@/emails/preview/OrderFulfillmentRequestPreview'
+import { EmailButtonBlock, EmailContentBlock, EmailImageBlock } from '@/payload-types'
 
 const EMAIL_BLOCKS = [EmailContent, EmailButton, EmailImage]
+export type EmailBlockType = (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[] | null | undefined
+
+export const sesClient = new SESv2Client({
+  region: process.env.AWS_SES_REGION ?? 'us-east-1',
+  credentials: {
+    accessKeyId: process.env.AWS_SES_ACCESS_KEY!,
+    secretAccessKey: process.env.AWS_SES_SECRET_KEY!,
+  },
+})
+
+
+export const NodemailerEmailTransporter = nodemailer.createTransport({
+  SES: {
+    sesClient,
+    SendEmailCommand,
+  },
+})
+
+
+export const EMAIL_TEMPLATES = [
+  // { 
+  //   label: "Order Shipping Receipt", 
+  //   value: "order_shipping_receipt", 
+  //   Component: OrderShippingReceipt,
+  //   variables: OrderShippingReceipt.PreviewProps,
+
+  // },
+  { 
+    label: "Order Fufillment Receipt", 
+    value: "order_fufillment_receipt", 
+    Component: OrderFulfillmentRequest,
+    variables: OrderFulfillmentRequestPreview.PreviewProps.variables
+  },
+  { 
+    label: "Custom", 
+    value: "custom", 
+    Component: null,
+    variables: {}
+  }
+]
 
 
 
@@ -220,10 +265,10 @@ export const Emails: CollectionConfig<'pages'> = {
             {
               name: "template",
               type: 'select',
-              options: [
-                { label: "Order Receipt", value: "order_receipt" },
-                { label: "Custom", value: "custom" }
-              ]
+              options: EMAIL_TEMPLATES.map(x => ({
+                label: x.label,
+                value: x.value
+              }))
             },
             {
               name: 'blocks',

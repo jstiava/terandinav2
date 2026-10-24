@@ -8,8 +8,15 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverExternalPackages: [
+    'tailwindcss', 
+    'postcss', 
+    '@react-email/components',
+    '@react-email/render',
+    '@react-email/tailwind'
+  ],
   images: {
-    domains: ['chicago-hope-academy-website.vercel.app'],
+    domains: ['terandinav2.vercel.app'],
     remotePatterns: [
       ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
         const url = new URL(item)

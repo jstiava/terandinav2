@@ -116,22 +116,32 @@ export default function CarouselBlockClient({
                 className: cn(
                   "z-[3] flex items-end w-full h-full  p-4",
                 ),
-
               }}>
-                {slide.richText && <RichText data={slide.richText} enableGutter={false} className={cn(
-                  "flex flex-col gap-4 p-4",
-                  slides.length > 1 ? 'mb-8' : 'mb-0',
-                  slide.className
-                )} />}
+                {slide.richText && (
+                  <RichText {...{
+                    data: slide.richText,
+                    enableGutter: false,
+                    className: slide.className ?? "",
+                    style: {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '1rem',
+                      padding: '1rem',
+                      marginBottom: slides.length > 1 ? '2rem' : '0',
+                      ...((slide.compiledStyles as any).inline ?? {})
+                    },
+                    dataBlockId: slide.id
+                  }} />
+                )}
+                {(slide.compiledStyles as any).scoped && (
+                  <style>{(slide.compiledStyles as any).scoped}</style>
+                )}
+                <div {...{
+                  className: "-z-1 w-full h-full absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_82%,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.2)_35%,transparent_75%)]",
+                }} />
               </div>
-
-              <div {...{
-                className: "-z-1 w-full h-full absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_82%,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.2)_35%,transparent_75%)]",
-              }} />
-
             </Carousel.CarouselItem>
-          )
-        })}
+          )})}
       </Carousel.CarouselContent>
     </Carousel.Carousel>
   )

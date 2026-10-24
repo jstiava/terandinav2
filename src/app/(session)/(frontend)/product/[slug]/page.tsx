@@ -1,22 +1,25 @@
 'use server'
 
 import { LivePreviewListener } from "@/components/LivePreviewListener"
-import { draftMode } from "next/headers"
+import { draftMode, headers } from "next/headers"
 import { getPayload } from "payload"
 import configPromise from '@payload-config'
-import { cache } from "react" 
+import { cache } from "react"
 import { formatPrice } from "@/collections/Products/formatPrice"
 import * as Accordion from "@/components/ui/accordion"
-import { PlusIcon } from "lucide-react" 
+import { PencilIcon, PlusIcon } from "lucide-react"
 import { Metadata } from "next"
 import ProductSizeSelector from "./ProductSizeSelector"
 import ProductProviderComponent from "./ProductProviderComponent"
 import AddToCartButton from "./AddToCartButton"
 import MobileProductImageCarousel from "./MobileProductImageCarousel"
 import { cn } from "@/utilities/cn"
-import Mongo from "@/utilities/mongo" 
+import Mongo from "@/utilities/mongo"
 import ProductCard from "../../products/ProductCard"
 import PickupDeliveryOptions from "./PickupDeliveryOptions"
+import payloadConfig from "@payload-config"
+import { Button } from "@/components/ui/button"
+import ProductNotFound from "@/app/(session)/(frontend)/product/[slug]/ProductNotFound"
 
 type Args = {
     params: Promise<{
@@ -50,11 +53,18 @@ export async function generateMetadata({
 export default async function ProductPage({ params: paramsPromise }: Args) {
 
     const mongo = await Mongo.getInstance();
-    const db = mongo.clientPromise.db("terandinav2")
+    const db = mongo.clientPromise.db("terandinav2");
+
+    const payload = await getPayload({ config: payloadConfig })
+
+    const { user } = await payload.auth({
+        headers: await headers(),
+    })
 
     const recommendedProductsId = await db
         .collection("products")
         .aggregate([
+            { $match: { active: true } },
             { $sample: { size: 5 } },
         ])
         .toArray();
@@ -73,16 +83,17 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
         slug: decodedSlug
     })
 
-    if (!product) {
-        return null;
+    if (!product || !product.active) {
+        return <ProductNotFound />;
     }
+ 
 
     return (
         <ProductProviderComponent {...{
             product
         }}>
             <div className="flex flex-col w-full items-center h-fit">
-                <div className="relative flex flex-col md:flex-row items-start w-full max-w-[120rem] h-fit">
+                <div className="relative flex flex-col md:flex-row items-start w-full max-w-[140rem] h-fit">
 
 
                     {/* Images on mobile */}
@@ -116,7 +127,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                     </div>
 
                     {/* Content */}
-                    <div className="self-start flex w-full md:w-[45%] max-w-[40rem] pt-2 md:pt-14 ">
+                    <div className="self-start flex w-full md:w-[45%] max-w-[45rem] pt-2 md:pt-14 ">
 
                         <div className="sticky top-0 flex flex-col gap-8 w-full max-w-[80rem] h-fit ">
 
@@ -184,6 +195,8 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
 
                                 <AddToCartButton />
 
+                               
+
                                 <PickupDeliveryOptions />
 
                                 <div className="flex flex-col w-full gap-1">
@@ -191,6 +204,18 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                         className: "whitespace-pre-wrap text-sm w-full"
                                     }}>{product.description}</span>
                                 </div>
+
+                                 {user && (
+                                    <Button {...{
+                                        asChild: true,
+                                        size: 'lg',
+                                        variant: 'outline'
+                                    }}>
+                                        <a {...{
+                                            href: `/admin/collections/products/${product.id}`
+                                        }}><PencilIcon /> Edit</a>
+                                    </Button>
+                                )}
                             </div>
 
 

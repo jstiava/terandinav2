@@ -1,14 +1,14 @@
-import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { PayloadRedirects } from '@/components/PayloadRedirects'
+'use server'
+
 import { draftMode } from 'next/headers'
 import configPromise from '@payload-config'
 import React, { cache } from 'react'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { RenderEmailBlocks } from '@/emails/RenderEmailBlocks'
-import { useAuth } from '@payloadcms/ui'
-import { Preview } from '@react-email/components'
-import EmailRoot from '@/emails/components/EmailRoot'
-import Letterhead from '@/emails/blocks/Letterhead/Component'
+import { EMAIL_TEMPLATES } from '@/collections/Emails/config'
+
+// @ts-ignore
+import '../../../(session)/globals.css'
 
 type Args = {
   params: Promise<{
@@ -16,44 +16,70 @@ type Args = {
   }>
 }
 
-export default async function EmailPage({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode()
-  const { slug = 'home' } = await paramsPromise
 
+
+
+export default async function EmailPage({ params: paramsPromise }: Args) {
+
+  console.log('3. Entering EmailPage');
+
+  const { slug = 'home' } = await paramsPromise
   const decodedSlug = decodeURIComponent(slug)
   const url = '/' + decodedSlug
 
-  const email: RequiredDataFromCollectionSlug<'emails'> | null = await queryPageBySlug({
+  const email: RequiredDataFromCollectionSlug<'emails'> | null = await queryEmailPageBySlug({
     slug: decodedSlug,
-  })
+  });
+
+  if (!email) {
+    return (
+      <span>No email found.</span>
+    )
+  }
+
+  if (email.template && email.template != 'custom') {
+
+    console.log('3a. Entering templating area');
+
+    const Template = EMAIL_TEMPLATES.find(x => x.value === email.template)
+
+    if (!Template || !Template.Component) return (
+      <p>Could not find template.</p>
+    )
+
+    return (
+      // @ts-ignore
+      <Template.Component
+        {...{
+          blocks: email.blocks,
+          variables: Template.variables
+        }}
+      />
+    )
+  }
+
+  console.log('3b. Entering default template rendering');
 
   return (
     <>
-      <PayloadRedirects disableNotFound url={url} />
-      {draft && <LivePreviewListener />}
-
-      <EmailRoot isTest={true}>
-        <Letterhead isTest />
-        {email.blocks && (
-          <RenderEmailBlocks
-            {...{
-              blocks: email.blocks,
-              variables: {
-                'from.first_name': 'First Name of User',
-                'from.name': 'First Last Name Of User',
-                'from.email_address': 'user@domain.com',
-                'recipient.email_address': 'recipient@domain.com',
-              }
-            }}
-          />
-        )}
-      </EmailRoot>
-      {/*</Preview>*/}
+      {email.blocks && (
+        <RenderEmailBlocks
+          {...{
+            blocks: email.blocks,
+            variables: {
+              'from.first_name': 'First Name of User',
+              'from.name': 'First Last Name Of User',
+              'from.email_address': 'user@domain.com',
+              'recipient.email_address': 'recipient@domain.com',
+            }
+          }}
+        />
+      )}
     </>
   )
 }
 
-const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryEmailPageBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })

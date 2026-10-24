@@ -57,8 +57,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <>
-      <div id="content" className="flex flex-col w-full gap-0">
-        <PageClient />
+      <div id="content" className="flex flex-col w-full gap-0 pt-14"> 
         <PayloadRedirects disableNotFound url={url} />
         {draft && <LivePreviewListener />}
         {page.blocks && <RenderBlocks blocks={page.blocks} />}

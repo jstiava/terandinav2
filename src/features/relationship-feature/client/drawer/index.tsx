@@ -4,19 +4,12 @@ import type { CollectionSlug } from 'payload'
 
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext.js'
 import {
-  Button,
-  type ListDrawerProps,
-  TextField,
   toast,
   useDocumentForm,
-  useDocumentInfo,
   useField,
-  useFormFields,
 } from '@payloadcms/ui'
 import {
   $getNodeByKey,
-  $getSelection,
-  $isRangeSelection,
   COMMAND_PRIORITY_EDITOR,
 } from '@payloadcms/richtext-lexical/lexical'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -25,20 +18,16 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { $createRelationshipNode } from '../nodes/RelationshipNode.js'
 import { INSERT_RELATIONSHIP_COMMAND } from '../plugins/index.js'
 import { INSERT_RELATIONSHIP_WITH_DRAWER_COMMAND } from './commands.js'
-import { useLexicalListDrawer } from '@payloadcms/richtext-lexical/client'
-import { Combobox } from '@/components/ui/combobox'
 import { Popover, PopoverContent } from '@/components/ui/popover'
 import {
   Command,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandInputWithStyles,
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
 import { Check, Search } from 'lucide-react'
-import { cn } from '@/utilities/cn.js'
 import { ACTION_TRIGGERS_WITH_VARIABLES } from '@/collections/Emails/triggers.js'
 
 const insertRelationship = ({
@@ -74,7 +63,7 @@ type Props = {
 
 const VALID_TRIGGERS = ['iam:invite_user_by_email', 'iam:new_user_confirmed', 'user:with_successful_purchase_complete', 'user:with_subscribe_to_newsletter', 'editor:new_announcement_made']
 
-const RelationshipDrawerComponent: React.FC<Props> = ({ enabledCollectionSlugs }) => {
+const RelationshipDrawerComponent: React.FC<Props> = () => {
   const [editor] = useLexicalComposerContext()
 
   const [replaceNodeKey, setReplaceNodeKey] = useState<null | string>(null)
@@ -117,6 +106,7 @@ const RelationshipDrawerComponent: React.FC<Props> = ({ enabledCollectionSlugs }
     const newOptions = ACTION_TRIGGERS_WITH_VARIABLES.find(x => x.value == theTrigger.value);
 
     if (newOptions) {
+      // @ts-ignore
       setOptions(newOptions.variables)
     }
 
@@ -191,78 +181,84 @@ const RelationshipDrawerComponent: React.FC<Props> = ({ enabledCollectionSlugs }
   }, [editor])
 
   return (
-    <>
-      <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-        <PopoverContent
-          style={{
-            position: 'fixed',
-            zIndex: 9999,
-            left: position && position.x ? position.x : 0,
-            top: position && position.y ? position.y : 0,
-            backgroundColor: '#000',
-            color: '#fff',
-            width: '20rem',
-            padding: '0.5rem',
-          }}
-        >
-          <Command>
+    <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+      <PopoverContent
+        style={{
+          position: 'fixed',
+          zIndex: 9999,
+          left: position && position.x ? position.x : 0,
+          top: position && position.y ? position.y : 0,
+          backgroundColor: '#000',
+          color: '#fff',
+          width: '20rem',
+          padding: '0',
+          maxHeight: '300px',
+          overflowY: 'scroll'
+        }}
+      >
+        <Command>
+          <div
+            style={{
+              top: 0,
+              position: 'sticky',
+              display: 'flex',
+              alignItems: 'center',
+              backgroundColor: 'black',
+              gap: 1,
+              zIndex: 10,
+              padding: '0.5rem',
+              height: "50px",
+              width: '100%',
+              border: "0"
+            }}
+          >
+            <Search size={20} />
             <div
               style={{
-                display: 'flex',
-                height: 'fit-content',
-                alignItems: 'center',
-                gap: 2,
-                borderBottom: '1px solid',
-                padding: '0.5rem',
-                marginTop: '-0.5rem',
                 width: '100%',
+                paddingLeft: '0.5rem',
               }}
             >
-              <Search size={20} />
-              <div
-                style={{
-                  width: '100%',
-                  paddingLeft: '0.5rem',
-                }}
-              >
-                <CommandInputWithStyles {...{
-                  className: 'h-10 rounded-xs'
-                }} />
-              </div>
+              <CommandInputWithStyles />
             </div>
-            <CommandList>
-              <CommandEmpty>No variables found for the event trigger {JSON.stringify(document.getField('action.trigger'))}</CommandEmpty>
-              <CommandGroup>
-                {options.map((option) => (
-                  <CommandItem
-                    key={option.value}
-                    value={option.value}
-                    onSelect={(currentValue: any) => {
-                      setValue(currentValue === value ? '' : currentValue)
-                      setIsMenuOpen(false)
-                      onSelect(currentValue)
-                    }}
-                    className="popup-button-list__button"
+          </div>
+          <CommandList>
+            <CommandEmpty>No variables found for the event trigger {JSON.stringify(document.getField('action.trigger'))}</CommandEmpty>
+            <CommandGroup>
+              {options.map((option) => (
+                <CommandItem
+                  key={option.value}
+                  value={option.value}
+                  onSelect={(currentValue: any) => {
+                    setValue(currentValue === value ? '' : currentValue)
+                    setIsMenuOpen(false)
+                    onSelect(currentValue)
+                  }}
+                  className="popup-button-list__button"
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    padding: '0.5rem',
+                  }}
+                >
+                  <span>{option.label} <span {...{
+                    style: {
+                      opacity: 0.5,
+                      width: '10px'
+                    }
+                  }}>({option.value})</span></span>
+                  <Check
                     style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      padding: '0.5rem',
+                      opacity: value === option.value ? 1 : 0,
                     }}
-                  >
-                    {option.label}
-                    <Check
-                      style={{
-                        opacity: value === option.value ? 1 : 0,
-                      }}
-                    />
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
-    </>
+                  />
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   )
 }
 

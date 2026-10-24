@@ -128,31 +128,32 @@ type Props = {
   data: DefaultTypedEditorState
   enableGutter?: boolean
   enableProse?: boolean
-  variables?: Record<string, string | number>
+  variables?: Record<string, string | number>,
+  dataBlockId?: string | null,
 } & React.HTMLAttributes<HTMLDivElement>
 
 
 export default function RichText(props: Props) {
-  const { className, enableProse = true, enableGutter = true, ...rest } = props
+  const { dataBlockId, className, style, enableProse = true, enableGutter = true, ...rest } = props
   return (
-    <ConvertRichText
-      converters={(({ defaultConverters }) => {
-        return jsxConverters({
-          defaultConverters,
-          variables: rest.variables
-        })
-      })}
-      variables={rest.variables}
-      className={cn(
-        'payload-richtext',
-        {
-          container: enableGutter,
-          'max-w-none': !enableGutter,
-          'not-prose w-full flex flex-col': enableProse,
-        },
-        className,
-      )}
-      {...rest}
-    />
+    <div {...{
+      className: cn("payload-richtext flex flex-col", className),
+      style,
+      'data-block-id': dataBlockId,
+    }}>
+      <ConvertRichText
+        {...{
+          converters: (({ defaultConverters }) => {
+            return jsxConverters({
+              defaultConverters,
+              variables: rest.variables
+            })
+          }),
+          disableContainer: true,
+          variables: rest.variables,
+          ...rest
+        }}
+      />
+    </div>
   )
 }
