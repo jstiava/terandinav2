@@ -426,6 +426,12 @@ export interface CatalogBlock {
         id?: string | null;
       }[]
     | null;
+  sorts?:
+    | {
+        field: 'created_at' | 'last_updated_at' | 'name';
+        id?: string | null;
+      }[]
+    | null;
   /**
    * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).
    */
@@ -509,11 +515,16 @@ export interface Product {
    */
   icons?: ('ships_from_us' | 'returns' | 'hypoallergenic' | 'indigenous_artisans')[] | null;
   blocks?: (ContentBlock | CarouselBlock | CatalogBlock)[] | null;
+  /**
+   * In variant-level inventory, 3 small and 3 medium = 6 unique products. In shared inventory mode, 3 small and 3 medium = 3 unique products.
+   */
+  size_mode?: ('variant_level' | 'shared') | null;
   sizes?:
     | {
         label?: ('extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'extra-extra-large' | 'custom') | null;
         customLabel?: string | null;
         count?: number | null;
+        reserved?: number | null;
         id?: string | null;
       }[]
     | null;
@@ -639,8 +650,226 @@ export interface Email {
     };
     [k: string]: unknown;
   } | null;
-  template?: ('order_fufillment_receipt' | 'custom') | null;
+  template?: ('order_fufillment_receipt' | 'blank_template' | 'custom') | null;
   blocks?: (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[] | null;
+  variables?: {
+    /**
+     * from:first_name
+     */
+    'from:first_name'?: string | null;
+    /**
+     * from:name
+     */
+    'from:name'?: string | null;
+    /**
+     * from:email_address
+     */
+    'from:email_address'?: string | null;
+    /**
+     * recipient:email_address
+     */
+    'recipient:email_address'?: string | null;
+    /**
+     * password_reset_token
+     */
+    password_reset_token?: string | null;
+    /**
+     * new_user:first_name
+     */
+    'new_user:first_name'?: string | null;
+    /**
+     * new_user:name
+     */
+    'new_user:name'?: string | null;
+    /**
+     * new_user:email_address
+     */
+    'new_user:email_address'?: string | null;
+    /**
+     * new_user:role
+     */
+    'new_user:role'?: string | null;
+    /**
+     * user:first_name
+     */
+    'user:first_name'?: string | null;
+    /**
+     * user:name
+     */
+    'user:name'?: string | null;
+    /**
+     * user:email_address
+     */
+    'user:email_address'?: string | null;
+    /**
+     * user:role
+     */
+    'user:role'?: string | null;
+    /**
+     * order:pickup
+     */
+    'order:pickup'?: ('pickup' | 'delivery') | null;
+    /**
+     * order:isSendMeMarketingEmails
+     */
+    'order:isSendMeMarketingEmails'?: boolean | null;
+    /**
+     * order:isShippingSameAsBillingAddress
+     */
+    'order:isShippingSameAsBillingAddress'?: boolean | null;
+    /**
+     * order:paymentIntentId
+     */
+    'order:paymentIntentId'?: string | null;
+    /**
+     * order:clientSecret
+     */
+    'order:clientSecret'?: string | null;
+    /**
+     * order:totalDue
+     */
+    'order:totalDue'?: number | null;
+    /**
+     * order:tax
+     */
+    'order:tax'?: number | null;
+    /**
+     * order:subtotal
+     */
+    'order:subtotal'?: number | null;
+    'order:cart'?:
+      | {
+          product?: (string | null) | Product;
+          size?: string | null;
+          quantity?: number | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * shippo:rates
+     */
+    'shippo:rates'?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    /**
+     * shippo:parcel
+     */
+    'shippo:parcel'?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    /**
+     * order:billingAddress:emailAddress
+     */
+    'order:billingAddress:emailAddress'?: string | null;
+    /**
+     * order:billingAddress:name
+     */
+    'order:billingAddress:name'?: string | null;
+    /**
+     * order:billingAddress:firstName
+     */
+    'order:billingAddress:firstName'?: string | null;
+    /**
+     * order:billingAddress:lastName
+     */
+    'order:billingAddress:lastName'?: string | null;
+    /**
+     * order:billingAddress:address:line1
+     */
+    'order:billingAddress:address:line1'?: string | null;
+    /**
+     * order:billingAddress:address:line2
+     */
+    'order:billingAddress:address:line2'?: string | null;
+    /**
+     * order:billingAddress:address:city
+     */
+    'order:billingAddress:address:city'?: string | null;
+    /**
+     * order:billingAddress:address:country
+     */
+    'order:billingAddress:address:country'?: string | null;
+    /**
+     * order:billingAddress:address:postal_code
+     */
+    'order:billingAddress:address:postal_code'?: string | null;
+    /**
+     * order:billingAddress:address:state
+     */
+    'order:billingAddress:address:state'?: string | null;
+    /**
+     * order:billingAddress:complete
+     */
+    'order:billingAddress:complete'?: boolean | null;
+    /**
+     * order:deliveryTo:emailAddress
+     */
+    'order:deliveryTo:emailAddress'?: string | null;
+    /**
+     * order:deliveryTo:name
+     */
+    'order:deliveryTo:name'?: string | null;
+    /**
+     * order:deliveryTo:firstName
+     */
+    'order:deliveryTo:firstName'?: string | null;
+    /**
+     * order:deliveryTo:lastName
+     */
+    'order:deliveryTo:lastName'?: string | null;
+    /**
+     * order:deliveryTo:address:line1
+     */
+    'order:deliveryTo:address:line1'?: string | null;
+    /**
+     * order:deliveryTo:address:line2
+     */
+    'order:deliveryTo:address:line2'?: string | null;
+    /**
+     * order:deliveryTo:address:city
+     */
+    'order:deliveryTo:address:city'?: string | null;
+    /**
+     * order:deliveryTo:address:country
+     */
+    'order:deliveryTo:address:country'?: string | null;
+    /**
+     * order:deliveryTo:address:postal_code
+     */
+    'order:deliveryTo:address:postal_code'?: string | null;
+    /**
+     * order:deliveryTo:address:state
+     */
+    'order:deliveryTo:address:state'?: string | null;
+    /**
+     * order:deliveryTo:complete
+     */
+    'order:deliveryTo:complete'?: boolean | null;
+    /**
+     * customer:name
+     */
+    'customer:name'?: string | null;
+    /**
+     * customer:email_address
+     */
+    'customer:email_address'?: string | null;
+    /**
+     * customer:comment
+     */
+    'customer:comment'?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -735,6 +964,7 @@ export interface EmailImageBlock {
 export interface Order {
   id: string;
   name: string;
+  customer: string | Crm;
   delivery_type: 'pickup' | 'delivery';
   delivery_to?:
     | {
@@ -1000,6 +1230,12 @@ export interface CatalogBlockSelect<T extends boolean = true> {
         value__sizes?: T;
         id?: T;
       };
+  sorts?:
+    | T
+    | {
+        field?: T;
+        id?: T;
+      };
   className?: T;
   compiledStyles?: T;
   classNamePerProduct?: T;
@@ -1034,6 +1270,66 @@ export interface EmailsSelect<T extends boolean = true> {
         emailContent?: T | EmailContentBlockSelect<T>;
         emailButton?: T | EmailButtonBlockSelect<T>;
         emailImage?: T | EmailImageBlockSelect<T>;
+      };
+  variables?:
+    | T
+    | {
+        'from:first_name'?: T;
+        'from:name'?: T;
+        'from:email_address'?: T;
+        'recipient:email_address'?: T;
+        password_reset_token?: T;
+        'new_user:first_name'?: T;
+        'new_user:name'?: T;
+        'new_user:email_address'?: T;
+        'new_user:role'?: T;
+        'user:first_name'?: T;
+        'user:name'?: T;
+        'user:email_address'?: T;
+        'user:role'?: T;
+        'order:pickup'?: T;
+        'order:isSendMeMarketingEmails'?: T;
+        'order:isShippingSameAsBillingAddress'?: T;
+        'order:paymentIntentId'?: T;
+        'order:clientSecret'?: T;
+        'order:totalDue'?: T;
+        'order:tax'?: T;
+        'order:subtotal'?: T;
+        'order:cart'?:
+          | T
+          | {
+              product?: T;
+              size?: T;
+              quantity?: T;
+              id?: T;
+            };
+        'shippo:rates'?: T;
+        'shippo:parcel'?: T;
+        'order:billingAddress:emailAddress'?: T;
+        'order:billingAddress:name'?: T;
+        'order:billingAddress:firstName'?: T;
+        'order:billingAddress:lastName'?: T;
+        'order:billingAddress:address:line1'?: T;
+        'order:billingAddress:address:line2'?: T;
+        'order:billingAddress:address:city'?: T;
+        'order:billingAddress:address:country'?: T;
+        'order:billingAddress:address:postal_code'?: T;
+        'order:billingAddress:address:state'?: T;
+        'order:billingAddress:complete'?: T;
+        'order:deliveryTo:emailAddress'?: T;
+        'order:deliveryTo:name'?: T;
+        'order:deliveryTo:firstName'?: T;
+        'order:deliveryTo:lastName'?: T;
+        'order:deliveryTo:address:line1'?: T;
+        'order:deliveryTo:address:line2'?: T;
+        'order:deliveryTo:address:city'?: T;
+        'order:deliveryTo:address:country'?: T;
+        'order:deliveryTo:address:postal_code'?: T;
+        'order:deliveryTo:address:state'?: T;
+        'order:deliveryTo:complete'?: T;
+        'customer:name'?: T;
+        'customer:email_address'?: T;
+        'customer:comment'?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1181,12 +1477,14 @@ export interface ProductsSelect<T extends boolean = true> {
         carousel?: T | CarouselBlockSelect<T>;
         catalog?: T | CatalogBlockSelect<T>;
       };
+  size_mode?: T;
   sizes?:
     | T
     | {
         label?: T;
         customLabel?: T;
         count?: T;
+        reserved?: T;
         id?: T;
       };
   prices?:
@@ -1216,6 +1514,7 @@ export interface ProductsSelect<T extends boolean = true> {
  */
 export interface OrdersSelect<T extends boolean = true> {
   name?: T;
+  customer?: T;
   delivery_type?: T;
   delivery_to?: T;
   status?: T;

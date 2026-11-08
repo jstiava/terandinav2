@@ -24,34 +24,44 @@ export const Carousel: Block = {
           label: false,
         },
         {
-          name: "className",
-          type: "textarea",
+          type: 'collapsible',
+          label: 'Advanced layouts & styling',
           admin: {
-            description: 'Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).'
+            initCollapsed: true,
           },
-        },
-        {
-          name: 'compiledStyles',
-          type: 'json',
-          label: "Compiled styles (read only)",
-          admin: {
-            hidden: false,
-            readOnly: true,
-            className: "js-custom-json-admin-field",
-            description: "The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block."
-          },
-          hooks: {
-            beforeChange: [
-              async ({ siblingData }) => {
-                const styles = await compileTailwind({
-                  id: String(siblingData.id),
-                  className: String(siblingData?.className ?? '')
-                });
-                return styles
+          fields: [
+            {
+              name: "className",
+              type: "textarea",
+              admin: {
+                description: 'Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).'
               },
-            ],
-          },
+            },
+            {
+              name: 'compiledStyles',
+              type: 'json',
+              label: "Compiled styles (read only)",
+              admin: {
+                hidden: false,
+                readOnly: true,
+                className: "js-custom-json-admin-field",
+                description: "The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block."
+              },
+              hooks: {
+                beforeChange: [
+                  async ({ siblingData }) => {
+                    const styles = await compileTailwind({
+                      id: String(siblingData.id),
+                      className: String(siblingData?.className ?? '')
+                    });
+                    return styles
+                  },
+                ],
+              },
+            }
+          ]
         }
+
       ],
     },
   ],

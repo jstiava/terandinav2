@@ -44,7 +44,7 @@ export function MobileNavigationMenu({
                 side="top"
                 className="
         fixed left-0 right-0 z-[4]
-        h-screen w-full
+        h-dvh w-full
         rounded-none border-0 p-0
         duration-50 ease-out
         data-[state=open]:!duration-75

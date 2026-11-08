@@ -62,7 +62,7 @@ function OrderShippingReceipt(props: {
                             />
                         </Column>
                     </Row>
-                    <Heading className="text-[32px] leading-[1.3] font-bold font-canela text-center -tracking-[1px]">
+                    <Heading className="text-[32px] leading-[1] font-bold font-canela text-center -tracking-[1px]">
                         We&apos;ve got your order.
                     </Heading>
                     <Text className="m-0 text-[14px] leading-[2] text-[#747474] font-medium mt-6">

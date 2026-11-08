@@ -24,6 +24,8 @@ export async function processSquarePayment(props: {
 }) {
   try {
 
+    const payload = await getPayload({ config: configPromise });
+
     const trustedItemsInCart = await getTrustedItemsInCartAndValidate({
       cart: props.cart
     });
@@ -33,7 +35,7 @@ export async function processSquarePayment(props: {
       trustedItemsInCart: trustedItemsInCart
     });
 
-    const newCustomer = await createOrUpdateCustomer({
+    const { customer: newCustomer, isNew: isNewCustomer } = await createOrRetrieveCustomer({
       checkoutDetails: props.checkoutDetails
     })
 
@@ -63,8 +65,11 @@ export async function processSquarePayment(props: {
       locationId: process.env.SQUARE_SANDBOX_LOCATION_ID,
     });
 
+    // Add the customer to the order
+    newOrder.customer = newCustomer.id;
+
     // Decrement inventory
-    await decrementInventoryAccordingToCartQuantity({
+    decrementInventoryAccordingToCartQuantity({
       cart: trustedItemsInCart
     });
 
@@ -88,6 +93,7 @@ export async function processSquarePayment(props: {
         ...Object.fromEntries(
           Object.entries(deliveryTo ?? {}).map(([key, value]) => [`order.deliveryTo.${key}`, value]),
         ),
+        // @ts-ignore
         "order.cart": trustedItemsInCart,
       }
     });
@@ -285,8 +291,7 @@ const createNewUncompleteOrder = async (props: {
   return newOrderAdded;
 }
 
-
-const createOrUpdateCustomer = async (props: {
+const createOrRetrieveCustomer = async (props: {
   checkoutDetails: Partial<CheckoutDetailsType>,
 }) => {
 
@@ -306,13 +311,16 @@ const createOrUpdateCustomer = async (props: {
     where: {
       or: [
         { emailAddress: { equals: newCustomer.emailAddress } },
-        { phoneNumber: { equals: newCustomer.phoneNumber } }
+        { phoneNumber: { equals: newCustomer.phoneNumber } },
       ]
     }
   });
 
   if (found.docs.length > 0) {
-    return found.docs[0]
+    return {
+      customer: found.docs[0],
+      isNew: false
+    }
   }
 
   const newCustomerAdded = await payload.create({
@@ -321,5 +329,8 @@ const createOrUpdateCustomer = async (props: {
     data: newCustomer as any
   })
 
-  return newCustomerAdded;
+  return {
+    customer: newCustomerAdded,
+    isNew: true
+  }
 }

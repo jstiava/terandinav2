@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Button, useDocumentInfo } from '@payloadcms/ui'
+import { Button, PopupList, useDocumentInfo } from '@payloadcms/ui'
 import { sendTestEmail } from './EmailService'
 
 export default function SendTestEmailButton() {
@@ -25,14 +25,17 @@ export default function SendTestEmailButton() {
     }
 
     return (
-        <Button
-            type="button"
-            buttonStyle="secondary"
-            size="medium"
-            disabled={sending || !id}
-            onClick={handleSend}
+        <PopupList.Button
+            {...{
+                className: "popup-button-list__button",
+                id: "action-send-test-email",
+                type: "button",
+                disabled: sending || !id,
+                onClick: handleSend
+            }}
         >
             {sending ? 'Sending...' : 'Send Test Email'}
-        </Button>
+        </PopupList.Button>
     )
+
 }

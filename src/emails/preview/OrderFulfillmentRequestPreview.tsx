@@ -24,6 +24,7 @@ function OrderFulfillmentRequestPreview(props: {
     return (
 
         <EmailRoot>
+            {/* @ts-ignore */}
             <OrderFulfillmentRequest {...props} />
         </EmailRoot>
     )

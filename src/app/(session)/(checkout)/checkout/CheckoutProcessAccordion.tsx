@@ -13,6 +13,7 @@ import { createPaymentIntent, patchPaymentIntentWithTaxes } from './StripePaymen
 import { Field, FieldContent, FieldDescription, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
+import { prev } from 'node_modules/cheerio/dist/esm/api/traversing'
 
 const NATIVE_SUN_MERRILLVILLE_ADDRESS = {
   line1: '1978 Southlake Mall',
@@ -46,7 +47,10 @@ export default function CheckoutProcessAccordion() {
       items: CartContext.cart!,
       idempotencyKey: idempotencyKey.current,
     })
-      .then((data) => CartContext.setCheckoutDetails(data))
+      .then((data) => CartContext.setCheckoutDetails(prev => ({
+        ...prev,
+        ...data
+      })))
       .catch((err) => {
         console.log(err)
       })
@@ -166,6 +170,7 @@ export default function CheckoutProcessAccordion() {
               <Input
                 {...{
                   type: 'email',
+                  value: CartContext.checkoutDetails?.emailAddress ?? "",
                   onChange: (e) => {
                     CartContext.setCheckoutDetails((prev) => {
                       if (!prev) {
@@ -371,7 +376,7 @@ export default function CheckoutProcessAccordion() {
                 disabled: value < index,
               }}
             >
-              <div className="sticky top-14 flex w-full! bg-white ">
+              <div className="sticky top-0 flex w-full! bg-white ">
                 <Accordion.AccordionTrigger
                   {...{
                     className: ' flex w-full! p-4',

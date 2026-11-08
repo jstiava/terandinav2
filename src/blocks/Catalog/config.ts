@@ -41,6 +41,7 @@ export const Catalog: Block = {
                         },
                         {
                             name: "value__categories",
+                            label: "Categories",
                             type: 'relationship',
                             relationTo: "categories",
                             admin: {
@@ -50,6 +51,7 @@ export const Catalog: Block = {
                         },
                         {
                             name: "value__active",
+                            label: "Active value",
                             type: 'select',
                             defaultValue: "true",
                             options: [
@@ -62,6 +64,7 @@ export const Catalog: Block = {
                         },
                         {
                             name: "value__icons",
+                            label: "Icons",
                             type: 'select',
                             options: [
                                 {
@@ -88,6 +91,7 @@ export const Catalog: Block = {
                         },
                         {
                             name: "value__sizes",
+                            label: "Sizes",
                             type: "select",
                             admin: {
                                 condition: (_, siblingData) => siblingData?.field === 'sizes',
@@ -128,40 +132,72 @@ export const Catalog: Block = {
             ]
         },
         {
-            name: "className",
-            type: "textarea",
-            admin: {
-                description: 'Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).'
-            },
+            name: "sorts",
+            label: "Sort",
+            type: "array",
+            fields: [
+                {
+                    type: "row",
+                    fields: [
+                        {
+                            name: "field",
+                            type: "select",
+                            required: true,
+                            options: [
+                                { label: "Created date", value: 'created_at' },
+                                { label: "Updated date", value: 'last_updated_at' },
+                                { label: "Name", value: "name" }
+                            ]
+                        },
+                    ]
+                }
+            ]
         },
         {
-            name: 'compiledStyles',
-            type: 'json',
+            type: 'collapsible',
+            label: 'Advanced layouts & styling',
             admin: {
-                hidden: false,
-                readOnly: true,
-                className: "js-custom-json-admin-field",
-                description: "The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block."
+                initCollapsed: true,
             },
-            hooks: {
-                beforeChange: [
-                    async ({ siblingData }) => {
-                        const styles = await compileTailwind({
-                            id: String(siblingData.id),
-                            className: String(siblingData?.className ?? '')
-                        });
-                        return styles
+            fields: [
+                {
+                    name: "className",
+                    type: "textarea",
+                    admin: {
+                        description: 'Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).'
                     },
-                ],
-            },
-        },
-        {
-            name: "classNamePerProduct",
-            type: "textarea",
-            admin: {
-                description: 'Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).'
-            },
-        },
+                },
+                {
+                    name: 'compiledStyles',
+                    type: 'json',
+                    admin: {
+                        hidden: false,
+                        readOnly: true,
+                        className: "js-custom-json-admin-field",
+                        description: "The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block."
+                    },
+                    hooks: {
+                        beforeChange: [
+                            async ({ siblingData }) => {
+                                const styles = await compileTailwind({
+                                    id: String(siblingData.id),
+                                    className: String(siblingData?.className ?? '')
+                                });
+                                return styles
+                            },
+                        ],
+                    },
+                },
+                {
+                    name: "classNamePerProduct",
+                    type: "textarea",
+                    admin: {
+                        description: 'Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).'
+                    },
+                },
+            ]
+        }
+
     ],
     // labels: {
     //   plural: 'Calls to Action',

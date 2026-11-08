@@ -31,7 +31,13 @@ export function ShippingRatesEmailComponent({ rates }: ShippingRatesEmailProps) 
             .slice(0, 3)
 
         return (
-            <Container style={{ maxWidth: '600px', margin: '0 auto', padding: '24px' }}>
+            <Container {...{
+                align: 'left',
+                className: 'p-[24px] max-w-full',
+                style: {
+                    margin: '0 auto'
+                }
+            }}>
 
                 <Text className="m-0 text-[15px] leading-[2] font-bold">
                     Shipping options
@@ -39,10 +45,11 @@ export function ShippingRatesEmailComponent({ rates }: ShippingRatesEmailProps) 
                 <Text style={{ margin: '0 0 24px', fontSize: '14px', lineHeight: '22px', color: '#666666' }}>Select one of the available shipping options below.</Text>
                 {sortedRates.map((rate) => (
                     <Section key={rate.objectId} {...{
+                        align: 'left',
                         className: 'w-full mb-[8px] py-[10px] px-[12px] border border-[#e5e5e5] rounded-sm'
                     }} >
-                        <Row {...{
-                            className: 'w-full'
+                        <div {...{
+                            className: 'flex w-full justify-between items-center'
                         }}>
                             <Column style={{ width: '42px', verticalAlign: 'middle' }}>
                                 <Img src={rate.providerImage200} alt={rate.provider} width="32" height="32" style={{ display: 'block', width: '32px', height: '32px', objectFit: 'contain' }} />
@@ -62,7 +69,7 @@ export function ShippingRatesEmailComponent({ rates }: ShippingRatesEmailProps) 
                                     // href={selectRateUrl(rate.objectId)} 
                                     style={{ display: 'inline-block', padding: '6px 9px', borderRadius: '4px', backgroundColor: '#009487', color: '#ffffff', fontSize: '11px', lineHeight: '14px', fontWeight: 600, textDecoration: 'none' }}>Select</Link>
                             </Column>
-                        </Row>
+                        </div>
                     </Section>
                 ))}
             </Container>

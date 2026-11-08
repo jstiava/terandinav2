@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Field } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 // import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
@@ -14,15 +14,16 @@ import { RelationshipFeature } from '@/features/relationship-feature/server'
 import { EmailButton } from '@/emails/blocks/Button/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { EmailImage } from '@/emails/blocks/Image/config'
-import { ACTION_TRIGGERS_WITH_VARIABLES } from '@/collections/Emails/triggers'
+import { ACTION_TRIGGERS_WITH_VARIABLES, TriggerVariableToPayloadType } from '@/collections/Emails/triggers'
 import { SendEmailCommand, SESv2Client } from '@aws-sdk/client-sesv2'
-import nodemailer from 'nodemailer' 
+import nodemailer from 'nodemailer'
 import OrderFulfillmentRequest from '@/emails/templates/OrderFulfillmentRequest'
 import OrderFulfillmentRequestPreview from '@/emails/preview/OrderFulfillmentRequestPreview'
 import { EmailButtonBlock, EmailContentBlock, EmailImageBlock } from '@/payload-types'
+import BlankTemplate from '@/emails/templates/BlankTemplate'
 
 const EMAIL_BLOCKS = [EmailContent, EmailButton, EmailImage]
-export type EmailBlockType = (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[] | null | undefined
+export type EmailBlockType = (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[]
 
 export const sesClient = new SESv2Client({
   region: process.env.AWS_SES_REGION ?? 'us-east-1',
@@ -49,15 +50,21 @@ export const EMAIL_TEMPLATES = [
   //   variables: OrderShippingReceipt.PreviewProps,
 
   // },
-  { 
-    label: "Order Fufillment Receipt", 
-    value: "order_fufillment_receipt", 
+  {
+    label: "Order Fufillment Receipt",
+    value: "order_fufillment_receipt",
     Component: OrderFulfillmentRequest,
     variables: OrderFulfillmentRequestPreview.PreviewProps.variables
   },
-  { 
-    label: "Custom", 
-    value: "custom", 
+  {
+    label: "Blank template",
+    value: "blank_template",
+    Component: BlankTemplate,
+    variables: []
+  },
+  {
+    label: "Custom",
+    value: "custom",
     Component: null,
     variables: {}
   }
@@ -82,9 +89,9 @@ export const Emails: CollectionConfig<'pages'> = {
     defaultColumns: ['title', '_status', 'slug', 'updatedAt'],
     components: {
       edit: {
-        beforeDocumentControls: [
+        editMenuItems: [
           '@/collections/Emails/SendTestEmailButton',
-        ],
+        ]
       },
     },
     livePreview: {
@@ -282,7 +289,104 @@ export const Emails: CollectionConfig<'pages'> = {
           ],
           label: 'Content',
         },
-      ],
+        {
+          label: "Variables",
+          admin: {
+            description: "Used for live-preview purposes only. Variables will not be saved to a published document."
+          },
+          fields: [
+            {
+              name: "variables",
+              type: 'group',
+              fields: ACTION_TRIGGERS_WITH_VARIABLES.flatMap((event) =>
+
+                event.variables.map((variable: any): Field => {
+
+                  const theType = TriggerVariableToPayloadType[variable.type];
+
+                  if (theType == 'custom') {
+                    return {
+                      ...variable.config,
+                      name: variable.value.replace(/\./g, '_'),
+                      label: variable.label,
+                    }
+                  }
+
+                  if (variable.relationTo) {
+                    return {
+                      name: variable.value.replace(/\./g, '_'),
+                      label: variable.label,
+                      type: 'relationship',
+                      relationTo: variable.relationTo,
+                      defaultValue: variable.defaultValue,
+                      admin: {
+                        description: variable.value,
+                        condition: (data, siblingData) => data?.action.trigger == event.value
+                      }
+                    }
+                  }
+
+                  if (theType === 'array') {
+                    return {
+                      name: variable.value.replace(/\./g, '_'),
+                      label: variable.label,
+                      type: 'array',
+                      fields: [{ name: 'value', type: 'text' }],
+                      defaultValue: variable.defaultValue,
+                      admin: {
+                        description: variable.value,
+                        condition: (data, siblingData) => data?.action.trigger == event.value
+                      }
+                    }
+                  }
+
+                  if (variable.options) {
+                    return {
+                      name: variable.value.replace(/\./g, '_'),
+                      label: variable.label,
+                      type: 'select',
+                      defaultValue: variable.defaultValue,
+                      options: variable.options,
+                      admin: {
+                        description: variable.value,
+                        condition: (data, siblingData) => data?.action.trigger == event.value
+                      }
+                    }
+                  }
+
+                  if (theType == 'json') {
+                    return {
+                      name: variable.value.replace(/\./g, '_'),
+                      label: variable.label,
+                      type: theType,
+                      defaultValue: variable.defaultValue,
+                      admin: {
+                        description: variable.value,
+                        condition: (data, siblingData) => data?.action.trigger == event.value,
+                        editorOptions: {
+                          lineHeight: 20
+                        }
+                      }
+                    }
+                  }
+
+                  return {
+                    name: variable.value.replace(/\./g, '_'),
+                    label: variable.label,
+                    type: theType,
+                    defaultValue: variable.defaultValue,
+                    admin: {
+                      description: variable.value,
+                      condition: (data, siblingData) => data?.action.trigger == event.value,
+                    }
+                  } as Field
+
+                })
+              )
+            }
+          ]
+        }
+      ]
     },
   ],
   hooks: {
@@ -300,12 +404,22 @@ export const Emails: CollectionConfig<'pages'> = {
         return data
       },
     ],
+    beforeChange: [
+      ({ data, context }) => {
+
+        if (data._status === 'published') {
+          delete data.variables
+        }
+
+        return data
+      },
+    ],
   },
   versions: {
     drafts: {
       autosave: true,
       // schedulePublish: true,
     },
-    maxPerDoc: 50,
+    maxPerDoc: 5,
   },
 }

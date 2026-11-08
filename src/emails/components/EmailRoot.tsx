@@ -16,9 +16,11 @@ import config from '@/emails/tailwind.config'
 export default async function EmailRoot({
   children,
   isTest = false,
+  noTailwind = false
 }: {
   children: ReactNode
-  isTest?: boolean
+  isTest?: boolean,
+  noTailwind?: boolean
 }) {
 
   console.log('2. Entering EmailRoot');
@@ -52,11 +54,17 @@ export default async function EmailRoot({
             }}
           />
         </Head>
-        <Tailwind config={config}>
+        {noTailwind ? (
           <Body className="bg-[#f6f9fc] py-2.5 font-sans" >
             {children}
           </Body>
-        </Tailwind>
+        ) : (
+          <Tailwind config={config}>
+            <Body className="bg-[#f6f9fc] py-2.5 font-sans" >
+              {children}
+            </Body>
+          </Tailwind>
+        )}
       </Html>
     </>
   )

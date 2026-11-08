@@ -56,12 +56,15 @@ export default function SubscribeToNewsletterButton() {
 
                                     <Field>
                                         <FieldLabel>Email address</FieldLabel>
-                                        <FieldContent><Input /></FieldContent>
+                                        <FieldContent><Input {...{
+                                            className: "text-base"
+                                        }} /></FieldContent>
                                     </Field>
                                     <Field>
                                         <FieldLabel>Comments</FieldLabel>
                                         <FieldContent><Textarea {...{
-                                            rows: 4
+                                            rows: 4,
+                                            className: 'text-base'
                                         }} /></FieldContent>
                                     </Field>
                                     <Button onClick={handleSubscrbe}>Subscribe</Button>

@@ -64,7 +64,7 @@ export async function Header() {
             <div className="flex w-fit px-2">
               <SearchDrawer />
               <MobileNavigationMenu>
-                <nav className="flex flex-col p-6 pt-14">
+                <nav className="flex flex-col p-6 pt-16">
                   {headerData.navItems?.map(item => {
 
                     if (item.menuItem.type == 'reference') {

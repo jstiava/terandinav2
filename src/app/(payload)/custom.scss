@@ -54,3 +54,13 @@ h6 {
 .js-custom-json-admin-field section {
   height: 100px !important
 }
+
+
+.code-editor {
+  max-height: 300px !important;
+  min-height: 250px !important;
+}
+
+.json-field .field-type__wrap section {
+  height: fit-content !important;
+}

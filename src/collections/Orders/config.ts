@@ -36,6 +36,13 @@ export const Orders: CollectionConfig = {
                             required: true,
                         },
                         {
+                            name: "customer",
+                            type: "relationship",
+                            relationTo: "crm",
+                            required: true,
+                            hasMany: false
+                        },
+                        {
                             name: 'delivery_type',
                             type: 'select',
                             options: [

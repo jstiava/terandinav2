@@ -186,6 +186,20 @@ export const Products: CollectionConfig = {
 
                     fields: [
                         {
+                            name: "size_mode",
+                            label: "Sizing mode",
+                            type: 'select',
+                            hasMany: false,
+                            options: [
+                                { label: "Variant-Level Inventory", value: "variant_level" },
+                                { label: "Shared inventory", value: "shared" }
+                            ],
+                            admin: {
+                                description: "In variant-level inventory, 3 small and 3 medium = 6 unique products. In shared inventory mode, 3 small and 3 medium = 3 unique products."
+                            },
+                            defaultValue: "variant_level"
+                        },
+                        {
                             name: "sizes",
                             label: "Sizes and inventory",
                             type: "array",
@@ -243,7 +257,14 @@ export const Products: CollectionConfig = {
                                         {
                                             name: "count",
                                             type: 'number',
-                                        }
+                                        },
+                                        {
+                                            name: "reserved",
+                                            type: 'number',
+                                            admin: {
+                                                hidden: true
+                                            }
+                                        },
                                     ]
                                 }
 
@@ -254,7 +275,7 @@ export const Products: CollectionConfig = {
                             label: "Prices (USD)",
                             admin: {
                                 initCollapsed: true,
-                                 components: {
+                                components: {
                                     RowLabel: '@/collections/Products/RowLabels#PriceRowLabel',
                                 },
                                 description: "Two-way integration w/ Stripe or Square"

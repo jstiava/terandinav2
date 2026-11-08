@@ -5,7 +5,7 @@ import {
 } from 'payload'
 import EmailRoot from '@/emails/components/EmailRoot';
 import Letterhead from '@/emails/blocks/Letterhead/Component';
-import { RenderEmailBlocks } from '@/emails/RenderEmailBlocks';
+import { blockComponents, RenderEmailBlocks } from '@/emails/RenderEmailBlocks';
 import { render } from '@react-email/components';
 import { EMAIL_TEMPLATES, NodemailerEmailTransporter } from '@/collections/Emails/config';
 import { ApplicationEventArgs } from '@/collections/Emails/triggers';
@@ -38,6 +38,7 @@ export async function handleApplicationEventWithEmails(props: ApplicationEventAr
 
         const Component = (
             <EmailRoot>
+                {/* @ts-ignore */}
                 {email.blocks && <RenderEmailBlocks blocks={email.blocks} variables={props.variables} />}
             </EmailRoot>
         )
@@ -97,13 +98,13 @@ export async function sendTestEmail({ email_id }: {
                     <Template.Component
                         {...{
                             blocks: theEmail.blocks,
-                            variables: Template.variables,
+                            variables: theEmail.variables
                         }}
                     />
                 )}
             </EmailRoot>
         ) : (
-            <EmailRoot>
+            <EmailRoot noTailwind>
                 <Letterhead
                     src="https://terandina.com/Terandina_clear.png"
                     imageProps={{
@@ -112,9 +113,29 @@ export async function sendTestEmail({ email_id }: {
                         style: { display: "block", margin: "0 auto" }
                     }}
                 />
-                {theEmail.blocks && <RenderEmailBlocks blocks={theEmail.blocks} variables={variables} />}
+                {/* @ts-ignore */}
+                {theEmail.blocks.map((block, index) => {
+                    const { blockType } = block
+
+                    if (blockType && blockType in blockComponents) {
+                        const Block = blockComponents[blockType]
+
+                        if (Block) {
+                            return (
+                                <Block
+                                    // @ts-ignore
+                                    key={`${index}_${block.blockName ?? 'no_id'}`}
+                                    {...{ variables, ...block }}
+                                />
+                            )
+                        }
+                    }
+
+                    return null
+                })}
             </EmailRoot>
         )
+
 
         const emailHtml = await render(Component)
         const theSubject = await richTextToPlainText(theEmail.subject?.root, variables)

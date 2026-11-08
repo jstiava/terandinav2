@@ -6,10 +6,14 @@ import { Button } from "../ui/button";
 import { ShoppingBasketIcon, XIcon } from "lucide-react";
 import * as Drawer from "@/components/ui/drawer";
 import { formatPrice } from "../Stripe/Checkout";
+import { Input } from "@/components/ui/input";
+import { Field, FieldContent, FieldLabel } from "@/components/ui/field";
+import { useRouter } from "next/navigation";
 
 
 export default function CartDrawer() {
 
+    const router = useRouter();
     const { ...CartContext } = useContext(CartProvider);
 
     const [cartChanged, setCartChanged] = useState(false);
@@ -97,16 +101,30 @@ export default function CartDrawer() {
                     </div>
                     <div className="flex flex-col items-center justify-center flex-col w-full p-4 gap-2">
 
-                        {CartContext.cart && CartContext.cart.length > 0 && (
+                        <Field>
+                            <FieldLabel>Email address (required to checkout)</FieldLabel>
+                            <FieldContent>
+                                <Input {...{
+                                    className: "h-12 text-lg",
+                                    value: CartContext.checkoutDetails?.emailAddress ?? "",
+                                    onChange: e => {
+                                        CartContext.setCheckoutDetails(prev => ({
+                                            ...prev,
+                                            emailAddress: e.target.value
+                                        }));
+                                    }
+                                }} />
+                            </FieldContent>
+                        </Field>
+                        {(CartContext.cart && CartContext.cart.length > 0) && (
                             <Button {...{
-                                asChild: true,
                                 className: "w-full",
                                 size: 'lg',
-                            }}>
-                                <a {...{
-                                    href: "/checkout"
-                                }}>Go to checkout</a>
-                            </Button>
+                                disabled: !CartContext.checkoutDetails || !CartContext.checkoutDetails.emailAddress,
+                                onClick: e => {
+                                    router.push('/checkout')
+                                }
+                            }}>Go to checkout</Button>
                         )}
                         <Button {...{
                             className: "w-full",

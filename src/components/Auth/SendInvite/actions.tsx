@@ -76,6 +76,7 @@ export async function handleInvite({
     const Component = (
       <EmailRoot>
         <Letterhead src="https://chicago-hope-academy-website.vercel.app/media/cha_letterhead_white.png" />
+        {/* @ts-ignore */}
         {email.blocks && <RenderEmailBlocks blocks={email.blocks} variables={variables} />}
       </EmailRoot>
     )

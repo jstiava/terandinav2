@@ -8,12 +8,13 @@ import { Page } from '@/payload-types'
 import React, { cache } from 'react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { Metadata, ResolvingMetadata } from 'next'
 
 
 export default async function HomePage(props: any) {
 
   const { isEnabled: draft } = await draftMode()
-  const page: RequiredDataFromCollection<Page> | null = await queryPageBySlug();
+  const page: RequiredDataFromCollection<Page> | null = await getHomePage();
 
   if (!page) {
 
@@ -35,7 +36,7 @@ export default async function HomePage(props: any) {
 }
 
 
-const queryPageBySlug = cache(async () => {
+const getHomePage = cache(async () => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise });
@@ -69,13 +70,20 @@ const queryPageBySlug = cache(async () => {
 })
 
 
-export async function generateMetadata() {
+export type ServerProps = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
+export async function generateMetadata(
+  { params, searchParams }: ServerProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+
+  const page = await getHomePage(); 
+  // fetch post information
   return {
-    title: "Home",
-    icons: {
-      icon: '/favicon.ico',
-      apple: '/apple-touch-icon.png',
-    },
+    title: page?.title,
+    description: page?.description
   }
 }

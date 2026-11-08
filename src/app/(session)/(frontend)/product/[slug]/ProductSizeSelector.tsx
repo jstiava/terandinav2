@@ -58,7 +58,7 @@ export default function ProductSizeSelector() {
                         <div className="flex w-full h-full items-center justify-center">
                             <span {...{
                                 className: 'text-xs'
-                            }}>{size.label == 'custom' ? size.customLabel : size.label ? SIZE_PRESET_LABELS[size.label] : 'custom'} {`(${size.count ?? 0} in stock)`}</span>
+                            }}>{size.label == 'custom' ? size.customLabel : size.label ? SIZE_PRESET_LABELS[size.label] : 'custom'}</span>
                         </div>
                     </Button>
                 )

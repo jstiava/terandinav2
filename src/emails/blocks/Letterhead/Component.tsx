@@ -16,7 +16,7 @@ export default function Letterhead({
   imageProps?: any
 }) {
 
-  console.log('2a. Letterhead');
+  console.log('Email letterhead block...');
 
   return (
     <>

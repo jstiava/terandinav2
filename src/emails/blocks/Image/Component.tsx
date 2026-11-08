@@ -1,27 +1,29 @@
-'use server'
-import { richTextToPlainText } from '@/components/Auth/SendInvite/actions'
 import { EmailImageBlock as EmailImageBlockProps, Media } from '@/payload-types'
-import { Button, Img, Row, Section } from '@react-email/components'
+import { Img } from '@react-email/components';
 
-export default async function EmailImageBlock(props: EmailImageBlockProps) {
-    try {
-        const { image, props: elementProps } = props;
+export default function EmailImageBlock(props: EmailImageBlockProps) {
 
-        const parsedElementProps =
-            typeof elementProps === 'object' &&
-                elementProps !== null &&
-                !Array.isArray(elementProps)
-                ? elementProps as any
-                : {}
+    console.log("Email image block...")
+    const { image, props: elementProps } = props;
 
-
-        return (
-            <Img {...{
-                src: (image as Media).url,
-                ...JSON.parse(parsedElementProps)
-            }} />
-        )
-    } catch (err) {
-        return <p>Could not render.</p>
-    }
+    return (
+        // @ts-ignore
+        // eslint-disable-next-line @next/next/no-img-element
+        <Img
+            {...{
+                id: "",
+                alt: "",
+                src: `${'https://terandina.com'}${(image as Media).url}`,
+                className: 'aspect-square',
+                style: {
+                    display: 'block',
+                    width: "100%",
+                    height: "h-fit",
+                    outline: 'none',
+                    border: 'none',
+                    textDecoration: 'none',
+                },
+            }}
+        />
+    )
 }

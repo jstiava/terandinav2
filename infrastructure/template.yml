@@ -1,0 +1,107 @@
+Name: "Deploy template"
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Event processing stack - SQS, Lambda
+
+Parameters:
+  DeploymentBucket:
+    Type: String
+    Description: S3 bucket containing Lambda deployment packages
+
+Resources:
+
+  ProductHoldsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: terandina-product-holds-table
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: id
+          KeyType: HASH
+
+  EventLogTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: terandinav-event-log-table
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: id
+          KeyType: HASH
+
+  # Main queue
+  EventQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: event-queue-2
+      VisibilityTimeout: 180
+      MessageRetentionPeriod: 345600
+      
+  # Lambda
+  ConsumerFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: event-consumer
+      Runtime: nodejs22.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      ReservedConcurrentExecutions: 5
+      Code:
+        S3Bucket: !Ref DeploymentBucket
+        S3Key: event-consumer.zip
+
+  # Lambda consumes queue
+  QueueLambdaTrigger:
+    Type: AWS::Lambda::EventSourceMapping
+    Properties:
+      EventSourceArn: !GetAtt EventQueue.Arn
+      FunctionName: !Ref ConsumerFunction
+      BatchSize: 1
+      MaximumConcurrency: 5
+      Enabled: true
+      
+  # Lambda can access the event queue
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: ConsumeEventQueue
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - sqs:ReceiveMessage
+                  - sqs:DeleteMessage
+                  - sqs:GetQueueAttributes
+                Resource: !GetAtt EventQueue.Arn
+
+
+  ConsumerDynamoDBPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: consumer-dynamodb-write
+      Roles:
+        - !Ref LambdaExecutionRole
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:GetItem
+            Resource: !GetAtt EventLogTable.Arn
