@@ -79,10 +79,11 @@ const convertFilterRulesToPayload = (filters: CatalogBlockProps['filters']) => {
 
 }
 
-const getFilteredProducts = cache(async (props: {
+const getFilteredProducts = async (props: {
     limit: number,
     filters: CatalogBlockProps['filters']
 }) => {
+    
     const { isEnabled: draft } = await draftMode()
 
     const payload = await getPayload({ config: configPromise });
@@ -102,4 +103,4 @@ const getFilteredProducts = cache(async (props: {
     })
 
     return result.docs;
-})
+};
