@@ -68,6 +68,7 @@
     "juice": "^11.0.3",
     "lexical-beautiful-mentions": "^0.1.48",
     "lucide-react": "^0.378.0",
+    "mongodb": "^7.8.0",
     "next": "15.4.8",
     "next-sitemap": "^4.2.3",
     "nextjs-progressbar": "^0.0.16",

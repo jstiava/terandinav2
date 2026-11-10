@@ -61,7 +61,7 @@ export default async function ProductsPage(props: any) {
 }
 
 
-const getAllProducts = cache(async () => {
+const getAllProducts = async () => {
     const { isEnabled: draft } = await draftMode()
 
     const payload = await getPayload({ config: configPromise });
@@ -80,9 +80,9 @@ const getAllProducts = cache(async () => {
     })
 
     return result.docs;
-})
+}
 
-const queryPageBySlug = cache(async () => {
+const queryPageBySlug = async () => {
     const { isEnabled: draft } = await draftMode()
 
     const payload = await getPayload({ config: configPromise });
@@ -103,7 +103,7 @@ const queryPageBySlug = cache(async () => {
 
     const page = result.docs?.[0] || null;
     return page
-})
+}
 
 
 export async function generateMetadata() {

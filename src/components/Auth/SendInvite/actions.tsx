@@ -116,7 +116,7 @@ export async function handleInvite({
   return
 }
 
-const getEmailsTriggeredByInvite = cache(async () => {
+const getEmailsTriggeredByInvite = async () => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
@@ -135,7 +135,7 @@ const getEmailsTriggeredByInvite = cache(async () => {
   })
 
   return result.docs
-})
+}
 
 export async function richTextToPlainText(
   doc:

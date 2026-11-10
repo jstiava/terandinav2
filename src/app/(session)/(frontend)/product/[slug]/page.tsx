@@ -4,7 +4,6 @@ import { LivePreviewListener } from "@/components/LivePreviewListener"
 import { draftMode, headers } from "next/headers"
 import { getPayload } from "payload"
 import configPromise from '@payload-config'
-import { cache } from "react"
 import { formatPrice } from "@/collections/Products/formatPrice"
 import * as Accordion from "@/components/ui/accordion"
 import { PencilIcon, PlusIcon } from "lucide-react"
@@ -20,6 +19,9 @@ import PickupDeliveryOptions from "./PickupDeliveryOptions"
 import payloadConfig from "@payload-config"
 import { Button } from "@/components/ui/button"
 import ProductNotFound from "@/app/(session)/(frontend)/product/[slug]/ProductNotFound"
+import { unstable_cache } from "next/cache"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertTriangle } from "lucide-react";
 
 type Args = {
     params: Promise<{
@@ -50,6 +52,8 @@ export async function generateMetadata({
     }
 }
 
+
+
 export default async function ProductPage({ params: paramsPromise }: Args) {
 
     const mongo = await Mongo.getInstance();
@@ -69,9 +73,15 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
         ])
         .toArray();
 
+
     // @ts-ignore
     const recommendedProducts = await getProductFromList({
         ids: recommendedProductsId.map(x => x.slug)
+    })
+
+    console.log({
+        requested: recommendedProductsId.map(x => x.slug),
+        returned: recommendedProducts.map(x => x.slug)
     })
 
     const { isEnabled: draft } = await draftMode()
@@ -79,14 +89,18 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
     const decodedSlug = decodeURIComponent(slug)
     const url = '/' + decodedSlug
 
-    const product = await getProductBySlug({
+    const product = await getProductBySlug_cached({
         slug: decodedSlug
     })
 
-    if (!product || !product.active) {
+    if (!product) {
         return <ProductNotFound />;
     }
- 
+
+    if (!product.active && !user) {
+        return <ProductNotFound />;
+    }
+
 
     return (
         <ProductProviderComponent {...{
@@ -135,45 +149,18 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                 "flex flex-col w-full px-6 py-5  gap-6 ",
                                 'md:px-12 md:py-10'
                             )}>
-                                {/* <div className="flex gap-1 items-center w-fit">
-                                    <StarIcon {...{
-                                        className: "size-4",
-                                        fill: "gold",
-                                        // strokeWidth: 0,
-                                        stroke: 'gold'
-                                    }} />
-                                    <StarIcon {...{
-                                        className: "size-4",
-                                        fill: "gold",
-                                        // strokeWidth: 0,
-                                        stroke: 'gold'
-                                    }} />
-                                    <StarIcon {...{
-                                        className: "size-4",
-                                        fill: "gold",
-                                        // strokeWidth: 0,
-                                        stroke: 'gold'
-                                    }} />
-                                    <StarIcon {...{
-                                        className: "size-4",
-                                        fill: "gold",
-                                        // strokeWidth: 0,
-                                        stroke: 'gold'
-                                    }} />
-                                    <StarIcon {...{
-                                        className: "size-4",
-                                        fill: "gold",
-                                        // strokeWidth: 0,
-                                        stroke: 'gold'
-                                    }} />
-                                    <span {...{
-                                        className: "text-xs"
-                                    }}>(3 reviews)</span>
-                                </div> */}
+
+
+
+                                <Alert variant="destructive">
+                                    <AlertTriangle className="h-4 w-4" />
+                                    <AlertTitle>Product is not active</AlertTitle>
+                                    <AlertDescription>
+                                        This product is currently unavailable. You can only see this product preview because you are signed in.
+                                    </AlertDescription>
+                                </Alert>
 
                                 <div className="flex flex-col w-full">
-
-
                                     <h1 {...{
                                         className: "font-bold uppercase text-sm"
                                     }}>{product.name}</h1>
@@ -195,8 +182,6 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
 
                                 <AddToCartButton />
 
-                               
-
                                 <PickupDeliveryOptions />
 
                                 <div className="flex flex-col w-full gap-1">
@@ -205,7 +190,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                     }}>{product.description}</span>
                                 </div>
 
-                                 {user && (
+                                {user && (
                                     <Button {...{
                                         asChild: true,
                                         size: 'lg',
@@ -223,27 +208,6 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                 type: 'multiple',
                                 className: 'w-full border-t border-b border-gray-300'
                             }}>
-
-                                {/* DESCRIPTION */}
-                                {/* <Accordion.AccordionItem
-                                key={'description'} {...{
-                                    value: 'description',
-                                }}  >
-                                <Accordion.AccordionTrigger className='flex w-full! p-4'>
-                                    <div className="flex justify-between items-center w-full">
-                                        <span className='text-sm'>Description</span> 
-                                        <PlusIcon className='size-4' />
-                                    </div>
-                                </Accordion.AccordionTrigger>
-                                <Accordion.AccordionContent>
-                                    <div className="flex w-full px-4 py-2">
-
-                                        <span {...{
-                                            className: "whitespace-pre-wrap text-sm w-full"
-                                        }}>{product.description}</span>
-                                    </div>
-                                </Accordion.AccordionContent>
-                            </Accordion.AccordionItem> */}
 
                                 {/* DETAILS */}
                                 <Accordion.AccordionItem
@@ -314,8 +278,6 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                     })}
                                 </div>
                             </div>
-
-                            {/* <p>{JSON.stringify(product, null, 2)}</p> */}
                         </div>
                     </div>
                     {draft && <LivePreviewListener />}
@@ -326,18 +288,14 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
 }
 
 
-const getProductFromList = cache(async ({ ids }: { ids: string[] }) => {
-    const { isEnabled: draft } = await draftMode()
-
-    console.log({ ids })
+const getProductFromList = async ({ ids }: { ids: string[] }) => {
     const payload = await getPayload({ config: configPromise })
 
     const result = await payload.find({
         collection: 'products',
-        draft,
+        draft: false,
         depth: 2,
         pagination: false,
-        overrideAccess: draft,
         where: {
             slug: {
                 in: ids,
@@ -346,9 +304,9 @@ const getProductFromList = cache(async ({ ids }: { ids: string[] }) => {
     })
 
     return result.docs;
-})
+};
 
-const getProductBySlug = cache(async ({ slug }: { slug: string }) => {
+const getProductBySlug = async ({ slug }: { slug: string }) => {
     const { isEnabled: draft } = await draftMode()
 
     const payload = await getPayload({ config: configPromise })
@@ -374,5 +332,18 @@ const getProductBySlug = cache(async ({ slug }: { slug: string }) => {
     }
 
     return product
-})
+}
+
+
+async function getProductBySlug_cached(props: { slug: string }) {
+    return unstable_cache(
+        async () => {
+            const products = await getProductBySlug(props);
+            return products;
+        },
+        ["product"],
+        { tags: [props.slug] }
+    )();
+}
+
 

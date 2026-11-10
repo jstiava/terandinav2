@@ -2,20 +2,18 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generateSlug } from '@/utilities/generateSlug'
 import { Carousel } from '@/blocks/Carousel/config'
 import { Content } from '@/blocks/Content/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { Catalog } from '@/blocks/Catalog/config'
+import { revalidateTag } from 'next/cache'
 
 const blocks = [
     Content,
     Carousel,
     Catalog
 ]
-
-
 
 export const Products: CollectionConfig = {
     slug: 'products',
@@ -43,8 +41,6 @@ export const Products: CollectionConfig = {
                 }
             }
         },
-
-
         defaultColumns: [
             'name',
             'images',
@@ -53,7 +49,6 @@ export const Products: CollectionConfig = {
             'icons',
             'updatedAt',
         ],
-
         livePreview: {
             url: ({ data, req }) =>
                 generatePreviewPath({
@@ -70,12 +65,11 @@ export const Products: CollectionConfig = {
             }),
         useAsTitle: 'name',
     },
-
     fields: [
         {
             name: 'slug',
             type: 'text',
-            required: true,
+            required: false,
             admin: {
                 position: 'sidebar',
                 description: "Required to display the page preview"
@@ -116,14 +110,14 @@ export const Products: CollectionConfig = {
                             ],
                             admin: {
                                 components: {
-                                    Cell: '@/collections/Products/ProductImagesCell#default'
+                                    // Cell: '@/collections/Products/ProductImagesCell#default'
                                 }
                             }
                         },
                         {
                             name: 'description',
                             type: 'textarea',
-                            required: true,
+                            required: false,
                         },
                         {
                             name: 'details',
@@ -388,7 +382,14 @@ export const Products: CollectionConfig = {
 
     hooks: {
         // beforeChange: [populatePublishedAt],
-
+        afterChange: [
+            (({ data }) => {
+                if (!data) {
+                    return;
+                }
+                revalidateTag(data.id)
+            })
+        ],
         beforeValidate: [
             ({ data }) => {
                 if (!data) {

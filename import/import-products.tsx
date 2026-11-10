@@ -1,14 +1,10 @@
 
 import fs from "fs/promises"
 import path from "path"
-import { Product } from "@/payload-types";
-import sharp from "sharp";
-import configPromise from '@payload-config'
-
 import cliProgress from 'cli-progress'
-import { randomBytes } from "crypto";
-import { getPayload } from "payload";
-import Mongo from "@/utilities/mongo";
+import Mongo from "../src/utilities/mongo";
+import { ObjectId } from "mongodb";
+import { EJSON } from "bson";
 
 const progress = new cliProgress.SingleBar(
     {
@@ -34,7 +30,7 @@ export async function importTerandinaProducts() {
 
     const mongo = await Mongo.getInstance();
 
-    const products: any[] = await loadJSON('data/converted_products.json');
+    const products: any[] = await loadJSON('data/products.json');
 
 
     progress.start(products.length, 0);
@@ -44,7 +40,29 @@ export async function importTerandinaProducts() {
 
         // const id = randomBytes(12).toString('hex');
 
-        await mongo.clientPromise.db('terandinav2').collection('products').insertOne(product)
+        const newProduct = {
+            ...product,
+            _id: new ObjectId(),
+            images: product.images.map(x => ({
+                image: x.image['$oid'] ? new ObjectId(x.image['$oid']) : new ObjectId(x.image),
+                id: new ObjectId().toString()
+            })),
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        };
+
+        await mongo.clientPromise.db('terandinav2').collection('products').insertOne(newProduct);
+
+        await mongo.clientPromise.db('terandinav2').collection('_products_versions').insertOne({
+            _id: new ObjectId(),
+            parent: newProduct._id,
+            version: newProduct,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            autosave: false,
+            "__v": 0,
+            latest: true
+        });
 
         progress.increment()
 

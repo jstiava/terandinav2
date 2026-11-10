@@ -78,7 +78,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 //   return generateMeta({ doc: page })
 // }
 
-const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryPageBySlug = async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
@@ -97,4 +97,4 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
   })
 
   return result.docs?.[0] || null
-})
+}

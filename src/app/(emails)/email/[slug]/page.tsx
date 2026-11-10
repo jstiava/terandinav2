@@ -188,7 +188,7 @@ export default async function EmailPage({ params: paramsPromise }: Args) {
   )
 }
 
-const queryEmailPageBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryEmailPageBySlug = async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
@@ -207,4 +207,4 @@ const queryEmailPageBySlug = cache(async ({ slug }: { slug: string }) => {
   })
 
   return result.docs?.[0] || null
-})
+}

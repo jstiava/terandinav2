@@ -1,11 +1,7 @@
 // lib/mongodb.js
 import { Db, MongoClient, ServerApiVersion } from 'mongodb';
 
-// const uri = String(process.env.MONGODB_URI);
-// const uri = "mongodb+srv://terandina_official:W1I4LC=ruw8!3pevaS0!@terandinacore.rf6bv.mongodb.net/?retryWrites=true&w=majority&appName=TerandinaCore";
-
-// const uri = "mongodb://127.0.0.1/"
-const uri = String(process.env.DATABASE_URL);
+const uri = String(process.env.MONGODB_URI); 
 
 class Mongo {
   private static instance: Mongo | null;
@@ -33,7 +29,7 @@ class Mongo {
   public static async getInstance(): Promise<Mongo> {
     if (!Mongo.instance) {
       try {
-        Mongo.instance = new Mongo();
+      Mongo.instance = new Mongo();
         await Mongo.instance.connect();
       } catch (err) {
         console.log(err)

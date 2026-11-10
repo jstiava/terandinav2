@@ -498,7 +498,7 @@ export interface Product {
   /**
    * Required to display the page preview
    */
-  slug: string;
+  slug?: string | null;
   active?: boolean | null;
   name: string;
   images?:
@@ -507,7 +507,7 @@ export interface Product {
         id?: string | null;
       }[]
     | null;
-  description: string;
+  description?: string | null;
   details?: string | null;
   categories?: (string | Category)[] | null;
   /**

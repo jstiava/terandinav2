@@ -36,7 +36,7 @@ export default async function HomePage(props: any) {
 }
 
 
-const getHomePage = cache(async () => {
+const getHomePage = async () => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise });
@@ -67,7 +67,7 @@ const getHomePage = cache(async () => {
 
   const page = result.docs?.[0] || null;
   return page
-})
+}
 
 
 export type ServerProps = {

@@ -1,13 +1,13 @@
 
 import fs from "fs/promises"
 import path from "path"
-import { Product } from "@/payload-types";
+import { Product } from "../src/payload-types";
 import sharp from "sharp";
 import { UTApi } from 'uploadthing/server'
 import { ObjectId } from 'mongodb'
 
 import cliProgress from 'cli-progress'
-import Mongo from "@/utilities/mongo";
+import Mongo from "../src/utilities/mongo";
 
 const progress = new cliProgress.SingleBar(
     {

@@ -41,7 +41,7 @@ export default async function CategoryPage({ params: paramsPromise }: Args) {
 }
 
 
-const getCategoryBySlug = cache(async ({ slug }: { slug: string }) => {
+const getCategoryBySlug = async ({ slug }: { slug: string }) => {
     const { isEnabled: draft } = await draftMode()
 
     const payload = await getPayload({ config: configPromise })
@@ -67,5 +67,5 @@ const getCategoryBySlug = cache(async ({ slug }: { slug: string }) => {
     }
 
     return product
-})
+}
 

@@ -19,7 +19,6 @@ import { default as default_9f8002a0ff24ae237370e4dd418f543b } from '@/collectio
 import { default as default_7f4f6af851e0ebfcda834ac8fbe7e42e } from '@/collections/Media/MediaAltCellWithImagePreview'
 import { FolderTableCell as FolderTableCell_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 import { FolderField as FolderField_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
-import { default as default_2979d1dbb3757fd81d66d87687864f9f } from '@/collections/Products/ProductImagesCell'
 import { SizeRowLabel as SizeRowLabel_2f4136c38f0a6f09b24f4fe025cf543b } from '@/collections/Products/RowLabels'
 import { PriceRowLabel as PriceRowLabel_2f4136c38f0a6f09b24f4fe025cf543b } from '@/collections/Products/RowLabels'
 import { default as default_7d5bbd8350f54c60286c004a91066295 } from '@/collections/Products/CustomProductView'
@@ -53,7 +52,6 @@ export const importMap = {
   "@/collections/Media/MediaAltCellWithImagePreview#default": default_7f4f6af851e0ebfcda834ac8fbe7e42e,
   "@payloadcms/ui/rsc#FolderTableCell": FolderTableCell_ab83ff7e88da8d3530831f296ec4756a,
   "@payloadcms/ui/rsc#FolderField": FolderField_ab83ff7e88da8d3530831f296ec4756a,
-  "@/collections/Products/ProductImagesCell#default": default_2979d1dbb3757fd81d66d87687864f9f,
   "@/collections/Products/RowLabels#SizeRowLabel": SizeRowLabel_2f4136c38f0a6f09b24f4fe025cf543b,
   "@/collections/Products/RowLabels#PriceRowLabel": PriceRowLabel_2f4136c38f0a6f09b24f4fe025cf543b,
   "@/collections/Products/CustomProductView#default": default_7d5bbd8350f54c60286c004a91066295,

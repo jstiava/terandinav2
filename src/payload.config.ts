@@ -95,7 +95,7 @@ export default buildConfig({
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
   db: mongooseAdapter({
-    url: process.env.DATABASE_URL || '',
+    url: process.env.PRODUCTION_DATABASE_URL || '',
     connectOptions: {
       maxPoolSize: 5,
       minPoolSize: 0,
