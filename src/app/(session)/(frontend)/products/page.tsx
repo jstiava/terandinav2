@@ -94,18 +94,9 @@ const queryPageBySlug = async () => {
         pagination: false,
         overrideAccess: draft,
         where: {
-            and: [
-                {
-                    slug: {
-                        equals: 'products',
-                    },
-                },
-                {
-                    active: {
-                        equals: true,
-                    },
-                },
-            ],
+            slug: {
+                equals: 'products',
+            },
         },
     });
 
