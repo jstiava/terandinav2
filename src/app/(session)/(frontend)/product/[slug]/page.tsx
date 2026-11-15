@@ -140,9 +140,9 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                     </div>
 
                     {/* Content */}
-                    <div className="self-start flex w-full md:w-[45%] max-w-[45rem] pt-2 md:pt-14 ">
+                    <div className="self-start flex w-full md:w-[60%] max-w-[70rem] pt-2 md:pt-14 ">
 
-                        <div className="sticky top-0 flex flex-col gap-8 w-full max-w-[80rem] h-fit ">
+                        <div className="sticky top-0 flex flex-col gap-8 w-full max-w-[45rem] h-fit ">
 
                             <div className={cn(
                                 "flex flex-col w-full px-6 py-5  gap-6 ",

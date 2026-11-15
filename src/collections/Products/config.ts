@@ -401,11 +401,9 @@ export const Products: CollectionConfig = {
                     return;
                 }
 
-                if (doc._status == 'published') {
-                    revalidateTag(doc.slug)
-                    revalidateTag('products')
-                    revalidatePath(`product/${doc.slug}`)
-                }
+                revalidateTag(doc.slug)
+                revalidateTag('products')
+                revalidatePath(`product/${doc.slug}`)
 
                 if (doc.slug != previousDoc.slug) {
                     revalidateTag(previousDoc.slug)
