@@ -107,7 +107,7 @@ async function queryPageBySlug_cached({ slug }: { slug: string }) {
             const product = await queryPageBySlug({ slug });
             return product;
         },
-        ["page"],
+        ["page", slug],
         { tags: [slug] }
     )();
 }

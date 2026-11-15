@@ -42,6 +42,10 @@ export default async function ProductsPage(props: any) {
                 <div className="flex w-full gap-0 flex-wrap">
                     {products.map(product => {
 
+                        if (!product.active) {
+                            return null;
+                        }
+
                         return (
                             <ProductCard
                                 key={product.id}
@@ -61,16 +65,14 @@ export default async function ProductsPage(props: any) {
 
 
 const getAllProducts = async () => {
-    const { isEnabled: draft } = await draftMode()
 
     const payload = await getPayload({ config: configPromise });
 
     const result = await payload.find({
         collection: 'products',
-        draft,
+        draft: false,
         depth: 2,
-        pagination: false,
-        overrideAccess: draft,
+        pagination: false, 
         where: {
             active: {
                 equals: true

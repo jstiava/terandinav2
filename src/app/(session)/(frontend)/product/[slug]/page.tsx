@@ -151,13 +151,15 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
 
 
 
-                                <Alert variant="destructive">
-                                    <AlertTriangle className="h-4 w-4" />
-                                    <AlertTitle>Product is not active</AlertTitle>
-                                    <AlertDescription>
-                                        This product is currently unavailable. You can only see this product preview because you are signed in.
-                                    </AlertDescription>
-                                </Alert>
+                                {!product.active && (
+                                    <Alert variant="destructive">
+                                        <AlertTriangle className="h-4 w-4" />
+                                        <AlertTitle>Product is not active</AlertTitle>
+                                        <AlertDescription>
+                                            This product is currently unavailable. You can only see this product preview because you are signed in.
+                                        </AlertDescription>
+                                    </Alert>
+                                )}
 
                                 <div className="flex flex-col w-full">
                                     <h1 {...{
@@ -340,7 +342,7 @@ async function getProductBySlug_cached(props: { slug: string }) {
             const product = await getProductBySlug(props);
             return product;
         },
-        ["product"],
+        ["product", props.slug],
         { tags: [props.slug] }
     )();
 }
