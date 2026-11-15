@@ -7,10 +7,51 @@ export const MediaBlock: Block = {
   interfaceName: 'MediaBlock',
   fields: [
     {
+      name: "type",
+      type: 'select',
+      defaultValue: 'image',
+      options: [
+        { label: "Image", value: 'image' },
+        { label: "Video", value: 'video' }
+      ]
+    },
+    {
       name: 'media',
       type: 'upload',
       relationTo: 'media',
-      required: true,
+      required: false,
+      filterOptions: {
+        mimeType: {
+          contains: 'image',
+        },
+      },
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === 'image',
+      },
+    },
+    {
+      name: 'coverImage',
+      label: "Video cover image",
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === 'video',
+      },
+    },
+    {
+      name: 'video',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      filterOptions: {
+        mimeType: {
+          contains: 'video',
+        },
+      },
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === 'video',
+      },
     },
     {
       name: "className",

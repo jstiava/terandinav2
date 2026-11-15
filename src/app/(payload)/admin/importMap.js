@@ -24,6 +24,7 @@ import { PriceRowLabel as PriceRowLabel_2f4136c38f0a6f09b24f4fe025cf543b } from 
 import { default as default_7d5bbd8350f54c60286c004a91066295 } from '@/collections/Products/CustomProductView'
 import { FolderTypeField as FolderTypeField_3817bf644402e67bfe6577f60ef982de } from '@payloadcms/ui'
 import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
+import { default as default_f1b6ce43ffab1fcbe4c33c507d90e3cc } from '../../../collections/Settings/RevalidateProductsButton'
 import { default as default_d3e265f969641a4ccf3d5a195904e268 } from '@/graphics/Logo'
 import { default as default_8a7ab0eb7ab5c511aba12e68480bfe5e } from '@/components/BeforeLogin'
 import { default as default_035a063f0e4325a280e3cc815d2ec5d7 } from '@/components/AfterDashboard'
@@ -57,6 +58,7 @@ export const importMap = {
   "@/collections/Products/CustomProductView#default": default_7d5bbd8350f54c60286c004a91066295,
   "@payloadcms/ui#FolderTypeField": FolderTypeField_3817bf644402e67bfe6577f60ef982de,
   "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,
+  "/collections/Settings/RevalidateProductsButton#default": default_f1b6ce43ffab1fcbe4c33c507d90e3cc,
   "@/graphics/Logo#default": default_d3e265f969641a4ccf3d5a195904e268,
   "@/components/BeforeLogin#default": default_8a7ab0eb7ab5c511aba12e68480bfe5e,
   "@/components/AfterDashboard#default": default_035a063f0e4325a280e3cc815d2ec5d7,

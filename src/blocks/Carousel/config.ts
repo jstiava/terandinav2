@@ -12,10 +12,61 @@ export const Carousel: Block = {
       type: 'array',
       fields: [
         {
+          name: "type",
+          type: 'radio',
+          admin: {
+            layout: 'horizontal',
+            width: '50%',
+          },
+          defaultValue: 'image',
+          options: [
+            { label: "Image", value: 'image' },
+            { label: "Video", value: 'video' }
+          ]
+        },
+        {
           name: 'image',
           type: 'upload',
           relationTo: 'media',
-          required: true,
+          filterOptions: {
+            mimeType: {
+              contains: 'image',
+
+            },
+          },
+          admin: {
+            condition: (_, siblingData) => siblingData?.type === 'image',
+          },
+          required: false,
+        },
+        {
+          name: 'coverImage',
+          label: "Video cover image",
+          type: 'upload',
+          filterOptions: {
+            mimeType: {
+              contains: 'image',
+            },
+          },
+          relationTo: 'media',
+          required: false,
+          admin: {
+            condition: (_, siblingData) => siblingData?.type === 'video',
+          },
+        },
+        {
+          name: 'video',
+          type: 'upload',
+          relationTo: 'media',
+          required: false,
+          filterOptions: {
+            mimeType: {
+              contains: 'video',
+            },
+          },
+          admin: {
+            condition: (_, siblingData) => siblingData?.type === 'video',
+          },
         },
         {
           name: 'richText',

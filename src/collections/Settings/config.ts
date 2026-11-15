@@ -19,6 +19,15 @@ export const Settings: GlobalConfig = {
             required: true,
         },
         {
+            name: 'revalidateProducts',
+            type: 'ui',
+            admin: {
+                components: {
+                    Field: '/collections/Settings/RevalidateProductsButton',
+                },
+            },
+        },
+        {
             name: "variables",
             type: "array",
             fields: [

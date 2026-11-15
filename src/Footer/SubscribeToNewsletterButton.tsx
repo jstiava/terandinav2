@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 
 
 import { Field, FieldContent, FieldDescription, FieldLabel } from '@/components/ui/field'
@@ -9,10 +9,12 @@ import * as Drawer from '@/components/ui/drawer'
 import { useMediaQuery } from '@/utilities/useMediaQuery'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { XIcon } from 'lucide-react'
 
 export default function SubscribeToNewsletterButton() {
 
     const isMd = useMediaQuery("(min-width: 768px)");
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleSubscrbe = (e : any) => {
         // handleSub
@@ -29,13 +31,26 @@ export default function SubscribeToNewsletterButton() {
                 <FieldContent>
                     <Drawer.Drawer {...{
                         direction: isMd ? 'left' : 'bottom',
+                        open: isOpen,
+                        onOpenChange: (open) => {
+                            setIsOpen(open)
+                        }
                     }}>
                         <Drawer.DrawerTrigger>
-                            <Input />
+                            <Input {...{ 
+                                className: "text-lg h-12"
+                            }} />
                         </Drawer.DrawerTrigger>
                         <Drawer.DrawerContent {...{
                             className: isMd ? "fixed inset-y-0 left-0 right-auto z-[101] h-full w-full max-w-[30rem] flex flex-col border-l bg-background outline-none" : "h-fit w-full"
                         }}>
+                            <Button {...{
+                                className: 'absolute top-1 right-1 size-8 h-fit aspect-square',
+                                variant: 'ghost',
+                                onClick: e => {
+                                    setIsOpen(false)
+                                }
+                            }}><XIcon /></Button>
                             <Drawer.DrawerTitle {...{
                                 className: "sr-only"
                             }}>Subscribe to our newsletter</Drawer.DrawerTitle>

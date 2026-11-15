@@ -76,7 +76,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
 
     // @ts-ignore
     const recommendedProducts = await getProductFromList({
-        ids: recommendedProductsId.map(x => x.slug)
+        ids: recommendedProductsId.map(x => x._id)
     })
 
     const { isEnabled: draft } = await draftMode()
@@ -140,7 +140,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                     </div>
 
                     {/* Content */}
-                    <div className="self-start flex w-full md:w-[60%] max-w-[70rem] pt-2 md:pt-14 ">
+                    <div className="self-start flex w-full md:w-[55%] max-w-[70rem] pt-2 md:pt-14 ">
 
                         <div className="sticky top-0 flex flex-col gap-8 w-full max-w-[45rem] h-fit ">
 
@@ -298,7 +298,7 @@ const getProductFromList = async ({ ids }: { ids: string[] }) => {
         depth: 2,
         pagination: false,
         where: {
-            slug: {
+            id: {
                 in: ids,
             },
         },

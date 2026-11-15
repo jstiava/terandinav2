@@ -282,7 +282,10 @@ export interface FolderInterface {
 export interface CarouselBlock {
   slides?:
     | {
-        image: string | Media;
+        type?: ('image' | 'video') | null;
+        image?: (string | null) | Media;
+        coverImage?: (string | null) | Media;
+        video?: (string | null) | Media;
         richText?: {
           root: {
             type: string;
@@ -1176,7 +1179,10 @@ export interface CarouselBlockSelect<T extends boolean = true> {
   slides?:
     | T
     | {
+        type?: T;
         image?: T;
+        coverImage?: T;
+        video?: T;
         richText?: T;
         className?: T;
         compiledStyles?: T;
@@ -1896,7 +1902,10 @@ export interface SettingsSelect<T extends boolean = true> {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
-  media: string | Media;
+  type?: ('image' | 'video') | null;
+  media?: (string | null) | Media;
+  coverImage?: (string | null) | Media;
+  video?: (string | null) | Media;
   /**
    * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. Open Tailwind cheatsheet: https://nerdcave.com/tailwind-cheat-sheet.
    */

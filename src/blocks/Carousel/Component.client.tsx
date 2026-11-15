@@ -104,13 +104,31 @@ export default function CarouselBlockClient({
             <Carousel.CarouselItem key={slide.id} {...{
               className: cn(
                 "flex items-end justify-center w-full bg-border w-full p-0",
-                "aspect-[9/16] h-fit max-h-[90dvh]",
+                "aspect-[9/16] h-fit max-h-[95dvh]",
                 "bg-cover bg-center bg-no-repeat"
               ),
               style: {
-                backgroundImage: slide.image && `url("${(slide.image as Media).url}")`
+                backgroundImage: slide.type == 'image' ? (slide.image && `url("${(slide.image as Media).url}")`) ?? '' : ''
               }
             }}>
+
+              {slide.video && (
+                <video {...{
+                  className: "absolute inset-0 w-full h-full object-cover object-center",
+                  autoPlay: true,
+                  muted: true,
+                  loop: true,
+                  playsInline: true,
+                  preload: 'auto',
+                  poster: (slide.coverImage as Media).url ?? ''
+                }}>
+                  <source {...{
+                    src: (slide.video as Media)?.url ?? '',
+                    type: 'video/mp4'
+                  }}
+                  />
+                </video>
+              )}
 
               <div {...{
                 className: cn(
@@ -141,7 +159,8 @@ export default function CarouselBlockClient({
                 }} />
               </div>
             </Carousel.CarouselItem>
-          )})}
+          )
+        })}
       </Carousel.CarouselContent>
     </Carousel.Carousel>
   )
