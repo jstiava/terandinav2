@@ -9,6 +9,7 @@ import React, { cache } from 'react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { unstable_cache } from 'next/cache'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -47,7 +48,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const decodedSlug = decodeURIComponent(slug)
   const url = '/' + decodedSlug
 
-  const page: RequiredDataFromCollectionSlug<'pages'> | null = await queryPageBySlug({
+  const page: RequiredDataFromCollectionSlug<'pages'> | null = await queryPageBySlug_cached({
     slug: decodedSlug,
   })
 
@@ -97,4 +98,16 @@ const queryPageBySlug = async ({ slug }: { slug: string }) => {
   })
 
   return result.docs?.[0] || null
+}
+
+
+async function queryPageBySlug_cached({ slug }: { slug: string }) {
+    return unstable_cache(
+        async () => {
+            const product = await queryPageBySlug({ slug });
+            return product;
+        },
+        ["page"],
+        { tags: [slug] }
+    )();
 }

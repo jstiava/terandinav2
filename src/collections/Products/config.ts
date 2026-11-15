@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import { getPayload, type CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
@@ -7,7 +7,8 @@ import { Carousel } from '@/blocks/Carousel/config'
 import { Content } from '@/blocks/Content/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { Catalog } from '@/blocks/Catalog/config'
-import { revalidateTag } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
+import configPromise from '@payload-config'
 
 const blocks = [
     Content,
@@ -381,15 +382,6 @@ export const Products: CollectionConfig = {
     ],
 
     hooks: {
-        // beforeChange: [populatePublishedAt],
-        afterChange: [
-            (({ data }) => {
-                if (!data) {
-                    return;
-                }
-                revalidateTag(data.id)
-            })
-        ],
         beforeValidate: [
             ({ data }) => {
                 if (!data) {
@@ -402,6 +394,28 @@ export const Products: CollectionConfig = {
 
                 return data
             },
+        ],
+        afterChange: [
+            (async ({ doc, previousDoc, req }) => {
+                if (!doc) {
+                    return;
+                }
+
+                if (doc._status == 'published') {
+                    revalidateTag(doc.slug)
+                    revalidateTag('products')
+                    revalidatePath(`product/${doc.slug}`)
+                }
+
+                if (doc.slug != previousDoc.slug) {
+                    revalidateTag(previousDoc.slug)
+                    revalidateTag('products')
+                    revalidatePath(`product/${previousDoc.slug}`)
+                }
+
+                return
+
+            })
         ],
     },
 

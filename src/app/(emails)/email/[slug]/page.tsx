@@ -22,9 +22,6 @@ type Args = {
   }>
 }
 
-
-const baseURL = process.env.NEXT_PUBLIC_SERVER_URL ?? 'http://localhost:3000';
-
 export default async function EmailPage({ params: paramsPromise }: Args) {
 
   console.log('3. Entering EmailPage');

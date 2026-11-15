@@ -9,12 +9,13 @@ import React, { cache } from 'react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { Metadata, ResolvingMetadata } from 'next'
+import { unstable_cache } from 'next/cache'
 
 
 export default async function HomePage(props: any) {
 
   const { isEnabled: draft } = await draftMode()
-  const page: RequiredDataFromCollection<Page> | null = await getHomePage();
+  const page: RequiredDataFromCollection<Page> | null = await getHomePage_cached();
 
   if (!page) {
 
@@ -66,8 +67,21 @@ const getHomePage = async () => {
   })
 
   const page = result.docs?.[0] || null;
+
   return page
 }
+
+async function getHomePage_cached() {
+    return unstable_cache(
+        async () => {
+            const product = await getHomePage();
+            return product;
+        },
+        ["home"],
+        { tags: ['home_page'] }
+    )();
+}
+
 
 
 export type ServerProps = {

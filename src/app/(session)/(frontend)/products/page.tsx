@@ -9,7 +9,7 @@ import React, { cache } from 'react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import ProductCard from './ProductCard'
-import { PayloadRedirects } from '@/components/PayloadRedirects'
+import { unstable_cache } from 'next/cache'
 
 
 
@@ -18,10 +18,9 @@ export default async function ProductsPage(props: any) {
     const { isEnabled: draft } = await draftMode()
     const page: RequiredDataFromCollection<Page> | null = await queryPageBySlug();
 
-    const products = await getAllProducts();
+    const products = await getAllProducts_cached();
 
     if (page) {
-
         return (
             <div id="content" className="flex flex-col w-full gap-0">
                 {draft && <LivePreviewListener />}
@@ -98,12 +97,27 @@ const queryPageBySlug = async () => {
             slug: {
                 equals: 'products',
             },
+            active: {
+                equals: true
+            }
         },
     })
 
     const page = result.docs?.[0] || null;
     return page
 }
+
+async function getAllProducts_cached() {
+    return unstable_cache(
+        async () => {
+            const product = await getAllProducts();
+            return product;
+        },
+        ["product"],
+        { tags: ['products'] }
+    )();
+}
+
 
 
 export async function generateMetadata() {

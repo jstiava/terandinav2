@@ -79,15 +79,14 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
         ids: recommendedProductsId.map(x => x.slug)
     })
 
-    console.log({
-        requested: recommendedProductsId.map(x => x.slug),
-        returned: recommendedProducts.map(x => x.slug)
-    })
-
     const { isEnabled: draft } = await draftMode()
-    const { slug = 'home' } = await paramsPromise
+    const { slug } = await paramsPromise
+
+    if (!slug) {
+        return <ProductNotFound />;
+    }
+
     const decodedSlug = decodeURIComponent(slug)
-    const url = '/' + decodedSlug
 
     const product = await getProductBySlug_cached({
         slug: decodedSlug
@@ -338,8 +337,8 @@ const getProductBySlug = async ({ slug }: { slug: string }) => {
 async function getProductBySlug_cached(props: { slug: string }) {
     return unstable_cache(
         async () => {
-            const products = await getProductBySlug(props);
-            return products;
+            const product = await getProductBySlug(props);
+            return product;
         },
         ["product"],
         { tags: [props.slug] }
@@ -347,3 +346,25 @@ async function getProductBySlug_cached(props: { slug: string }) {
 }
 
 
+
+export async function generateStaticParams() {
+
+    const payload = await getPayload({ config: configPromise })
+
+    const pages = await payload.find({
+        collection: 'products',
+        draft: false,
+        limit: 1000,
+        overrideAccess: false,
+        pagination: false,
+        select: {
+            slug: true,
+        },
+    })
+
+    const params = pages.docs.map(({ slug }) => {
+        return { slug }
+    })
+
+    return params
+}

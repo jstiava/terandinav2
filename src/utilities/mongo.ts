@@ -1,7 +1,7 @@
 // lib/mongodb.js
 import { Db, MongoClient, ServerApiVersion } from 'mongodb';
 
-const uri = String(process.env.MONGODB_URI); 
+const uri = String(process.env.DATABASE_URI); 
 
 class Mongo {
   private static instance: Mongo | null;
