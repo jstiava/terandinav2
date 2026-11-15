@@ -94,14 +94,20 @@ const queryPageBySlug = async () => {
         pagination: false,
         overrideAccess: draft,
         where: {
-            slug: {
-                equals: 'products',
-            },
-            active: {
-                equals: true
-            }
+            and: [
+                {
+                    slug: {
+                        equals: 'products',
+                    },
+                },
+                {
+                    active: {
+                        equals: true,
+                    },
+                },
+            ],
         },
-    })
+    });
 
     const page = result.docs?.[0] || null;
     return page
@@ -113,7 +119,7 @@ async function getAllProducts_cached() {
             const product = await getAllProducts();
             return product;
         },
-        ["product"],
+        ["products"],
         { tags: ['products'] }
     )();
 }
