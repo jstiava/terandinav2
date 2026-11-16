@@ -14,21 +14,35 @@ export default function AddToCartButton() {
   const { ...ProductContext } = useContext(ProductProvider)
   const CartContext = useContext(CartProvider)
 
-  const [state, setState] = useState<'stable' | 'loading' | 'done'>('stable')
+  const [state, setState] = useState<'stable' | 'loading' | 'done'>('stable');
+  const [message, setMessage] = useState<string | null>(null)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   const isMd = useMediaQuery('(min-width: 768px)')
 
   const handleAddToCart = (e?: any) => {
+
+    if (!ProductContext.size) {
+      setState('stable')
+      setMessage("Size is required.")
+      return;
+    }
+
     CartContext.add({
       item: {
         id: ProductContext.product.id,
-        size: ProductContext.size?.id,
+        size: ProductContext.size.id,
         quantity: ProductContext.quantity,
         product: ProductContext.product,
       },
     })
-    setIsDrawerOpen(false)
+
+    setTimeout(() => {
+      // setIsDrawerOpen(true);
+      CartContext.open();
+      setState('stable')
+    }, 1000)
+
   }
 
   const onClick = () => {
@@ -40,17 +54,27 @@ export default function AddToCartButton() {
     }
 
     setState('loading')
+    handleAddToCart();
+  }
 
-    setTimeout(() => {
-      // setIsDrawerOpen(true);
-      handleAddToCart();
-      CartContext.open();
-      setState('stable')
-    }, 1000)
+  if (!ProductContext.size) {
+    return (
+      <Button
+        {...{
+          className: 'font-bold uppercase ',
+          variant: 'outline',
+          disabled: true,
+          onClick,
+          size: 'lg',
+        }}
+      >
+        Sold out
+      </Button>
+    )
   }
 
   return (
-    <>
+    <div className="flex gap-1 w-full flex-col ">
       <Button
         {...{
           className: '',
@@ -75,7 +99,7 @@ export default function AddToCartButton() {
           </>
         )}
       </Button>
-      
-    </>
+      {message && <span className='text-xs text-red-400'>{message}</span>}
+    </div>
   )
 }

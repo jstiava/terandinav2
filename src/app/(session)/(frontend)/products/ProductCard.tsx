@@ -10,6 +10,8 @@ export default async function ProductCard({ product, className }: {
     className: string
 }) {
 
+    const isSoldOut = (!product.sizes || product.sizes.length == 0) || (product.sizes.reduce((sum, item) => sum + (item.count ?? 0), 0) == 0);
+
     return (
         <div {...{
             className: cn(
@@ -17,8 +19,6 @@ export default async function ProductCard({ product, className }: {
                 className
             )
         }}>
-
-
             <a
                 key={product.id}
                 {...{
@@ -27,8 +27,9 @@ export default async function ProductCard({ product, className }: {
                         "group flex flex-col gap-3 h-fit w-full",
                     ),
                 }}>
+
                 <div {...{
-                    className: "flex aspect-square w-full h-fit bg-border bg-cover bg-center bg-no-repeat",
+                    className: "relative flex aspect-square w-full h-fit bg-border bg-cover bg-center bg-no-repeat",
                     style: {
                         backgroundImage: product.images && product.images.length > 0 ? `url("${(product.images[0].image as any).url}")` : ""
                     }
@@ -40,6 +41,9 @@ export default async function ProductCard({ product, className }: {
                     <span {...{
                         className: "font-archivo"
                     }}>{product.prices && product.prices.length > 0 && formatPrice(product.prices[0].amount * 100, product.prices[0].currency)}</span>
+                    {isSoldOut && (
+                        <span className="font-bold uppercase text-[--terandina-gold-darker] ">Sold out</span>
+                    )}
                 </div>
             </a>
         </div>

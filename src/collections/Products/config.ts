@@ -399,9 +399,8 @@ export const Products: CollectionConfig = {
             async ({ doc, previousDoc }) => {
                 if (!doc) return;
 
-                revalidateTag('products');
-
                 if (doc.slug) {
+                    revalidateTag('products');
                     revalidateTag(doc.slug);
                     revalidatePath(`/product/${doc.slug}`);
                 }

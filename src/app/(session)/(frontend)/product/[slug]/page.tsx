@@ -110,11 +110,17 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
 
 
                     {/* Images on mobile */}
-                    <div className="flex md:hidden w-full">
-                        <MobileProductImageCarousel {...{
-                            images: product.images
-                        }} />
-                    </div>
+                    {product.images && product.images.length > 0 ? (
+                        <div className="flex md:hidden w-full">
+                            <MobileProductImageCarousel {...{
+                                images: product.images
+                            }} />
+                        </div>
+                    ) : (
+                        <div className="flex w-full h-12">
+
+                        </div>
+                    )}
 
                     {/* Images on desktop */}
                     <div className="hidden md:flex flex-1 min-w-0 h-fit">
@@ -149,8 +155,6 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                 'md:px-12 md:py-10'
                             )}>
 
-
-
                                 {!product.active && (
                                     <Alert variant="destructive">
                                         <AlertTriangle className="h-4 w-4" />
@@ -174,12 +178,15 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                 </div>
 
                                 {/* Sizes */}
-                                <div className="flex flex-col w-full gap-2 ">
-                                    <span {...{
-                                        className: 'text-xs'
-                                    }}>Size</span>
-                                    <ProductSizeSelector />
-                                </div>
+
+                                {product.sizes && product.sizes.length > 0 && (
+                                    <div className="flex flex-col w-full gap-2 ">
+                                        <span {...{
+                                            className: 'text-xs'
+                                        }}>Size</span>
+                                        <ProductSizeSelector />
+                                    </div>
+                                )}
 
                                 <AddToCartButton />
 

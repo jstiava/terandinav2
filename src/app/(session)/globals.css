@@ -27,7 +27,6 @@ body {
   --font-archivo: var(--font-archivo), sans-serif;
 }
 
-
 .font-canela {
   font-family: 'Canela', serif;
 }
@@ -37,7 +36,6 @@ body {
 }
 
 @layer base {
-
   * {
     font-family: 'Archivo';
   }
@@ -47,6 +45,7 @@ body {
 
     --terandina-teal: #009487;
     --terandina-gold: #df9000;
+    --terandina-gold-darker: #996300;
     --terandina-clay: #943a00;
 
     --background: 0 0% 100%;
@@ -58,7 +57,8 @@ body {
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 175 100% 20%;
+    /* terandina-clay */
+    --primary: 22 100% 10%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
@@ -67,9 +67,9 @@ body {
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Teal accent */
-    --accent: 175 45% 90%;
-    --accent-foreground: 175 100% 20%;
+    /* Burnt orange accent */
+    --accent: 22 60% 90%;
+    --accent-foreground: 22 100% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
