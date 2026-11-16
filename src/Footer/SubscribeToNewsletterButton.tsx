@@ -42,7 +42,7 @@ export default function SubscribeToNewsletterButton() {
                             }} />
                         </Drawer.DrawerTrigger>
                         <Drawer.DrawerContent {...{
-                            className: isMd ? "fixed inset-y-0 left-0 right-auto z-[101] h-full w-full max-w-[30rem] flex flex-col border-l bg-background outline-none" : "h-fit w-full"
+                            className: isMd ? "fixed inset-y-0 left-0 right-auto z-[101] h-[100dvh] max-h-[100dvh] w-full max-w-[30rem] flex flex-col border-l bg-background outline-none" : "h-fit w-full"
                         }}>
                             <Button {...{
                                 className: 'absolute top-1 right-1 size-8 h-fit aspect-square',

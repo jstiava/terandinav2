@@ -396,25 +396,22 @@ export const Products: CollectionConfig = {
             },
         ],
         afterChange: [
-            (async ({ doc, previousDoc, req }) => {
-                if (!doc) {
-                    return;
+            async ({ doc, previousDoc }) => {
+                if (!doc) return;
+
+                revalidateTag('products');
+
+                if (doc.slug) {
+                    revalidateTag(doc.slug);
+                    revalidatePath(`/product/${doc.slug}`);
                 }
 
-                revalidateTag(doc.slug)
-                revalidateTag('products')
-                revalidatePath(`product/${doc.slug}`)
-
-                if (doc.slug != previousDoc.slug) {
-                    revalidateTag(previousDoc.slug)
-                    revalidateTag('products')
-                    revalidatePath(`product/${previousDoc.slug}`)
+                if (previousDoc?.slug && previousDoc.slug !== doc.slug) {
+                    revalidateTag(previousDoc.slug);
+                    revalidatePath(`/product/${previousDoc.slug}`);
                 }
-
-                return
-
-            })
-        ],
+            }
+        ]
     },
 
     versions: {
