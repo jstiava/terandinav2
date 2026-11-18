@@ -77,7 +77,7 @@ async function getHomePage_cached() {
             const product = await getHomePage();
             return product;
         },
-        ["home"],
+        ["home_page"],
         { tags: ['home_page'] }
     )();
 }

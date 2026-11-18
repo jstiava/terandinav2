@@ -18,8 +18,6 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = async ({
     depth: 1,
   });
 
-
-
   if (doc._status === 'published') {
     const path = doc.slug === 'home' ? '/' : `/${doc.slug}`
 
@@ -30,6 +28,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = async ({
 
     // Revalidate home page if matching.
     if ((settings.frontPage == doc.slug) || (settings.frontPage == previousDoc.slug)) {
+      payload.logger.info(`Revalidating the home page`)
       revalidateTag('home_page')
     }
   }
