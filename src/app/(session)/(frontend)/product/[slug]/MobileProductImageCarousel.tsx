@@ -6,6 +6,7 @@ import * as Carousel from '@/components/ui/carousel'
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from '@/utilities/cn'
 import RichText from '@/components/RichText'
+import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 
 export default function MobileProductImageCarousel({
     images,
@@ -106,20 +107,14 @@ export default function MobileProductImageCarousel({
                                 "aspect-square h-fit max-h-[90dvh]"
                             )
                         }}>
-                            <div {...{
+                            <ImageWithSkeleton {...{
                                 className: cn(
                                     "flex items-end w-full h-full  p-4",
                                     "bg-cover bg-center bg-no-repeat"
                                 ),
-                                style: {
-                                    backgroundImage: image.image && `url("${(image.image as Media).url}")`
-                                }
-                            }}>
-                                {/* {slide.richText && <RichText data={slide.richText} enableGutter={false} className={cn(
-                  "flex flex-col gap-4 mb-8 p-4",
-                  slide.className
-                )} />} */}
-                            </div>
+                                src: (image.image as Media).url ?? "",
+                                alt: (image.image as Media).alt ?? ""
+                            }} />
                         </Carousel.CarouselItem>
                     )
                 })}

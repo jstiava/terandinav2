@@ -32,13 +32,16 @@ export const CartProvider = createContext<{
     add: (props: { item: ProductType }) => boolean;
     remove: (props: {
         product_id: string,
-        size_id?: string | null
+        size?: string | null
     }) => boolean;
-    get: (props: { price_id: string, size: any }) => Product | null;
-    // swap: (props: { removedItem: string, newItem: {
-    //     id: string,
-    //     size: string
-    // } }) => void;
+    get: (props: {
+        product_id: string, size: any
+    }) => ProductType | null;
+    swap: (props: {
+        product_id: string,
+        size: any,
+        item: ProductType
+    }) => void;
     clear: () => void;
     close: () => void;
     open: () => void;
@@ -74,13 +77,24 @@ export default function CartProviderComponent({ children }: {
     }
 
     const add = ({ item }: { item: ProductType }) => {
-        setCart(prev => (prev ? [...prev, item] : [item]))
+
+        const existingItem = get({
+            product_id: item.product.id,
+            size: item.size
+        });
+        if (existingItem) {
+            return false;
+        }
+
+        setCart(prev => {
+            return prev ? [...prev, item] : [item];
+        })
         return false;
     }
 
     const remove = (props: {
         product_id: string,
-        size_id?: string | null
+        size?: string | null
     }) => {
 
         setCart(prev => {
@@ -88,7 +102,7 @@ export default function CartProviderComponent({ children }: {
                 return [];
             }
             const filtered = [...prev].filter(x => {
-                return !(x.id == props.product_id && x.size == props.size_id)
+                return !(x.id == props.product_id && x.size == props.size)
             })
             return filtered;
         })
@@ -96,14 +110,39 @@ export default function CartProviderComponent({ children }: {
     }
 
     const get = (props: {
-        price_id: string, size: any
+        product_id: string, size: any
     }) => {
-        return null;
+
+        if (!cart) {
+            return null;
+        }
+
+        return cart.find(x => x.product.id == props.product_id && x.size == props.size) || null;
     }
 
     const swap = (props: {
-        removedItem: string, newItem: ProductType
+        product_id: string, size: any,
+        item: ProductType
     }) => {
+
+        setCart((prev) => {
+
+            if (!prev) {
+                setCart([props.item]);
+                return null;
+            }
+
+            const index = prev.findIndex(
+                p => p.product.id == props.product_id && p.size == props.size
+            );
+
+            if (index === -1) {
+                return [...prev, props.item];
+            }
+
+            return [...prev.map((p, i) => i === index ? props.item : p)];
+        })
+
         return;
     }
 
@@ -125,7 +164,7 @@ export default function CartProviderComponent({ children }: {
 
     return (
         <CartProvider.Provider value={{
-            cart, clear, add, remove, get, close, isOpen, open, checkoutDetails, setCheckoutDetails
+            cart, clear, add, remove, get, close, isOpen, open, checkoutDetails, setCheckoutDetails, swap
         }}>
             {children}
         </CartProvider.Provider>
@@ -154,7 +193,7 @@ const useLocalStorageCheckoutDetailsEffect = ({ checkoutDetails, setCheckoutDeta
         if (!checkoutDetails) {
             return;
         }
- 
+
         localStorage.setItem("checkoutDetails", JSON.stringify(checkoutDetails))
 
     }, [checkoutDetails])

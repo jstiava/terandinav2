@@ -5,7 +5,7 @@ import { compileTailwind } from '@/blocks/Content/compileTailwind';
 export const Row: Block = {
     slug: 'row',
     interfaceName: 'RowBlock',
-    //   imageURL: '/blocks/carousel.png',
+      imageURL: '/blocks/row.png',
     fields: [
         {
             name: 'slides',

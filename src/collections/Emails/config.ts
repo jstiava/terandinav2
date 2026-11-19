@@ -7,7 +7,6 @@ import {
   MetaDescriptionField,
   MetaImageField,
 } from '@payloadcms/plugin-seo/fields'
-import { generateSlug } from '@/utilities/generateSlug'
 import { EmailContent } from '@/emails/blocks/Content/config'
 import { FixedToolbarFeature, lexicalEditor, ParagraphFeature } from '@payloadcms/richtext-lexical'
 import { RelationshipFeature } from '@/features/relationship-feature/server'
@@ -21,6 +20,7 @@ import OrderFulfillmentRequest from '@/emails/templates/OrderFulfillmentRequest'
 import OrderFulfillmentRequestPreview from '@/emails/preview/OrderFulfillmentRequestPreview'
 import { EmailButtonBlock, EmailContentBlock, EmailImageBlock } from '@/payload-types'
 import BlankTemplate from '@/emails/templates/BlankTemplate'
+import { slugify } from '@/utilities/slugify'
 
 const EMAIL_BLOCKS = [EmailContent, EmailButton, EmailImage]
 export type EmailBlockType = (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[]
@@ -89,11 +89,16 @@ export const Emails: CollectionConfig<'pages'> = {
     defaultColumns: ['title', '_status', 'slug', 'updatedAt'],
     components: {
       edit: {
+        beforeDocumentControls: [
+          '@/components/AutoSaveIndicator',
+          '@/components/RevertToLastPublishedButton'
+        ],
         editMenuItems: [
           '@/collections/Emails/SendTestEmailButton',
         ]
       },
     },
+
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
@@ -399,7 +404,7 @@ export const Emails: CollectionConfig<'pages'> = {
           return data
         }
         if ((!data.slug || data.slug == '') && data.name) {
-          data.slug = generateSlug(data.name)
+          data.slug = slugify(data.name)
         }
         return data
       },

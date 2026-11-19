@@ -5,6 +5,7 @@ import React from 'react'
 import RichText from '@/components/RichText'
 
 import type { Media, MediaBlock as MediaBlockProps } from '@/payload-types'
+import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 
 export const MediaBlock: React.FC<MediaBlockProps> = (props) => {
 
@@ -17,11 +18,14 @@ export const MediaBlock: React.FC<MediaBlockProps> = (props) => {
       )}>
         {props.media && (
           <div className="flex flex-1">
-            <div
-              className={cn('rounded-[0.5rem] bg-cover bg-center bg-no-repeat w-full h-10')}
-              style={{
-                backgroundImage: `url("${(props.media as Media).url}")`,
-                ...(props.compiledStyles && ((props.compiledStyles as any)?.inline as React.CSSProperties)),
+            <ImageWithSkeleton
+              {...{
+                className: cn('rounded-[0.5rem] bg-cover bg-center bg-no-repeat w-full h-10'),
+                src: (props.media as Media).url ?? "",
+                alt: (props.media as Media).alt ?? "",
+                style: {
+                  ...(props.compiledStyles && ((props.compiledStyles as any)?.inline as React.CSSProperties)),
+                }
               }}
             />
             <video {...{

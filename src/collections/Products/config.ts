@@ -2,13 +2,13 @@ import { getPayload, type CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { generateSlug } from '@/utilities/generateSlug'
 import { Carousel } from '@/blocks/Carousel/config'
 import { Content } from '@/blocks/Content/config'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { Catalog } from '@/blocks/Catalog/config'
 import { revalidatePath, revalidateTag } from 'next/cache'
 import configPromise from '@payload-config'
+import { slugify } from '@/utilities/slugify'
 
 const blocks = [
     Content,
@@ -28,6 +28,12 @@ export const Products: CollectionConfig = {
 
     admin: {
         components: {
+            edit: {
+                beforeDocumentControls: [
+                    '@/components/AutoSaveIndicator',
+                    '@/components/RevertToLastPublishedButton'
+                ]
+            },
             views: {
                 edit: {
                     myCustomView: {
@@ -389,7 +395,7 @@ export const Products: CollectionConfig = {
                 }
 
                 if ((!data.slug || data.slug === '') && data.name) {
-                    data.slug = generateSlug(data.name)
+                    data.slug = slugify(data.name)
                 }
 
                 return data

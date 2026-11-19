@@ -11,11 +11,11 @@ import {
   MetaDescriptionField,
   MetaImageField,
 } from '@payloadcms/plugin-seo/fields'
-import { generateSlug } from '@/utilities/generateSlug'
 import { Carousel } from '@/blocks/Carousel/config'
 import { Row } from '@/blocks/Row/config'
 import { Catalog } from '@/blocks/Catalog/config'
 import { compileTailwind } from '@/blocks/Content/compileTailwind'
+import { slugify } from '@/utilities/slugify'
 
 const blocks = [
   Carousel,
@@ -43,7 +43,10 @@ export const Pages: CollectionConfig<'pages'> = {
     group: 'Content',
     components: {
       edit: {
-        beforeDocumentControls: ['@/components/MakeFrontPageButton'],
+        beforeDocumentControls: [
+          '@/components/AutoSaveIndicator',
+          '@/components/RevertToLastPublishedButton'
+        ]
       },
       listMenuItems: ['@/components/QuickAddPage'],
     },
@@ -168,7 +171,7 @@ export const Pages: CollectionConfig<'pages'> = {
           return data
         }
         if ((!data.slug || data.slug == '') && data.name) {
-          data.slug = generateSlug(data.name)
+          data.slug = slugify(data.name)
         }
         return data
       },

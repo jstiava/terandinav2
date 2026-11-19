@@ -1,4 +1,4 @@
-export function generateSlug(text: string): string {
+export function slugify(text: string): string {
     return text
         // 1. Convert to lowercase
         .toLowerCase()
@@ -19,3 +19,5 @@ export function generateSlug(text: string): string {
         // 6. Trim leading and trailing hyphens
         .replace(/^-+|-+$/g, '');
 }
+
+

@@ -64,3 +64,9 @@ h6 {
 .json-field .field-type__wrap section {
   height: fit-content !important;
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -22,6 +22,8 @@ import ProductNotFound from "@/app/(session)/(frontend)/product/[slug]/ProductNo
 import { unstable_cache } from "next/cache"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertTriangle } from "lucide-react";
+import { ObjectId } from "mongodb"
+import ImageWithSkeleton from "@/components/ImageWithSkeleton"
 
 type Args = {
     params: Promise<{
@@ -65,20 +67,6 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
         headers: await headers(),
     })
 
-    const recommendedProductsId = await db
-        .collection("products")
-        .aggregate([
-            { $match: { active: true } },
-            { $sample: { size: 5 } },
-        ])
-        .toArray();
-
-
-    // @ts-ignore
-    const recommendedProducts = await getProductFromList({
-        ids: recommendedProductsId.map(x => x._id)
-    })
-
     const { isEnabled: draft } = await draftMode()
     const { slug } = await paramsPromise
 
@@ -99,6 +87,25 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
     if (!product.active && !user) {
         return <ProductNotFound />;
     }
+
+    const recommendedProductsId = await db
+        .collection("products")
+        .aggregate([
+            {
+                $match: {
+                    active: true,
+                    _id: { $ne: new ObjectId(product.id) },
+                },
+            },
+            { $sample: { size: 6 } },
+        ])
+        .toArray();
+
+
+    // @ts-ignore
+    const recommendedProducts = await getProductFromList({
+        ids: recommendedProductsId.map(x => x._id)
+    })
 
 
     return (
@@ -132,13 +139,12 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                 }
 
                                 return (
-                                    <div
+                                    <ImageWithSkeleton
                                         key={image.id}
                                         {...{
                                             className: "flex w-full aspect-[3/4] h-fit bg-cover bg-center",
-                                            style: {
-                                                backgroundImage: `url("${image.image.url}")`
-                                            }
+                                            src: image.image.url ?? "",
+                                            alt: image.image.alt ?? ""
                                         }} />
                                 )
                             })}

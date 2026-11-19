@@ -45,7 +45,7 @@ export const menuItem: MenuItemType = ({
             type: 'radio',
             admin: {
               layout: 'horizontal',
-              width: '50%',
+              width: '100%',
               description: 'Standard: Internal links open in same tab, external to a new tab.',
             },
             defaultValue: 'reference',

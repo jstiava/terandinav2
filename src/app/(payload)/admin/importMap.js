@@ -13,7 +13,8 @@ import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0
 import { LinkFeatureClient as LinkFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BlocksFeatureClient as BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { default as default_de57da0b4cfd9d20389b404c8b599064 } from '@/components/QuickAddPage'
-import { default as default_59490db9e66c19f9cf4bf7e683f0602b } from '@/components/MakeFrontPageButton'
+import { default as default_a88d8a14bb612ec66c1c34d763dad7b1 } from '@/components/AutoSaveIndicator'
+import { default as default_6a61feadd81b037921f8b6816903477d } from '@/components/RevertToLastPublishedButton'
 import { RelationshipFeatureClient as RelationshipFeatureClient_2a7d3a8cf79b5142a4e00d4f4e16007f } from '@/features/relationship-feature/client'
 import { default as default_9f8002a0ff24ae237370e4dd418f543b } from '@/collections/Emails/SendTestEmailButton'
 import { default as default_7f4f6af851e0ebfcda834ac8fbe7e42e } from '@/collections/Media/MediaAltCellWithImagePreview'
@@ -47,7 +48,8 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#LinkFeatureClient": LinkFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BlocksFeatureClient": BlocksFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/components/QuickAddPage#default": default_de57da0b4cfd9d20389b404c8b599064,
-  "@/components/MakeFrontPageButton#default": default_59490db9e66c19f9cf4bf7e683f0602b,
+  "@/components/AutoSaveIndicator#default": default_a88d8a14bb612ec66c1c34d763dad7b1,
+  "@/components/RevertToLastPublishedButton#default": default_6a61feadd81b037921f8b6816903477d,
   "@/features/relationship-feature/client#RelationshipFeatureClient": RelationshipFeatureClient_2a7d3a8cf79b5142a4e00d4f4e16007f,
   "@/collections/Emails/SendTestEmailButton#default": default_9f8002a0ff24ae237370e4dd418f543b,
   "@/collections/Media/MediaAltCellWithImagePreview#default": default_7f4f6af851e0ebfcda834ac8fbe7e42e,

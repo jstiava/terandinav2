@@ -5,7 +5,7 @@ import { compileTailwind } from '@/blocks/Content/compileTailwind';
 export const Catalog: Block = {
     slug: 'catalog',
     interfaceName: 'CatalogBlock',
-    //   imageURL: '/blocks/carousel.png',
+    imageURL: '/blocks/catalog.png',
     fields: [
         {
             name: "limit",

@@ -28,6 +28,14 @@ export const Categories: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+    components: {
+      edit: {
+        beforeDocumentControls: [
+          '@/components/AutoSaveIndicator',
+          '@/components/RevertToLastPublishedButton'
+        ]
+      },
+    },
     livePreview: {
       url: ({ data, req }) => {
         if (!data.pageActive) {
@@ -42,19 +50,15 @@ export const Categories: CollectionConfig = {
       }
     },
     preview: (data, { req }) => {
-
       if (!data.pageActive) {
         return null;
       }
-
       return generatePreviewPath({
         slug: data?.slug as string,
         collection: 'categories',
         req,
       })
-
     }
-
   },
 
   fields: [

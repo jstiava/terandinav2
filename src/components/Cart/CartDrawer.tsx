@@ -3,12 +3,13 @@
 import { useContext, useEffect, useState } from "react"
 import { CartProvider } from "./CartProviderComponent"
 import { Button } from "../ui/button";
-import { ShoppingBasketIcon, XIcon } from "lucide-react";
+import { Minus, PlusIcon, ShoppingBasketIcon, XIcon } from "lucide-react";
 import * as Drawer from "@/components/ui/drawer";
 import { formatPrice } from "../Stripe/Checkout";
 import { Input } from "@/components/ui/input";
 import { Field, FieldContent, FieldLabel } from "@/components/ui/field";
 import { useRouter } from "next/navigation";
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 
 
 export default function CartDrawer() {
@@ -56,23 +57,23 @@ export default function CartDrawer() {
             }}>
                 <div className="flex flex-col py-6 px-4 md:px-8 md:py-10 w-full h-fit gap-4">
                     <Drawer.DrawerTitle>Shopping Cart</Drawer.DrawerTitle>
-                    <div className="flex flex-col p-2 gap-0">
+                    <div className="flex flex-col p-4 gap-4 ">
                         {CartContext.cart?.map(item => {
 
-                            const chosenSize = item.size ? item.product.sizes?.find(x => x.id == item.size) : null
+                            const chosenSize = item.size ? item.product.sizes?.find(x => x.id == item.size) : null;
+                            const totalQuantity = item.product.sizes?.reduce((acc, s) => acc + (s.count ?? 0), 0) ?? 0;
 
                             return (
                                 <div
                                     key={item.id}
                                     {...{
-                                        className: "flex w-full gap-4 p-3"
+                                        className: "flex w-full gap-4 p-6 border rounded-sm"
                                     }}>
                                     <div className="flex flex-1 gap-4 min-w-0">
-                                        <div {...{
+                                        <ImageWithSkeleton {...{
                                             className: "flex size-16 aspect-square bg-border bg-cover bg-center bg-no-repeat",
-                                            style: {
-                                                backgroundImage: item.product.images && item.product.images.length > 0 ? `url("${(item.product.images[0].image as any).thumbnailURL}")` : ""
-                                            }
+                                            src: item.product.images && item.product.images.length > 0 ? (item.product.images[0].image as any).url : "",
+                                            alt: item.product.images && item.product.images.length > 0 ? (item.product.images[0].image as any).alt : ""
                                         }} />
                                         <div className="flex flex-col gap-2 text-xs">
                                             <span {...{
@@ -80,21 +81,63 @@ export default function CartDrawer() {
                                             }}>{item.product.name}</span>
                                             <span >{chosenSize?.label == 'custom' ? chosenSize.customLabel : chosenSize?.label}</span>
                                             <span >Quantity: {item.quantity}</span>
+
+                                            <div className="flex items-center w-full flex-wrap gap-2 pt-2">
+                                                {totalQuantity > 1 && (
+                                                    <>
+                                                        <Button {...{
+                                                            variant: "outline",
+                                                            disabled: item.quantity <= 1,
+                                                            className: "w-fit text-xs py-1 px-4 gap-1 flex items-center rounded-full",
+                                                            onClick: e => {
+                                                                CartContext.swap({
+                                                                    product_id: item.id,
+                                                                    size: item.size,
+                                                                    item: {
+                                                                        ...item,
+                                                                        quantity: item.quantity - 1
+                                                                    }
+                                                                })
+                                                            }
+                                                        }}><Minus /> Remove 1</Button>
+
+                                                        <Button {...{
+                                                            variant: "outline",
+                                                            disabled: item.quantity == totalQuantity,
+                                                            className: "w-fit text-xs py-1 px-4 gap-1 flex items-center rounded-full",
+                                                            onClick: e => {
+                                                                CartContext.swap({
+                                                                    product_id: item.id,
+                                                                    size: item.size,
+                                                                    item: {
+                                                                        ...item,
+                                                                        quantity: item.quantity + 1
+                                                                    }
+                                                                })
+                                                            }
+                                                        }}><PlusIcon /> Add 1</Button>
+                                                    </>
+                                                )}
+
+                                                <Button {...{
+                                                    variant: "outline",
+                                                    className: "w-fit text-xs py-1 px-4 gap-1 flex items-center rounded-full",
+                                                    onClick: e => {
+                                                        CartContext.remove({
+                                                            product_id: item.id,
+                                                            size: item.size
+                                                        })
+                                                    }
+                                                }}><XIcon /> Remove</Button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="flex flex-col w-fit items-end text-xs gap-0">
                                         <span>{item.product.prices && item.product.prices.length > 0 ? formatPrice(item.product.prices[0].amount * 100 * item.quantity, item.product.prices[0].currency) : "--"}</span>
-                                        <Button {...{
-                                            variant: "link",
-                                            className: "w-fit text-xs p-0 gap-0",
-                                            onClick: e => {
-                                                CartContext.remove({
-                                                    product_id: item.id,
-                                                    size_id: item.size
-                                                })
-                                            }
-                                        }}><XIcon />Remove</Button>
+
                                     </div>
+
+
                                 </div>
                             )
                         })}

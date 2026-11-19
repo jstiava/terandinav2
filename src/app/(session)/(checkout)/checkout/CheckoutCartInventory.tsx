@@ -2,6 +2,7 @@
 
 import { formatPrice } from "@/collections/Products/formatPrice";
 import { CartProvider } from "@/components/Cart/CartProviderComponent"
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import { useContext } from "react"
@@ -24,11 +25,10 @@ export default function CheckoutCartInventory() {
                             className: "flex w-full gap-4 p-3"
                         }}>
                         <div className="flex flex-1 gap-4 min-w-0">
-                            <div {...{
+                            <ImageWithSkeleton {...{
                                 className: "flex size-16 aspect-square bg-border bg-cover bg-center bg-no-repeat",
-                                style: {
-                                    backgroundImage: item.product.images && item.product.images.length > 0 ? `url("${(item.product.images[0].image as any).thumbnailURL}")` : ""
-                                }
+                                src: item.product.images && item.product.images.length > 0 ? (item.product.images[0].image as any).thumbnailURL : "",
+                                alt: item.product.images && item.product.images.length > 0 ? (item.product.images[0].image as any).alt : ""
                             }} />
                             <div className="flex flex-col gap-2 text-xs">
                                 <span {...{
@@ -46,7 +46,7 @@ export default function CheckoutCartInventory() {
                                 onClick: e => {
                                     CartContext.remove({
                                         product_id: item.id,
-                                        size_id: item.size
+                                        size: item.size
                                     })
                                 }
                             }}><XIcon />Remove</Button>

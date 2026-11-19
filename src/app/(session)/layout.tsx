@@ -15,7 +15,7 @@ import { Archivo } from 'next/font/google'
 import CartProviderComponent from '@/components/Cart/CartProviderComponent'
 import { Header } from '@/Header/Component'
 
-export const canela = localFont({
+const canela = localFont({
   src: [
     { path: '../../../public/fonts/canelaweb-black.ttf', weight: '900', style: 'normal', },
     { path: '../../../public/fonts/canelaweb-medium.ttf', weight: '500', style: 'normal', },
@@ -23,7 +23,7 @@ export const canela = localFont({
   ], variable: '--font-canela', display: 'swap',
 })
 
-export const archivo = Archivo({
+const archivo = Archivo({
   subsets: ['latin'],
   variable: '--font-archivo',
   display: 'swap',

@@ -1,7 +1,7 @@
 'use client'
+import { slugify } from '@/utilities/slugify'
 import { toast, TextInput } from '@payloadcms/ui'
-import { useState } from 'react'
-import { generateSlug } from '@/utilities/generateSlug';
+import { useState } from 'react' 
 
 const QuickAddPage = () => {
   const [title, setTitle] = useState('')
@@ -16,7 +16,7 @@ const QuickAddPage = () => {
     try {
       const res = await fetch('/api/pages', {
         method: 'POST',
-        body: JSON.stringify({ title, slug: generateSlug(title)  }),
+        body: JSON.stringify({ title, slug: slugify(title)  }),
         headers: { 'Content-Type': 'application/json' },
       })
 

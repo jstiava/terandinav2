@@ -1,5 +1,6 @@
 'use server'
 import { formatPrice } from "@/collections/Products/formatPrice"
+import ImageWithSkeleton from "@/components/ImageWithSkeleton"
 import { Product } from "@/payload-types"
 import { cn } from "@/utilities/cn"
 
@@ -28,11 +29,10 @@ export default async function ProductCard({ product, className }: {
                     ),
                 }}>
 
-                <div {...{
+                <ImageWithSkeleton {...{
                     className: "relative flex aspect-square w-full h-fit bg-border bg-cover bg-center bg-no-repeat",
-                    style: {
-                        backgroundImage: product.images && product.images.length > 0 ? `url("${(product.images[0].image as any).url}")` : ""
-                    }
+                    src: product.images && product.images.length > 0 ?  (product.images[0].image as any).url : "",
+                    alt: product.images ? (product.images[0].image as any).alt : ""
                 }} />
                 <div className="flex flex-col w-full md:pr-10">
                     <span {...{

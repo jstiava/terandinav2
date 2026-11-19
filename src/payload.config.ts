@@ -70,6 +70,7 @@ export default buildConfig({
     user: Users.slug,
     livePreview: {
       collections: ['pages', 'emails', 'products', 'categories'],
+      globals: ['header'],
       breakpoints: [
         {
           label: 'Mobile',

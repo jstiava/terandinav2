@@ -3,7 +3,6 @@ import React from 'react'
 import { Header as HeaderType } from '@/payload-types'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button';
-import { MenuIcon, SearchIcon } from 'lucide-react';
 import CartDrawer from '@/components/Cart/CartDrawer';
 import { MobileNavigationMenu } from './MobileNavigationMenu';
 import { cn } from '@/utilities/cn';
@@ -36,9 +35,7 @@ const MENU_ITEM_PROPS = {
   }
 } as const;
 
-export async function Header() {
-
-  const headerData: HeaderType = await getCachedGlobal('header', 1)();
+export async function Header({ data } : { data : HeaderType }) {
 
   return (
     <div className="flex w-full h-fit z-[5]">
@@ -65,7 +62,7 @@ export async function Header() {
               <SearchDrawer />
               <MobileNavigationMenu>
                 <nav className="flex flex-col p-6 pt-16">
-                  {headerData.navItems?.map(item => {
+                  {data.navItems?.map(item => {
 
                     if (item.menuItem.type == 'reference') {
                       return (
@@ -133,7 +130,7 @@ export async function Header() {
 
           {/* Desktop nav bar */}
           <div className="hidden sm:flex w-fit px-2">
-            {headerData.navItems?.map(item => {
+            {data.navItems?.map(item => {
 
               if (item.menuItem.type == 'reference') {
                 return (

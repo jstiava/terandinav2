@@ -6,6 +6,7 @@ import * as Carousel from '@/components/ui/carousel'
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from '@/utilities/cn'
 import RichText from '@/components/RichText'
+import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 
 export default function CarouselBlockClient({
   slides,
@@ -106,11 +107,16 @@ export default function CarouselBlockClient({
                 "flex items-end justify-center w-full bg-border w-full p-0",
                 "aspect-[9/16] h-fit max-h-[95dvh]",
                 "bg-cover bg-center bg-no-repeat"
-              ),
-              style: {
-                backgroundImage: slide.type == 'image' ? (slide.image && `url("${(slide.image as Media).url}")`) ?? '' : ''
-              }
+              ), 
             }}>
+
+              {slide.type == 'image' && (
+                <ImageWithSkeleton {...{
+                  className: "absolute inset-0 w-full h-full object-cover object-center",
+                  src: (slide.image as Media).url ?? "",
+                  alt: (slide.image as Media).alt ?? "",
+                }} />
+              )}
 
               {slide.video && (
                 <video {...{

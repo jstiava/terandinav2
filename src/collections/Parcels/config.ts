@@ -1,13 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { generateSlug } from '@/utilities/generateSlug'
-import { Carousel } from '@/blocks/Carousel/config'
-import { Content } from '@/blocks/Content/config'
-import { generatePreviewPath } from '@/utilities/generatePreviewPath'
-import { Catalog } from '@/blocks/Catalog/config'
 
 
 
