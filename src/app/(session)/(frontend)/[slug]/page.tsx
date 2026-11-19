@@ -58,7 +58,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <>
-      <div id="content" className="flex flex-col w-full gap-0 pt-14"> 
+      <div id="content" className="flex flex-col w-full gap-0 pt-14">
         <PayloadRedirects disableNotFound url={url} />
         {draft && <LivePreviewListener />}
         {page.blocks && <RenderBlocks blocks={page.blocks} />}
@@ -82,18 +82,28 @@ export default async function Page({ params: paramsPromise }: Args) {
 const queryPageBySlug = async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
 
-  const payload = await getPayload({ config: configPromise })
+  const payload = await getPayload({ config: configPromise });
 
   const result = await payload.find({
     collection: 'pages',
     draft,
     limit: 1,
+    depth: 2,
     pagination: false,
     overrideAccess: draft,
     where: {
-      slug: {
-        equals: slug,
-      },
+      and: [
+        {
+          slug: {
+            equals: slug,
+          },
+        },
+         {
+          status: {
+            equals: 'published',
+          },
+        }
+      ]
     },
   })
 
@@ -102,12 +112,12 @@ const queryPageBySlug = async ({ slug }: { slug: string }) => {
 
 
 async function queryPageBySlug_cached({ slug }: { slug: string }) {
-    return unstable_cache(
-        async () => {
-            const product = await queryPageBySlug({ slug });
-            return product;
-        },
-        ["page", slug],
-        { tags: [slug] }
-    )();
+  return unstable_cache(
+    async () => {
+      const product = await queryPageBySlug({ slug });
+      return product;
+    },
+    ["page", slug],
+    { tags: [slug] }
+  )();
 }

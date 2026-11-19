@@ -35,7 +35,10 @@ export const plugins: Plugin[] = [
   }),
   uploadthingStorage({
     collections: {
-      media: true,
+      media: {
+        disablePayloadAccessControl: true,
+        disableLocalStorage: true,
+      },
     },
     clientUploads: true,
     options: {
