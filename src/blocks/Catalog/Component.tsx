@@ -30,7 +30,7 @@ export default async function CatalogBlock(props: CatalogBlockProps) {
                 props.className,
             ),
             style: {
-                ...((props.compiledStyles as any).inline ?? {})
+                ...((props.compiledStyles as any)?.inline ?? {})
             },
             'data-block-id': props.id
         }}>
@@ -50,7 +50,7 @@ export default async function CatalogBlock(props: CatalogBlockProps) {
             })}
             <style>
                 {(props.compiledStyles as any)?.scoped && (
-                    `${(props.compiledStyles as any)?.scoped}`
+                    `${(props.compiledStyles as any).scoped}`
                 )}
                 {(props.compiledStylesPerProduct as any)?.scoped && (
                     `\n${(props.compiledStylesPerProduct as any).scoped}`
@@ -59,7 +59,7 @@ export default async function CatalogBlock(props: CatalogBlockProps) {
 
         </div>
     );
-    
+
 }
 
 

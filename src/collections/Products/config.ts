@@ -85,14 +85,13 @@ export const Products: CollectionConfig = {
         {
             name: 'active',
             type: 'checkbox',
-            defaultValue: true,
+            defaultValue: false,
             admin: {
                 position: 'sidebar',
             },
         },
         {
             type: 'tabs',
-
             tabs: [
                 {
                     label: 'General',
