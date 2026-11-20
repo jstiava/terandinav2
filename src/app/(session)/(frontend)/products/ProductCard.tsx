@@ -32,8 +32,8 @@ export default function ProductCard({ product, className, style = {} }: {
 
                 <ImageWithSkeleton {...{
                     className: "relative flex aspect-square w-full h-fit bg-border bg-cover bg-center bg-no-repeat",
-                    src: product.images && product.images.length > 0 ? (product.images[0].image as any).url : "",
-                    alt: product.images ? (product.images[0].image as any).alt : ""
+                    src: product.images && product.images.length > 0 ? (product.images[0]?.image as any).url : "",
+                    alt: product.images && product.images.length > 0 ? (product.images[0]?.image as any).alt : ""
                 }} />
                 <div className="flex flex-col w-full md:pr-10">
                     <span {...{
