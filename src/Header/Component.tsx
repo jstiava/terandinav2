@@ -1,4 +1,4 @@
-import { getCachedGlobal } from '@/utilities/getGlobals'
+import configPromise from '@payload-config'
 import React from 'react'
 import { Header as HeaderType } from '@/payload-types'
 import Image from 'next/image'
@@ -7,8 +7,10 @@ import CartDrawer from '@/components/Cart/CartDrawer';
 import { MobileNavigationMenu } from './MobileNavigationMenu';
 import { cn } from '@/utilities/cn';
 import { StickyHeader } from './StickyHeader';
-import TopLoadingBar from '@/components/LoadingBar';
 import SearchDrawer from '@/Header/SearchDrawer';
+import { unstable_cache } from 'next/cache';
+import { getPayload } from 'payload';
+import { RenderBlocks } from '@/blocks/RenderBlocks';
 
 
 const MOBILE_MENU_ITEM_PROPS = {
@@ -35,7 +37,10 @@ const MENU_ITEM_PROPS = {
   }
 } as const;
 
-export async function Header({ data } : { data : HeaderType }) {
+export async function Header({ data }: { data: HeaderType }) {
+
+
+  const products = await getAllProducts_cached();
 
   return (
     <div className="flex w-full h-fit z-[5]">
@@ -59,7 +64,13 @@ export async function Header({ data } : { data : HeaderType }) {
           {/* Mobile nav bar */}
           <div className="flex sm:hidden w-fit px-0">
             <div className="flex w-fit px-2">
-              <SearchDrawer />
+              <SearchDrawer {...{
+                products
+              }} >
+                <div className="flex flex-col w-full">
+                  {data.presearchRecommendationContent && <RenderBlocks blocks={data.presearchRecommendationContent} />}
+                </div>
+              </SearchDrawer>
               <MobileNavigationMenu>
                 <nav className="flex flex-col p-6 pt-16">
                   {data.navItems?.map(item => {
@@ -190,7 +201,13 @@ export async function Header({ data } : { data : HeaderType }) {
             })}
 
             <div className="flex w-fit px-2">
-              <SearchDrawer />
+              <SearchDrawer {...{
+                products
+              }}>
+                <div className="flex flex-col w-full">
+                  {data.presearchRecommendationContent && <RenderBlocks blocks={data.presearchRecommendationContent} />}
+                </div>
+              </SearchDrawer>
               <CartDrawer />
             </div>
           </div>
@@ -201,3 +218,35 @@ export async function Header({ data } : { data : HeaderType }) {
     </div>
   )
 }
+
+
+const getAllProducts = async () => {
+
+  const payload = await getPayload({ config: configPromise });
+
+  const result = await payload.find({
+    collection: 'products',
+    draft: false,
+    depth: 2,
+    pagination: false,
+    where: {
+      active: {
+        equals: true
+      }
+    }
+  })
+
+  return result.docs;
+}
+
+async function getAllProducts_cached() {
+  return unstable_cache(
+    async () => {
+      const product = await getAllProducts();
+      return product;
+    },
+    ["products"],
+    { tags: ['products'] }
+  )();
+}
+

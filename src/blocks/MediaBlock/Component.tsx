@@ -47,8 +47,8 @@ export const MediaBlock: React.FC<MediaBlockProps> = (props) => {
           <RichText data={props.richText} enableGutter={false} />
         )}
         {/* <p className="debug">{JSON.stringify(media, null, 2)}</p> */}
-        {props.compiledStyles && (props.compiledStyles as any).scoped && (
-          <style>{(props.compiledStyles as any).scoped}</style>
+        {props.compiledStyles && (props.compiledStyles as any)?.scoped && (
+          <style>{(props.compiledStyles as any)?.scoped}</style>
         )}
       </div>
     )
@@ -74,8 +74,8 @@ export const MediaBlock: React.FC<MediaBlockProps> = (props) => {
         <RichText data={props.richText} enableGutter={false} />
       )}
       {/* <p className="debug">{JSON.stringify(media, null, 2)}</p> */}
-      {props.compiledStyles && (props.compiledStyles as any).scoped && (
-        <style>{(props.compiledStyles as any).scoped}</style>
+      {props.compiledStyles && (props.compiledStyles as any)?.scoped && (
+        <style>{(props.compiledStyles as any)?.scoped}</style>
       )}
     </div>
   )

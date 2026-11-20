@@ -8,12 +8,24 @@ export const Catalog: Block = {
     imageURL: '/blocks/catalog.png',
     fields: [
         {
+            name: "isRandomized",
+            label: "Randomized",
+            type: 'checkbox',
+            defaultValue: false
+        },
+        {
             name: "limit",
             type: "number",
         },
         {
             name: "filters",
             type: "array",
+            admin: {
+                initCollapsed: true,
+                components: {
+                    RowLabel: '@/blocks/Catalog/FilterRowLabel#FilterRowLabel',
+                },
+            },
             fields: [
                 {
                     type: "row",
@@ -188,11 +200,41 @@ export const Catalog: Block = {
                         ],
                     },
                 },
+            ]
+        },
+        {
+            type: 'collapsible',
+            label: "Layouts & styling per product",
+            admin: {
+                initCollapsed: true,
+            },
+            fields: [
                 {
                     name: "classNamePerProduct",
                     type: "textarea",
                     admin: {
                         description: 'Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).'
+                    },
+                },
+                {
+                    name: 'compiledStylesPerProduct',
+                    type: 'json',
+                    admin: {
+                        hidden: false,
+                        readOnly: true,
+                        className: "js-custom-json-admin-field",
+                        description: "The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block."
+                    },
+                    hooks: {
+                        beforeChange: [
+                            async ({ siblingData }) => {
+                                const styles = await compileTailwind({
+                                    id: String(siblingData.id),
+                                    className: String(siblingData?.classNamePerProduct ?? '')
+                                });
+                                return styles
+                            },
+                        ],
                     },
                 },
             ]

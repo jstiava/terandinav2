@@ -35,18 +35,10 @@ export const compileTailwind = async (props: {
   className: string
   id: string
 }): Promise<CompiledTailwind> => {
+
   const scope = `[data-block-id="${props.id}"]`
-
-
-
   const classNames = props.className.split(/\s+/).filter(Boolean)
   const classesToCompile = classNames.filter((className) => !isSafelisted(className))
-
-
-  console.log({
-    classNames,
-    classesToCompile
-  })
 
   const result = await postcss([
     tailwindcss({
@@ -61,7 +53,7 @@ export const compileTailwind = async (props: {
       safelist: [],
       corePlugins: { preflight: false },
     }),
-  ]).process('@tailwind utilities;', { from: undefined })
+  ]).process('@tailwind utilities;', { from: undefined });
 
   result.root.walkAtRules(/^(?:-webkit-)?keyframes$/, (rule) => {
     if (rule.params === 'enter' || rule.params === 'exit') {
@@ -73,6 +65,7 @@ export const compileTailwind = async (props: {
   const scopedRoot = postcss.root()
 
   const processNodes = (container: postcss.Container, inAtRule = false) => {
+
     container.each((node) => {
       if (node.type === 'atrule') {
         if (
@@ -113,8 +106,6 @@ export const compileTailwind = async (props: {
         )
       })
 
-      const canInline =
-        node.parent?.type === 'root' && inlineSelectors.length === originalSelectors.length
 
       // Do not add safelisted selectors inline
       if (inlineSelectors.some(isSafelistedSelector)) {
@@ -122,8 +113,8 @@ export const compileTailwind = async (props: {
         return
       }
 
+      const canInline = node.parent?.type === 'root' && inlineSelectors.length === originalSelectors.length;
       if (canInline) {
-
         node.walkDecls((decl) => {
           inline[toCamelCase(decl.prop)] = decl.value
         })
@@ -138,15 +129,25 @@ export const compileTailwind = async (props: {
         if (hasElementVariant) {
           return `${scope} ${selector}`
         }
-        return `${scope}${selector}`
+        return `${scope}${selector} `
       })
+      // node.selectors = originalSelectors.map((selector) => {
+      //   const hasElementVariant = isElementVariant(selector)
+
+      //   return `${scope} ${selector}`
+      // })
+
+      node.walkDecls((decl) => {
+        decl.important = true
+      })
+
     })
   }
 
   processNodes(result.root)
 
   // @ts-ignore
-  result.root.each((node) => scopedRoot.append(node.clone()))
+  result.root.each((node) => scopedRoot.append(node.clone()));
 
   return {
     inline,

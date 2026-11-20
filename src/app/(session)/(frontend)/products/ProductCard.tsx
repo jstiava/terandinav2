@@ -1,4 +1,3 @@
-'use server'
 import { formatPrice } from "@/collections/Products/formatPrice"
 import ImageWithSkeleton from "@/components/ImageWithSkeleton"
 import { Product } from "@/payload-types"
@@ -6,9 +5,10 @@ import { cn } from "@/utilities/cn"
 
 
 
-export default async function ProductCard({ product, className }: {
+export default function ProductCard({ product, className, style = {} }: {
     product: Product,
-    className: string
+    className: string,
+    style?: any
 }) {
 
     const isSoldOut = (!product.sizes || product.sizes.length == 0) || (product.sizes.reduce((sum, item) => sum + (item.count ?? 0), 0) == 0);
@@ -17,11 +17,12 @@ export default async function ProductCard({ product, className }: {
         <div {...{
             className: cn(
                 'flex w-1/2 md:w-1/4 p-4 pb-8 normal-case text-xs',
-                className
-            )
+                className,
+                style
+            ),
+            'data-block-id': product.id
         }}>
             <a
-                key={product.id}
                 {...{
                     href: `/product/${product.slug}`,
                     className: cn(
@@ -31,7 +32,7 @@ export default async function ProductCard({ product, className }: {
 
                 <ImageWithSkeleton {...{
                     className: "relative flex aspect-square w-full h-fit bg-border bg-cover bg-center bg-no-repeat",
-                    src: product.images && product.images.length > 0 ?  (product.images[0].image as any).url : "",
+                    src: product.images && product.images.length > 0 ? (product.images[0].image as any).url : "",
                     alt: product.images ? (product.images[0].image as any).alt : ""
                 }} />
                 <div className="flex flex-col w-full md:pr-10">

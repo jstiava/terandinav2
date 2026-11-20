@@ -50,6 +50,9 @@ export const CartProvider = createContext<{
     checkoutDetails: Partial<CheckoutDetailsType> | null,
     setCheckoutDetails: Dispatch<SetStateAction<Partial<CheckoutDetailsType> | null>>,
 
+    searchQuery: string | null,
+    setSearchQuery: Dispatch<SetStateAction<string | null>>
+
     // @ts-ignore
 }>(null);
 
@@ -59,6 +62,7 @@ export default function CartProviderComponent({ children }: {
     children: JSX.Element
 }) {
 
+    const [searchQuery, setSearchQuery] = useState<string | null>(null);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [cart, setCart] = useState<ProductType[] | null>(null);
     const [checkoutDetails, setCheckoutDetails] = useState<Partial<CheckoutDetailsType> | null>(null);
@@ -70,6 +74,10 @@ export default function CartProviderComponent({ children }: {
 
     useLocalStorageCheckoutDetailsEffect({
         checkoutDetails, setCheckoutDetails
+    })
+
+    useLocalStorageSearchResults({
+        searchQuery, setSearchQuery
     })
 
     const clear = () => {
@@ -164,7 +172,7 @@ export default function CartProviderComponent({ children }: {
 
     return (
         <CartProvider.Provider value={{
-            cart, clear, add, remove, get, close, isOpen, open, checkoutDetails, setCheckoutDetails, swap
+            cart, clear, add, remove, get, close, isOpen, open, checkoutDetails, setCheckoutDetails, swap, searchQuery, setSearchQuery
         }}>
             {children}
         </CartProvider.Provider>
@@ -227,4 +235,31 @@ const useLocalStorageCartEffect = ({ cart, setCart }: {
         localStorage.setItem("cart", JSON.stringify(cart))
 
     }, [cart])
+}
+
+
+const useLocalStorageSearchResults = ({ searchQuery, setSearchQuery }: {
+    searchQuery: string | null,
+    setSearchQuery: Dispatch<SetStateAction<string | null>>,
+}) => {
+
+    useEffect(() => {
+        if (!searchQuery) {
+            const savedValue = localStorage.getItem("searchQuery");
+            if (savedValue) {
+                setSearchQuery(savedValue);
+            }
+            else {
+                setSearchQuery("")
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!searchQuery) {
+            return;
+        }
+        localStorage.setItem("searchQuery", searchQuery)
+
+    }, [searchQuery])
 }

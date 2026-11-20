@@ -415,6 +415,7 @@ export interface RowBlock {
  * via the `definition` "CatalogBlock".
  */
 export interface CatalogBlock {
+  isRandomized?: boolean | null;
   limit?: number | null;
   filters?:
     | {
@@ -455,6 +456,18 @@ export interface CatalogBlock {
    * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).
    */
   classNamePerProduct?: string | null;
+  /**
+   * The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block.
+   */
+  compiledStylesPerProduct?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'catalog';
@@ -1224,6 +1237,7 @@ export interface RowBlockSelect<T extends boolean = true> {
  * via the `definition` "CatalogBlock_select".
  */
 export interface CatalogBlockSelect<T extends boolean = true> {
+  isRandomized?: T;
   limit?: T;
   filters?:
     | T
@@ -1245,6 +1259,7 @@ export interface CatalogBlockSelect<T extends boolean = true> {
   className?: T;
   compiledStyles?: T;
   classNamePerProduct?: T;
+  compiledStylesPerProduct?: T;
   id?: T;
   blockName?: T;
 }
@@ -1683,6 +1698,7 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  presearchRecommendationContent?: (ContentBlock | CatalogBlock)[] | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1817,6 +1833,12 @@ export interface HeaderSelect<T extends boolean = true> {
               className?: T;
             };
         id?: T;
+      };
+  presearchRecommendationContent?:
+    | T
+    | {
+        content?: T | ContentBlockSelect<T>;
+        catalog?: T | CatalogBlockSelect<T>;
       };
   _status?: T;
   updatedAt?: T;

@@ -4,6 +4,13 @@ import { link } from '@/fields/link'
 import { menuItem } from '@/fields/menuItem'
 import { revalidateHeader } from './revalidateHeader'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
+import { Content } from '@/blocks/Content/config'
+import { Catalog } from '@/blocks/Catalog/config'
+
+const blocks = [
+  Content,
+  Catalog
+]
 
 export const Header: GlobalConfig = {
   slug: 'header',
@@ -13,7 +20,6 @@ export const Header: GlobalConfig = {
   admin: {
     components: {
       elements: {
-
         beforeDocumentControls: [
           '@/components/AutoSaveIndicator',
           '@/components/RevertToLastPublishedButton'
@@ -50,6 +56,16 @@ export const Header: GlobalConfig = {
         components: {
           RowLabel: '@/Header/RowLabel#RowLabel',
         },
+      },
+    },
+    {
+      name: 'presearchRecommendationContent',
+      label: "Pre-search recommendation content",
+      type: 'blocks',
+      blocks,
+      required: false,
+      admin: {
+        initCollapsed: false,
       },
     },
   ],
