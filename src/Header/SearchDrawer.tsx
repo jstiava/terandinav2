@@ -157,7 +157,7 @@ export default function SearchDrawer(props: {
                                     }}>
 
                                         <InputGroup {...{
-                                            className: "h-12 pointer-events-auto",
+                                            className: "h-12 pointer-events-auto text-base",
                                         }}>
                                             <InputGroupAddon {...{
                                                 align: 'inline-start'

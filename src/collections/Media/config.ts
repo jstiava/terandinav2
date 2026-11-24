@@ -20,7 +20,7 @@ export const Media: CollectionConfig = {
   access: {
     create: authenticated,
     delete: authenticated,
-    read: anyone,
+    read: () => true,
     update: authenticated,
   },
   admin: {

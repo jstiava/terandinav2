@@ -482,7 +482,6 @@ export interface Category {
    * Required to display the page preview
    */
   slug: string;
-  pageActive?: boolean | null;
   showInSearch?: boolean | null;
   title: string;
   /**
@@ -501,7 +500,6 @@ export interface Category {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
-  blocks?: (ContentBlock | RowBlock | CarouselBlock | CatalogBlock)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -1452,7 +1450,6 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   slug?: T;
-  pageActive?: T;
   showInSearch?: T;
   title?: T;
   type?: T;
@@ -1464,14 +1461,6 @@ export interface CategoriesSelect<T extends boolean = true> {
       };
   description?: T;
   products?: T;
-  blocks?:
-    | T
-    | {
-        content?: T | ContentBlockSelect<T>;
-        row?: T | RowBlockSelect<T>;
-        carousel?: T | CarouselBlockSelect<T>;
-        catalog?: T | CatalogBlockSelect<T>;
-      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

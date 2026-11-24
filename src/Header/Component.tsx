@@ -19,7 +19,7 @@ const MOBILE_MENU_ITEM_PROPS = {
     className: 'flex items-center justify-start w-full'
   },
   'button': {
-    className: 'flex items-center justify-start h-12 px-2 w-full underline-offset-4 hover:underline'
+    className: 'flex items-center justify-start h-14 px-2 w-full underline-offset-4 hover:underline'
   },
   'link': {
     className: 'uppercase text-sm tracking-relaxed w-full text-start'
