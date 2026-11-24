@@ -196,7 +196,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
 
                                 <AddToCartButton />
 
-                                <PickupDeliveryOptions />
+                                {/* <PickupDeliveryOptions /> */}
 
                                 <div className="flex flex-col w-full gap-1">
                                     <span {...{
@@ -252,7 +252,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                     }}  >
                                     <Accordion.AccordionTrigger className='flex w-full! p-4'>
                                         <div className="flex justify-between items-center w-full">
-                                            <span className='text-sm'>1-2 week free shipping, 30 day return policy</span>
+                                            <span className='text-sm'>Return policy</span>
                                             {/* <MinusIcon className='size-4' /> */}
                                             <PlusIcon className='size-4' />
                                         </div>
@@ -261,7 +261,7 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                         <div className="flex w-full px-4 py-2">
                                             <span {...{
                                                 className: "whitespace-pre-wrap text-sm w-full"
-                                            }}>{`We intentionally source in small batches to avoid overproduction and waste. Because of this, some items are ready to ship while others may take a little more time. Please allow 1-2 weeks for shipping - we’ll keep you updated every step of the way. \n\nIf you are not fully satisfied with your order, we are happy to offer returns and exchanges within 30 days of the delivery date. Items must be returned in original, unused condition with all tags still attached.`}</span>
+                                            }}>{`If you are not fully satisfied with your order, we are happy to offer returns and exchanges within 15 days of the delivery date. Items must be returned in original, unused condition with all tags still attached.`}</span>
                                         </div>
                                     </Accordion.AccordionContent>
                                 </Accordion.AccordionItem>

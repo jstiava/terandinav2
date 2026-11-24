@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button'
 import { useContext, useState } from 'react'
 import { ProductProvider } from './ProductProviderComponent'
 import { CartProvider } from '@/components/Cart/CartProviderComponent'
-import { CheckIcon, MinusCircle, PlusCircle } from 'lucide-react'
-import * as Drawer from '@/components/ui/drawer'
-import ProductSizeSelector from './ProductSizeSelector'
-import { formatPrice } from '@/collections/Products/formatPrice'
+import { AlertCircleIcon, BellRingIcon, CheckIcon } from 'lucide-react'
 import { useMediaQuery } from '@/utilities/useMediaQuery'
+import * as Dialog from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Field, FieldContent, FieldLabel } from '@/components/ui/field'
 
 export default function AddToCartButton() {
   const { ...ProductContext } = useContext(ProductProvider)
@@ -16,7 +16,11 @@ export default function AddToCartButton() {
 
   const [state, setState] = useState<'stable' | 'loading' | 'done'>('stable');
   const [message, setMessage] = useState<string | null>(null)
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+
+  const [notifyEmail, setNotifyEmail] = useState<string | null>(null);
+  const [isNotifyingYou, setIsNotifyingYou] = useState(false);
 
   const isMd = useMediaQuery('(min-width: 768px)')
 
@@ -57,19 +61,53 @@ export default function AddToCartButton() {
     handleAddToCart();
   }
 
-  if (!ProductContext.size) {
+  if (ProductContext.isSoldOut) {
     return (
-      <Button
-        {...{
-          className: 'font-bold uppercase ',
-          variant: 'outline',
-          disabled: true,
-          onClick,
-          size: 'lg',
-        }}
-      >
-        Sold out
-      </Button>
+      <div className="flex flex-col gap-2 w-full h-fit">
+        <Button
+          {...{
+            className: 'font-bold uppercase ',
+            variant: 'outline',
+            disabled: true,
+            onClick,
+            size: 'lg',
+          }}
+        >
+          Sold out
+        </Button>
+        <Dialog.Dialog>
+          <Dialog.DialogTrigger asChild>
+            <Button
+              {...{
+                variant: 'outline',
+                size: 'lg',
+              }}
+            >
+              <BellRingIcon /> Notify me when avaliable
+            </Button>
+          </Dialog.DialogTrigger>
+          <Dialog.DialogContent {...{
+            className: 'flex flex-col gap-4 items-end'
+          }}>
+            <Dialog.DialogTitle>Fill in your email address and we&apos;ll notify you when the product is avaliable.</Dialog.DialogTitle>
+            <Field>
+              <FieldLabel>Email address</FieldLabel>
+              <FieldContent>
+                <Input {...{
+                  className: "h-12 text-lg",
+                  value: notifyEmail ?? "",
+                  onChange: e => {
+                    setNotifyEmail(e.target.value);
+                  }
+                }} />
+              </FieldContent>
+            </Field>
+            <Button {...{
+              disabled: !notifyEmail
+            }}>Email me</Button>
+          </Dialog.DialogContent>
+        </Dialog.Dialog>
+      </div>
     )
   }
 

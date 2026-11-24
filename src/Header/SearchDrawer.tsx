@@ -32,10 +32,10 @@ export default function SearchDrawer(props: {
     useEffect(() => {
 
         const timeout = setTimeout(() => {
-            if (!searchQuery) {
+            if (!searchQuery || searchQuery == "") {
                 setSearchResults(null);
                 return;
-            }
+            } 
             setSearchResults(theFuse.search(searchQuery).map(x => x.item));
             setIsBuffering(false);
         }, 250);
@@ -157,7 +157,6 @@ export default function SearchDrawer(props: {
                                             <div className="flex flex-col w-full h-fit">
                                                 {props.children}
                                                 {/* <div className='flex aspect-square w-full max-h-[30rem] bg-[#009487]'></div> */}
-
                                             </div>
                                         </div>
                                     )}

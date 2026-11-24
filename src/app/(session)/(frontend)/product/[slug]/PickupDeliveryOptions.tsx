@@ -38,7 +38,7 @@ export default function PickupDeliveryOptions() {
 
                 </Button>
 
-                <Button {...{
+                {/* <Button {...{
                     variant: "outline",
                     className: cn("flex-col items-start justify-start p-1!  h-20 w-[45%] max-w-[10rem] text-xs gap-1 ",
                         CartContext.checkoutDetails?.pickup == 'pickup' ? 'border bg-primary/25 hover:bg-primary/50 border-black' : 'border hover:bg-primary/25 border-primary/25'
@@ -58,7 +58,7 @@ export default function PickupDeliveryOptions() {
                         <span>Merrillville, IN</span>
                     </div>
 
-                </Button>
+                </Button> */}
             </div>
         </div>
     )
