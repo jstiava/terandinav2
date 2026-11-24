@@ -90,7 +90,6 @@ export async function Footer() {
                       <span className='uppercase text-sm'>{item.menuItem.label}</span>
                       <div className="flex flex-col w-full h-fit items-start">
                         {item.children?.map(childItem => {
-
                           return (
                             <Button
                               key={childItem.id}
@@ -129,6 +128,7 @@ export async function Footer() {
             <a>Do not sell or share my personal information </a>
           </Button>
         </div>
+        
       </div>
     </footer>
   )

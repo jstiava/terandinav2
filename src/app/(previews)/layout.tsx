@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
-import { cn } from '@/utilities/ui'
 import React from 'react'
 
-import { Footer } from '@/Footer/Component'
 import { InitTheme } from '@/providers/Theme/InitTheme'
-import { draftMode } from 'next/headers'
 
 // @ts-ignore
 import '../(session)/globals.css'
@@ -12,7 +9,6 @@ import '../(session)/globals.css'
 import localFont from 'next/font/local'
 import { Archivo } from 'next/font/google'
 import CartProviderComponent from '@/components/Cart/CartProviderComponent'
-import { Header } from '@/Header/Component'
 
 const canela = localFont({
   src: [

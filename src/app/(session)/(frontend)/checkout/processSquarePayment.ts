@@ -1,6 +1,5 @@
 'use server'
 
-import { generateShippoShipment } from '@/app/(session)/(checkout)/checkout/ShippoService'
 import { getPayload } from 'payload'
 import { SquareClient, SquareEnvironment } from 'square'
 import configPromise from '@payload-config'
@@ -8,6 +7,7 @@ import { Crm, Order } from '@/payload-types'
 import { CheckoutDetailsType, ProductType } from '@/components/Cart/CartProviderComponent'
 import { handleApplicationEventWithEmails } from '@/collections/Emails/EmailService'
 import Mongo from '@/utilities/mongo'
+import { generateShippoShipment } from '@/app/(session)/(frontend)/checkout/ShippoService'
 
 const square = new SquareClient({
   token: process.env.SQUARE_SANDBOX_ACCESS_TOKEN,

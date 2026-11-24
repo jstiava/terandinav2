@@ -11,13 +11,15 @@ export const ProductProvider = createContext<{
     quantity: number,
     incrementQuantity: () => any,
     decrementQuantity: () => any,
-    changeSize: (newSize: Size) => any
+    changeSize: (newSize: Size) => any,
+    isSoldOut: boolean
     // @ts-ignore
 }>(null);
 
-export default function ProductProviderComponent({ children, product }: {
+export default function ProductProviderComponent({ children, product, isSoldOut }: {
     children: JSX.Element,
-    product: Product
+    product: Product,
+    isSoldOut: boolean
 }) {
 
     const [size, setSize] = useState<Size | null>(product.sizes && product.sizes.length > 0 ? product.sizes.find(x => (x.count ?? 0) > 0) ?? null : null);
@@ -42,7 +44,7 @@ export default function ProductProviderComponent({ children, product }: {
 
     return (
         <ProductProvider.Provider value={{
-            product, size, changeSize, quantity, incrementQuantity, decrementQuantity
+            product, size, changeSize, quantity, incrementQuantity, decrementQuantity, isSoldOut
         }}>
             {children}
         </ProductProvider.Provider>

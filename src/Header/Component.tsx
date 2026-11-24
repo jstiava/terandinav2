@@ -11,6 +11,7 @@ import SearchDrawer from '@/Header/SearchDrawer';
 import { unstable_cache } from 'next/cache';
 import { getPayload } from 'payload';
 import { RenderBlocks } from '@/blocks/RenderBlocks';
+import MediaQuery from '@/components/MediaQuery';
 
 
 const MOBILE_MENU_ITEM_PROPS = {
@@ -41,6 +42,7 @@ export async function Header({ data }: { data: HeaderType }) {
 
 
   const products = await getAllProducts_cached();
+  const categories = await getAllCategories_cached();
 
   return (
     <div className="flex w-full h-fit z-[5]">
@@ -63,78 +65,82 @@ export async function Header({ data }: { data: HeaderType }) {
 
           {/* Mobile nav bar */}
           <div className="flex sm:hidden w-fit px-0">
-            <div className="flex w-fit px-2">
-              <SearchDrawer {...{
-                products
-              }} >
-                <div className="flex flex-col w-full">
-                  {data.presearchRecommendationContent && <RenderBlocks blocks={data.presearchRecommendationContent} />}
-                </div>
-              </SearchDrawer>
-              <MobileNavigationMenu>
-                <nav className="flex flex-col p-6 pt-16">
-                  {data.navItems?.map(item => {
+            <MediaQuery query="(max-width: 767px)">
+              <div className="flex w-fit px-2">
+                <SearchDrawer {...{
+                  products,
+                  categories
+                }} >
+                  <div className="flex flex-col w-full">
+                    {data.presearchRecommendationContent && <RenderBlocks blocks={data.presearchRecommendationContent} />}
+                  </div>
+                </SearchDrawer>
+                <MobileNavigationMenu>
+                  <nav className="flex flex-col p-6 pt-16">
+                    {data.navItems?.map(item => {
 
-                    if (item.menuItem.type == 'reference') {
-                      return (
-                        <div key={item.id} {...{
-                          ...MOBILE_MENU_ITEM_PROPS.wrapper
-                        }}>
-                          <Button {...{
-                            ...MOBILE_MENU_ITEM_PROPS.button,
-                            variant: 'custom',
+                      if (item.menuItem.type == 'reference') {
+                        return (
+                          <div key={item.id} {...{
+                            ...MOBILE_MENU_ITEM_PROPS.wrapper
                           }}>
-                            <a {...{
-                              ...MOBILE_MENU_ITEM_PROPS.link,
-                              href: (item.menuItem.reference?.value as any).slug ?? ""
-                            }}>{item.menuItem.label}
-                            </a>
-                          </Button>
-                        </div>
-                      )
-                    }
+                            <Button {...{
+                              ...MOBILE_MENU_ITEM_PROPS.button,
+                              variant: 'custom',
+                            }}>
+                              <a {...{
+                                ...MOBILE_MENU_ITEM_PROPS.link,
+                                href: (item.menuItem.reference?.value as any).slug ?? ""
+                              }}>{item.menuItem.label}
+                              </a>
+                            </Button>
+                          </div>
+                        )
+                      }
 
-                    if (item.menuItem.type == 'custom') {
-                      return (
-                        <div key={item.id} {...{
-                          ...MOBILE_MENU_ITEM_PROPS.wrapper
-                        }}>
-                          <Button {...{
-                            ...MOBILE_MENU_ITEM_PROPS.button,
-                            variant: 'custom',
+                      if (item.menuItem.type == 'custom') {
+                        return (
+                          <div key={item.id} {...{
+                            ...MOBILE_MENU_ITEM_PROPS.wrapper
                           }}>
-                            <a {...{
-                              ...MOBILE_MENU_ITEM_PROPS.link,
-                              href: item.menuItem.url ?? ""
-                            }}>{item.menuItem.label}
-                            </a>
-                          </Button>
-                        </div>
-                      )
-                    }
+                            <Button {...{
+                              ...MOBILE_MENU_ITEM_PROPS.button,
+                              variant: 'custom',
+                            }}>
+                              <a {...{
+                                ...MOBILE_MENU_ITEM_PROPS.link,
+                                href: item.menuItem.url ?? ""
+                              }}>{item.menuItem.label}
+                              </a>
+                            </Button>
+                          </div>
+                        )
+                      }
 
-                    if (item.menuItem.type == 'label') {
-                      return (
-                        <div key={item.id} {...{
-                          ...MOBILE_MENU_ITEM_PROPS.wrapper
-                        }}>
-                          <Button {...{
-                            ...MOBILE_MENU_ITEM_PROPS.button,
-                            variant: 'custom',
+                      if (item.menuItem.type == 'label') {
+                        return (
+                          <div key={item.id} {...{
+                            ...MOBILE_MENU_ITEM_PROPS.wrapper
                           }}>
-                            <a {...{
-                              ...MOBILE_MENU_ITEM_PROPS.link
-                            }}>{item.menuItem.label}
-                            </a>
-                          </Button>
-                        </div>
-                      )
-                    }
-                  })}
-                </nav>
-              </MobileNavigationMenu>
-              <CartDrawer />
-            </div>
+                            <Button {...{
+                              ...MOBILE_MENU_ITEM_PROPS.button,
+                              variant: 'custom',
+                            }}>
+                              <a {...{
+                                ...MOBILE_MENU_ITEM_PROPS.link
+                              }}>{item.menuItem.label}
+                              </a>
+                            </Button>
+                          </div>
+                        )
+                      }
+                    })}
+                  </nav>
+                </MobileNavigationMenu>
+
+                <CartDrawer key={'mobile_cart_drawer'} />
+              </div>
+            </MediaQuery>
 
           </div>
 
@@ -200,16 +206,20 @@ export async function Header({ data }: { data: HeaderType }) {
               }
             })}
 
-            <div className="flex w-fit px-2">
-              <SearchDrawer {...{
-                products
-              }}>
-                <div className="flex flex-col w-full">
-                  {data.presearchRecommendationContent && <RenderBlocks blocks={data.presearchRecommendationContent} />}
-                </div>
-              </SearchDrawer>
-              <CartDrawer />
-            </div>
+            <MediaQuery query="(min-width: 640px)">
+              <div className="flex w-fit px-2">
+                <SearchDrawer {...{
+                  products,
+                  categories
+                }}>
+                  <div className="flex flex-col w-full">
+                    {data.presearchRecommendationContent && <RenderBlocks blocks={data.presearchRecommendationContent} />}
+                  </div>
+                </SearchDrawer>
+
+                <CartDrawer key={'desktop_cart_drawer'} />
+              </div>
+            </MediaQuery>
           </div>
 
         </div>
@@ -247,6 +257,38 @@ async function getAllProducts_cached() {
     },
     ["products"],
     { tags: ['products'] }
+  )();
+}
+
+
+
+const getAllCategories = async () => {
+
+  const payload = await getPayload({ config: configPromise });
+
+  const result = await payload.find({
+    collection: 'categories',
+    draft: false,
+    depth: 2,
+    pagination: false, 
+    where: {
+      showInSearch: {
+        equals: true
+      }
+    }
+  })
+
+  return result.docs;
+}
+
+async function getAllCategories_cached() {
+  return unstable_cache(
+    async () => {
+      const categories = await getAllCategories();
+      return categories;
+    },
+    ["categories"],
+    { tags: ['categories'] }
   )();
 }
 

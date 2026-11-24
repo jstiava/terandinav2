@@ -483,6 +483,7 @@ export interface Category {
    */
   slug: string;
   pageActive?: boolean | null;
+  showInSearch?: boolean | null;
   title: string;
   /**
    * Variants are show immidiately beside the product each individual product page.
@@ -516,6 +517,7 @@ export interface Product {
    */
   slug?: string | null;
   active?: boolean | null;
+  releaseDate?: string | null;
   name: string;
   images?:
     | {
@@ -1451,6 +1453,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface CategoriesSelect<T extends boolean = true> {
   slug?: T;
   pageActive?: T;
+  showInSearch?: T;
   title?: T;
   type?: T;
   images?:
@@ -1480,6 +1483,7 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   slug?: T;
   active?: T;
+  releaseDate?: T;
   name?: T;
   images?:
     | T

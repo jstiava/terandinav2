@@ -1,21 +1,16 @@
 "use client";
 
-import NextNProgress from "nextjs-progressbar";
+import NextTopLoader from 'nextjs-toploader';
 
 export default function TopLoadingBar() {
 
   return (
-    <NextNProgress
+    <NextTopLoader
       {...{
-        color: '#009487',
-        showOnShallow: true,
+        color: "#943a00",
         height: 3,
-        // options: {
-        //   showSpinner: false
-        // },
-        // style: {
-        //   zIndex: 9999
-        // }
+        showSpinner: false,
+        zIndex: 9999
       }}
     />
   );

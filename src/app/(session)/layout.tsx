@@ -1,33 +1,12 @@
 import type { Metadata } from 'next'
-import { cn } from '@/utilities/ui'
 import React from 'react'
 
-import { Footer } from '@/Footer/Component'
 import { InitTheme } from '@/providers/Theme/InitTheme'
-import { draftMode } from 'next/headers'
-
 // @ts-ignore
 import './globals.css'
-import TopLoadingBar from '@/components/LoadingBar'
 
-import localFont from 'next/font/local'
-import { Archivo } from 'next/font/google'
 import CartProviderComponent from '@/components/Cart/CartProviderComponent'
-import { Header } from '@/Header/Component'
-
-const canela = localFont({
-  src: [
-    { path: '../../../public/fonts/canelaweb-black.ttf', weight: '900', style: 'normal', },
-    { path: '../../../public/fonts/canelaweb-medium.ttf', weight: '500', style: 'normal', },
-    { path: '../../../public/fonts/canelaweb-thin.ttf', weight: '100', style: 'normal', },
-  ], variable: '--font-canela', display: 'swap',
-})
-
-const archivo = Archivo({
-  subsets: ['latin'],
-  variable: '--font-archivo',
-  display: 'swap',
-})
+import { archivo, canela } from '@/app/fonts'
 
 export default function RootLayout({
   children,

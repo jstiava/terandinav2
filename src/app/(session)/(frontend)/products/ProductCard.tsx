@@ -5,12 +5,13 @@ import { cn } from "@/utilities/cn"
 
 
 
-export default function ProductCard({ product, className, style = {} }: {
+export default function ProductCard({ product, className, style = {}, disabledTitleIndent = false }: {
     product: Product,
     className: string,
-    style?: any
+    style?: any,
+    disabledTitleIndent?: boolean
 }) {
-
+    
     const isSoldOut = (!product.sizes || product.sizes.length == 0) || (product.sizes.reduce((sum, item) => sum + (item.count ?? 0), 0) == 0);
 
     return (
@@ -35,7 +36,8 @@ export default function ProductCard({ product, className, style = {} }: {
                     src: product.images && product.images.length > 0 ? (product.images[0]?.image as any).url : "",
                     alt: product.images && product.images.length > 0 ? (product.images[0]?.image as any).alt : ""
                 }} />
-                <div className="flex flex-col w-full md:pr-10">
+
+                <div className={cn("flex flex-col w-full", !disabledTitleIndent && 'md:pr-10')}>
                     <span {...{
                         className: "font-archivo group-hover:underline"
                     }}>{product.name}</span>

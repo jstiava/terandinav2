@@ -31,7 +31,7 @@ export default async function ProductsPage(props: any) {
 
     return (
         <div className="flex items-center justify-start flex-col gap-0 h-fit">
-            <div className="flex flex-col items-center w-full max-w-[140rem] py-10 gap-4">
+            <div className="flex flex-col items-center w-full max-w-[140rem] py-[3.5rem] gap-4">
 
                 <h1 {...{
                     className: "font-canela text-4xl py-6"

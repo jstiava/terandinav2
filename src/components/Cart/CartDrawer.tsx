@@ -58,6 +58,12 @@ export default function CartDrawer() {
                 <div className="flex flex-col py-6 px-4 md:px-8 md:py-10 w-full h-fit gap-4">
                     <Drawer.DrawerTitle>Shopping Cart</Drawer.DrawerTitle>
                     <div className="flex flex-col p-4 gap-4 ">
+
+                        {!CartContext.cart || CartContext.cart.length === 0 && (
+                            <div className="flex w-full h-fit py-4 items-center justify-center opacity-50 text-xs">
+                                <span>Cart is empty.</span>
+                            </div>  
+                        )}
                         {CartContext.cart?.map(item => {
 
                             const chosenSize = item.size ? item.product.sizes?.find(x => x.id == item.size) : null;
@@ -144,31 +150,15 @@ export default function CartDrawer() {
                     </div>
                     <div className="flex flex-col items-center justify-center flex-col w-full p-4 gap-2">
 
-                        <Field>
-                            <FieldLabel>Email address (required to checkout)</FieldLabel>
-                            <FieldContent>
-                                <Input {...{
-                                    className: "h-12 text-lg",
-                                    value: CartContext.checkoutDetails?.emailAddress ?? "",
-                                    onChange: e => {
-                                        CartContext.setCheckoutDetails(prev => ({
-                                            ...prev,
-                                            emailAddress: e.target.value
-                                        }));
-                                    }
-                                }} />
-                            </FieldContent>
-                        </Field>
-                        {(CartContext.cart && CartContext.cart.length > 0) && (
-                            <Button {...{
-                                className: "w-full",
-                                size: 'lg',
-                                disabled: !CartContext.checkoutDetails || !CartContext.checkoutDetails.emailAddress,
-                                onClick: e => {
-                                    router.push('/checkout')
-                                }
-                            }}>Go to checkout</Button>
-                        )}
+                        <Button {...{
+                            className: "w-full h-12",
+                            size: 'lg',
+                            disabled: (!CartContext.cart || CartContext.cart.length === 0),
+                            onClick: e => {
+                                router.push('/checkout');
+                                CartContext.close()
+                            }
+                        }}>Checkout as guest</Button>
                         <Button {...{
                             className: "w-full",
                             size: 'lg',
@@ -177,7 +167,7 @@ export default function CartDrawer() {
                                 CartContext.close()
                             }
                         }}>
-                            Continue Shopping
+                            Keep Shopping
                         </Button>
                     </div>
                 </div>

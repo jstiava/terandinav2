@@ -16,8 +16,6 @@ export default function AddToCartButton() {
 
   const [state, setState] = useState<'stable' | 'loading' | 'done'>('stable');
   const [message, setMessage] = useState<string | null>(null)
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
 
   const [notifyEmail, setNotifyEmail] = useState<string | null>(null);
   const [isNotifyingYou, setIsNotifyingYou] = useState(false);

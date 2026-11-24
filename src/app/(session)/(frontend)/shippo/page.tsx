@@ -1,6 +1,6 @@
 'use server'
 
-import { generateShippoShipment } from "@/app/(session)/(checkout)/checkout/ShippoService";
+import { generateShippoShipment } from "@/app/(session)/(frontend)/checkout/ShippoService";
 import { Check, Truck } from "lucide-react";
 import Image from "next/image";
 

@@ -7,16 +7,8 @@ import { Content } from '@/blocks/Content/config'
 import { Row } from '@/blocks/Row/config'
 import { Carousel } from '@/blocks/Carousel/config'
 import { Catalog } from '@/blocks/Catalog/config'
-
-
-
-const blocks = [
-  Content,
-  Row,
-  Carousel,
-  Catalog
-]
-
+import { slugify } from '@/utilities/slugify'
+import { revalidateTag } from 'next/cache'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
@@ -72,7 +64,8 @@ export const Categories: CollectionConfig = {
       },
     },
     {
-      name: 'pageActive',
+      name: 'showInSearch',
+      label: "Show in search",
       type: 'checkbox',
       defaultValue: false,
       admin: {
@@ -129,27 +122,38 @@ export const Categories: CollectionConfig = {
               collection: 'products',
               on: 'categories',
             },
-
           ],
-        },
-        {
-          label: 'Page Content',
-          description: 'Edit the content displayed on this page.',
-          fields: [
-            {
-              name: 'blocks',
-              type: 'blocks',
-              blocks,
-              required: false,
-              admin: {
-                initCollapsed: false,
-              },
-            },
-          ],
-        },
+        }
       ],
     },
   ],
+  hooks: {
+    beforeValidate: [
+      ({ data }) => {
+        if (!data) {
+          return data
+        }
+
+        if ((!data.slug || data.slug === '') && data.name) {
+          data.slug = slugify(data.name)
+        }
+
+        return data
+      },
+    ],
+    afterChange: [
+      async ({ doc, previousDoc }) => {
+        if (!doc) return;
+
+        if (doc._status == 'published') {
+          revalidateTag('categories')
+        }
+        else if (previousDoc._status == 'published') {
+          revalidateTag('categories')
+        }
+      }
+    ]
+  },
   versions: {
     drafts: {
       autosave: true,

@@ -27,6 +27,15 @@ export type CheckoutDetailsType = {
 
 export type StripeLocationDetails = { "emailAddress"?: string | null, "name"?: string | null, "firstName"?: string | null, "lastName"?: string | null, "address": { "line1": string | null, "line2": string | null, "city": string | null, "country": string | null, "postal_code": string | null, "state": string | null }, "complete": boolean }
 
+export type SearchQuery = {
+    query?: string | null,
+    sortBy?: string | null,
+    order?: 'asc' | 'dec' | null,
+    categories?: string[],
+    sizes?: string[],
+    colors?: string[]
+}
+
 export const CartProvider = createContext<{
     cart: ProductType[] | null;
     add: (props: { item: ProductType }) => boolean;
@@ -50,8 +59,8 @@ export const CartProvider = createContext<{
     checkoutDetails: Partial<CheckoutDetailsType> | null,
     setCheckoutDetails: Dispatch<SetStateAction<Partial<CheckoutDetailsType> | null>>,
 
-    searchQuery: string | null,
-    setSearchQuery: Dispatch<SetStateAction<string | null>>
+    searchQuery: SearchQuery | null,
+    setSearchQuery: Dispatch<SetStateAction<SearchQuery | null>>
 
     // @ts-ignore
 }>(null);
@@ -62,7 +71,7 @@ export default function CartProviderComponent({ children }: {
     children: JSX.Element
 }) {
 
-    const [searchQuery, setSearchQuery] = useState<string | null>(null);
+    const [searchQuery, setSearchQuery] = useState<SearchQuery | null>(null);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [cart, setCart] = useState<ProductType[] | null>(null);
     const [checkoutDetails, setCheckoutDetails] = useState<Partial<CheckoutDetailsType> | null>(null);
@@ -77,7 +86,8 @@ export default function CartProviderComponent({ children }: {
     })
 
     useLocalStorageSearchResults({
-        searchQuery, setSearchQuery
+        searchQuery,
+        setSearchQuery
     })
 
     const clear = () => {
@@ -239,18 +249,31 @@ const useLocalStorageCartEffect = ({ cart, setCart }: {
 
 
 const useLocalStorageSearchResults = ({ searchQuery, setSearchQuery }: {
-    searchQuery: string | null,
-    setSearchQuery: Dispatch<SetStateAction<string | null>>,
+    searchQuery: SearchQuery | null,
+    setSearchQuery: Dispatch<SetStateAction<SearchQuery | null>>,
 }) => {
 
     useEffect(() => {
         if (!searchQuery) {
             const savedValue = localStorage.getItem("searchQuery");
-            if (savedValue) {
-                setSearchQuery(savedValue);
+
+            try {
+                if (savedValue) {
+                    const parsed = JSON.parse(savedValue);
+
+                    if (typeof parsed === "object") {
+                        setSearchQuery(parsed)
+                    } else {
+                        setSearchQuery({});
+                        localStorage.setItem("searchQuery", JSON.stringify({}))
+                    }
+                }
+                else {
+                    setSearchQuery({})
+                }
             }
-            else {
-                setSearchQuery("")
+            catch (err) {
+                setSearchQuery({})
             }
         }
     }, [])
@@ -259,7 +282,7 @@ const useLocalStorageSearchResults = ({ searchQuery, setSearchQuery }: {
         if (!searchQuery) {
             return;
         }
-        localStorage.setItem("searchQuery", searchQuery)
+        localStorage.setItem("searchQuery", JSON.stringify(searchQuery))
 
     }, [searchQuery])
 }

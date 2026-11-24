@@ -4,16 +4,13 @@ import { authenticated } from '../../access/authenticated'
 
 export const Orders: CollectionConfig = {
     slug: 'orders',
-
     access: {
         create: () => false,
         delete: () => false,
         read: authenticated,
         update: () => false,
     },
-
     admin: {
-
         defaultColumns: [
             'name',
             'updatedAt',
@@ -72,7 +69,6 @@ export const Orders: CollectionConfig = {
                 },
                 {
                     label: 'Order Contents',
-
                     fields: [
                         {
                             name: "cart",

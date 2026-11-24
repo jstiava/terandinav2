@@ -105,12 +105,14 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
     // @ts-ignore
     const recommendedProducts = await getProductFromList({
         ids: recommendedProductsId.map(x => x._id)
-    })
+    });
+
+    const isSoldOut = (!product.sizes || product.sizes.length == 0) || (product.sizes.reduce((sum, item) => sum + (item.count ?? 0), 0) == 0);
 
 
     return (
         <ProductProviderComponent {...{
-            product
+            product, isSoldOut
         }}>
             <div className="flex flex-col w-full items-center h-fit">
                 <div className="relative flex flex-col md:flex-row items-start w-full max-w-[140rem] h-fit">
@@ -143,8 +145,8 @@ export default async function ProductPage({ params: paramsPromise }: Args) {
                                         key={image.id}
                                         {...{
                                             className: "flex w-full aspect-[3/4] h-fit bg-cover bg-center",
-                                            src: image.image.url ?? "",
-                                            alt: image.image.alt ?? ""
+                                            src: image.image?.url ?? "",
+                                            alt: image.image?.alt ?? ""
                                         }} />
                                 )
                             })}

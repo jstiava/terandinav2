@@ -90,6 +90,14 @@ export const Products: CollectionConfig = {
                 position: 'sidebar',
             },
         },
+         {
+            name: 'releaseDate',
+            label: "Release Date",
+            type: 'date', 
+            admin: {
+                position: 'sidebar',
+            },
+        },
         {
             type: 'tabs',
             tabs: [
