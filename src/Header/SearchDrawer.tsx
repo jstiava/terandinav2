@@ -182,7 +182,7 @@ export default function SearchDrawer(props: {
                                                 </Button>
                                             </InputGroupAddon>
                                             <InputGroupInput {...{
-                                                className: "text-base",
+                                                className: "text-[1.125rem]",
                                                 autoFocus: true,
                                                 value: searchQuery?.query ?? "",
                                                 onChange: e => {
