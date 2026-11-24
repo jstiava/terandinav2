@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Button, PopupList, useDocumentInfo } from '@payloadcms/ui'
-import { sendTestEmail } from './EmailService'
+import { sendTestEmail } from './sendTestEmail'
 
 export default function SendTestEmailButton() {
     const { id } = useDocumentInfo()

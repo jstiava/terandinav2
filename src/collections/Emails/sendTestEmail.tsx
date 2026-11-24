@@ -6,60 +6,11 @@ import {
 import EmailRoot from '@/emails/components/EmailRoot';
 import Letterhead from '@/emails/blocks/Letterhead/Component';
 import { blockComponents, RenderEmailBlocks } from '@/emails/RenderEmailBlocks';
-import { render } from '@react-email/components';
+import { Column, render, Row } from '@react-email/components';
 import { EMAIL_TEMPLATES, NodemailerEmailTransporter } from '@/collections/Emails/config';
 import { ApplicationEventArgs } from '@/collections/Emails/triggers';
-
-
-const EMAILS_FROM = 'Terandina LLC <no-reply@terandina.com>'
-/**
- * Record events, sends emails
- * @returns 
- */
-export async function handleApplicationEventWithEmails(props: ApplicationEventArgs) {
-
-    const payload = await getPayload({ config: configPromise });
-
-    const result = await payload.find({
-        collection: 'emails',
-        draft: false,
-        depth: 2,
-        pagination: false,
-        overrideAccess: true,
-        where: {
-            and: [
-                { action: { equals: "byAction" } },
-                { trigger: { equals: props.event } }
-            ]
-        },
-    })
-
-    for (const email of result.docs) {
-
-        const Component = (
-            <EmailRoot>
-                {/* @ts-ignore */}
-                {email.blocks && <RenderEmailBlocks blocks={email.blocks} variables={props.variables} />}
-            </EmailRoot>
-        )
-
-        const emailHtml = await render(Component)
-        const theSubject = await richTextToPlainText(email.subject?.root, props.variables)
-        const theRecipients = await richTextToPlainText(email.recipients?.root, props.variables)
-
-        await NodemailerEmailTransporter.sendMail({
-            from: EMAILS_FROM,
-            to: [...theRecipients.split(',')],
-            subject: theSubject,
-            html: emailHtml,
-        })
-
-        return true;
-    }
-
-    return true;
-}
-
+import { EMAILS_FROM, richTextToPlainText } from '@/collections/Emails';
+import { headers } from 'next/headers';
 
 
 
@@ -70,6 +21,15 @@ export async function sendTestEmail({ email_id }: {
     try {
 
         const payload = await getPayload({ config: configPromise });
+
+        const { user } = await payload.auth({
+           headers: await headers(),
+         });
+
+         if (!user) {
+            throw Error("You must be signed in to use this method.")
+         }
+       
 
         const result = await payload.find({
             collection: 'emails',
@@ -87,8 +47,7 @@ export async function sendTestEmail({ email_id }: {
 
         const theEmail = result.docs?.[0] || null;
 
-
-        const variables = {};
+        const variables = theEmail.variables;
         const Template = theEmail.template && theEmail.template != 'custom' ? EMAIL_TEMPLATES.find(x => x.value === theEmail.template) : null
 
         const Component = Template ? (
@@ -100,7 +59,25 @@ export async function sendTestEmail({ email_id }: {
                             blocks: theEmail.blocks,
                             variables: theEmail.variables
                         }}
-                    />
+                    >
+                        <div style={{ display: "block", width: "100%" }}>
+                            {/* @ts-ignore */}
+                            {theEmail.blocks.map((block, index) => {
+                                const { blockType } = block
+
+                                if (blockType && blockType in blockComponents) {
+                                    const Block = blockComponents[blockType]
+
+                                    if (Block) {
+                                        // @ts-ignore
+                                        return <Block key={`${index}_${block.blockName ?? 'no_id'}`} {...{ variables, ...block }} />
+                                    }
+                                }
+
+                                return null
+                            })}
+                        </div>
+                    </Template.Component>
                 )}
             </EmailRoot>
         ) : (
@@ -156,51 +133,4 @@ export async function sendTestEmail({ email_id }: {
         return false;
     }
 
-}
-
-
-
-async function richTextToPlainText(
-    doc:
-        | {
-            type: string
-            children: {
-                type: any
-                version: number
-                [k: string]: unknown
-            }[]
-            direction: ('ltr' | 'rtl') | null
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-            indent: number
-            version: number
-        }
-        | undefined,
-    variables?: Record<string, any>,
-): Promise<string> {
-    if (!doc) return ''
-
-    let output = ''
-
-    const walk = (nodes: any[]) => {
-        if (!nodes) return
-        for (const n of nodes) {
-            if (n.type === 'text') {
-                // text node
-                output += n.text
-            } else if (n.type === 'variable' && variables) {
-                const selected = n.selected
-                const theVariable = variables[selected.value]
-                output += `${theVariable}`
-            }
-
-            if (n.children) {
-                // walk deeper
-                walk(n.children)
-            }
-        }
-    }
-
-    walk(Array.isArray(doc) ? doc : doc.children)
-
-    return output.trim()
 }

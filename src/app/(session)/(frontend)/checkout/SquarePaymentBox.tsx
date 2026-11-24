@@ -1,12 +1,10 @@
 'use client'
 
-import { CartProvider } from '@/components/Cart/CartProviderComponent'
-import { Button } from '@/components/ui/button'
 import { LockIcon } from 'lucide-react'
 import Script from 'next/script'
-import { useContext, useEffect, useRef, useState } from 'react'
-import PayNowButton from './PayNowButton'
+import { useEffect, useRef, useState } from 'react'
 import AcceptedCards from './AcceptedCards'
+import SquarePayNowButton from './SquarePayNowButton'
 
 export default function SquarePaymentBox({ amount }: { amount: number }) {
   const cardRef = useRef<any>(null)
@@ -122,7 +120,7 @@ export default function SquarePaymentBox({ amount }: { amount: number }) {
         />
         <span>Secured with Square</span>
       </div>
-      <PayNowButton
+      <SquarePayNowButton
         {...{
           cardRef,
         }}

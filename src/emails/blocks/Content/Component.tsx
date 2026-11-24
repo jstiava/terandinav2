@@ -1,8 +1,8 @@
 import RichText from '@/components/RichText'
-import { Row, Section } from '@react-email/components'
+import { Column, Row, Section } from '@react-email/components'
 import type { EmailContentBlock as EmailContentBlockProps } from '@/payload-types'
 
-export function EmailContentBlock(props : EmailContentBlockProps) {
+export function EmailContentBlock(props: EmailContentBlockProps) {
   const { richText, variables } = props as any;
 
   console.count('Content: component entered')
@@ -12,14 +12,14 @@ export function EmailContentBlock(props : EmailContentBlockProps) {
   console.count('Content: reaching return')
 
   return (
-    <Section style={{
-      width: "100%"
-    }}>
-      <Row style={{
-        width: "calc(100% - 3rem)",
-        margin: "1.5rem"
-      }}>
-        {richText && <RichText data={richText} />}
+    <Section style={{ width: "100%" }}>
+      <Row style={{ width: "100%" }}>
+        <Column style={{ padding: "24px" }}>
+          {richText && <RichText {...{
+            data: richText,
+            variables
+          }}/>}
+        </Column>
       </Row>
     </Section>
   )

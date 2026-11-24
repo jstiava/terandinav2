@@ -21,6 +21,8 @@ import OrderFulfillmentRequestPreview from '@/emails/preview/OrderFulfillmentReq
 import { EmailButtonBlock, EmailContentBlock, EmailImageBlock } from '@/payload-types'
 import BlankTemplate from '@/emails/templates/BlankTemplate'
 import { slugify } from '@/utilities/slugify'
+import TextOnlyEmailTemplate from '@/emails/templates/TextOnlyEmailTemplate'
+import TextOnlyEmailPreview from '@/emails/preview/TextOnlyEmailPreview'
 
 const EMAIL_BLOCKS = [EmailContent, EmailButton, EmailImage]
 export type EmailBlockType = (EmailContentBlock | EmailButtonBlock | EmailImageBlock)[]
@@ -55,6 +57,12 @@ export const EMAIL_TEMPLATES = [
     value: "order_fufillment_receipt",
     Component: OrderFulfillmentRequest,
     variables: OrderFulfillmentRequestPreview.PreviewProps.variables
+  },
+   {
+    label: "Text only",
+    value: "text_only",
+    Component: TextOnlyEmailTemplate,
+    variables: TextOnlyEmailPreview.PreviewProps.variables
   },
   {
     label: "Blank template",

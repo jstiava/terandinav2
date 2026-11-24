@@ -7,12 +7,14 @@ export default async function CheckoutPage() {
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center">
-      {/* Page header */}
+      {/* Page header
       <header className="w-full max-w-[80rem] px-4 pt-[6rem] pb-8 sm:px-6 lg:px-8">
         <h1 className="font-canela text-3xl">
           Checkout
         </h1>
-      </header>
+      </header> */}
+
+      <div className="flex w-full h-[4rem] md:h-[10rem]"></div>
 
       {/* Checkout */}
       <main className="w-full max-w-[80rem] px-4 pb-16 sm:px-6 lg:px-8">

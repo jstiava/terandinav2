@@ -56,12 +56,18 @@ export default async function EmailRoot({
         </Head>
         {noTailwind ? (
           <Body className="bg-[#f6f9fc] py-2.5 font-sans" >
-            {children}
+            <div style={{ display: "block", width: "100%" }}>
+
+              {children}
+            </div>
           </Body>
         ) : (
           <Tailwind config={config}>
             <Body className="bg-[#f6f9fc] py-2.5 font-sans" >
-              {children}
+              <div style={{ display: "block", width: "100%" }}>
+
+                {children}
+              </div>
             </Body>
           </Tailwind>
         )}

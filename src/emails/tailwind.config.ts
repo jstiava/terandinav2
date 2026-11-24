@@ -1,10 +1,24 @@
-import typography from '@tailwindcss/typography'
-import { pixelBasedPreset, TailwindConfig } from '@react-email/tailwind'
+import type { TailwindConfig } from '@react-email/tailwind'
+import { pixelBasedPreset } from '@react-email/tailwind'
+
+const emailFlexFallback = ({ addUtilities }: any) => {
+  addUtilities({
+    '.flex': {
+      display: 'block',
+    },
+    '.flex-col': {
+      display: 'block',
+    },
+    '.inline-flex': {
+      display: 'inline-block',
+    },
+  })
+}
 
 const config: TailwindConfig = {
-  // plugins: [typography],
   prefix: '',
   presets: [pixelBasedPreset],
+  plugins: [emailFlexFallback],
   theme: {
     extend: {
       fontFamily: {
@@ -12,7 +26,7 @@ const config: TailwindConfig = {
         sans: ['Archivo', 'Arial', 'sans-serif'],
         serif: ['Canela', 'Georgia', 'serif'],
         canela: ['Canela', 'Georgia', 'serif'],
-        archivo: ['var(--font-archivo)', 'Arial', 'sans-serif'],
+        archivo: ['Archivo', 'Arial', 'sans-serif'],
       },
     },
   },

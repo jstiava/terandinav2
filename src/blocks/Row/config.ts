@@ -5,7 +5,7 @@ import { compileTailwind } from '@/blocks/Content/compileTailwind';
 export const Row: Block = {
     slug: 'row',
     interfaceName: 'RowBlock',
-      imageURL: '/blocks/row.png',
+    imageURL: '/blocks/row.png',
     fields: [
         {
             name: 'slides',
@@ -63,6 +63,43 @@ export const Row: Block = {
 
             ],
         },
+        {
+            type: "collapsible",
+            label: "Advanced layouts & styling",
+            admin: {
+                initCollapsed: true
+            },
+            fields: [
+                {
+                    name: "className",
+                    type: "textarea",
+                    admin: {
+                        description: 'Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).'
+                    },
+                },
+                {
+                    name: 'compiledStyles',
+                    type: 'json',
+                    admin: {
+                        hidden: false,
+                        readOnly: true,
+                        className: "js-custom-json-admin-field",
+                        description: "The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block."
+                    },
+                    hooks: {
+                        beforeChange: [
+                            async ({ siblingData }) => {
+                                const styles = await compileTailwind({
+                                    id: String(siblingData.id),
+                                    className: String(siblingData?.className ?? '')
+                                });
+                                return styles
+                            },
+                        ],
+                    },
+                }
+            ]
+        }
     ],
     // labels: {
     //   plural: 'Calls to Action',

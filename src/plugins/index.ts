@@ -27,16 +27,12 @@ export const plugins: Plugin[] = [
   }),
   uploadthingStorage({
     collections: {
-      media: {
-        disablePayloadAccessControl: true,
-        disableLocalStorage: true,
-      },
+      media: true,
     },
     clientUploads: true,
     options: {
       token: process.env.UPLOADTHING_TOKEN,
       acl: 'public-read',
-
     },
   }),
   // formBuilderPlugin({

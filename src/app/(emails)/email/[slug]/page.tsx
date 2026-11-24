@@ -13,8 +13,7 @@ import { Body, Container, Font, Head, Html, render, Row, Section, Tailwind } fro
 import EmailRoot from '@/emails/components/EmailRoot'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import config from '@/emails/tailwind.config'
-import { PROD_WEBSITE_URI } from '@/emails/templates/VerificationEmail'
-import { RichText } from '@payloadcms/richtext-lexical/react'
+import { PROD_WEBSITE_URI } from '@/emails/templates/VerificationEmail' 
 
 type Args = {
   params: Promise<{
@@ -105,8 +104,10 @@ export default async function EmailPage({ params: paramsPromise }: Args) {
 
                   return (
                     <Block
-                    // @ts-ignore
+                      // @ts-ignore
                       key={block.id}
+                      // @ts-ignore
+                      variables={email.variables ?? Template.variables}
                       {...block}
                     />
                   )
@@ -160,6 +161,7 @@ export default async function EmailPage({ params: paramsPromise }: Args) {
       </Head>
       <>
         {draft && <LivePreviewListener />}
+
         <Container className="my-[10px] mx-auto w-[650px] max-w-full border border-[#E5E5E5]">
 
           {email.blocks && (

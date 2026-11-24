@@ -12,6 +12,8 @@ import { unstable_cache } from 'next/cache';
 import { getPayload } from 'payload';
 import { RenderBlocks } from '@/blocks/RenderBlocks';
 import MediaQuery from '@/components/MediaQuery';
+import { cookies, headers } from 'next/headers';
+import AdminDrawer from '@/components/AdminDrawer/Component';
 
 
 const MOBILE_MENU_ITEM_PROPS = {
@@ -40,9 +42,19 @@ const MENU_ITEM_PROPS = {
 
 export async function Header({ data }: { data: HeaderType }) {
 
+  const payload = await getPayload({ config: configPromise })
+  const { user } = await payload.auth({
+    headers: await headers(),
+  })
+
+  // 
+  const cookieStore = await cookies();
+  const token = cookieStore.get("payload-token")?.value ?? null;
 
   const products = await getAllProducts_cached();
   const categories = await getAllCategories_cached();
+
+  
 
   return (
     <div className="flex w-full h-fit z-[5]">
@@ -139,6 +151,15 @@ export async function Header({ data }: { data: HeaderType }) {
                 </MobileNavigationMenu>
 
                 <CartDrawer key={'mobile_cart_drawer'} />
+
+                {user && (
+                  <AdminDrawer
+                    key={'desktop_admin_drawer'}
+                    {...{
+                      user,
+                      token: token ?? ""
+                    }} />
+                )}
               </div>
             </MediaQuery>
 
@@ -218,6 +239,16 @@ export async function Header({ data }: { data: HeaderType }) {
                 </SearchDrawer>
 
                 <CartDrawer key={'desktop_cart_drawer'} />
+
+                {user && (
+                  <AdminDrawer
+                    key={'mobile_admin_drawer'}
+                    {...{
+                      user,
+                      token: token ?? ""
+                    }} />
+                )}
+
               </div>
             </MediaQuery>
           </div>
@@ -270,7 +301,7 @@ const getAllCategories = async () => {
     collection: 'categories',
     draft: false,
     depth: 2,
-    pagination: false, 
+    pagination: false,
     where: {
       showInSearch: {
         equals: true

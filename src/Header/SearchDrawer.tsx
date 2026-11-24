@@ -3,11 +3,9 @@
 import { ReactNode, useContext, useEffect, useState } from "react"
 import * as Drawer from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronDownIcon, ChevronUpIcon, FilterIcon, SearchIcon, SlidersHorizontalIcon, XIcon } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Category, Header, Product } from "@/payload-types";
+import { ChevronDownIcon, ChevronUpIcon, SearchIcon, SlidersHorizontalIcon, XIcon } from "lucide-react";
+import { Category, Product } from "@/payload-types";
 import Fuse from 'fuse.js';
-import { RenderBlocks } from "@/blocks/RenderBlocks";
 import ProductCard from "@/app/(session)/(frontend)/products/ProductCard";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CartProvider } from "@/components/Cart/CartProviderComponent";
@@ -19,7 +17,7 @@ import { Field, FieldGroup } from "@/components/ui/field";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Toggle } from "@/components/ui/toggle";
-import { DropdownMenuGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu";
+import { DropdownMenuRadioItem } from "@/components/ui/dropdown-menu";
 
 
 
@@ -46,7 +44,8 @@ export default function SearchDrawer(props: {
 
     const [searchResults, setSearchResults] = useState<Product[] | null>(null);
     const [isBuffering, setIsBuffering] = useState(false);
-    const [isSortsFiltersOpen, setIsSortsFiltersOpen] = useState(true)
+    const [isSortsFiltersOpen, setIsSortsFiltersOpen] = useState(true);
+    const [isCategoriesDropdownOpen, setIsCategoriesDropdownOpen] = useState(false);
 
     useEffect(() => {
 
@@ -111,7 +110,9 @@ export default function SearchDrawer(props: {
         <Drawer.Drawer {...{
             direction: 'right',
             open: isSearchOpen,
-            onOpenChange: setIsSearchOpen
+            onOpenChange: setIsSearchOpen,
+            repositionInputs: false,
+            dismissible: false
         }}>
             <Drawer.DrawerTrigger asChild>
                 <Button {...{
@@ -136,26 +137,29 @@ export default function SearchDrawer(props: {
 
                         </div>
                     </div>
-                    <div className="flex flex-col py-6 px-4 md:px-8 md:py-10 w-full h-screen gap-4 bg-white w-full max-w-[40rem] min-h-screen shadow-[-2px_2px_4px_rgba(0,0,0,0.08)]">
+                    <div className="flex flex-col w-full h-screen gap-4 bg-white w-full max-w-[40rem] min-h-screen shadow-[-2px_2px_4px_rgba(0,0,0,0.08)]">
+
                         <div {...{
-                            className: 'flex flex-col w-full h-full'
+                            className: 'relative flex flex-col w-full h-full'
                         }}>
-                            <div className="relative flex flex-col px-2 gap-4 w-full h-full">
 
-                                <div className="z-[100] absolute bg-transparent top-0 flex flex-col gap-2 h-fit w-full pointer-events-none">
+                            <div className="z-[100] absolute bg-transparent top-0 flex flex-col gap-2 h-fit w-full pointer-events-none">
 
 
+                                {/* Backdrop */}
+                                <div {...{
+                                    className: "-z-[1] absolute inset-0 w-full h-full",
+                                    style: {
+                                        background: `linear-gradient(to bottom, #fff 0%, #fff 25%, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0.65) 70%, transparent 100%)`
+                                    }
+                                }} />
+
+
+                                <div className="flex flex-col w-full h-fit py-6 px-4 md:px-8 md:py-10 gap-4">
+                                    {/* Header */}
                                     <div {...{
-                                        className: "-z-[1] absolute inset-0 w-full h-full",
-                                        style: {
-                                            background: `linear-gradient(to bottom, #fff 0%, #fff 25%, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0.65) 70%, transparent 100%)`
-                                        }
-                                    }} />
-
-                                    <div {...{
-                                        className: "group flex gap-4 items-center w-full h-fit pr-4",
+                                        className: "group flex gap-4 items-center w-full h-fit ",
                                     }}>
-
                                         <InputGroup {...{
                                             className: "h-12 pointer-events-auto text-base",
                                         }}>
@@ -201,10 +205,10 @@ export default function SearchDrawer(props: {
                                         }}>
                                             <XIcon /> Close
                                         </Button>
-
-
                                     </div>
 
+
+                                    {/* Sorts and filters */}
                                     <Collapsible {...{
                                         open: isSortsFiltersOpen,
                                         onOpenChange: open => setIsSortsFiltersOpen(open)
@@ -245,6 +249,76 @@ export default function SearchDrawer(props: {
                                                 </DropdownMenu.DropdownMenuContent>
                                             </DropdownMenu.DropdownMenu>
 
+
+
+                                            {props.categories && props.categories.length > 0 && (
+                                                <DropdownMenu.DropdownMenu {...{
+                                                    open: isCategoriesDropdownOpen,
+                                                    onOpenChange: open => setIsCategoriesDropdownOpen(open)
+                                                }}>
+                                                    <DropdownMenu.DropdownMenuTrigger>
+                                                        <Button {...{
+                                                            variant: 'outline',
+                                                            className: "rounded-full  mb-1"
+                                                        }}>Categories <ChevronDownIcon /></Button>
+                                                    </DropdownMenu.DropdownMenuTrigger>
+                                                    <DropdownMenu.DropdownMenuContent align="start">
+                                                        <FieldGroup className="flex flex-col max-w-screen w-[15rem] p-2 gap-0">
+                                                            {props.categories.map(category => {
+
+                                                                const checked = searchQuery?.categories?.includes(category.id) ?? false;
+
+                                                                if (checked) {
+                                                                    return false;
+                                                                }
+
+                                                                return (
+
+                                                                    <Field key={category.id} orientation="horizontal" className="h-8">
+                                                                        <Checkbox
+                                                                            {...{
+                                                                                id: category.id,
+                                                                                name: category.title,
+                                                                                checked,
+                                                                                onCheckedChange: checked => {
+
+                                                                                    let shouldClose = false;
+                                                                                    if (checked && ((searchQuery?.categories?.length ?? 0) + 1 == props.categories.length)) {
+                                                                                        shouldClose = true;
+                                                                                    }
+
+                                                                                    setSearchQuery(prev => {
+                                                                                        const categories = new Set(prev?.categories ?? [])
+
+                                                                                        if (checked) {
+                                                                                            categories.add(category.id)
+                                                                                        } else {
+                                                                                            categories.delete(category.id)
+                                                                                        }
+
+                                                                                        return {
+                                                                                            ...prev,
+                                                                                            categories: [...categories]
+                                                                                        }
+                                                                                    });
+
+                                                                                    if (shouldClose) {
+                                                                                        setIsCategoriesDropdownOpen(false)
+                                                                                    }
+
+                                                                                    
+                                                                                }
+                                                                            }}
+                                                                        />
+                                                                        <Label htmlFor={category.id}>{category.title}</Label>
+                                                                    </Field>
+                                                                )
+                                                            })}
+                                                        </FieldGroup>
+                                                    </DropdownMenu.DropdownMenuContent>
+                                                </DropdownMenu.DropdownMenu>
+                                            )}
+
                                             {props.categories?.map(category => {
 
                                                 const checked = searchQuery?.categories?.includes(category.id) ?? false;
@@ -280,59 +354,6 @@ export default function SearchDrawer(props: {
                                                 )
                                             })}
 
-                                            {props.categories && props.categories.length > 0 && (
-                                                <DropdownMenu.DropdownMenu>
-                                                    <DropdownMenu.DropdownMenuTrigger>
-                                                        <Button {...{
-                                                            variant: 'outline',
-                                                            className: "rounded-full  mb-1"
-                                                        }}>Categories <ChevronDownIcon /></Button>
-                                                    </DropdownMenu.DropdownMenuTrigger>
-                                                    <DropdownMenu.DropdownMenuContent align="start">
-                                                        <FieldGroup className="flex flex-col max-w-screen w-[15rem] p-2 gap-0">
-                                                            {props.categories.map(category => {
-
-                                                                const checked = searchQuery?.categories?.includes(category.id) ?? false;
-
-                                                                if (checked) {
-                                                                    return false;
-                                                                }
-
-                                                                return (
-
-                                                                    <Field key={category.id} orientation="horizontal" className="h-8">
-                                                                        <Checkbox
-                                                                            {...{
-                                                                                id: category.id,
-                                                                                name: category.title,
-                                                                                checked,
-                                                                                onCheckedChange: checked => {
-                                                                                    setSearchQuery(prev => {
-                                                                                        const categories = new Set(prev?.categories ?? [])
-
-                                                                                        if (checked) {
-                                                                                            categories.add(category.id)
-                                                                                        } else {
-                                                                                            categories.delete(category.id)
-                                                                                        }
-
-                                                                                        return {
-                                                                                            ...prev,
-                                                                                            categories: [...categories]
-                                                                                        }
-                                                                                    })
-                                                                                }
-                                                                            }}
-                                                                        />
-                                                                        <Label htmlFor={category.id}>{category.title}</Label>
-                                                                    </Field>
-                                                                )
-                                                            })}
-                                                        </FieldGroup>
-                                                    </DropdownMenu.DropdownMenuContent>
-                                                </DropdownMenu.DropdownMenu>
-                                            )}
-
 
 
 
@@ -345,19 +366,72 @@ export default function SearchDrawer(props: {
                                         </CollapsibleTrigger>
                                     </Collapsible>
                                 </div>
+                            </div>
 
-                                <div className="flex flex-1 min-h-0 w-full">
+                            {/* Search results */}
+                            <div className="flex flex-1 min-h-0 w-full  py-6 px-4 md:px-8 md:py-10">
 
-                                    {(
-                                        (searchResults && searchResults.length > 0)
-                                    ) ? (
-                                        <ScrollArea key={'searchResults'} {...{
-                                            id: 'scroll-area',
-                                            className: 'flex w-full h-full'
-                                        }}>
-                                            <div className="flex flex-col w-full h-fit pb-20  pt-[9rem]">
+                                {(
+                                    (searchResults && searchResults.length > 0)
+                                ) ? (
+                                    <ScrollArea key={'searchResults'} {...{
+                                        id: 'scroll-area',
+                                        className: 'flex w-full h-full'
+                                    }}>
+                                        <div className="flex flex-col w-full h-fit pb-[30rem]  pt-[9rem]">
+                                            {isBuffering ? (
+                                                <div key={"buffering"} className="flex w-full max-h-full h-[10rem] items-center justify-center">
+                                                    <div
+                                                        {...{
+                                                            className:
+                                                                'h-4 w-4 animate-spin rounded-full border-2 border-black/30 border-t-black',
+                                                        }}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                <div key={"not_buffering"} className="grid md:grid-cols-3 grid-cols-2 w-full h-fit">
+                                                    {searchResults?.map(product => {
+
+                                                        return (
+                                                            <ProductCard
+                                                                key={product.id} {...{
+                                                                    className: 'w-full md:w-full',
+                                                                    product,
+                                                                    disabledTitleIndent: true
+                                                                }}
+                                                            />
+                                                        )
+                                                    })}
+                                                </div>
+                                            )}
+
+                                            <Button {...{
+                                                variant: 'outline',
+                                                onClick: e => {
+                                                    setSearchQuery(prev => {
+                                                        if (!prev) return null;
+                                                        return {
+                                                            query: prev.query ?? ""
+                                                        }
+                                                    });
+                                                }
+                                            }}>Clear all filters</Button>
+                                        </div>
+                                    </ScrollArea>
+                                ) : (
+                                    <>
+
+                                        {(
+                                            searchQuery &&
+                                            (
+                                                (searchQuery.query && searchQuery.query.length > 0)
+                                                || (searchQuery.categories && searchQuery.categories.length > 0)
+                                                || (searchQuery.sortBy)
+                                            )
+                                        ) ? (
+                                            <>
                                                 {isBuffering ? (
-                                                    <div key={"buffering"} className="flex w-full max-h-full h-[10rem] items-center justify-center">
+                                                    <div className="flex w-full h-[4rem] items-center justify-center">
                                                         <div
                                                             {...{
                                                                 className:
@@ -365,93 +439,40 @@ export default function SearchDrawer(props: {
                                                             }}
                                                         />
                                                     </div>
-                                                ) : (
-                                                    <div key={"not_buffering"} className="grid md:grid-cols-3 grid-cols-2 w-full h-fit">
-                                                        {searchResults?.map(product => {
-
-                                                            return (
-                                                                <ProductCard
-                                                                    key={product.id} {...{
-                                                                        className: 'w-full md:w-full',
-                                                                        product,
-                                                                        disabledTitleIndent: true
-                                                                    }}
-                                                                />
-                                                            )
-                                                        })}
+                                                ) : <span className="text-xs flex w-full justify-center items-center py-10">No results</span>}
+                                            </>
+                                        ) : (
+                                            <ScrollArea key={'searchResults_placehodler'} {...{
+                                                id: 'scroll-area-no-search',
+                                                className: 'flex w-full h-full min-w-0 '
+                                            }}>
+                                                <div className="flex flex-1 min-h-0 w-full pt-[9rem]">
+                                                    <div className="flex flex-col w-full h-fit">
+                                                        {props.children}
+                                                        {/* <div className='flex aspect-square w-full max-h-[30rem] bg-[#009487]'></div> */}
                                                     </div>
-                                                )}
+                                                </div>
+                                            </ScrollArea>
+                                        )}
 
-                                                <Button {...{
-                                                    variant: 'outline',
-                                                    onClick: e => {
-                                                        setSearchQuery(prev => {
-                                                            if (!prev) return null;
-                                                            return {
-                                                                query: prev.query ?? ""
-                                                            }
-                                                        });
-                                                    }
-                                                }}>Clear all filters</Button>
-                                            </div>
-                                        </ScrollArea>
-                                    ) : (
-                                        <>
-
-                                            {(
-                                                searchQuery &&
-                                                (
-                                                    (searchQuery.query && searchQuery.query.length > 0)
-                                                    || (searchQuery.categories && searchQuery.categories.length > 0)
-                                                    || (searchQuery.sortBy)
-                                                )
-                                            ) ? (
-                                                <>
-                                                    {isBuffering ? (
-                                                        <div className="flex w-full h-[4rem] items-center justify-center">
-                                                            <div
-                                                                {...{
-                                                                    className:
-                                                                        'h-4 w-4 animate-spin rounded-full border-2 border-black/30 border-t-black',
-                                                                }}
-                                                            />
-                                                        </div>
-                                                    ) : <span className="text-xs flex w-full justify-center items-center py-10">No results</span>}
-                                                </>
-                                            ) : (
-                                                <ScrollArea key={'searchResults_placehodler'} {...{
-                                                    id: 'scroll-area-no-search',
-                                                    className: 'flex w-full h-full min-w-0 '
-                                                }}>
-                                                    <div className="flex flex-1 min-h-0 w-full pt-[9rem]">
-                                                        <div className="flex flex-col w-full h-fit">
-                                                            {props.children}
-                                                            {/* <div className='flex aspect-square w-full max-h-[30rem] bg-[#009487]'></div> */}
-                                                        </div>
-                                                    </div>
-                                                </ScrollArea>
-                                            )}
-
-                                        </>
-                                    )}
-                                </div>
-
-
-                                <div className="flex flex-col w-full p-4">
-
-                                    <p className="debug">{JSON.stringify(searchQuery, null, 2)}</p>
-                                    <Button {...{
-                                        size: 'lg',
-                                        className: 'w-full',
-                                        onClick: e => {
-                                            router.push('/products')
-                                        }
-                                    }}>
-                                        See All Products
-                                    </Button>
-                                </div>
-
+                                    </>
+                                )}
                             </div>
+
+
+                            <div className="flex flex-col w-full  py-6 px-4 md:px-8 md:py-10">
+ 
+                                <Button {...{
+                                    size: 'lg',
+                                    className: 'w-full',
+                                    onClick: e => {
+                                        router.push('/products')
+                                    }
+                                }}>
+                                    See All Products
+                                </Button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

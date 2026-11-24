@@ -406,6 +406,22 @@ export interface RowBlock {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Use Tailwind class names. See changes in compiled styles below. Common classes will not appear below if they are apart of the global stylesheet. [Open Tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet).
+   */
+  className?: string | null;
+  /**
+   * The compiler reduces to inline css elements where possible. Responsive styles and hover actions are rendered as pure CSS snippets alongside the block.
+   */
+  compiledStyles?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'row';
@@ -1229,6 +1245,8 @@ export interface RowBlockSelect<T extends boolean = true> {
         compiledStyles?: T;
         id?: T;
       };
+  className?: T;
+  compiledStyles?: T;
   id?: T;
   blockName?: T;
 }

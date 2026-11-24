@@ -6,7 +6,7 @@ import { RefObject, useContext } from 'react'
 import { processSquarePayment } from './processSquarePayment'
 import { useRouter } from 'next/navigation'
 
-export default function PayNowButton({ cardRef }: { cardRef: RefObject<any> }) {
+export default function SquarePayNowButton({ cardRef }: { cardRef: RefObject<any> }) {
 
   const router = useRouter();
   const { ...CartContext } = useContext(CartProvider)

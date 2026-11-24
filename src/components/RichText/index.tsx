@@ -72,7 +72,6 @@ const jsxConverters = ({ defaultConverters, variables }: any) => ({
     if (!node?.selected) return null
 
     try {
-
       const matchedValue = variables[node.selected.value]
       return (
         <span
@@ -92,7 +91,8 @@ const jsxConverters = ({ defaultConverters, variables }: any) => ({
         >
           {JSON.stringify({
             selected: node.selected,
-            variables
+            variables,
+            err
           })}
         </span>
       )
@@ -136,24 +136,27 @@ type Props = {
 export default function RichText(props: Props) {
   const { dataBlockId, className, style, enableProse = true, enableGutter = true, ...rest } = props
   return (
-    <div {...{
-      className: cn("payload-richtext flex flex-col", className),
-      style,
-      'data-block-id': dataBlockId,
-    }}>
-      <ConvertRichText
-        {...{
-          converters: (({ defaultConverters }) => {
-            return jsxConverters({
-              defaultConverters,
-              variables: rest.variables
-            })
-          }),
-          disableContainer: true,
-          variables: rest.variables,
-          ...rest
-        }}
-      />
-    </div>
+    <>
+      {/* <p className="debug">{JSON.stringify(rest.variables, null, 2)}</p> */}
+      <div {...{
+        className: cn("payload-richtext flex flex-col", className),
+        style,
+        'data-block-id': dataBlockId,
+      }}>
+        <ConvertRichText
+          {...{
+            converters: (({ defaultConverters }) => {
+              return jsxConverters({
+                defaultConverters,
+                variables: rest.variables
+              })
+            }),
+            disableContainer: true,
+            variables: rest.variables,
+            ...rest
+          }}
+        />
+      </div>
+    </>
   )
 }

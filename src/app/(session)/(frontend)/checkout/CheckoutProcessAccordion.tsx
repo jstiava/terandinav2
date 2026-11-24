@@ -1,6 +1,5 @@
 'use client'
 import { Button } from '@/components/ui/button'
-import CheckoutCartInventory from './CheckoutCartInventory'
 import SquarePaymentBox from './SquarePaymentBox'
 import StripeLocationAndTaxField from './StripeLocationAndTaxField'
 import * as Accordion from '@/components/ui/accordion'
@@ -13,7 +12,6 @@ import { createPaymentIntent, patchPaymentIntentWithTaxes } from './StripePaymen
 import { Field, FieldContent, FieldDescription, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
-import { prev } from 'node_modules/cheerio/dist/esm/api/traversing'
 
 const NATIVE_SUN_MERRILLVILLE_ADDRESS = {
   line1: '1978 Southlake Mall',
@@ -40,7 +38,7 @@ export default function CheckoutProcessAccordion() {
   const [value, setValue] = useState(0)
   const [confirmLocationProcessState, setConfirmLocationProcessState] = useState<
     'stable' | 'loading' | 'done'
-  >('stable')
+  >('stable');
 
   useEffect(() => {
     createPaymentIntent({
@@ -55,7 +53,7 @@ export default function CheckoutProcessAccordion() {
         console.log(err)
       })
 
-  }, [])
+  }, []);
 
   const handleConfirmPickupMethod = async (e: any) => {
     setConfirmLocationProcessState('loading')
@@ -116,41 +114,6 @@ export default function CheckoutProcessAccordion() {
 
   const CHECKOUT_PROCESS_STEPS = [
     {
-      name: 'Confirm your cart',
-      slug: 'confirm_cart',
-      content: (
-        <div className="flex flex-col w-full p-2 gap-4">
-          <h3
-            {...{
-              className: 'text-xl font-canela',
-            }}
-          >
-            Review Cart
-          </h3>
-          <CheckoutCartInventory />
-          <div className="flex flex-col w-full gap-2">
-            <Button
-              {...{
-                onClick: (e) => router.back(),
-                variant: 'outline',
-              }}
-            >
-              Continue Shopping
-            </Button>
-            <Button
-              {...{
-                onClick: (e) => {
-                  setValue((prev) => prev + 1)
-                },
-              }}
-            >
-              Confirm Cart
-            </Button>
-          </div>
-        </div>
-      ),
-    },
-    {
       name: 'Contact info',
       slug: 'contact_info',
       content: (
@@ -206,6 +169,7 @@ export default function CheckoutProcessAccordion() {
           <Button
             {...{
               onClick: (e) => {
+                
                 setValue((prev) => prev + 1)
               },
               disabled: !CartContext || !CartContext.checkoutDetails || !CartContext.checkoutDetails.emailAddress,

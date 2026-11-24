@@ -5,7 +5,7 @@ import { SquareClient, SquareEnvironment } from 'square'
 import configPromise from '@payload-config'
 import { Crm, Order } from '@/payload-types'
 import { CheckoutDetailsType, ProductType } from '@/components/Cart/CartProviderComponent'
-import { handleApplicationEventWithEmails } from '@/collections/Emails/EmailService'
+import { handleApplicationEventWithEmails } from '@/collections/Emails/handleApplicationEventWithEmails'
 import Mongo from '@/utilities/mongo'
 import { generateShippoShipment } from '@/app/(session)/(frontend)/checkout/ShippoService'
 
@@ -22,9 +22,10 @@ export async function processSquarePayment(props: {
   cart: ProductType[] | null,
   checkoutDetails: Partial<CheckoutDetailsType>
 }) {
-  try {
 
-    const payload = await getPayload({ config: configPromise });
+  // Does not need to be signed in.
+
+  try {
 
     const trustedItemsInCart = await getTrustedItemsInCartAndValidate({
       cart: props.cart
